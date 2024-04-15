@@ -1,0 +1,25 @@
+targets:
+  $default:
+    builders:
+      init:weak_interfaces_meta_generator:
+        enabled: true
+      init:container_generator:
+        enabled: true
+
+builders:
+  container_generator:
+    target: ":container_generator"
+    import: "package:init/container_generator.dart"
+    builder_factories: ["generate"]
+    build_extensions: { ".dart": [".containers.dart"]}
+    build_to: source
+    auto_apply: root_package
+    applies_builders: ["source_gen|combining_build"]
+  weak_interfaces_meta_generator:
+    target: ":weak_interfaces_meta_generator"
+    import: "package:init/weak_interfaces_meta_generator.dart"
+    builder_factories: ["generate"]
+    build_extensions: { ".dart": [".dummy"] }
+    build_to: source
+    auto_apply: root_package
+    applies_builders: ["source_gen|combining_builder", "init:container_generator"]
