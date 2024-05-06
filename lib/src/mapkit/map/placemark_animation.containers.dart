@@ -13,7 +13,7 @@ extension PlacemarkAnimationContainerExtension on PlacemarkAnimation {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, PlacemarkAnimation.getNativePtr);
+    return string_map.toNativeMap(obj, PlacemarkAnimationImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -40,7 +40,7 @@ extension PlacemarkAnimationContainerExtension on PlacemarkAnimation {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, PlacemarkAnimation.getNativePtr);
+    return vector.toNativeVector(obj, PlacemarkAnimationImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -65,7 +65,7 @@ extension PlacemarkAnimationContainerExtension on PlacemarkAnimation {
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => PlacemarkAnimation.fromOptionalPtr(
+        (val) => PlacemarkAnimationImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -91,7 +91,7 @@ extension PlacemarkAnimationContainerExtension on PlacemarkAnimation {
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => PlacemarkAnimation.fromOptionalPtr(
+        (val) => PlacemarkAnimationImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 

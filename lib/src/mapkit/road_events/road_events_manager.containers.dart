@@ -14,7 +14,8 @@ extension RoadEventsEventInfoSessionContainerExtension
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, RoadEventsEventInfoSession.getNativePtr);
+    return string_map.toNativeMap(
+        obj, RoadEventsEventInfoSessionImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -43,7 +44,8 @@ extension RoadEventsEventInfoSessionContainerExtension
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, RoadEventsEventInfoSession.getNativePtr);
+    return vector.toNativeVector(
+        obj, RoadEventsEventInfoSessionImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -68,7 +70,7 @@ extension RoadEventsEventInfoSessionContainerExtension
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => RoadEventsEventInfoSession.fromOptionalPtr(
+        (val) => RoadEventsEventInfoSessionImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -94,7 +96,7 @@ extension RoadEventsEventInfoSessionContainerExtension
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => RoadEventsEventInfoSession.fromOptionalPtr(
+        (val) => RoadEventsEventInfoSessionImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -124,7 +126,7 @@ extension RoadEventsManagerContainerExtension on RoadEventsManager {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, RoadEventsManager.getNativePtr);
+    return string_map.toNativeMap(obj, RoadEventsManagerImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -151,7 +153,7 @@ extension RoadEventsManagerContainerExtension on RoadEventsManager {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, RoadEventsManager.getNativePtr);
+    return vector.toNativeVector(obj, RoadEventsManagerImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -176,7 +178,7 @@ extension RoadEventsManagerContainerExtension on RoadEventsManager {
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => RoadEventsManager.fromOptionalPtr(
+        (val) => RoadEventsManagerImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -202,7 +204,7 @@ extension RoadEventsManagerContainerExtension on RoadEventsManager {
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => RoadEventsManager.fromOptionalPtr(
+        (val) => RoadEventsManagerImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 

@@ -13,7 +13,7 @@ extension PlacemarkMapObjectContainerExtension on PlacemarkMapObject {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, PlacemarkMapObject.getNativePtr);
+    return string_map.toNativeMap(obj, PlacemarkMapObjectImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -40,7 +40,7 @@ extension PlacemarkMapObjectContainerExtension on PlacemarkMapObject {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, PlacemarkMapObject.getNativePtr);
+    return vector.toNativeVector(obj, PlacemarkMapObjectImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -65,7 +65,7 @@ extension PlacemarkMapObjectContainerExtension on PlacemarkMapObject {
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => PlacemarkMapObject.fromOptionalPtr(
+        (val) => PlacemarkMapObjectImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -91,7 +91,7 @@ extension PlacemarkMapObjectContainerExtension on PlacemarkMapObject {
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => PlacemarkMapObject.fromOptionalPtr(
+        (val) => PlacemarkMapObjectImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 

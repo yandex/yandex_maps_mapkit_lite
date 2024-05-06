@@ -13,7 +13,7 @@ extension CameraBoundsContainerExtension on CameraBounds {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, CameraBounds.getNativePtr);
+    return string_map.toNativeMap(obj, CameraBoundsImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension CameraBoundsContainerExtension on CameraBounds {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, CameraBounds.getNativePtr);
+    return vector.toNativeVector(obj, CameraBoundsImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -64,7 +64,7 @@ extension CameraBoundsContainerExtension on CameraBounds {
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => CameraBounds.fromOptionalPtr(
+        (val) => CameraBoundsImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -90,7 +90,7 @@ extension CameraBoundsContainerExtension on CameraBounds {
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => CameraBounds.fromOptionalPtr(
+        (val) => CameraBoundsImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 

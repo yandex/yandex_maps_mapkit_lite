@@ -5,7 +5,6 @@ import 'package:yandex_maps_mapkit_lite/src/bindings/common/library.dart'
 import 'dart:core' as core;
 import 'dart:ui' as ui;
 import 'package:ffi/ffi.dart';
-import 'package:meta/meta.dart';
 import 'package:yandex_maps_mapkit_lite/src/bindings/annotations/annotations.dart'
     as bindings_annotations;
 import 'package:yandex_maps_mapkit_lite/src/bindings/common/native_types.dart'
@@ -20,33 +19,9 @@ import 'package:yandex_maps_mapkit_lite/src/bindings/common/vector.dart'
     as vector;
 
 part 'image_data_descriptor.containers.dart';
+part 'image_data_descriptor.impl.dart';
 
-/// @nodoc
-final class ImagesImageDataDescriptorNative extends ffi.Struct {
-  external native_types.NativeString imageId;
-  external ffi.Pointer<ffi.Void> primaryColor;
-  external ffi.Pointer<ffi.Void> secondaryColor;
-  external ffi.Pointer<ffi.Void> tertiaryColor;
-}
-
-final ImagesImageDataDescriptorNative Function(native_types.NativeString,
-        ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)
-    _ImagesImageDataDescriptorNativeInit = lib.library
-        .lookup<
-                ffi.NativeFunction<
-                    ImagesImageDataDescriptorNative Function(
-                        native_types.NativeString,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>)>>(
-            'yandex_flutter_mapkit_images_ImagesImageDataDescriptor_init')
-        .asFunction(isLeaf: true);
-
-@bindings_annotations.ContainerData(
-    toNative: 'ImagesImageDataDescriptor.toPointer',
-    toPlatform:
-        '(val) => ImagesImageDataDescriptor.fromPointer(val, needFree: false)')
-class ImagesImageDataDescriptor {
+final class ImagesImageDataDescriptor {
   final core.String imageId;
   final ui.Color? primaryColor;
   final ui.Color? secondaryColor;
@@ -59,53 +34,23 @@ class ImagesImageDataDescriptor {
     this.tertiaryColor,
   });
 
-  /// @nodoc
-  @internal
-  ImagesImageDataDescriptor.fromNative(ImagesImageDataDescriptorNative native)
-      : this(
-            imageId: to_platform.toPlatformString(native.imageId),
-            primaryColor:
-                to_platform.toPlatformFromPointerColor(native.primaryColor),
-            secondaryColor:
-                to_platform.toPlatformFromPointerColor(native.secondaryColor),
-            tertiaryColor:
-                to_platform.toPlatformFromPointerColor(native.tertiaryColor));
+  @core.override
+  core.int get hashCode => core.Object.hashAll(
+      [imageId, primaryColor, secondaryColor, tertiaryColor]);
 
-  /// @nodoc
-  @internal
-  static ImagesImageDataDescriptorNative toNative(ImagesImageDataDescriptor c) {
-    return _ImagesImageDataDescriptorNativeInit(
-        to_native.toNativeString(c.imageId),
-        to_native.toNativePtrColor(c.primaryColor),
-        to_native.toNativePtrColor(c.secondaryColor),
-        to_native.toNativePtrColor(c.tertiaryColor));
+  @core.override
+  core.bool operator ==(covariant ImagesImageDataDescriptor other) {
+    if (core.identical(this, other)) {
+      return true;
+    }
+    return imageId == other.imageId &&
+        primaryColor == other.primaryColor &&
+        secondaryColor == other.secondaryColor &&
+        tertiaryColor == other.tertiaryColor;
   }
 
-  /// @nodoc
-  @internal
-  static ImagesImageDataDescriptor? fromPointer(ffi.Pointer<ffi.Void> ptr,
-      {core.bool needFree = true}) {
-    if (ptr.address == 0) {
-      return null;
-    }
-    final result = ImagesImageDataDescriptor.fromNative(
-        ptr.cast<ImagesImageDataDescriptorNative>().ref);
-
-    if (needFree) {
-      malloc.free(ptr);
-    }
-    return result;
-  }
-
-  /// @nodoc
-  @internal
-  static ffi.Pointer<ffi.Void> toPointer(ImagesImageDataDescriptor? val) {
-    if (val == null) {
-      return ffi.nullptr;
-    }
-    final result = malloc.call<ImagesImageDataDescriptorNative>();
-    result.ref = toNative(val);
-
-    return result.cast<ffi.Void>();
+  @core.override
+  core.String toString() {
+    return "ImagesImageDataDescriptor(imageId: $imageId, primaryColor: $primaryColor, secondaryColor: $secondaryColor, tertiaryColor: $tertiaryColor)";
   }
 }

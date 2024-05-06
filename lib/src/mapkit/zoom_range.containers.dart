@@ -13,7 +13,7 @@ extension ZoomRangeIdlContainerExtension on ZoomRangeIdl {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, ZoomRangeIdl.toPointer);
+    return string_map.toNativeMap(obj, ZoomRangeIdlImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension ZoomRangeIdlContainerExtension on ZoomRangeIdl {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, ZoomRangeIdl.toPointer);
+    return vector.toNativeVector(obj, ZoomRangeIdlImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -63,7 +63,7 @@ extension ZoomRangeIdlContainerExtension on ZoomRangeIdl {
   static string_map.StringMap<ZoomRangeIdl> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => ZoomRangeIdl.fromPointer(val, needFree: false));
+        ptr, (val) => ZoomRangeIdlImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<ZoomRangeIdl>> toPlatformMapVector(
@@ -87,7 +87,7 @@ extension ZoomRangeIdlContainerExtension on ZoomRangeIdl {
   static vector.Vector<ZoomRangeIdl> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => ZoomRangeIdl.fromPointer(val, needFree: false));
+        ptr, (val) => ZoomRangeIdlImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<ZoomRangeIdl>> toPlatformVectorVector(

@@ -13,7 +13,7 @@ extension GnssClockContainerExtension on GnssClock {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, GnssClock.toPointer);
+    return string_map.toNativeMap(obj, GnssClockImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension GnssClockContainerExtension on GnssClock {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, GnssClock.toPointer);
+    return vector.toNativeVector(obj, GnssClockImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -63,7 +63,7 @@ extension GnssClockContainerExtension on GnssClock {
   static string_map.StringMap<GnssClock> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => GnssClock.fromPointer(val, needFree: false));
+        ptr, (val) => GnssClockImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<GnssClock>> toPlatformMapVector(
@@ -86,7 +86,7 @@ extension GnssClockContainerExtension on GnssClock {
 
   static vector.Vector<GnssClock> toPlatformVector(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => GnssClock.fromPointer(val, needFree: false));
+        ptr, (val) => GnssClockImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<GnssClock>> toPlatformVectorVector(
@@ -115,7 +115,7 @@ extension GnssMeasurementContainerExtension on GnssMeasurement {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, GnssMeasurement.toPointer);
+    return string_map.toNativeMap(obj, GnssMeasurementImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -142,7 +142,7 @@ extension GnssMeasurementContainerExtension on GnssMeasurement {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, GnssMeasurement.toPointer);
+    return vector.toNativeVector(obj, GnssMeasurementImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -166,7 +166,7 @@ extension GnssMeasurementContainerExtension on GnssMeasurement {
   static string_map.StringMap<GnssMeasurement> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => GnssMeasurement.fromPointer(val, needFree: false));
+        ptr, (val) => GnssMeasurementImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<GnssMeasurement>>
@@ -190,7 +190,7 @@ extension GnssMeasurementContainerExtension on GnssMeasurement {
   static vector.Vector<GnssMeasurement> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => GnssMeasurement.fromPointer(val, needFree: false));
+        ptr, (val) => GnssMeasurementImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<GnssMeasurement>> toPlatformVectorVector(
@@ -219,7 +219,7 @@ extension GnssMeasurementsEventContainerExtension on GnssMeasurementsEvent {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, GnssMeasurementsEvent.toPointer);
+    return string_map.toNativeMap(obj, GnssMeasurementsEventImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -247,7 +247,7 @@ extension GnssMeasurementsEventContainerExtension on GnssMeasurementsEvent {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, GnssMeasurementsEvent.toPointer);
+    return vector.toNativeVector(obj, GnssMeasurementsEventImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -270,8 +270,8 @@ extension GnssMeasurementsEventContainerExtension on GnssMeasurementsEvent {
 
   static string_map.StringMap<GnssMeasurementsEvent> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
-    return string_map.StringMap(
-        ptr, (val) => GnssMeasurementsEvent.fromPointer(val, needFree: false));
+    return string_map.StringMap(ptr,
+        (val) => GnssMeasurementsEventImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<GnssMeasurementsEvent>>
@@ -294,8 +294,8 @@ extension GnssMeasurementsEventContainerExtension on GnssMeasurementsEvent {
 
   static vector.Vector<GnssMeasurementsEvent> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-        ptr, (val) => GnssMeasurementsEvent.fromPointer(val, needFree: false));
+    return vector.Vector(ptr,
+        (val) => GnssMeasurementsEventImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<GnssMeasurementsEvent>>
@@ -326,7 +326,7 @@ extension GnssMeasurementsEventsNativeListenerContainerExtension
     }
 
     return string_map.toNativeMap(
-        obj, GnssMeasurementsEventsNativeListener.getNativePtr);
+        obj, GnssMeasurementsEventsNativeListenerImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -357,7 +357,7 @@ extension GnssMeasurementsEventsNativeListenerContainerExtension
     }
 
     return vector.toNativeVector(
-        obj, GnssMeasurementsEventsNativeListener.getNativePtr);
+        obj, GnssMeasurementsEventsNativeListenerImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -383,7 +383,7 @@ extension GnssMeasurementsEventsNativeListenerContainerExtension
       toPlatformMap(ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => GnssMeasurementsEventsNativeListener.fromOptionalPtr(
+        (val) => GnssMeasurementsEventsNativeListenerImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -411,7 +411,7 @@ extension GnssMeasurementsEventsNativeListenerContainerExtension
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => GnssMeasurementsEventsNativeListener.fromOptionalPtr(
+        (val) => GnssMeasurementsEventsNativeListenerImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 

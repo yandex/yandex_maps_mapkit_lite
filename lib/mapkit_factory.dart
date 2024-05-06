@@ -8,4 +8,4 @@ final Pointer<Void> Function() _get_factory = library
         'maps_flutter_get_mapkit_factory')
     .asFunction(isLeaf: true);
 
-final mapkit = MapKit.fromNativePtr(_get_factory());
+final mapkit = MapKitImpl.fromNativePtr(_get_factory());

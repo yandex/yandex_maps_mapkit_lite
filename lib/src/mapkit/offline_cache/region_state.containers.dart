@@ -13,7 +13,7 @@ extension OfflineCacheRegionStateContainerExtension on OfflineCacheRegionState {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, OfflineCacheRegionState.toPointer);
+    return string_map.toNativeMap(obj, OfflineCacheRegionStateImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -41,7 +41,7 @@ extension OfflineCacheRegionStateContainerExtension on OfflineCacheRegionState {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, OfflineCacheRegionState.toPointer);
+    return vector.toNativeVector(obj, OfflineCacheRegionStateImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -65,7 +65,7 @@ extension OfflineCacheRegionStateContainerExtension on OfflineCacheRegionState {
   static string_map.StringMap<OfflineCacheRegionState> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(ptr,
-        (val) => OfflineCacheRegionState.fromPointer(val, needFree: false));
+        (val) => OfflineCacheRegionStateImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<OfflineCacheRegionState>>
@@ -89,7 +89,7 @@ extension OfflineCacheRegionStateContainerExtension on OfflineCacheRegionState {
   static vector.Vector<OfflineCacheRegionState> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(ptr,
-        (val) => OfflineCacheRegionState.fromPointer(val, needFree: false));
+        (val) => OfflineCacheRegionStateImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<OfflineCacheRegionState>>

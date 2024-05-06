@@ -4,16 +4,11 @@ import 'package:yandex_maps_mapkit_lite/src/bindings/common/library.dart'
 
 import 'dart:core' as core;
 
+part 'vulkan_launcher.impl.dart';
+
 ///
 class VulkanLauncher {
   VulkanLauncher._();
 
-  static core.bool get vulkanEnabled {
-    return _VulkanLauncher_get_vulkanEnabled();
-  }
+  static core.bool get vulkanEnabled => _vulkanEnabled;
 }
-
-final core.bool Function() _VulkanLauncher_get_vulkanEnabled = lib.library
-    .lookup<ffi.NativeFunction<ffi.Bool Function()>>(
-        'yandex_flutter_runtime_vulkan_launcher_VulkanLauncher_get_vulkanEnabled')
-    .asFunction(isLeaf: true);

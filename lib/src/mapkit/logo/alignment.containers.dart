@@ -6,109 +6,6 @@ part of 'alignment.dart';
 // ContainerGenerator
 // **************************************************************************
 
-extension LogoAlignmentContainerExtension on LogoAlignment {
-  static ffi.Pointer<ffi.Void> toNativeMap(
-      core.Map<core.String, LogoAlignment?>? obj) {
-    if (obj == null) {
-      return ffi.nullptr;
-    }
-
-    return string_map.toNativeMap(obj, LogoAlignment.toPointer);
-  }
-
-  static ffi.Pointer<ffi.Void> toNativeMapVector(
-      core.Map<core.String, core.List<LogoAlignment?>?>? obj) {
-    if (obj == null) {
-      return ffi.nullptr;
-    }
-
-    return string_map.toNativeMap(obj, toNativeVector);
-  }
-
-  static ffi.Pointer<ffi.Void> toNativeMapDictionary(
-      core.Map<core.String, core.Map<core.String, LogoAlignment?>?>? obj) {
-    if (obj == null) {
-      return ffi.nullptr;
-    }
-
-    return string_map.toNativeMap(obj, toNativeMap);
-  }
-
-  static ffi.Pointer<ffi.Void> toNativeVector(core.List<LogoAlignment?>? obj) {
-    if (obj == null) {
-      return ffi.nullptr;
-    }
-
-    return vector.toNativeVector(obj, LogoAlignment.toPointer);
-  }
-
-  static ffi.Pointer<ffi.Void> toNativeVectorVector(
-      core.List<core.List<LogoAlignment?>?>? obj) {
-    if (obj == null) {
-      return ffi.nullptr;
-    }
-
-    return vector.toNativeVector(obj, toNativeVector);
-  }
-
-  static ffi.Pointer<ffi.Void> toNativeVectorDictionary(
-      core.List<core.Map<core.String, LogoAlignment?>?>? obj) {
-    if (obj == null) {
-      return ffi.nullptr;
-    }
-
-    return vector.toNativeVector(obj, toNativeMap);
-  }
-
-  static string_map.StringMap<LogoAlignment> toPlatformMap(
-      ffi.Pointer<ffi.Void> ptr) {
-    return string_map.StringMap(
-        ptr, (val) => LogoAlignment.fromPointer(val, needFree: false));
-  }
-
-  static string_map.StringMap<vector.Vector<LogoAlignment>> toPlatformMapVector(
-      ffi.Pointer<ffi.Void> ptr) {
-    return string_map.StringMap(
-        ptr,
-        (val) => val == ffi.nullptr
-            ? null
-            : toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value));
-  }
-
-  static string_map.StringMap<string_map.StringMap<LogoAlignment>>
-      toPlatformMapDictionary(ffi.Pointer<ffi.Void> ptr) {
-    return string_map.StringMap(
-        ptr,
-        (val) => val == ffi.nullptr
-            ? null
-            : toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value));
-  }
-
-  static vector.Vector<LogoAlignment> toPlatformVector(
-      ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-        ptr, (val) => LogoAlignment.fromPointer(val, needFree: false));
-  }
-
-  static vector.Vector<vector.Vector<LogoAlignment>> toPlatformVectorVector(
-      ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-        ptr,
-        (val) => val == ffi.nullptr
-            ? null
-            : toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value));
-  }
-
-  static vector.Vector<string_map.StringMap<LogoAlignment>>
-      toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-        ptr,
-        (val) => val == ffi.nullptr
-            ? null
-            : toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value));
-  }
-}
-
 extension LogoHorizontalAlignmentContainerExtension on LogoHorizontalAlignment {
   static ffi.Pointer<ffi.Void> toNativeMap(
       core.Map<core.String, LogoHorizontalAlignment?>? obj) {
@@ -116,7 +13,7 @@ extension LogoHorizontalAlignmentContainerExtension on LogoHorizontalAlignment {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, LogoHorizontalAlignment.toPointer);
+    return string_map.toNativeMap(obj, LogoHorizontalAlignmentImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -144,7 +41,7 @@ extension LogoHorizontalAlignmentContainerExtension on LogoHorizontalAlignment {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, LogoHorizontalAlignment.toPointer);
+    return vector.toNativeVector(obj, LogoHorizontalAlignmentImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -168,7 +65,7 @@ extension LogoHorizontalAlignmentContainerExtension on LogoHorizontalAlignment {
   static string_map.StringMap<LogoHorizontalAlignment> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(ptr,
-        (val) => LogoHorizontalAlignment.fromPointer(val, needFree: false));
+        (val) => LogoHorizontalAlignmentImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<LogoHorizontalAlignment>>
@@ -192,7 +89,7 @@ extension LogoHorizontalAlignmentContainerExtension on LogoHorizontalAlignment {
   static vector.Vector<LogoHorizontalAlignment> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(ptr,
-        (val) => LogoHorizontalAlignment.fromPointer(val, needFree: false));
+        (val) => LogoHorizontalAlignmentImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<LogoHorizontalAlignment>>
@@ -221,7 +118,7 @@ extension LogoVerticalAlignmentContainerExtension on LogoVerticalAlignment {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, LogoVerticalAlignment.toPointer);
+    return string_map.toNativeMap(obj, LogoVerticalAlignmentImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -249,7 +146,7 @@ extension LogoVerticalAlignmentContainerExtension on LogoVerticalAlignment {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, LogoVerticalAlignment.toPointer);
+    return vector.toNativeVector(obj, LogoVerticalAlignmentImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -272,8 +169,8 @@ extension LogoVerticalAlignmentContainerExtension on LogoVerticalAlignment {
 
   static string_map.StringMap<LogoVerticalAlignment> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
-    return string_map.StringMap(
-        ptr, (val) => LogoVerticalAlignment.fromPointer(val, needFree: false));
+    return string_map.StringMap(ptr,
+        (val) => LogoVerticalAlignmentImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<LogoVerticalAlignment>>
@@ -296,8 +193,8 @@ extension LogoVerticalAlignmentContainerExtension on LogoVerticalAlignment {
 
   static vector.Vector<LogoVerticalAlignment> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-        ptr, (val) => LogoVerticalAlignment.fromPointer(val, needFree: false));
+    return vector.Vector(ptr,
+        (val) => LogoVerticalAlignmentImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<LogoVerticalAlignment>>
@@ -310,6 +207,109 @@ extension LogoVerticalAlignmentContainerExtension on LogoVerticalAlignment {
   }
 
   static vector.Vector<string_map.StringMap<LogoVerticalAlignment>>
+      toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+        ptr,
+        (val) => val == ffi.nullptr
+            ? null
+            : toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value));
+  }
+}
+
+extension LogoAlignmentContainerExtension on LogoAlignment {
+  static ffi.Pointer<ffi.Void> toNativeMap(
+      core.Map<core.String, LogoAlignment?>? obj) {
+    if (obj == null) {
+      return ffi.nullptr;
+    }
+
+    return string_map.toNativeMap(obj, LogoAlignmentImpl.toPointer);
+  }
+
+  static ffi.Pointer<ffi.Void> toNativeMapVector(
+      core.Map<core.String, core.List<LogoAlignment?>?>? obj) {
+    if (obj == null) {
+      return ffi.nullptr;
+    }
+
+    return string_map.toNativeMap(obj, toNativeVector);
+  }
+
+  static ffi.Pointer<ffi.Void> toNativeMapDictionary(
+      core.Map<core.String, core.Map<core.String, LogoAlignment?>?>? obj) {
+    if (obj == null) {
+      return ffi.nullptr;
+    }
+
+    return string_map.toNativeMap(obj, toNativeMap);
+  }
+
+  static ffi.Pointer<ffi.Void> toNativeVector(core.List<LogoAlignment?>? obj) {
+    if (obj == null) {
+      return ffi.nullptr;
+    }
+
+    return vector.toNativeVector(obj, LogoAlignmentImpl.toPointer);
+  }
+
+  static ffi.Pointer<ffi.Void> toNativeVectorVector(
+      core.List<core.List<LogoAlignment?>?>? obj) {
+    if (obj == null) {
+      return ffi.nullptr;
+    }
+
+    return vector.toNativeVector(obj, toNativeVector);
+  }
+
+  static ffi.Pointer<ffi.Void> toNativeVectorDictionary(
+      core.List<core.Map<core.String, LogoAlignment?>?>? obj) {
+    if (obj == null) {
+      return ffi.nullptr;
+    }
+
+    return vector.toNativeVector(obj, toNativeMap);
+  }
+
+  static string_map.StringMap<LogoAlignment> toPlatformMap(
+      ffi.Pointer<ffi.Void> ptr) {
+    return string_map.StringMap(
+        ptr, (val) => LogoAlignmentImpl.fromPointer(val, needFree: false));
+  }
+
+  static string_map.StringMap<vector.Vector<LogoAlignment>> toPlatformMapVector(
+      ffi.Pointer<ffi.Void> ptr) {
+    return string_map.StringMap(
+        ptr,
+        (val) => val == ffi.nullptr
+            ? null
+            : toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value));
+  }
+
+  static string_map.StringMap<string_map.StringMap<LogoAlignment>>
+      toPlatformMapDictionary(ffi.Pointer<ffi.Void> ptr) {
+    return string_map.StringMap(
+        ptr,
+        (val) => val == ffi.nullptr
+            ? null
+            : toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value));
+  }
+
+  static vector.Vector<LogoAlignment> toPlatformVector(
+      ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+        ptr, (val) => LogoAlignmentImpl.fromPointer(val, needFree: false));
+  }
+
+  static vector.Vector<vector.Vector<LogoAlignment>> toPlatformVectorVector(
+      ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+        ptr,
+        (val) => val == ffi.nullptr
+            ? null
+            : toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value));
+  }
+
+  static vector.Vector<string_map.StringMap<LogoAlignment>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,

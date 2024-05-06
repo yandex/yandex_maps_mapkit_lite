@@ -13,7 +13,7 @@ extension LocalizedValueContainerExtension on LocalizedValue {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, LocalizedValue.toPointer);
+    return string_map.toNativeMap(obj, LocalizedValueImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension LocalizedValueContainerExtension on LocalizedValue {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, LocalizedValue.toPointer);
+    return vector.toNativeVector(obj, LocalizedValueImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -63,7 +63,7 @@ extension LocalizedValueContainerExtension on LocalizedValue {
   static string_map.StringMap<LocalizedValue> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => LocalizedValue.fromPointer(val, needFree: false));
+        ptr, (val) => LocalizedValueImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<LocalizedValue>>
@@ -87,7 +87,7 @@ extension LocalizedValueContainerExtension on LocalizedValue {
   static vector.Vector<LocalizedValue> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => LocalizedValue.fromPointer(val, needFree: false));
+        ptr, (val) => LocalizedValueImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<LocalizedValue>> toPlatformVectorVector(

@@ -12,7 +12,7 @@ extension SpanContainerExtension on Span {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, Span.toPointer);
+    return string_map.toNativeMap(obj, SpanImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -38,7 +38,7 @@ extension SpanContainerExtension on Span {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, Span.toPointer);
+    return vector.toNativeVector(obj, SpanImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -61,7 +61,7 @@ extension SpanContainerExtension on Span {
 
   static string_map.StringMap<Span> toPlatformMap(ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => Span.fromPointer(val, needFree: false));
+        ptr, (val) => SpanImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<Span>> toPlatformMapVector(
@@ -83,7 +83,8 @@ extension SpanContainerExtension on Span {
   }
 
   static vector.Vector<Span> toPlatformVector(ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(ptr, (val) => Span.fromPointer(val, needFree: false));
+    return vector.Vector(
+        ptr, (val) => SpanImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<Span>> toPlatformVectorVector(

@@ -13,7 +13,7 @@ extension DataSourceLayerContainerExtension on DataSourceLayer {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, DataSourceLayer.getNativePtr);
+    return string_map.toNativeMap(obj, DataSourceLayerImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -40,7 +40,7 @@ extension DataSourceLayerContainerExtension on DataSourceLayer {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, DataSourceLayer.getNativePtr);
+    return vector.toNativeVector(obj, DataSourceLayerImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -65,7 +65,7 @@ extension DataSourceLayerContainerExtension on DataSourceLayer {
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => DataSourceLayer.fromOptionalPtr(
+        (val) => DataSourceLayerImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -91,7 +91,7 @@ extension DataSourceLayerContainerExtension on DataSourceLayer {
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => DataSourceLayer.fromOptionalPtr(
+        (val) => DataSourceLayerImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 

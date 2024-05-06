@@ -13,7 +13,7 @@ extension KeyValuePairContainerExtension on KeyValuePair {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, KeyValuePair.toPointer);
+    return string_map.toNativeMap(obj, KeyValuePairImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension KeyValuePairContainerExtension on KeyValuePair {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, KeyValuePair.toPointer);
+    return vector.toNativeVector(obj, KeyValuePairImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -63,7 +63,7 @@ extension KeyValuePairContainerExtension on KeyValuePair {
   static string_map.StringMap<KeyValuePair> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => KeyValuePair.fromPointer(val, needFree: false));
+        ptr, (val) => KeyValuePairImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<KeyValuePair>> toPlatformMapVector(
@@ -87,7 +87,7 @@ extension KeyValuePairContainerExtension on KeyValuePair {
   static vector.Vector<KeyValuePair> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => KeyValuePair.fromPointer(val, needFree: false));
+        ptr, (val) => KeyValuePairImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<KeyValuePair>> toPlatformVectorVector(

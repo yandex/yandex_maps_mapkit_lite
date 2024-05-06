@@ -14,7 +14,8 @@ extension GeoObjectSelectionMetadataContainerExtension
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, GeoObjectSelectionMetadata.toPointer);
+    return string_map.toNativeMap(
+        obj, GeoObjectSelectionMetadataImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -43,7 +44,7 @@ extension GeoObjectSelectionMetadataContainerExtension
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, GeoObjectSelectionMetadata.toPointer);
+    return vector.toNativeVector(obj, GeoObjectSelectionMetadataImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -66,8 +67,10 @@ extension GeoObjectSelectionMetadataContainerExtension
 
   static string_map.StringMap<GeoObjectSelectionMetadata> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
-    return string_map.StringMap(ptr,
-        (val) => GeoObjectSelectionMetadata.fromPointer(val, needFree: false));
+    return string_map.StringMap(
+        ptr,
+        (val) =>
+            GeoObjectSelectionMetadataImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<GeoObjectSelectionMetadata>>
@@ -90,8 +93,10 @@ extension GeoObjectSelectionMetadataContainerExtension
 
   static vector.Vector<GeoObjectSelectionMetadata> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(ptr,
-        (val) => GeoObjectSelectionMetadata.fromPointer(val, needFree: false));
+    return vector.Vector(
+        ptr,
+        (val) =>
+            GeoObjectSelectionMetadataImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<GeoObjectSelectionMetadata>>

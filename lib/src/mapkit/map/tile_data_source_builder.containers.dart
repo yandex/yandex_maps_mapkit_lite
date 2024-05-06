@@ -14,7 +14,8 @@ extension BaseTileDataSourceBuilderContainerExtension
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, BaseTileDataSourceBuilder.getNativePtr);
+    return string_map.toNativeMap(
+        obj, BaseTileDataSourceBuilderImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -42,7 +43,8 @@ extension BaseTileDataSourceBuilderContainerExtension
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, BaseTileDataSourceBuilder.getNativePtr);
+    return vector.toNativeVector(
+        obj, BaseTileDataSourceBuilderImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -67,7 +69,7 @@ extension BaseTileDataSourceBuilderContainerExtension
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => BaseTileDataSourceBuilder.fromOptionalPtr(
+        (val) => BaseTileDataSourceBuilderImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -93,7 +95,7 @@ extension BaseTileDataSourceBuilderContainerExtension
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => BaseTileDataSourceBuilder.fromOptionalPtr(
+        (val) => BaseTileDataSourceBuilderImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -123,7 +125,7 @@ extension TileDataSourceBuilderContainerExtension on TileDataSourceBuilder {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, TileDataSourceBuilder.getNativePtr);
+    return string_map.toNativeMap(obj, TileDataSourceBuilderImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -151,7 +153,7 @@ extension TileDataSourceBuilderContainerExtension on TileDataSourceBuilder {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, TileDataSourceBuilder.getNativePtr);
+    return vector.toNativeVector(obj, TileDataSourceBuilderImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -176,7 +178,7 @@ extension TileDataSourceBuilderContainerExtension on TileDataSourceBuilder {
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => TileDataSourceBuilder.fromOptionalPtr(
+        (val) => TileDataSourceBuilderImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -202,7 +204,7 @@ extension TileDataSourceBuilderContainerExtension on TileDataSourceBuilder {
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => TileDataSourceBuilder.fromOptionalPtr(
+        (val) => TileDataSourceBuilderImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 

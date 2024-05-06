@@ -24,4 +24,4 @@ flutter:
         pluginClass: YandexMapsPlugin
       ios:
         pluginClass: YandexMapsPlugin
-version: 4.6.0-beta3
+version: 4.6.1-beta1

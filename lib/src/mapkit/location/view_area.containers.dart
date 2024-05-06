@@ -13,7 +13,7 @@ extension ViewAreaContainerExtension on ViewArea {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, ViewArea.toPointer);
+    return string_map.toNativeMap(obj, ViewAreaImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension ViewAreaContainerExtension on ViewArea {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, ViewArea.toPointer);
+    return vector.toNativeVector(obj, ViewAreaImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -63,7 +63,7 @@ extension ViewAreaContainerExtension on ViewArea {
   static string_map.StringMap<ViewArea> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => ViewArea.fromPointer(val, needFree: false));
+        ptr, (val) => ViewAreaImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<ViewArea>> toPlatformMapVector(
@@ -86,7 +86,7 @@ extension ViewAreaContainerExtension on ViewArea {
 
   static vector.Vector<ViewArea> toPlatformVector(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => ViewArea.fromPointer(val, needFree: false));
+        ptr, (val) => ViewAreaImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<ViewArea>> toPlatformVectorVector(

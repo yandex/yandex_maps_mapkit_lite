@@ -13,7 +13,7 @@ extension GeoObjectTagsContainerExtension on GeoObjectTags {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, GeoObjectTags.toPointer);
+    return string_map.toNativeMap(obj, GeoObjectTagsImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension GeoObjectTagsContainerExtension on GeoObjectTags {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, GeoObjectTags.toPointer);
+    return vector.toNativeVector(obj, GeoObjectTagsImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -63,7 +63,7 @@ extension GeoObjectTagsContainerExtension on GeoObjectTags {
   static string_map.StringMap<GeoObjectTags> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => GeoObjectTags.fromPointer(val, needFree: false));
+        ptr, (val) => GeoObjectTagsImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<GeoObjectTags>> toPlatformMapVector(
@@ -87,7 +87,7 @@ extension GeoObjectTagsContainerExtension on GeoObjectTags {
   static vector.Vector<GeoObjectTags> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => GeoObjectTags.fromPointer(val, needFree: false));
+        ptr, (val) => GeoObjectTagsImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<GeoObjectTags>> toPlatformVectorVector(

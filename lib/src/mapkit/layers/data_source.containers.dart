@@ -13,7 +13,7 @@ extension DataSourceContainerExtension on DataSource {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, DataSource.getNativePtr);
+    return string_map.toNativeMap(obj, DataSourceImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension DataSourceContainerExtension on DataSource {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, DataSource.getNativePtr);
+    return vector.toNativeVector(obj, DataSourceImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -64,7 +64,7 @@ extension DataSourceContainerExtension on DataSource {
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => DataSource.fromOptionalPtr(
+        (val) => DataSourceImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -89,7 +89,7 @@ extension DataSourceContainerExtension on DataSource {
   static vector.Vector<DataSource> toPlatformVector(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => DataSource.fromOptionalPtr(
+        (val) => DataSourceImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 

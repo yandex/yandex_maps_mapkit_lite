@@ -13,7 +13,7 @@ extension GraphicsViewTypeContainerExtension on GraphicsViewType {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, GraphicsViewType.toPointer);
+    return string_map.toNativeMap(obj, GraphicsViewTypeImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -40,7 +40,7 @@ extension GraphicsViewTypeContainerExtension on GraphicsViewType {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, GraphicsViewType.toPointer);
+    return vector.toNativeVector(obj, GraphicsViewTypeImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -64,7 +64,7 @@ extension GraphicsViewTypeContainerExtension on GraphicsViewType {
   static string_map.StringMap<GraphicsViewType> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => GraphicsViewType.fromPointer(val, needFree: false));
+        ptr, (val) => GraphicsViewTypeImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<GraphicsViewType>>
@@ -88,7 +88,7 @@ extension GraphicsViewTypeContainerExtension on GraphicsViewType {
   static vector.Vector<GraphicsViewType> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => GraphicsViewType.fromPointer(val, needFree: false));
+        ptr, (val) => GraphicsViewTypeImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<GraphicsViewType>> toPlatformVectorVector(

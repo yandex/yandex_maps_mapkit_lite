@@ -13,7 +13,7 @@ extension AttributionContainerExtension on Attribution {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, Attribution.toPointer);
+    return string_map.toNativeMap(obj, AttributionImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension AttributionContainerExtension on Attribution {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, Attribution.toPointer);
+    return vector.toNativeVector(obj, AttributionImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -63,7 +63,7 @@ extension AttributionContainerExtension on Attribution {
   static string_map.StringMap<Attribution> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => Attribution.fromPointer(val, needFree: false));
+        ptr, (val) => AttributionImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<Attribution>> toPlatformMapVector(
@@ -87,7 +87,7 @@ extension AttributionContainerExtension on Attribution {
   static vector.Vector<Attribution> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => Attribution.fromPointer(val, needFree: false));
+        ptr, (val) => AttributionImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<Attribution>> toPlatformVectorVector(
@@ -116,7 +116,7 @@ extension AttributionAuthorContainerExtension on AttributionAuthor {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, AttributionAuthor.toPointer);
+    return string_map.toNativeMap(obj, AttributionAuthorImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -143,7 +143,7 @@ extension AttributionAuthorContainerExtension on AttributionAuthor {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, AttributionAuthor.toPointer);
+    return vector.toNativeVector(obj, AttributionAuthorImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -167,7 +167,7 @@ extension AttributionAuthorContainerExtension on AttributionAuthor {
   static string_map.StringMap<AttributionAuthor> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => AttributionAuthor.fromPointer(val, needFree: false));
+        ptr, (val) => AttributionAuthorImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<AttributionAuthor>>
@@ -191,7 +191,7 @@ extension AttributionAuthorContainerExtension on AttributionAuthor {
   static vector.Vector<AttributionAuthor> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => AttributionAuthor.fromPointer(val, needFree: false));
+        ptr, (val) => AttributionAuthorImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<AttributionAuthor>> toPlatformVectorVector(
@@ -220,7 +220,7 @@ extension AttributionLinkContainerExtension on AttributionLink {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, AttributionLink.toPointer);
+    return string_map.toNativeMap(obj, AttributionLinkImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -247,7 +247,7 @@ extension AttributionLinkContainerExtension on AttributionLink {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, AttributionLink.toPointer);
+    return vector.toNativeVector(obj, AttributionLinkImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -271,7 +271,7 @@ extension AttributionLinkContainerExtension on AttributionLink {
   static string_map.StringMap<AttributionLink> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => AttributionLink.fromPointer(val, needFree: false));
+        ptr, (val) => AttributionLinkImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<AttributionLink>>
@@ -295,7 +295,7 @@ extension AttributionLinkContainerExtension on AttributionLink {
   static vector.Vector<AttributionLink> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => AttributionLink.fromPointer(val, needFree: false));
+        ptr, (val) => AttributionLinkImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<AttributionLink>> toPlatformVectorVector(

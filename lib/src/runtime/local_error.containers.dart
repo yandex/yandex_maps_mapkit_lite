@@ -13,7 +13,7 @@ extension LocalErrorContainerExtension on LocalError {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, LocalError.getNativePtr);
+    return string_map.toNativeMap(obj, LocalErrorImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension LocalErrorContainerExtension on LocalError {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, LocalError.getNativePtr);
+    return vector.toNativeVector(obj, LocalErrorImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -64,7 +64,7 @@ extension LocalErrorContainerExtension on LocalError {
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => LocalError.fromOptionalPtr(
+        (val) => LocalErrorImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -89,7 +89,7 @@ extension LocalErrorContainerExtension on LocalError {
   static vector.Vector<LocalError> toPlatformVector(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => LocalError.fromOptionalPtr(
+        (val) => LocalErrorImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -119,7 +119,7 @@ extension DiskFullErrorContainerExtension on DiskFullError {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, DiskFullError.getNativePtr);
+    return string_map.toNativeMap(obj, DiskFullErrorImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -145,7 +145,7 @@ extension DiskFullErrorContainerExtension on DiskFullError {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, DiskFullError.getNativePtr);
+    return vector.toNativeVector(obj, DiskFullErrorImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -170,7 +170,7 @@ extension DiskFullErrorContainerExtension on DiskFullError {
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => DiskFullError.fromOptionalPtr(
+        (val) => DiskFullErrorImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -196,7 +196,7 @@ extension DiskFullErrorContainerExtension on DiskFullError {
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => DiskFullError.fromOptionalPtr(
+        (val) => DiskFullErrorImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -226,7 +226,7 @@ extension DiskCorruptErrorContainerExtension on DiskCorruptError {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, DiskCorruptError.getNativePtr);
+    return string_map.toNativeMap(obj, DiskCorruptErrorImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -253,7 +253,7 @@ extension DiskCorruptErrorContainerExtension on DiskCorruptError {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, DiskCorruptError.getNativePtr);
+    return vector.toNativeVector(obj, DiskCorruptErrorImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -278,7 +278,7 @@ extension DiskCorruptErrorContainerExtension on DiskCorruptError {
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => DiskCorruptError.fromOptionalPtr(
+        (val) => DiskCorruptErrorImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -304,7 +304,7 @@ extension DiskCorruptErrorContainerExtension on DiskCorruptError {
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => DiskCorruptError.fromOptionalPtr(
+        (val) => DiskCorruptErrorImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -334,7 +334,7 @@ extension DiskWriteAccessErrorContainerExtension on DiskWriteAccessError {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, DiskWriteAccessError.getNativePtr);
+    return string_map.toNativeMap(obj, DiskWriteAccessErrorImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -362,7 +362,7 @@ extension DiskWriteAccessErrorContainerExtension on DiskWriteAccessError {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, DiskWriteAccessError.getNativePtr);
+    return vector.toNativeVector(obj, DiskWriteAccessErrorImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -387,7 +387,7 @@ extension DiskWriteAccessErrorContainerExtension on DiskWriteAccessError {
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => DiskWriteAccessError.fromOptionalPtr(
+        (val) => DiskWriteAccessErrorImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -413,7 +413,7 @@ extension DiskWriteAccessErrorContainerExtension on DiskWriteAccessError {
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => DiskWriteAccessError.fromOptionalPtr(
+        (val) => DiskWriteAccessErrorImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 

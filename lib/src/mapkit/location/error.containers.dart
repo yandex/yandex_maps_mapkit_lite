@@ -14,7 +14,8 @@ extension LocationUnavailableErrorContainerExtension
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, LocationUnavailableError.getNativePtr);
+    return string_map.toNativeMap(
+        obj, LocationUnavailableErrorImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -42,7 +43,8 @@ extension LocationUnavailableErrorContainerExtension
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, LocationUnavailableError.getNativePtr);
+    return vector.toNativeVector(
+        obj, LocationUnavailableErrorImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -67,7 +69,7 @@ extension LocationUnavailableErrorContainerExtension
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => LocationUnavailableError.fromOptionalPtr(
+        (val) => LocationUnavailableErrorImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -93,7 +95,7 @@ extension LocationUnavailableErrorContainerExtension
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => LocationUnavailableError.fromOptionalPtr(
+        (val) => LocationUnavailableErrorImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 

@@ -17,7 +17,7 @@ class ActivityLifecycleWrapper : ActivityAware, LifecycleObserver {
     private var lifecycle: Lifecycle? = null
 
     fun isForeground() : Boolean {
-        val state = lifecycle?.currentState?.isAtLeast(Lifecycle.State.RESUMED);
+        val state = lifecycle?.currentState?.isAtLeast(Lifecycle.State.STARTED);
 
         return state != null && state;
     }

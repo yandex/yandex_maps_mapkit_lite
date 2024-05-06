@@ -13,7 +13,7 @@ extension VisibleRegionContainerExtension on VisibleRegion {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, VisibleRegion.toPointer);
+    return string_map.toNativeMap(obj, VisibleRegionImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension VisibleRegionContainerExtension on VisibleRegion {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, VisibleRegion.toPointer);
+    return vector.toNativeVector(obj, VisibleRegionImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -63,7 +63,7 @@ extension VisibleRegionContainerExtension on VisibleRegion {
   static string_map.StringMap<VisibleRegion> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => VisibleRegion.fromPointer(val, needFree: false));
+        ptr, (val) => VisibleRegionImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<VisibleRegion>> toPlatformMapVector(
@@ -87,7 +87,7 @@ extension VisibleRegionContainerExtension on VisibleRegion {
   static vector.Vector<VisibleRegion> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => VisibleRegion.fromPointer(val, needFree: false));
+        ptr, (val) => VisibleRegionImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<VisibleRegion>> toPlatformVectorVector(

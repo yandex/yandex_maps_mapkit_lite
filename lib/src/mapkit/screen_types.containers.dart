@@ -13,7 +13,7 @@ extension ScreenPointContainerExtension on ScreenPoint {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, ScreenPoint.toPointer);
+    return string_map.toNativeMap(obj, ScreenPointImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension ScreenPointContainerExtension on ScreenPoint {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, ScreenPoint.toPointer);
+    return vector.toNativeVector(obj, ScreenPointImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -63,7 +63,7 @@ extension ScreenPointContainerExtension on ScreenPoint {
   static string_map.StringMap<ScreenPoint> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => ScreenPoint.fromPointer(val, needFree: false));
+        ptr, (val) => ScreenPointImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<ScreenPoint>> toPlatformMapVector(
@@ -87,7 +87,7 @@ extension ScreenPointContainerExtension on ScreenPoint {
   static vector.Vector<ScreenPoint> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => ScreenPoint.fromPointer(val, needFree: false));
+        ptr, (val) => ScreenPointImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<ScreenPoint>> toPlatformVectorVector(
@@ -116,7 +116,7 @@ extension ScreenRectContainerExtension on ScreenRect {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, ScreenRect.toPointer);
+    return string_map.toNativeMap(obj, ScreenRectImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -142,7 +142,7 @@ extension ScreenRectContainerExtension on ScreenRect {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, ScreenRect.toPointer);
+    return vector.toNativeVector(obj, ScreenRectImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -166,7 +166,7 @@ extension ScreenRectContainerExtension on ScreenRect {
   static string_map.StringMap<ScreenRect> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => ScreenRect.fromPointer(val, needFree: false));
+        ptr, (val) => ScreenRectImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<ScreenRect>> toPlatformMapVector(
@@ -189,7 +189,7 @@ extension ScreenRectContainerExtension on ScreenRect {
 
   static vector.Vector<ScreenRect> toPlatformVector(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => ScreenRect.fromPointer(val, needFree: false));
+        ptr, (val) => ScreenRectImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<ScreenRect>> toPlatformVectorVector(

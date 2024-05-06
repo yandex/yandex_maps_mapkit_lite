@@ -55,17 +55,21 @@ class ViewProvider {
       ),
     ).attachToRenderTree(buildOwner);
 
+    buildOwner.buildScope(rootElement);
+    pipelineOwner.flushLayout();
+
     if (!repaintBoundary.hasSize) {
       final frameReady = Completer();
       WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
         frameReady.complete();
       });
       await frameReady.future;
+
+      buildOwner.buildScope(rootElement);
+      pipelineOwner.flushLayout();
     }
 
-    buildOwner.buildScope(rootElement);
     pipelineOwner
-      ..flushLayout()
       ..flushCompositingBits()
       ..flushPaint();
     renderView.compositeFrame();

@@ -13,7 +13,7 @@ extension TileIdContainerExtension on TileId {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, TileId.toPointer);
+    return string_map.toNativeMap(obj, TileIdImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension TileIdContainerExtension on TileId {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, TileId.toPointer);
+    return vector.toNativeVector(obj, TileIdImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -62,7 +62,7 @@ extension TileIdContainerExtension on TileId {
 
   static string_map.StringMap<TileId> toPlatformMap(ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => TileId.fromPointer(val, needFree: false));
+        ptr, (val) => TileIdImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<TileId>> toPlatformMapVector(
@@ -85,7 +85,7 @@ extension TileIdContainerExtension on TileId {
 
   static vector.Vector<TileId> toPlatformVector(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => TileId.fromPointer(val, needFree: false));
+        ptr, (val) => TileIdImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<TileId>> toPlatformVectorVector(

@@ -13,7 +13,7 @@ extension TileFormatContainerExtension on TileFormat {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, TileFormat.toPointer);
+    return string_map.toNativeMap(obj, TileFormatImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension TileFormatContainerExtension on TileFormat {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, TileFormat.toPointer);
+    return vector.toNativeVector(obj, TileFormatImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -63,7 +63,7 @@ extension TileFormatContainerExtension on TileFormat {
   static string_map.StringMap<TileFormat> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => TileFormat.fromPointer(val, needFree: false));
+        ptr, (val) => TileFormatImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<TileFormat>> toPlatformMapVector(
@@ -86,7 +86,7 @@ extension TileFormatContainerExtension on TileFormat {
 
   static vector.Vector<TileFormat> toPlatformVector(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => TileFormat.fromPointer(val, needFree: false));
+        ptr, (val) => TileFormatImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<TileFormat>> toPlatformVectorVector(

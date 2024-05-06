@@ -12,7 +12,7 @@ extension ImageContainerExtension on Image {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, Image.toPointer);
+    return string_map.toNativeMap(obj, ImageImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -38,7 +38,7 @@ extension ImageContainerExtension on Image {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, Image.toPointer);
+    return vector.toNativeVector(obj, ImageImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -61,7 +61,7 @@ extension ImageContainerExtension on Image {
 
   static string_map.StringMap<Image> toPlatformMap(ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => Image.fromPointer(val, needFree: false));
+        ptr, (val) => ImageImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<Image>> toPlatformMapVector(
@@ -83,7 +83,8 @@ extension ImageContainerExtension on Image {
   }
 
   static vector.Vector<Image> toPlatformVector(ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(ptr, (val) => Image.fromPointer(val, needFree: false));
+    return vector.Vector(
+        ptr, (val) => ImageImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<Image>> toPlatformVectorVector(
@@ -112,7 +113,7 @@ extension ImageImageSizeContainerExtension on ImageImageSize {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, ImageImageSize.toPointer);
+    return string_map.toNativeMap(obj, ImageImageSizeImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -138,7 +139,7 @@ extension ImageImageSizeContainerExtension on ImageImageSize {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, ImageImageSize.toPointer);
+    return vector.toNativeVector(obj, ImageImageSizeImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -162,7 +163,7 @@ extension ImageImageSizeContainerExtension on ImageImageSize {
   static string_map.StringMap<ImageImageSize> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => ImageImageSize.fromPointer(val, needFree: false));
+        ptr, (val) => ImageImageSizeImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<ImageImageSize>>
@@ -186,7 +187,7 @@ extension ImageImageSizeContainerExtension on ImageImageSize {
   static vector.Vector<ImageImageSize> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => ImageImageSize.fromPointer(val, needFree: false));
+        ptr, (val) => ImageImageSizeImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<ImageImageSize>> toPlatformVectorVector(

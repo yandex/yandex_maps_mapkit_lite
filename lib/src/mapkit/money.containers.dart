@@ -13,7 +13,7 @@ extension TaxiMoneyContainerExtension on TaxiMoney {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, TaxiMoney.toPointer);
+    return string_map.toNativeMap(obj, TaxiMoneyImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension TaxiMoneyContainerExtension on TaxiMoney {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, TaxiMoney.toPointer);
+    return vector.toNativeVector(obj, TaxiMoneyImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -63,7 +63,7 @@ extension TaxiMoneyContainerExtension on TaxiMoney {
   static string_map.StringMap<TaxiMoney> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => TaxiMoney.fromPointer(val, needFree: false));
+        ptr, (val) => TaxiMoneyImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<TaxiMoney>> toPlatformMapVector(
@@ -86,7 +86,7 @@ extension TaxiMoneyContainerExtension on TaxiMoney {
 
   static vector.Vector<TaxiMoney> toPlatformVector(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => TaxiMoney.fromPointer(val, needFree: false));
+        ptr, (val) => TaxiMoneyImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<TaxiMoney>> toPlatformVectorVector(

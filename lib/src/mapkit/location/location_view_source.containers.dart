@@ -13,7 +13,7 @@ extension LocationViewSourceContainerExtension on LocationViewSource {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, LocationViewSource.getNativePtr);
+    return string_map.toNativeMap(obj, LocationViewSourceImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -40,7 +40,7 @@ extension LocationViewSourceContainerExtension on LocationViewSource {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, LocationViewSource.getNativePtr);
+    return vector.toNativeVector(obj, LocationViewSourceImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -65,7 +65,7 @@ extension LocationViewSourceContainerExtension on LocationViewSource {
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => LocationViewSource.fromOptionalPtr(
+        (val) => LocationViewSourceImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -91,7 +91,7 @@ extension LocationViewSourceContainerExtension on LocationViewSource {
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => LocationViewSource.fromOptionalPtr(
+        (val) => LocationViewSourceImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 

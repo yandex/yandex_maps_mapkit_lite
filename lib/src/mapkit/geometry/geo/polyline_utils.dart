@@ -10,6 +10,8 @@ import 'package:yandex_maps_mapkit_lite/src/mapkit/geometry/geometry.dart'
 import 'package:yandex_maps_mapkit_lite/src/mapkit/geometry/point.dart'
     as mapkit_geometry_point;
 
+part 'polyline_utils.impl.dart';
+
 class PolylineUtils {
   PolylineUtils._();
 
@@ -24,14 +26,12 @@ class PolylineUtils {
       mapkit_geometry_geometry.PolylinePosition firstPolylinePosition,
       mapkit_geometry_geometry.Polyline secondPolyline,
       mapkit_geometry_geometry.PolylinePosition secondPolylinePosition) {
-    return mapkit_geometry_geometry.PolylinePositionContainerExtension
-        .toPlatformVector(_PolylineUtils_positionsOfFork(
-            mapkit_geometry_geometry.Polyline.getNativePtr(firstPolyline),
-            mapkit_geometry_geometry.PolylinePosition.toNative(
-                firstPolylinePosition),
-            mapkit_geometry_geometry.Polyline.getNativePtr(secondPolyline),
-            mapkit_geometry_geometry.PolylinePosition.toNative(
-                secondPolylinePosition)));
+    return _positionsOfFork(
+      firstPolyline,
+      firstPolylinePosition,
+      secondPolyline,
+      secondPolylinePosition,
+    );
   }
 
   /// The position of the polyline.
@@ -44,11 +44,11 @@ class PolylineUtils {
     mapkit_geometry_geometry.PolylinePosition position, {
     required core.double distance,
   }) {
-    return mapkit_geometry_geometry.PolylinePosition.fromNative(
-        _PolylineUtils_advancePolylinePosition(
-            mapkit_geometry_geometry.Polyline.getNativePtr(polyline),
-            mapkit_geometry_geometry.PolylinePosition.toNative(position),
-            distance));
+    return _advancePolylinePosition(
+      polyline,
+      position,
+      distance: distance,
+    );
   }
 
   /// The point in the polyline.
@@ -58,90 +58,29 @@ class PolylineUtils {
   static mapkit_geometry_point.Point pointByPolylinePosition(
       mapkit_geometry_geometry.Polyline geometry,
       mapkit_geometry_geometry.PolylinePosition position) {
-    return mapkit_geometry_point.Point.fromNative(
-        _PolylineUtils_pointByPolylinePosition(
-            mapkit_geometry_geometry.Polyline.getNativePtr(geometry),
-            mapkit_geometry_geometry.PolylinePosition.toNative(position)));
+    return _pointByPolylinePosition(
+      geometry,
+      position,
+    );
   }
 
   static core.double distanceBetweenPolylinePositions(
       mapkit_geometry_geometry.Polyline polyline,
       mapkit_geometry_geometry.PolylinePosition from,
       mapkit_geometry_geometry.PolylinePosition to) {
-    return _PolylineUtils_distanceBetweenPolylinePositions(
-        mapkit_geometry_geometry.Polyline.getNativePtr(polyline),
-        mapkit_geometry_geometry.PolylinePosition.toNative(from),
-        mapkit_geometry_geometry.PolylinePosition.toNative(to));
+    return _distanceBetweenPolylinePositions(
+      polyline,
+      from,
+      to,
+    );
   }
 
   /// Creates PolylineIndex for polyline. See
   /// [mapkit_geometry_geo_polyline_index.PolylineIndex] for details.
   static mapkit_geometry_geo_polyline_index.PolylineIndex createPolylineIndex(
       mapkit_geometry_geometry.Polyline polyline) {
-    return mapkit_geometry_geo_polyline_index.PolylineIndex.fromNativePtr(
-        _PolylineUtils_createPolylineIndex(
-            mapkit_geometry_geometry.Polyline.getNativePtr(polyline)));
+    return _createPolylineIndex(
+      polyline,
+    );
   }
 }
-
-final ffi.Pointer<ffi.Void> Function(
-        ffi.Pointer<ffi.Void>,
-        mapkit_geometry_geometry.PolylinePositionNative,
-        ffi.Pointer<ffi.Void>,
-        mapkit_geometry_geometry.PolylinePositionNative)
-    _PolylineUtils_positionsOfFork = lib.library
-        .lookup<
-                ffi.NativeFunction<
-                    ffi.Pointer<ffi.Void> Function(
-                        ffi.Pointer<ffi.Void>,
-                        mapkit_geometry_geometry.PolylinePositionNative,
-                        ffi.Pointer<ffi.Void>,
-                        mapkit_geometry_geometry.PolylinePositionNative)>>(
-            'yandex_flutter_mapkit_geometry_geo_PolylineUtils_positionsOfFork')
-        .asFunction();
-final mapkit_geometry_geometry.PolylinePositionNative Function(
-    ffi.Pointer<ffi.Void>,
-    mapkit_geometry_geometry.PolylinePositionNative,
-    core
-        .double) _PolylineUtils_advancePolylinePosition = lib.library
-    .lookup<
-            ffi.NativeFunction<
-                mapkit_geometry_geometry.PolylinePositionNative Function(
-                    ffi.Pointer<ffi.Void>,
-                    mapkit_geometry_geometry.PolylinePositionNative,
-                    ffi.Double)>>(
-        'yandex_flutter_mapkit_geometry_geo_PolylineUtils_advancePolylinePosition')
-    .asFunction();
-final mapkit_geometry_point.PointNative Function(
-    ffi.Pointer<ffi.Void>,
-    mapkit_geometry_geometry
-        .PolylinePositionNative) _PolylineUtils_pointByPolylinePosition = lib
-    .library
-    .lookup<
-            ffi.NativeFunction<
-                mapkit_geometry_point.PointNative Function(
-                    ffi.Pointer<ffi.Void>,
-                    mapkit_geometry_geometry.PolylinePositionNative)>>(
-        'yandex_flutter_mapkit_geometry_geo_PolylineUtils_pointByPolylinePosition')
-    .asFunction();
-final core.double Function(
-        ffi.Pointer<ffi.Void>,
-        mapkit_geometry_geometry.PolylinePositionNative,
-        mapkit_geometry_geometry.PolylinePositionNative)
-    _PolylineUtils_distanceBetweenPolylinePositions = lib.library
-        .lookup<
-                ffi.NativeFunction<
-                    ffi.Double Function(
-                        ffi.Pointer<ffi.Void>,
-                        mapkit_geometry_geometry.PolylinePositionNative,
-                        mapkit_geometry_geometry.PolylinePositionNative)>>(
-            'yandex_flutter_mapkit_geometry_geo_PolylineUtils_distanceBetweenPolylinePositions')
-        .asFunction();
-final ffi.Pointer<ffi.Void> Function(
-    ffi
-        .Pointer<ffi.Void>) _PolylineUtils_createPolylineIndex = lib.library
-    .lookup<
-            ffi.NativeFunction<
-                ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
-        'yandex_flutter_mapkit_geometry_geo_PolylineUtils_createPolylineIndex')
-    .asFunction();

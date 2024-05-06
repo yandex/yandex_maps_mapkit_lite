@@ -13,7 +13,7 @@ extension TextStyleContainerExtension on TextStyle {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, TextStyle.toPointer);
+    return string_map.toNativeMap(obj, TextStyleImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension TextStyleContainerExtension on TextStyle {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, TextStyle.toPointer);
+    return vector.toNativeVector(obj, TextStyleImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -63,7 +63,7 @@ extension TextStyleContainerExtension on TextStyle {
   static string_map.StringMap<TextStyle> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => TextStyle.fromPointer(val, needFree: false));
+        ptr, (val) => TextStyleImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<TextStyle>> toPlatformMapVector(
@@ -86,7 +86,7 @@ extension TextStyleContainerExtension on TextStyle {
 
   static vector.Vector<TextStyle> toPlatformVector(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => TextStyle.fromPointer(val, needFree: false));
+        ptr, (val) => TextStyleImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<TextStyle>> toPlatformVectorVector(
@@ -115,7 +115,7 @@ extension TextStylePlacementContainerExtension on TextStylePlacement {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, TextStylePlacement.toPointer);
+    return string_map.toNativeMap(obj, TextStylePlacementImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -142,7 +142,7 @@ extension TextStylePlacementContainerExtension on TextStylePlacement {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, TextStylePlacement.toPointer);
+    return vector.toNativeVector(obj, TextStylePlacementImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -166,7 +166,7 @@ extension TextStylePlacementContainerExtension on TextStylePlacement {
   static string_map.StringMap<TextStylePlacement> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => TextStylePlacement.fromPointer(val, needFree: false));
+        ptr, (val) => TextStylePlacementImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<TextStylePlacement>>
@@ -190,7 +190,7 @@ extension TextStylePlacementContainerExtension on TextStylePlacement {
   static vector.Vector<TextStylePlacement> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => TextStylePlacement.fromPointer(val, needFree: false));
+        ptr, (val) => TextStylePlacementImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<TextStylePlacement>>

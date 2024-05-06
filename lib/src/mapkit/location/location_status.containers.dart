@@ -13,7 +13,7 @@ extension LocationStatusContainerExtension on LocationStatus {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, LocationStatus.toPointer);
+    return string_map.toNativeMap(obj, LocationStatusImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension LocationStatusContainerExtension on LocationStatus {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, LocationStatus.toPointer);
+    return vector.toNativeVector(obj, LocationStatusImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -63,7 +63,7 @@ extension LocationStatusContainerExtension on LocationStatus {
   static string_map.StringMap<LocationStatus> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => LocationStatus.fromPointer(val, needFree: false));
+        ptr, (val) => LocationStatusImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<LocationStatus>>
@@ -87,7 +87,7 @@ extension LocationStatusContainerExtension on LocationStatus {
   static vector.Vector<LocationStatus> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => LocationStatus.fromPointer(val, needFree: false));
+        ptr, (val) => LocationStatusImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<LocationStatus>> toPlatformVectorVector(

@@ -13,7 +13,7 @@ extension AnimationContainerExtension on Animation {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, Animation.toPointer);
+    return string_map.toNativeMap(obj, AnimationImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension AnimationContainerExtension on Animation {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, Animation.toPointer);
+    return vector.toNativeVector(obj, AnimationImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -63,7 +63,7 @@ extension AnimationContainerExtension on Animation {
   static string_map.StringMap<Animation> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => Animation.fromPointer(val, needFree: false));
+        ptr, (val) => AnimationImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<Animation>> toPlatformMapVector(
@@ -86,7 +86,7 @@ extension AnimationContainerExtension on Animation {
 
   static vector.Vector<Animation> toPlatformVector(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => Animation.fromPointer(val, needFree: false));
+        ptr, (val) => AnimationImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<Animation>> toPlatformVectorVector(
@@ -115,7 +115,7 @@ extension AnimationTypeContainerExtension on AnimationType {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, AnimationType.toPointer);
+    return string_map.toNativeMap(obj, AnimationTypeImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -141,7 +141,7 @@ extension AnimationTypeContainerExtension on AnimationType {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, AnimationType.toPointer);
+    return vector.toNativeVector(obj, AnimationTypeImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -165,7 +165,7 @@ extension AnimationTypeContainerExtension on AnimationType {
   static string_map.StringMap<AnimationType> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => AnimationType.fromPointer(val, needFree: false));
+        ptr, (val) => AnimationTypeImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<AnimationType>> toPlatformMapVector(
@@ -189,7 +189,7 @@ extension AnimationTypeContainerExtension on AnimationType {
   static vector.Vector<AnimationType> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => AnimationType.fromPointer(val, needFree: false));
+        ptr, (val) => AnimationTypeImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<AnimationType>> toPlatformVectorVector(

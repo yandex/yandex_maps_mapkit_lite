@@ -13,7 +13,7 @@ extension GeoObjectContainerExtension on GeoObject {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, GeoObject.toPointer);
+    return string_map.toNativeMap(obj, GeoObjectImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension GeoObjectContainerExtension on GeoObject {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, GeoObject.toPointer);
+    return vector.toNativeVector(obj, GeoObjectImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -63,7 +63,7 @@ extension GeoObjectContainerExtension on GeoObject {
   static string_map.StringMap<GeoObject> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => GeoObject.fromPointer(val, needFree: false));
+        ptr, (val) => GeoObjectImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<GeoObject>> toPlatformMapVector(
@@ -86,7 +86,7 @@ extension GeoObjectContainerExtension on GeoObject {
 
   static vector.Vector<GeoObject> toPlatformVector(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => GeoObject.fromPointer(val, needFree: false));
+        ptr, (val) => GeoObjectImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<GeoObject>> toPlatformVectorVector(

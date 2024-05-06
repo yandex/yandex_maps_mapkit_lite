@@ -13,7 +13,7 @@ extension ClusterContainerExtension on Cluster {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, Cluster.getNativePtr);
+    return string_map.toNativeMap(obj, ClusterImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension ClusterContainerExtension on Cluster {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, Cluster.getNativePtr);
+    return vector.toNativeVector(obj, ClusterImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -64,8 +64,8 @@ extension ClusterContainerExtension on Cluster {
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) =>
-            Cluster.fromOptionalPtr(val.cast<ffi.Pointer<ffi.Void>>().value));
+        (val) => ClusterImpl.fromOptionalPtr(
+            val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
   static string_map.StringMap<vector.Vector<Cluster>> toPlatformMapVector(
@@ -89,8 +89,8 @@ extension ClusterContainerExtension on Cluster {
   static vector.Vector<Cluster> toPlatformVector(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) =>
-            Cluster.fromOptionalPtr(val.cast<ffi.Pointer<ffi.Void>>().value));
+        (val) => ClusterImpl.fromOptionalPtr(
+            val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
   static vector.Vector<vector.Vector<Cluster>> toPlatformVectorVector(

@@ -12,7 +12,7 @@ extension ErrorContainerExtension on Error {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, Error.getNativePtr);
+    return string_map.toNativeMap(obj, ErrorImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -38,7 +38,7 @@ extension ErrorContainerExtension on Error {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, Error.getNativePtr);
+    return vector.toNativeVector(obj, ErrorImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -63,7 +63,7 @@ extension ErrorContainerExtension on Error {
     return string_map.StringMap(
         ptr,
         (val) =>
-            Error.fromOptionalPtr(val.cast<ffi.Pointer<ffi.Void>>().value));
+            ErrorImpl.fromOptionalPtr(val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
   static string_map.StringMap<vector.Vector<Error>> toPlatformMapVector(
@@ -88,7 +88,7 @@ extension ErrorContainerExtension on Error {
     return vector.Vector(
         ptr,
         (val) =>
-            Error.fromOptionalPtr(val.cast<ffi.Pointer<ffi.Void>>().value));
+            ErrorImpl.fromOptionalPtr(val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
   static vector.Vector<vector.Vector<Error>> toPlatformVectorVector(

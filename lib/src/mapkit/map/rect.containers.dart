@@ -12,7 +12,7 @@ extension RectContainerExtension on Rect {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, Rect.toPointer);
+    return string_map.toNativeMap(obj, RectImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -38,7 +38,7 @@ extension RectContainerExtension on Rect {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, Rect.toPointer);
+    return vector.toNativeVector(obj, RectImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -61,7 +61,7 @@ extension RectContainerExtension on Rect {
 
   static string_map.StringMap<Rect> toPlatformMap(ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => Rect.fromPointer(val, needFree: false));
+        ptr, (val) => RectImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<Rect>> toPlatformMapVector(
@@ -83,7 +83,8 @@ extension RectContainerExtension on Rect {
   }
 
   static vector.Vector<Rect> toPlatformVector(ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(ptr, (val) => Rect.fromPointer(val, needFree: false));
+    return vector.Vector(
+        ptr, (val) => RectImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<Rect>> toPlatformVectorVector(

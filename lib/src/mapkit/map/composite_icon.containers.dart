@@ -13,7 +13,7 @@ extension CompositeIconContainerExtension on CompositeIcon {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, CompositeIcon.getNativePtr);
+    return string_map.toNativeMap(obj, CompositeIconImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension CompositeIconContainerExtension on CompositeIcon {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, CompositeIcon.getNativePtr);
+    return vector.toNativeVector(obj, CompositeIconImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -64,7 +64,7 @@ extension CompositeIconContainerExtension on CompositeIcon {
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => CompositeIcon.fromOptionalPtr(
+        (val) => CompositeIconImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -90,7 +90,7 @@ extension CompositeIconContainerExtension on CompositeIcon {
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => CompositeIcon.fromOptionalPtr(
+        (val) => CompositeIconImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 

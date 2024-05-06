@@ -13,7 +13,7 @@ extension ProjectionContainerExtension on Projection {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, Projection.getNativePtr);
+    return string_map.toNativeMap(obj, ProjectionImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension ProjectionContainerExtension on Projection {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, Projection.getNativePtr);
+    return vector.toNativeVector(obj, ProjectionImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -64,7 +64,7 @@ extension ProjectionContainerExtension on Projection {
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => Projection.fromOptionalPtr(
+        (val) => ProjectionImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -89,7 +89,7 @@ extension ProjectionContainerExtension on Projection {
   static vector.Vector<Projection> toPlatformVector(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => Projection.fromOptionalPtr(
+        (val) => ProjectionImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 

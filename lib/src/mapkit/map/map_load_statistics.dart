@@ -4,7 +4,6 @@ import 'package:yandex_maps_mapkit_lite/src/bindings/common/library.dart'
 
 import 'dart:core' as core;
 import 'package:ffi/ffi.dart';
-import 'package:meta/meta.dart';
 import 'package:yandex_maps_mapkit_lite/src/bindings/annotations/annotations.dart'
     as bindings_annotations;
 import 'package:yandex_maps_mapkit_lite/src/bindings/common/native_types.dart'
@@ -19,52 +18,9 @@ import 'package:yandex_maps_mapkit_lite/src/bindings/common/vector.dart'
     as vector;
 
 part 'map_load_statistics.containers.dart';
+part 'map_load_statistics.impl.dart';
 
-/// @nodoc
-final class MapLoadStatisticsNative extends ffi.Struct {
-  external native_types.NativeInterval curZoomGeometryLoaded;
-  external native_types.NativeInterval curZoomPlacemarksLoaded;
-  external native_types.NativeInterval curZoomLabelsLoaded;
-  external native_types.NativeInterval delayedGeometryLoaded;
-  external native_types.NativeInterval curZoomModelsLoaded;
-  external native_types.NativeInterval fullyLoaded;
-  external native_types.NativeInterval fullyAppeared;
-  @ffi.Int()
-  external core.int renderObjectCount;
-  @ffi.Uint32()
-  external core.int tileMemoryUsage;
-}
-
-final MapLoadStatisticsNative Function(
-        native_types.NativeInterval,
-        native_types.NativeInterval,
-        native_types.NativeInterval,
-        native_types.NativeInterval,
-        native_types.NativeInterval,
-        native_types.NativeInterval,
-        native_types.NativeInterval,
-        core.int,
-        core.int) _MapLoadStatisticsNativeInit =
-    lib.library
-        .lookup<
-                ffi.NativeFunction<
-                    MapLoadStatisticsNative Function(
-                        native_types.NativeInterval,
-                        native_types.NativeInterval,
-                        native_types.NativeInterval,
-                        native_types.NativeInterval,
-                        native_types.NativeInterval,
-                        native_types.NativeInterval,
-                        native_types.NativeInterval,
-                        ffi.Int,
-                        ffi.Uint32)>>(
-            'yandex_flutter_mapkit_map_MapLoadStatistics_init')
-        .asFunction(isLeaf: true);
-
-@bindings_annotations.ContainerData(
-    toNative: 'MapLoadStatistics.toPointer',
-    toPlatform: '(val) => MapLoadStatistics.fromPointer(val, needFree: false)')
-class MapLoadStatistics {
+final class MapLoadStatistics {
   final core.Duration curZoomGeometryLoaded;
   final core.Duration curZoomPlacemarksLoaded;
   final core.Duration curZoomLabelsLoaded;
@@ -87,60 +43,37 @@ class MapLoadStatistics {
     required this.tileMemoryUsage,
   });
 
-  /// @nodoc
-  @internal
-  MapLoadStatistics.fromNative(MapLoadStatisticsNative native)
-      : this(
-            to_platform.toPlatformTimeInterval(native.curZoomGeometryLoaded),
-            to_platform.toPlatformTimeInterval(native.curZoomPlacemarksLoaded),
-            to_platform.toPlatformTimeInterval(native.curZoomLabelsLoaded),
-            to_platform.toPlatformTimeInterval(native.delayedGeometryLoaded),
-            to_platform.toPlatformTimeInterval(native.curZoomModelsLoaded),
-            to_platform.toPlatformTimeInterval(native.fullyLoaded),
-            to_platform.toPlatformTimeInterval(native.fullyAppeared),
-            renderObjectCount: native.renderObjectCount,
-            tileMemoryUsage: native.tileMemoryUsage);
+  @core.override
+  core.int get hashCode => core.Object.hashAll([
+        curZoomGeometryLoaded,
+        curZoomPlacemarksLoaded,
+        curZoomLabelsLoaded,
+        delayedGeometryLoaded,
+        curZoomModelsLoaded,
+        fullyLoaded,
+        fullyAppeared,
+        renderObjectCount,
+        tileMemoryUsage
+      ]);
 
-  /// @nodoc
-  @internal
-  static MapLoadStatisticsNative toNative(MapLoadStatistics c) {
-    return _MapLoadStatisticsNativeInit(
-        to_native.toNativeTimeInterval(c.curZoomGeometryLoaded),
-        to_native.toNativeTimeInterval(c.curZoomPlacemarksLoaded),
-        to_native.toNativeTimeInterval(c.curZoomLabelsLoaded),
-        to_native.toNativeTimeInterval(c.delayedGeometryLoaded),
-        to_native.toNativeTimeInterval(c.curZoomModelsLoaded),
-        to_native.toNativeTimeInterval(c.fullyLoaded),
-        to_native.toNativeTimeInterval(c.fullyAppeared),
-        c.renderObjectCount,
-        c.tileMemoryUsage);
+  @core.override
+  core.bool operator ==(covariant MapLoadStatistics other) {
+    if (core.identical(this, other)) {
+      return true;
+    }
+    return curZoomGeometryLoaded == other.curZoomGeometryLoaded &&
+        curZoomPlacemarksLoaded == other.curZoomPlacemarksLoaded &&
+        curZoomLabelsLoaded == other.curZoomLabelsLoaded &&
+        delayedGeometryLoaded == other.delayedGeometryLoaded &&
+        curZoomModelsLoaded == other.curZoomModelsLoaded &&
+        fullyLoaded == other.fullyLoaded &&
+        fullyAppeared == other.fullyAppeared &&
+        renderObjectCount == other.renderObjectCount &&
+        tileMemoryUsage == other.tileMemoryUsage;
   }
 
-  /// @nodoc
-  @internal
-  static MapLoadStatistics? fromPointer(ffi.Pointer<ffi.Void> ptr,
-      {core.bool needFree = true}) {
-    if (ptr.address == 0) {
-      return null;
-    }
-    final result =
-        MapLoadStatistics.fromNative(ptr.cast<MapLoadStatisticsNative>().ref);
-
-    if (needFree) {
-      malloc.free(ptr);
-    }
-    return result;
-  }
-
-  /// @nodoc
-  @internal
-  static ffi.Pointer<ffi.Void> toPointer(MapLoadStatistics? val) {
-    if (val == null) {
-      return ffi.nullptr;
-    }
-    final result = malloc.call<MapLoadStatisticsNative>();
-    result.ref = toNative(val);
-
-    return result.cast<ffi.Void>();
+  @core.override
+  core.String toString() {
+    return "MapLoadStatistics(curZoomGeometryLoaded: $curZoomGeometryLoaded, curZoomPlacemarksLoaded: $curZoomPlacemarksLoaded, curZoomLabelsLoaded: $curZoomLabelsLoaded, delayedGeometryLoaded: $delayedGeometryLoaded, curZoomModelsLoaded: $curZoomModelsLoaded, fullyLoaded: $fullyLoaded, fullyAppeared: $fullyAppeared, renderObjectCount: $renderObjectCount, tileMemoryUsage: $tileMemoryUsage)";
   }
 }

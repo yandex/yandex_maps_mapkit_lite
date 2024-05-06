@@ -13,7 +13,7 @@ extension CachePathUnavailableContainerExtension on CachePathUnavailable {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, CachePathUnavailable.getNativePtr);
+    return string_map.toNativeMap(obj, CachePathUnavailableImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -41,7 +41,7 @@ extension CachePathUnavailableContainerExtension on CachePathUnavailable {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, CachePathUnavailable.getNativePtr);
+    return vector.toNativeVector(obj, CachePathUnavailableImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -66,7 +66,7 @@ extension CachePathUnavailableContainerExtension on CachePathUnavailable {
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => CachePathUnavailable.fromOptionalPtr(
+        (val) => CachePathUnavailableImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -92,7 +92,7 @@ extension CachePathUnavailableContainerExtension on CachePathUnavailable {
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => CachePathUnavailable.fromOptionalPtr(
+        (val) => CachePathUnavailableImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 

@@ -9,7 +9,10 @@ class ContainerGenerator extends GeneratorForAnnotation<ContainerData> {
       Element element, ConstantReader annotation, BuildStep buildStep) async {
     final toNative = annotation.read('toNative').stringValue;
     final toPlatform = annotation.read('toPlatform').stringValue;
-    final platformType = element.name;
+    final platformTypeReader = annotation.read('platformType');
+    final platformType = platformTypeReader.isNull
+        ? element.name
+        : platformTypeReader.stringValue;
 
     const nativeType = 'ffi.Pointer<ffi.Void>';
     const nullValue = 'ffi.nullptr';
@@ -19,7 +22,7 @@ class ContainerGenerator extends GeneratorForAnnotation<ContainerData> {
     const list = 'core.List';
     const string = 'core.String';
 
-    return '''extension ${element.name}ContainerExtension on ${element.name} {
+    return '''extension ${platformType}ContainerExtension on ${platformType} {
   static $nativeType toNativeMap($map<$string, $platformType?>? obj) {
     if (obj == null) {
       return $nullValue;

@@ -1,2 +1,2 @@
 export 'package:yandex_maps_mapkit_lite/src/mapkit/map/map_type.dart'
-    hide MapTypeContainerExtension;
+    hide MapTypeImpl, MapTypeContainerExtension;

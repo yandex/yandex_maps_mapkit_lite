@@ -13,7 +13,7 @@ extension VersionContainerExtension on Version {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, Version.toPointer);
+    return string_map.toNativeMap(obj, VersionImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension VersionContainerExtension on Version {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, Version.toPointer);
+    return vector.toNativeVector(obj, VersionImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -63,7 +63,7 @@ extension VersionContainerExtension on Version {
   static string_map.StringMap<Version> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => Version.fromPointer(val, needFree: false));
+        ptr, (val) => VersionImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<Version>> toPlatformMapVector(
@@ -86,7 +86,7 @@ extension VersionContainerExtension on Version {
 
   static vector.Vector<Version> toPlatformVector(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => Version.fromPointer(val, needFree: false));
+        ptr, (val) => VersionImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<Version>> toPlatformVectorVector(

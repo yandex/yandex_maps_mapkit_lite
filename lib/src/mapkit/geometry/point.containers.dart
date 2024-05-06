@@ -12,7 +12,7 @@ extension PointContainerExtension on Point {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, Point.toPointer);
+    return string_map.toNativeMap(obj, PointImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -38,7 +38,7 @@ extension PointContainerExtension on Point {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, Point.toPointer);
+    return vector.toNativeVector(obj, PointImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -61,7 +61,7 @@ extension PointContainerExtension on Point {
 
   static string_map.StringMap<Point> toPlatformMap(ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => Point.fromPointer(val, needFree: false));
+        ptr, (val) => PointImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<Point>> toPlatformMapVector(
@@ -83,7 +83,8 @@ extension PointContainerExtension on Point {
   }
 
   static vector.Vector<Point> toPlatformVector(ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(ptr, (val) => Point.fromPointer(val, needFree: false));
+    return vector.Vector(
+        ptr, (val) => PointImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<Point>> toPlatformVectorVector(

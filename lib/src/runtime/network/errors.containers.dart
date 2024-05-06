@@ -13,7 +13,7 @@ extension RemoteErrorContainerExtension on RemoteError {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, RemoteError.getNativePtr);
+    return string_map.toNativeMap(obj, RemoteErrorImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension RemoteErrorContainerExtension on RemoteError {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, RemoteError.getNativePtr);
+    return vector.toNativeVector(obj, RemoteErrorImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -64,7 +64,7 @@ extension RemoteErrorContainerExtension on RemoteError {
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => RemoteError.fromOptionalPtr(
+        (val) => RemoteErrorImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -90,7 +90,7 @@ extension RemoteErrorContainerExtension on RemoteError {
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => RemoteError.fromOptionalPtr(
+        (val) => RemoteErrorImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -120,7 +120,7 @@ extension BadRequestErrorContainerExtension on BadRequestError {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, BadRequestError.getNativePtr);
+    return string_map.toNativeMap(obj, BadRequestErrorImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -147,7 +147,7 @@ extension BadRequestErrorContainerExtension on BadRequestError {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, BadRequestError.getNativePtr);
+    return vector.toNativeVector(obj, BadRequestErrorImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -172,7 +172,7 @@ extension BadRequestErrorContainerExtension on BadRequestError {
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => BadRequestError.fromOptionalPtr(
+        (val) => BadRequestErrorImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -198,7 +198,7 @@ extension BadRequestErrorContainerExtension on BadRequestError {
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => BadRequestError.fromOptionalPtr(
+        (val) => BadRequestErrorImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -228,7 +228,7 @@ extension NotFoundErrorContainerExtension on NotFoundError {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, NotFoundError.getNativePtr);
+    return string_map.toNativeMap(obj, NotFoundErrorImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -254,7 +254,7 @@ extension NotFoundErrorContainerExtension on NotFoundError {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, NotFoundError.getNativePtr);
+    return vector.toNativeVector(obj, NotFoundErrorImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -279,7 +279,7 @@ extension NotFoundErrorContainerExtension on NotFoundError {
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => NotFoundError.fromOptionalPtr(
+        (val) => NotFoundErrorImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -305,7 +305,7 @@ extension NotFoundErrorContainerExtension on NotFoundError {
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => NotFoundError.fromOptionalPtr(
+        (val) => NotFoundErrorImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -336,7 +336,8 @@ extension RequestEntityTooLargeErrorContainerExtension
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, RequestEntityTooLargeError.getNativePtr);
+    return string_map.toNativeMap(
+        obj, RequestEntityTooLargeErrorImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -365,7 +366,8 @@ extension RequestEntityTooLargeErrorContainerExtension
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, RequestEntityTooLargeError.getNativePtr);
+    return vector.toNativeVector(
+        obj, RequestEntityTooLargeErrorImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -390,7 +392,7 @@ extension RequestEntityTooLargeErrorContainerExtension
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => RequestEntityTooLargeError.fromOptionalPtr(
+        (val) => RequestEntityTooLargeErrorImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -416,7 +418,7 @@ extension RequestEntityTooLargeErrorContainerExtension
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => RequestEntityTooLargeError.fromOptionalPtr(
+        (val) => RequestEntityTooLargeErrorImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -446,7 +448,7 @@ extension ForbiddenErrorContainerExtension on ForbiddenError {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, ForbiddenError.getNativePtr);
+    return string_map.toNativeMap(obj, ForbiddenErrorImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -472,7 +474,7 @@ extension ForbiddenErrorContainerExtension on ForbiddenError {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, ForbiddenError.getNativePtr);
+    return vector.toNativeVector(obj, ForbiddenErrorImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -497,7 +499,7 @@ extension ForbiddenErrorContainerExtension on ForbiddenError {
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => ForbiddenError.fromOptionalPtr(
+        (val) => ForbiddenErrorImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -523,7 +525,7 @@ extension ForbiddenErrorContainerExtension on ForbiddenError {
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => ForbiddenError.fromOptionalPtr(
+        (val) => ForbiddenErrorImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -553,7 +555,7 @@ extension UnauthorizedErrorContainerExtension on UnauthorizedError {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, UnauthorizedError.getNativePtr);
+    return string_map.toNativeMap(obj, UnauthorizedErrorImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -580,7 +582,7 @@ extension UnauthorizedErrorContainerExtension on UnauthorizedError {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, UnauthorizedError.getNativePtr);
+    return vector.toNativeVector(obj, UnauthorizedErrorImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -605,7 +607,7 @@ extension UnauthorizedErrorContainerExtension on UnauthorizedError {
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => UnauthorizedError.fromOptionalPtr(
+        (val) => UnauthorizedErrorImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -631,7 +633,7 @@ extension UnauthorizedErrorContainerExtension on UnauthorizedError {
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => UnauthorizedError.fromOptionalPtr(
+        (val) => UnauthorizedErrorImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -661,7 +663,7 @@ extension NetworkErrorContainerExtension on NetworkError {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, NetworkError.getNativePtr);
+    return string_map.toNativeMap(obj, NetworkErrorImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -687,7 +689,7 @@ extension NetworkErrorContainerExtension on NetworkError {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, NetworkError.getNativePtr);
+    return vector.toNativeVector(obj, NetworkErrorImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -712,7 +714,7 @@ extension NetworkErrorContainerExtension on NetworkError {
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => NetworkError.fromOptionalPtr(
+        (val) => NetworkErrorImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -738,7 +740,7 @@ extension NetworkErrorContainerExtension on NetworkError {
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => NetworkError.fromOptionalPtr(
+        (val) => NetworkErrorImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 

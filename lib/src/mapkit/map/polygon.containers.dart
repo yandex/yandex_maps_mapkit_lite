@@ -13,7 +13,7 @@ extension PolygonMapObjectContainerExtension on PolygonMapObject {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, PolygonMapObject.getNativePtr);
+    return string_map.toNativeMap(obj, PolygonMapObjectImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -40,7 +40,7 @@ extension PolygonMapObjectContainerExtension on PolygonMapObject {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, PolygonMapObject.getNativePtr);
+    return vector.toNativeVector(obj, PolygonMapObjectImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -65,7 +65,7 @@ extension PolygonMapObjectContainerExtension on PolygonMapObject {
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => PolygonMapObject.fromOptionalPtr(
+        (val) => PolygonMapObjectImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -91,7 +91,7 @@ extension PolygonMapObjectContainerExtension on PolygonMapObject {
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => PolygonMapObject.fromOptionalPtr(
+        (val) => PolygonMapObjectImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 

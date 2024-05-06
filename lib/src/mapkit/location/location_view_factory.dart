@@ -8,6 +8,8 @@ import 'package:yandex_maps_mapkit_lite/src/mapkit/location/location_manager.dar
 import 'package:yandex_maps_mapkit_lite/src/mapkit/location/location_view_source.dart'
     as mapkit_location_location_view_source;
 
+part 'location_view_factory.impl.dart';
+
 class LocationViewSourceFactory {
   LocationViewSourceFactory._();
 
@@ -15,19 +17,8 @@ class LocationViewSourceFactory {
   static mapkit_location_location_view_source.LocationViewSource
       createLocationViewSource(
           mapkit_location_location_manager.LocationManager locationManager) {
-    return mapkit_location_location_view_source.LocationViewSource
-        .fromNativePtr(_LocationViewSourceFactory_createLocationViewSource(
-            mapkit_location_location_manager.LocationManager.getNativePtr(
-                locationManager)));
+    return _createLocationViewSource(
+      locationManager,
+    );
   }
 }
-
-final ffi.Pointer<ffi.Void> Function(
-    ffi.Pointer<
-        ffi.Void>) _LocationViewSourceFactory_createLocationViewSource = lib
-    .library
-    .lookup<
-            ffi.NativeFunction<
-                ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
-        'yandex_flutter_mapkit_location_LocationViewSourceFactory_createLocationViewSource')
-    .asFunction();

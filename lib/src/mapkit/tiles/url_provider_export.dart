@@ -1,1 +1,2 @@
-export 'package:yandex_maps_mapkit_lite/src/mapkit/tiles/url_provider.dart';
+export 'package:yandex_maps_mapkit_lite/src/mapkit/tiles/url_provider.dart'
+    hide TilesUrlProviderImpl;

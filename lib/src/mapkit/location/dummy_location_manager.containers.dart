@@ -13,7 +13,7 @@ extension DummyLocationManagerContainerExtension on DummyLocationManager {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, DummyLocationManager.getNativePtr);
+    return string_map.toNativeMap(obj, DummyLocationManagerImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -41,7 +41,7 @@ extension DummyLocationManagerContainerExtension on DummyLocationManager {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, DummyLocationManager.getNativePtr);
+    return vector.toNativeVector(obj, DummyLocationManagerImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -66,7 +66,7 @@ extension DummyLocationManagerContainerExtension on DummyLocationManager {
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => DummyLocationManager.fromOptionalPtr(
+        (val) => DummyLocationManagerImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -92,7 +92,7 @@ extension DummyLocationManagerContainerExtension on DummyLocationManager {
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => DummyLocationManager.fromOptionalPtr(
+        (val) => DummyLocationManagerImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 

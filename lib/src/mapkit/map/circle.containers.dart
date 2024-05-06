@@ -13,7 +13,7 @@ extension CircleMapObjectContainerExtension on CircleMapObject {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, CircleMapObject.getNativePtr);
+    return string_map.toNativeMap(obj, CircleMapObjectImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -40,7 +40,7 @@ extension CircleMapObjectContainerExtension on CircleMapObject {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, CircleMapObject.getNativePtr);
+    return vector.toNativeVector(obj, CircleMapObjectImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -65,7 +65,7 @@ extension CircleMapObjectContainerExtension on CircleMapObject {
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => CircleMapObject.fromOptionalPtr(
+        (val) => CircleMapObjectImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -91,7 +91,7 @@ extension CircleMapObjectContainerExtension on CircleMapObject {
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => CircleMapObject.fromOptionalPtr(
+        (val) => CircleMapObjectImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 

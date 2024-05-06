@@ -13,7 +13,7 @@ extension TrafficLevelContainerExtension on TrafficLevel {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, TrafficLevel.toPointer);
+    return string_map.toNativeMap(obj, TrafficLevelImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension TrafficLevelContainerExtension on TrafficLevel {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, TrafficLevel.toPointer);
+    return vector.toNativeVector(obj, TrafficLevelImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -63,7 +63,7 @@ extension TrafficLevelContainerExtension on TrafficLevel {
   static string_map.StringMap<TrafficLevel> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => TrafficLevel.fromPointer(val, needFree: false));
+        ptr, (val) => TrafficLevelImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<TrafficLevel>> toPlatformMapVector(
@@ -87,7 +87,7 @@ extension TrafficLevelContainerExtension on TrafficLevel {
   static vector.Vector<TrafficLevel> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => TrafficLevel.fromPointer(val, needFree: false));
+        ptr, (val) => TrafficLevelImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<TrafficLevel>> toPlatformVectorVector(
@@ -116,7 +116,7 @@ extension TrafficColorContainerExtension on TrafficColor {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, TrafficColor.toPointer);
+    return string_map.toNativeMap(obj, TrafficColorImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -142,7 +142,7 @@ extension TrafficColorContainerExtension on TrafficColor {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, TrafficColor.toPointer);
+    return vector.toNativeVector(obj, TrafficColorImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -166,7 +166,7 @@ extension TrafficColorContainerExtension on TrafficColor {
   static string_map.StringMap<TrafficColor> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => TrafficColor.fromPointer(val, needFree: false));
+        ptr, (val) => TrafficColorImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<TrafficColor>> toPlatformMapVector(
@@ -190,7 +190,7 @@ extension TrafficColorContainerExtension on TrafficColor {
   static vector.Vector<TrafficColor> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => TrafficColor.fromPointer(val, needFree: false));
+        ptr, (val) => TrafficColorImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<TrafficColor>> toPlatformVectorVector(

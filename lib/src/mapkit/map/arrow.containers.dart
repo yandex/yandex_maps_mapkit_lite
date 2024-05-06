@@ -12,7 +12,7 @@ extension ArrowContainerExtension on Arrow {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, Arrow.getNativePtr);
+    return string_map.toNativeMap(obj, ArrowImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -38,7 +38,7 @@ extension ArrowContainerExtension on Arrow {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, Arrow.getNativePtr);
+    return vector.toNativeVector(obj, ArrowImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -63,7 +63,7 @@ extension ArrowContainerExtension on Arrow {
     return string_map.StringMap(
         ptr,
         (val) =>
-            Arrow.fromOptionalPtr(val.cast<ffi.Pointer<ffi.Void>>().value));
+            ArrowImpl.fromOptionalPtr(val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
   static string_map.StringMap<vector.Vector<Arrow>> toPlatformMapVector(
@@ -88,7 +88,7 @@ extension ArrowContainerExtension on Arrow {
     return vector.Vector(
         ptr,
         (val) =>
-            Arrow.fromOptionalPtr(val.cast<ffi.Pointer<ffi.Void>>().value));
+            ArrowImpl.fromOptionalPtr(val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
   static vector.Vector<vector.Vector<Arrow>> toPlatformVectorVector(

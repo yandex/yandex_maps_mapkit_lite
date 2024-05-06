@@ -13,7 +13,7 @@ extension EcPublicKeyContainerExtension on EcPublicKey {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, EcPublicKey.toPointer);
+    return string_map.toNativeMap(obj, EcPublicKeyImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension EcPublicKeyContainerExtension on EcPublicKey {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, EcPublicKey.toPointer);
+    return vector.toNativeVector(obj, EcPublicKeyImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -63,7 +63,7 @@ extension EcPublicKeyContainerExtension on EcPublicKey {
   static string_map.StringMap<EcPublicKey> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => EcPublicKey.fromPointer(val, needFree: false));
+        ptr, (val) => EcPublicKeyImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<EcPublicKey>> toPlatformMapVector(
@@ -87,7 +87,7 @@ extension EcPublicKeyContainerExtension on EcPublicKey {
   static vector.Vector<EcPublicKey> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => EcPublicKey.fromPointer(val, needFree: false));
+        ptr, (val) => EcPublicKeyImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<EcPublicKey>> toPlatformVectorVector(

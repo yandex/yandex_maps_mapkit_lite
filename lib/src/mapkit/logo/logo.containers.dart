@@ -12,7 +12,7 @@ extension LogoContainerExtension on Logo {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, Logo.getNativePtr);
+    return string_map.toNativeMap(obj, LogoImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -38,7 +38,7 @@ extension LogoContainerExtension on Logo {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, Logo.getNativePtr);
+    return vector.toNativeVector(obj, LogoImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -60,8 +60,10 @@ extension LogoContainerExtension on Logo {
   }
 
   static string_map.StringMap<Logo> toPlatformMap(ffi.Pointer<ffi.Void> ptr) {
-    return string_map.StringMap(ptr,
-        (val) => Logo.fromOptionalPtr(val.cast<ffi.Pointer<ffi.Void>>().value));
+    return string_map.StringMap(
+        ptr,
+        (val) =>
+            LogoImpl.fromOptionalPtr(val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
   static string_map.StringMap<vector.Vector<Logo>> toPlatformMapVector(
@@ -83,8 +85,10 @@ extension LogoContainerExtension on Logo {
   }
 
   static vector.Vector<Logo> toPlatformVector(ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(ptr,
-        (val) => Logo.fromOptionalPtr(val.cast<ffi.Pointer<ffi.Void>>().value));
+    return vector.Vector(
+        ptr,
+        (val) =>
+            LogoImpl.fromOptionalPtr(val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
   static vector.Vector<vector.Vector<Logo>> toPlatformVectorVector(

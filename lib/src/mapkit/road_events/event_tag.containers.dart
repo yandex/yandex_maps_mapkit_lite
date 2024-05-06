@@ -13,7 +13,7 @@ extension RoadEventsEventTagContainerExtension on RoadEventsEventTag {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, RoadEventsEventTag.toPointer);
+    return string_map.toNativeMap(obj, RoadEventsEventTagImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -40,7 +40,7 @@ extension RoadEventsEventTagContainerExtension on RoadEventsEventTag {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, RoadEventsEventTag.toPointer);
+    return vector.toNativeVector(obj, RoadEventsEventTagImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -64,7 +64,7 @@ extension RoadEventsEventTagContainerExtension on RoadEventsEventTag {
   static string_map.StringMap<RoadEventsEventTag> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => RoadEventsEventTag.fromPointer(val, needFree: false));
+        ptr, (val) => RoadEventsEventTagImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<RoadEventsEventTag>>
@@ -88,7 +88,7 @@ extension RoadEventsEventTagContainerExtension on RoadEventsEventTag {
   static vector.Vector<RoadEventsEventTag> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => RoadEventsEventTag.fromPointer(val, needFree: false));
+        ptr, (val) => RoadEventsEventTagImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<RoadEventsEventTag>>

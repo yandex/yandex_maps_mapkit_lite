@@ -13,7 +13,7 @@ extension SpannableStringContainerExtension on SpannableString {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, SpannableString.toPointer);
+    return string_map.toNativeMap(obj, SpannableStringImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -40,7 +40,7 @@ extension SpannableStringContainerExtension on SpannableString {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, SpannableString.toPointer);
+    return vector.toNativeVector(obj, SpannableStringImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -64,7 +64,7 @@ extension SpannableStringContainerExtension on SpannableString {
   static string_map.StringMap<SpannableString> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => SpannableString.fromPointer(val, needFree: false));
+        ptr, (val) => SpannableStringImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<SpannableString>>
@@ -88,7 +88,7 @@ extension SpannableStringContainerExtension on SpannableString {
   static vector.Vector<SpannableString> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => SpannableString.fromPointer(val, needFree: false));
+        ptr, (val) => SpannableStringImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<SpannableString>> toPlatformVectorVector(
@@ -117,7 +117,7 @@ extension SpannableStringSpanContainerExtension on SpannableStringSpan {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, SpannableStringSpan.toPointer);
+    return string_map.toNativeMap(obj, SpannableStringSpanImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -145,7 +145,7 @@ extension SpannableStringSpanContainerExtension on SpannableStringSpan {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, SpannableStringSpan.toPointer);
+    return vector.toNativeVector(obj, SpannableStringSpanImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -168,8 +168,8 @@ extension SpannableStringSpanContainerExtension on SpannableStringSpan {
 
   static string_map.StringMap<SpannableStringSpan> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
-    return string_map.StringMap(
-        ptr, (val) => SpannableStringSpan.fromPointer(val, needFree: false));
+    return string_map.StringMap(ptr,
+        (val) => SpannableStringSpanImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<SpannableStringSpan>>
@@ -192,8 +192,8 @@ extension SpannableStringSpanContainerExtension on SpannableStringSpan {
 
   static vector.Vector<SpannableStringSpan> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-        ptr, (val) => SpannableStringSpan.fromPointer(val, needFree: false));
+    return vector.Vector(ptr,
+        (val) => SpannableStringSpanImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<SpannableStringSpan>>

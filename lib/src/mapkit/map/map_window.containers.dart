@@ -13,7 +13,7 @@ extension MapWindowContainerExtension on MapWindow {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, MapWindow.getNativePtr);
+    return string_map.toNativeMap(obj, MapWindowImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension MapWindowContainerExtension on MapWindow {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, MapWindow.getNativePtr);
+    return vector.toNativeVector(obj, MapWindowImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -64,8 +64,8 @@ extension MapWindowContainerExtension on MapWindow {
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) =>
-            MapWindow.fromOptionalPtr(val.cast<ffi.Pointer<ffi.Void>>().value));
+        (val) => MapWindowImpl.fromOptionalPtr(
+            val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
   static string_map.StringMap<vector.Vector<MapWindow>> toPlatformMapVector(
@@ -89,8 +89,8 @@ extension MapWindowContainerExtension on MapWindow {
   static vector.Vector<MapWindow> toPlatformVector(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) =>
-            MapWindow.fromOptionalPtr(val.cast<ffi.Pointer<ffi.Void>>().value));
+        (val) => MapWindowImpl.fromOptionalPtr(
+            val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
   static vector.Vector<vector.Vector<MapWindow>> toPlatformVectorVector(

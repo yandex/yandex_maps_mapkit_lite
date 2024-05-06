@@ -13,7 +13,7 @@ extension PointOfViewContainerExtension on PointOfView {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, PointOfView.toPointer);
+    return string_map.toNativeMap(obj, PointOfViewImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension PointOfViewContainerExtension on PointOfView {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, PointOfView.toPointer);
+    return vector.toNativeVector(obj, PointOfViewImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -63,7 +63,7 @@ extension PointOfViewContainerExtension on PointOfView {
   static string_map.StringMap<PointOfView> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => PointOfView.fromPointer(val, needFree: false));
+        ptr, (val) => PointOfViewImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<PointOfView>> toPlatformMapVector(
@@ -87,7 +87,7 @@ extension PointOfViewContainerExtension on PointOfView {
   static vector.Vector<PointOfView> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => PointOfView.fromPointer(val, needFree: false));
+        ptr, (val) => PointOfViewImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<PointOfView>> toPlatformVectorVector(

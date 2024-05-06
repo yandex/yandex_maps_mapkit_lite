@@ -15,7 +15,7 @@ extension PersonalizedPoiExtraMetadataEntryContainerExtension
     }
 
     return string_map.toNativeMap(
-        obj, PersonalizedPoiExtraMetadataEntry.toPointer);
+        obj, PersonalizedPoiExtraMetadataEntryImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -46,7 +46,7 @@ extension PersonalizedPoiExtraMetadataEntryContainerExtension
     }
 
     return vector.toNativeVector(
-        obj, PersonalizedPoiExtraMetadataEntry.toPointer);
+        obj, PersonalizedPoiExtraMetadataEntryImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -72,7 +72,7 @@ extension PersonalizedPoiExtraMetadataEntryContainerExtension
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => PersonalizedPoiExtraMetadataEntry.fromPointer(val,
+        (val) => PersonalizedPoiExtraMetadataEntryImpl.fromPointer(val,
             needFree: false));
   }
 
@@ -99,7 +99,7 @@ extension PersonalizedPoiExtraMetadataEntryContainerExtension
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => PersonalizedPoiExtraMetadataEntry.fromPointer(val,
+        (val) => PersonalizedPoiExtraMetadataEntryImpl.fromPointer(val,
             needFree: false));
   }
 
@@ -130,7 +130,8 @@ extension PersonalizedPoiExtraMetadataContainerExtension
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, PersonalizedPoiExtraMetadata.toPointer);
+    return string_map.toNativeMap(
+        obj, PersonalizedPoiExtraMetadataImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -159,7 +160,8 @@ extension PersonalizedPoiExtraMetadataContainerExtension
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, PersonalizedPoiExtraMetadata.toPointer);
+    return vector.toNativeVector(
+        obj, PersonalizedPoiExtraMetadataImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -185,7 +187,7 @@ extension PersonalizedPoiExtraMetadataContainerExtension
     return string_map.StringMap(
         ptr,
         (val) =>
-            PersonalizedPoiExtraMetadata.fromPointer(val, needFree: false));
+            PersonalizedPoiExtraMetadataImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<PersonalizedPoiExtraMetadata>>
@@ -212,7 +214,7 @@ extension PersonalizedPoiExtraMetadataContainerExtension
     return vector.Vector(
         ptr,
         (val) =>
-            PersonalizedPoiExtraMetadata.fromPointer(val, needFree: false));
+            PersonalizedPoiExtraMetadataImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<PersonalizedPoiExtraMetadata>>

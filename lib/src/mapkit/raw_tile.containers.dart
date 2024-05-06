@@ -13,7 +13,7 @@ extension RawTileContainerExtension on RawTile {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, RawTile.toPointer);
+    return string_map.toNativeMap(obj, RawTileImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension RawTileContainerExtension on RawTile {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, RawTile.toPointer);
+    return vector.toNativeVector(obj, RawTileImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -63,7 +63,7 @@ extension RawTileContainerExtension on RawTile {
   static string_map.StringMap<RawTile> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => RawTile.fromPointer(val, needFree: false));
+        ptr, (val) => RawTileImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<RawTile>> toPlatformMapVector(
@@ -86,7 +86,7 @@ extension RawTileContainerExtension on RawTile {
 
   static vector.Vector<RawTile> toPlatformVector(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => RawTile.fromPointer(val, needFree: false));
+        ptr, (val) => RawTileImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<RawTile>> toPlatformVectorVector(
@@ -115,7 +115,7 @@ extension RawTileStateContainerExtension on RawTileState {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, RawTileState.toPointer);
+    return string_map.toNativeMap(obj, RawTileStateImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -141,7 +141,7 @@ extension RawTileStateContainerExtension on RawTileState {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, RawTileState.toPointer);
+    return vector.toNativeVector(obj, RawTileStateImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -165,7 +165,7 @@ extension RawTileStateContainerExtension on RawTileState {
   static string_map.StringMap<RawTileState> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => RawTileState.fromPointer(val, needFree: false));
+        ptr, (val) => RawTileStateImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<RawTileState>> toPlatformMapVector(
@@ -189,7 +189,7 @@ extension RawTileStateContainerExtension on RawTileState {
   static vector.Vector<RawTileState> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => RawTileState.fromPointer(val, needFree: false));
+        ptr, (val) => RawTileStateImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<RawTileState>> toPlatformVectorVector(
@@ -218,7 +218,7 @@ extension RawTileUseCacheContainerExtension on RawTileUseCache {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, RawTileUseCache.toPointer);
+    return string_map.toNativeMap(obj, RawTileUseCacheImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -245,7 +245,7 @@ extension RawTileUseCacheContainerExtension on RawTileUseCache {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, RawTileUseCache.toPointer);
+    return vector.toNativeVector(obj, RawTileUseCacheImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -269,7 +269,7 @@ extension RawTileUseCacheContainerExtension on RawTileUseCache {
   static string_map.StringMap<RawTileUseCache> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => RawTileUseCache.fromPointer(val, needFree: false));
+        ptr, (val) => RawTileUseCacheImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<RawTileUseCache>>
@@ -293,7 +293,7 @@ extension RawTileUseCacheContainerExtension on RawTileUseCache {
   static vector.Vector<RawTileUseCache> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => RawTileUseCache.fromPointer(val, needFree: false));
+        ptr, (val) => RawTileUseCacheImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<RawTileUseCache>> toPlatformVectorVector(

@@ -13,7 +13,7 @@ extension GeoObjectSessionContainerExtension on GeoObjectSession {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, GeoObjectSession.getNativePtr);
+    return string_map.toNativeMap(obj, GeoObjectSessionImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -40,7 +40,7 @@ extension GeoObjectSessionContainerExtension on GeoObjectSession {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, GeoObjectSession.getNativePtr);
+    return vector.toNativeVector(obj, GeoObjectSessionImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -65,7 +65,7 @@ extension GeoObjectSessionContainerExtension on GeoObjectSession {
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => GeoObjectSession.fromOptionalPtr(
+        (val) => GeoObjectSessionImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -91,7 +91,7 @@ extension GeoObjectSessionContainerExtension on GeoObjectSession {
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => GeoObjectSession.fromOptionalPtr(
+        (val) => GeoObjectSessionImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 

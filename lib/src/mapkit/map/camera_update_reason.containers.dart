@@ -13,7 +13,7 @@ extension CameraUpdateReasonContainerExtension on CameraUpdateReason {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, CameraUpdateReason.toPointer);
+    return string_map.toNativeMap(obj, CameraUpdateReasonImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -40,7 +40,7 @@ extension CameraUpdateReasonContainerExtension on CameraUpdateReason {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, CameraUpdateReason.toPointer);
+    return vector.toNativeVector(obj, CameraUpdateReasonImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -64,7 +64,7 @@ extension CameraUpdateReasonContainerExtension on CameraUpdateReason {
   static string_map.StringMap<CameraUpdateReason> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => CameraUpdateReason.fromPointer(val, needFree: false));
+        ptr, (val) => CameraUpdateReasonImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<CameraUpdateReason>>
@@ -88,7 +88,7 @@ extension CameraUpdateReasonContainerExtension on CameraUpdateReason {
   static vector.Vector<CameraUpdateReason> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => CameraUpdateReason.fromPointer(val, needFree: false));
+        ptr, (val) => CameraUpdateReasonImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<CameraUpdateReason>>

@@ -13,7 +13,8 @@ extension BaseMapObjectCollectionContainerExtension on BaseMapObjectCollection {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, BaseMapObjectCollection.getNativePtr);
+    return string_map.toNativeMap(
+        obj, BaseMapObjectCollectionImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -41,7 +42,7 @@ extension BaseMapObjectCollectionContainerExtension on BaseMapObjectCollection {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, BaseMapObjectCollection.getNativePtr);
+    return vector.toNativeVector(obj, BaseMapObjectCollectionImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -66,7 +67,7 @@ extension BaseMapObjectCollectionContainerExtension on BaseMapObjectCollection {
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => BaseMapObjectCollection.fromOptionalPtr(
+        (val) => BaseMapObjectCollectionImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -92,7 +93,7 @@ extension BaseMapObjectCollectionContainerExtension on BaseMapObjectCollection {
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => BaseMapObjectCollection.fromOptionalPtr(
+        (val) => BaseMapObjectCollectionImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 

@@ -6,108 +6,6 @@ part of 'prefs.dart';
 // ContainerGenerator
 // **************************************************************************
 
-extension I18nPrefsContainerExtension on I18nPrefs {
-  static ffi.Pointer<ffi.Void> toNativeMap(
-      core.Map<core.String, I18nPrefs?>? obj) {
-    if (obj == null) {
-      return ffi.nullptr;
-    }
-
-    return string_map.toNativeMap(obj, I18nPrefs.toPointer);
-  }
-
-  static ffi.Pointer<ffi.Void> toNativeMapVector(
-      core.Map<core.String, core.List<I18nPrefs?>?>? obj) {
-    if (obj == null) {
-      return ffi.nullptr;
-    }
-
-    return string_map.toNativeMap(obj, toNativeVector);
-  }
-
-  static ffi.Pointer<ffi.Void> toNativeMapDictionary(
-      core.Map<core.String, core.Map<core.String, I18nPrefs?>?>? obj) {
-    if (obj == null) {
-      return ffi.nullptr;
-    }
-
-    return string_map.toNativeMap(obj, toNativeMap);
-  }
-
-  static ffi.Pointer<ffi.Void> toNativeVector(core.List<I18nPrefs?>? obj) {
-    if (obj == null) {
-      return ffi.nullptr;
-    }
-
-    return vector.toNativeVector(obj, I18nPrefs.toPointer);
-  }
-
-  static ffi.Pointer<ffi.Void> toNativeVectorVector(
-      core.List<core.List<I18nPrefs?>?>? obj) {
-    if (obj == null) {
-      return ffi.nullptr;
-    }
-
-    return vector.toNativeVector(obj, toNativeVector);
-  }
-
-  static ffi.Pointer<ffi.Void> toNativeVectorDictionary(
-      core.List<core.Map<core.String, I18nPrefs?>?>? obj) {
-    if (obj == null) {
-      return ffi.nullptr;
-    }
-
-    return vector.toNativeVector(obj, toNativeMap);
-  }
-
-  static string_map.StringMap<I18nPrefs> toPlatformMap(
-      ffi.Pointer<ffi.Void> ptr) {
-    return string_map.StringMap(
-        ptr, (val) => I18nPrefs.fromPointer(val, needFree: false));
-  }
-
-  static string_map.StringMap<vector.Vector<I18nPrefs>> toPlatformMapVector(
-      ffi.Pointer<ffi.Void> ptr) {
-    return string_map.StringMap(
-        ptr,
-        (val) => val == ffi.nullptr
-            ? null
-            : toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value));
-  }
-
-  static string_map.StringMap<string_map.StringMap<I18nPrefs>>
-      toPlatformMapDictionary(ffi.Pointer<ffi.Void> ptr) {
-    return string_map.StringMap(
-        ptr,
-        (val) => val == ffi.nullptr
-            ? null
-            : toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value));
-  }
-
-  static vector.Vector<I18nPrefs> toPlatformVector(ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-        ptr, (val) => I18nPrefs.fromPointer(val, needFree: false));
-  }
-
-  static vector.Vector<vector.Vector<I18nPrefs>> toPlatformVectorVector(
-      ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-        ptr,
-        (val) => val == ffi.nullptr
-            ? null
-            : toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value));
-  }
-
-  static vector.Vector<string_map.StringMap<I18nPrefs>>
-      toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-        ptr,
-        (val) => val == ffi.nullptr
-            ? null
-            : toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value));
-  }
-}
-
 extension SystemOfMeasurementContainerExtension on SystemOfMeasurement {
   static ffi.Pointer<ffi.Void> toNativeMap(
       core.Map<core.String, SystemOfMeasurement?>? obj) {
@@ -115,7 +13,7 @@ extension SystemOfMeasurementContainerExtension on SystemOfMeasurement {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, SystemOfMeasurement.toPointer);
+    return string_map.toNativeMap(obj, SystemOfMeasurementImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -143,7 +41,7 @@ extension SystemOfMeasurementContainerExtension on SystemOfMeasurement {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, SystemOfMeasurement.toPointer);
+    return vector.toNativeVector(obj, SystemOfMeasurementImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -166,8 +64,8 @@ extension SystemOfMeasurementContainerExtension on SystemOfMeasurement {
 
   static string_map.StringMap<SystemOfMeasurement> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
-    return string_map.StringMap(
-        ptr, (val) => SystemOfMeasurement.fromPointer(val, needFree: false));
+    return string_map.StringMap(ptr,
+        (val) => SystemOfMeasurementImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<SystemOfMeasurement>>
@@ -190,8 +88,8 @@ extension SystemOfMeasurementContainerExtension on SystemOfMeasurement {
 
   static vector.Vector<SystemOfMeasurement> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-        ptr, (val) => SystemOfMeasurement.fromPointer(val, needFree: false));
+    return vector.Vector(ptr,
+        (val) => SystemOfMeasurementImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<SystemOfMeasurement>>
@@ -220,7 +118,7 @@ extension TimeFormatContainerExtension on TimeFormat {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, TimeFormat.toPointer);
+    return string_map.toNativeMap(obj, TimeFormatImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -246,7 +144,7 @@ extension TimeFormatContainerExtension on TimeFormat {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, TimeFormat.toPointer);
+    return vector.toNativeVector(obj, TimeFormatImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -270,7 +168,7 @@ extension TimeFormatContainerExtension on TimeFormat {
   static string_map.StringMap<TimeFormat> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => TimeFormat.fromPointer(val, needFree: false));
+        ptr, (val) => TimeFormatImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<TimeFormat>> toPlatformMapVector(
@@ -293,7 +191,7 @@ extension TimeFormatContainerExtension on TimeFormat {
 
   static vector.Vector<TimeFormat> toPlatformVector(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => TimeFormat.fromPointer(val, needFree: false));
+        ptr, (val) => TimeFormatImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<TimeFormat>> toPlatformVectorVector(
@@ -306,6 +204,108 @@ extension TimeFormatContainerExtension on TimeFormat {
   }
 
   static vector.Vector<string_map.StringMap<TimeFormat>>
+      toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+        ptr,
+        (val) => val == ffi.nullptr
+            ? null
+            : toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value));
+  }
+}
+
+extension I18nPrefsContainerExtension on I18nPrefs {
+  static ffi.Pointer<ffi.Void> toNativeMap(
+      core.Map<core.String, I18nPrefs?>? obj) {
+    if (obj == null) {
+      return ffi.nullptr;
+    }
+
+    return string_map.toNativeMap(obj, I18nPrefsImpl.toPointer);
+  }
+
+  static ffi.Pointer<ffi.Void> toNativeMapVector(
+      core.Map<core.String, core.List<I18nPrefs?>?>? obj) {
+    if (obj == null) {
+      return ffi.nullptr;
+    }
+
+    return string_map.toNativeMap(obj, toNativeVector);
+  }
+
+  static ffi.Pointer<ffi.Void> toNativeMapDictionary(
+      core.Map<core.String, core.Map<core.String, I18nPrefs?>?>? obj) {
+    if (obj == null) {
+      return ffi.nullptr;
+    }
+
+    return string_map.toNativeMap(obj, toNativeMap);
+  }
+
+  static ffi.Pointer<ffi.Void> toNativeVector(core.List<I18nPrefs?>? obj) {
+    if (obj == null) {
+      return ffi.nullptr;
+    }
+
+    return vector.toNativeVector(obj, I18nPrefsImpl.toPointer);
+  }
+
+  static ffi.Pointer<ffi.Void> toNativeVectorVector(
+      core.List<core.List<I18nPrefs?>?>? obj) {
+    if (obj == null) {
+      return ffi.nullptr;
+    }
+
+    return vector.toNativeVector(obj, toNativeVector);
+  }
+
+  static ffi.Pointer<ffi.Void> toNativeVectorDictionary(
+      core.List<core.Map<core.String, I18nPrefs?>?>? obj) {
+    if (obj == null) {
+      return ffi.nullptr;
+    }
+
+    return vector.toNativeVector(obj, toNativeMap);
+  }
+
+  static string_map.StringMap<I18nPrefs> toPlatformMap(
+      ffi.Pointer<ffi.Void> ptr) {
+    return string_map.StringMap(
+        ptr, (val) => I18nPrefsImpl.fromPointer(val, needFree: false));
+  }
+
+  static string_map.StringMap<vector.Vector<I18nPrefs>> toPlatformMapVector(
+      ffi.Pointer<ffi.Void> ptr) {
+    return string_map.StringMap(
+        ptr,
+        (val) => val == ffi.nullptr
+            ? null
+            : toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value));
+  }
+
+  static string_map.StringMap<string_map.StringMap<I18nPrefs>>
+      toPlatformMapDictionary(ffi.Pointer<ffi.Void> ptr) {
+    return string_map.StringMap(
+        ptr,
+        (val) => val == ffi.nullptr
+            ? null
+            : toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value));
+  }
+
+  static vector.Vector<I18nPrefs> toPlatformVector(ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+        ptr, (val) => I18nPrefsImpl.fromPointer(val, needFree: false));
+  }
+
+  static vector.Vector<vector.Vector<I18nPrefs>> toPlatformVectorVector(
+      ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+        ptr,
+        (val) => val == ffi.nullptr
+            ? null
+            : toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value));
+  }
+
+  static vector.Vector<string_map.StringMap<I18nPrefs>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,

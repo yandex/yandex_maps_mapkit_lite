@@ -13,7 +13,7 @@ extension GestureFocusPointModeContainerExtension on GestureFocusPointMode {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, GestureFocusPointMode.toPointer);
+    return string_map.toNativeMap(obj, GestureFocusPointModeImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -41,7 +41,7 @@ extension GestureFocusPointModeContainerExtension on GestureFocusPointMode {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, GestureFocusPointMode.toPointer);
+    return vector.toNativeVector(obj, GestureFocusPointModeImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -64,8 +64,8 @@ extension GestureFocusPointModeContainerExtension on GestureFocusPointMode {
 
   static string_map.StringMap<GestureFocusPointMode> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
-    return string_map.StringMap(
-        ptr, (val) => GestureFocusPointMode.fromPointer(val, needFree: false));
+    return string_map.StringMap(ptr,
+        (val) => GestureFocusPointModeImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<GestureFocusPointMode>>
@@ -88,8 +88,8 @@ extension GestureFocusPointModeContainerExtension on GestureFocusPointMode {
 
   static vector.Vector<GestureFocusPointMode> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-        ptr, (val) => GestureFocusPointMode.fromPointer(val, needFree: false));
+    return vector.Vector(ptr,
+        (val) => GestureFocusPointModeImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<GestureFocusPointMode>>

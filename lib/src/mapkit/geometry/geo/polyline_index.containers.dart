@@ -13,7 +13,7 @@ extension PolylineIndexContainerExtension on PolylineIndex {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, PolylineIndex.getNativePtr);
+    return string_map.toNativeMap(obj, PolylineIndexImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension PolylineIndexContainerExtension on PolylineIndex {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, PolylineIndex.getNativePtr);
+    return vector.toNativeVector(obj, PolylineIndexImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -64,7 +64,7 @@ extension PolylineIndexContainerExtension on PolylineIndex {
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => PolylineIndex.fromOptionalPtr(
+        (val) => PolylineIndexImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -90,7 +90,7 @@ extension PolylineIndexContainerExtension on PolylineIndex {
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => PolylineIndex.fromOptionalPtr(
+        (val) => PolylineIndexImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -120,7 +120,7 @@ extension PolylineIndexPriorityContainerExtension on PolylineIndexPriority {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, PolylineIndexPriority.toPointer);
+    return string_map.toNativeMap(obj, PolylineIndexPriorityImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -148,7 +148,7 @@ extension PolylineIndexPriorityContainerExtension on PolylineIndexPriority {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, PolylineIndexPriority.toPointer);
+    return vector.toNativeVector(obj, PolylineIndexPriorityImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -171,8 +171,8 @@ extension PolylineIndexPriorityContainerExtension on PolylineIndexPriority {
 
   static string_map.StringMap<PolylineIndexPriority> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
-    return string_map.StringMap(
-        ptr, (val) => PolylineIndexPriority.fromPointer(val, needFree: false));
+    return string_map.StringMap(ptr,
+        (val) => PolylineIndexPriorityImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<PolylineIndexPriority>>
@@ -195,8 +195,8 @@ extension PolylineIndexPriorityContainerExtension on PolylineIndexPriority {
 
   static vector.Vector<PolylineIndexPriority> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-        ptr, (val) => PolylineIndexPriority.fromPointer(val, needFree: false));
+    return vector.Vector(ptr,
+        (val) => PolylineIndexPriorityImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<PolylineIndexPriority>>

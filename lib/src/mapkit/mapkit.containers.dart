@@ -13,7 +13,7 @@ extension MapKitContainerExtension on MapKit {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, MapKit.getNativePtr);
+    return string_map.toNativeMap(obj, MapKitImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension MapKitContainerExtension on MapKit {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, MapKit.getNativePtr);
+    return vector.toNativeVector(obj, MapKitImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -63,8 +63,8 @@ extension MapKitContainerExtension on MapKit {
   static string_map.StringMap<MapKit> toPlatformMap(ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) =>
-            MapKit.fromOptionalPtr(val.cast<ffi.Pointer<ffi.Void>>().value));
+        (val) => MapKitImpl.fromOptionalPtr(
+            val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
   static string_map.StringMap<vector.Vector<MapKit>> toPlatformMapVector(
@@ -88,8 +88,8 @@ extension MapKitContainerExtension on MapKit {
   static vector.Vector<MapKit> toPlatformVector(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) =>
-            MapKit.fromOptionalPtr(val.cast<ffi.Pointer<ffi.Void>>().value));
+        (val) => MapKitImpl.fromOptionalPtr(
+            val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
   static vector.Vector<vector.Vector<MapKit>> toPlatformVectorVector(

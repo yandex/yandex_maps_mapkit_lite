@@ -5,7 +5,6 @@ import 'package:yandex_maps_mapkit_lite/src/bindings/common/library.dart'
 import 'dart:core' as core;
 import 'dart:math' as math;
 import 'package:ffi/ffi.dart';
-import 'package:meta/meta.dart';
 import 'package:yandex_maps_mapkit_lite/src/bindings/annotations/annotations.dart'
     as bindings_annotations;
 import 'package:yandex_maps_mapkit_lite/src/bindings/common/native_types.dart'
@@ -20,68 +19,27 @@ import 'package:yandex_maps_mapkit_lite/src/bindings/common/vector.dart'
     as vector;
 
 part 'rect.containers.dart';
+part 'rect.impl.dart';
 
-/// @nodoc
-final class RectNative extends ffi.Struct {
-  external native_types.NativePoint min;
-  external native_types.NativePoint max;
-}
-
-final RectNative Function(native_types.NativePoint, native_types.NativePoint)
-    _RectNativeInit = lib.library
-        .lookup<
-                ffi.NativeFunction<
-                    RectNative Function(
-                        native_types.NativePoint, native_types.NativePoint)>>(
-            'yandex_flutter_mapkit_map_Rect_init')
-        .asFunction(isLeaf: true);
-
-@bindings_annotations.ContainerData(
-    toNative: 'Rect.toPointer',
-    toPlatform: '(val) => Rect.fromPointer(val, needFree: false)')
-class Rect {
+final class Rect {
   final math.Point<core.double> min;
   final math.Point<core.double> max;
 
   const Rect(this.min, this.max);
 
-  /// @nodoc
-  @internal
-  Rect.fromNative(RectNative native)
-      : this(to_platform.toPlatformPoint(native.min),
-            to_platform.toPlatformPoint(native.max));
+  @core.override
+  core.int get hashCode => core.Object.hashAll([min, max]);
 
-  /// @nodoc
-  @internal
-  static RectNative toNative(Rect c) {
-    return _RectNativeInit(
-        to_native.toNativePoint(c.min), to_native.toNativePoint(c.max));
+  @core.override
+  core.bool operator ==(covariant Rect other) {
+    if (core.identical(this, other)) {
+      return true;
+    }
+    return min == other.min && max == other.max;
   }
 
-  /// @nodoc
-  @internal
-  static Rect? fromPointer(ffi.Pointer<ffi.Void> ptr,
-      {core.bool needFree = true}) {
-    if (ptr.address == 0) {
-      return null;
-    }
-    final result = Rect.fromNative(ptr.cast<RectNative>().ref);
-
-    if (needFree) {
-      malloc.free(ptr);
-    }
-    return result;
-  }
-
-  /// @nodoc
-  @internal
-  static ffi.Pointer<ffi.Void> toPointer(Rect? val) {
-    if (val == null) {
-      return ffi.nullptr;
-    }
-    final result = malloc.call<RectNative>();
-    result.ref = toNative(val);
-
-    return result.cast<ffi.Void>();
+  @core.override
+  core.String toString() {
+    return "Rect(min: $min, max: $max)";
   }
 }

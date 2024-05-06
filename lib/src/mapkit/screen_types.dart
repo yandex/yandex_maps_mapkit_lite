@@ -4,7 +4,6 @@ import 'package:yandex_maps_mapkit_lite/src/bindings/common/library.dart'
 
 import 'dart:core' as core;
 import 'package:ffi/ffi.dart';
-import 'package:meta/meta.dart';
 import 'package:yandex_maps_mapkit_lite/src/bindings/annotations/annotations.dart'
     as bindings_annotations;
 import 'package:yandex_maps_mapkit_lite/src/bindings/common/string_map.dart'
@@ -13,27 +12,9 @@ import 'package:yandex_maps_mapkit_lite/src/bindings/common/vector.dart'
     as vector;
 
 part 'screen_types.containers.dart';
+part 'screen_types.impl.dart';
 
-/// @nodoc
-final class ScreenPointNative extends ffi.Struct {
-  @ffi.Float()
-  external core.double x;
-  @ffi.Float()
-  external core.double y;
-}
-
-final ScreenPointNative Function(core.double, core.double)
-    _ScreenPointNativeInit = lib.library
-        .lookup<
-            ffi.NativeFunction<
-                ScreenPointNative Function(ffi.Float,
-                    ffi.Float)>>('yandex_flutter_mapkit_ScreenPoint_init')
-        .asFunction(isLeaf: true);
-
-@bindings_annotations.ContainerData(
-    toNative: 'ScreenPoint.toPointer',
-    toPlatform: '(val) => ScreenPoint.fromPointer(val, needFree: false)')
-class ScreenPoint {
+final class ScreenPoint {
   final core.double x;
   final core.double y;
 
@@ -42,106 +23,42 @@ class ScreenPoint {
     required this.y,
   });
 
-  /// @nodoc
-  @internal
-  ScreenPoint.fromNative(ScreenPointNative native)
-      : this(x: native.x, y: native.y);
+  @core.override
+  core.int get hashCode => core.Object.hashAll([x, y]);
 
-  /// @nodoc
-  @internal
-  static ScreenPointNative toNative(ScreenPoint c) {
-    return _ScreenPointNativeInit(c.x, c.y);
+  @core.override
+  core.bool operator ==(covariant ScreenPoint other) {
+    if (core.identical(this, other)) {
+      return true;
+    }
+    return x == other.x && y == other.y;
   }
 
-  /// @nodoc
-  @internal
-  static ScreenPoint? fromPointer(ffi.Pointer<ffi.Void> ptr,
-      {core.bool needFree = true}) {
-    if (ptr.address == 0) {
-      return null;
-    }
-    final result = ScreenPoint.fromNative(ptr.cast<ScreenPointNative>().ref);
-
-    if (needFree) {
-      malloc.free(ptr);
-    }
-    return result;
-  }
-
-  /// @nodoc
-  @internal
-  static ffi.Pointer<ffi.Void> toPointer(ScreenPoint? val) {
-    if (val == null) {
-      return ffi.nullptr;
-    }
-    final result = malloc.call<ScreenPointNative>();
-    result.ref = toNative(val);
-
-    return result.cast<ffi.Void>();
+  @core.override
+  core.String toString() {
+    return "ScreenPoint(x: $x, y: $y)";
   }
 }
 
-/// @nodoc
-final class ScreenRectNative extends ffi.Struct {
-  external ScreenPointNative topLeft;
-  external ScreenPointNative bottomRight;
-}
-
-final ScreenRectNative Function(ScreenPointNative, ScreenPointNative)
-    _ScreenRectNativeInit = lib.library
-        .lookup<
-                ffi.NativeFunction<
-                    ScreenRectNative Function(
-                        ScreenPointNative, ScreenPointNative)>>(
-            'yandex_flutter_mapkit_ScreenRect_init')
-        .asFunction(isLeaf: true);
-
-@bindings_annotations.ContainerData(
-    toNative: 'ScreenRect.toPointer',
-    toPlatform: '(val) => ScreenRect.fromPointer(val, needFree: false)')
-class ScreenRect {
+final class ScreenRect {
   final ScreenPoint topLeft;
   final ScreenPoint bottomRight;
 
   const ScreenRect(this.topLeft, this.bottomRight);
 
-  /// @nodoc
-  @internal
-  ScreenRect.fromNative(ScreenRectNative native)
-      : this(ScreenPoint.fromNative(native.topLeft),
-            ScreenPoint.fromNative(native.bottomRight));
+  @core.override
+  core.int get hashCode => core.Object.hashAll([topLeft, bottomRight]);
 
-  /// @nodoc
-  @internal
-  static ScreenRectNative toNative(ScreenRect c) {
-    return _ScreenRectNativeInit(
-        ScreenPoint.toNative(c.topLeft), ScreenPoint.toNative(c.bottomRight));
+  @core.override
+  core.bool operator ==(covariant ScreenRect other) {
+    if (core.identical(this, other)) {
+      return true;
+    }
+    return topLeft == other.topLeft && bottomRight == other.bottomRight;
   }
 
-  /// @nodoc
-  @internal
-  static ScreenRect? fromPointer(ffi.Pointer<ffi.Void> ptr,
-      {core.bool needFree = true}) {
-    if (ptr.address == 0) {
-      return null;
-    }
-    final result = ScreenRect.fromNative(ptr.cast<ScreenRectNative>().ref);
-
-    if (needFree) {
-      malloc.free(ptr);
-    }
-    return result;
-  }
-
-  /// @nodoc
-  @internal
-  static ffi.Pointer<ffi.Void> toPointer(ScreenRect? val) {
-    if (val == null) {
-      return ffi.nullptr;
-    }
-    final result = malloc.call<ScreenRectNative>();
-    result.ref = toNative(val);
-
-    return result.cast<ffi.Void>();
+  @core.override
+  core.String toString() {
+    return "ScreenRect(topLeft: $topLeft, bottomRight: $bottomRight)";
   }
 }

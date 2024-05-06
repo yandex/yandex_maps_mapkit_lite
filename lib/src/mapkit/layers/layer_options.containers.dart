@@ -13,7 +13,7 @@ extension LayerOptionsContainerExtension on LayerOptions {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, LayerOptions.toPointer);
+    return string_map.toNativeMap(obj, LayerOptionsImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension LayerOptionsContainerExtension on LayerOptions {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, LayerOptions.toPointer);
+    return vector.toNativeVector(obj, LayerOptionsImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -63,7 +63,7 @@ extension LayerOptionsContainerExtension on LayerOptions {
   static string_map.StringMap<LayerOptions> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => LayerOptions.fromPointer(val, needFree: false));
+        ptr, (val) => LayerOptionsImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<LayerOptions>> toPlatformMapVector(
@@ -87,7 +87,7 @@ extension LayerOptionsContainerExtension on LayerOptions {
   static vector.Vector<LayerOptions> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => LayerOptions.fromPointer(val, needFree: false));
+        ptr, (val) => LayerOptionsImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<LayerOptions>> toPlatformVectorVector(

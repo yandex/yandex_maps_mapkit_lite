@@ -13,7 +13,7 @@ extension XYPointContainerExtension on XYPoint {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, XYPoint.toPointer);
+    return string_map.toNativeMap(obj, XYPointImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension XYPointContainerExtension on XYPoint {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, XYPoint.toPointer);
+    return vector.toNativeVector(obj, XYPointImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -63,7 +63,7 @@ extension XYPointContainerExtension on XYPoint {
   static string_map.StringMap<XYPoint> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => XYPoint.fromPointer(val, needFree: false));
+        ptr, (val) => XYPointImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<XYPoint>> toPlatformMapVector(
@@ -86,7 +86,7 @@ extension XYPointContainerExtension on XYPoint {
 
   static vector.Vector<XYPoint> toPlatformVector(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => XYPoint.fromPointer(val, needFree: false));
+        ptr, (val) => XYPointImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<XYPoint>> toPlatformVectorVector(

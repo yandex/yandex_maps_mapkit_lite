@@ -13,7 +13,7 @@ extension TrafficLayerContainerExtension on TrafficLayer {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, TrafficLayer.getNativePtr);
+    return string_map.toNativeMap(obj, TrafficLayerImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension TrafficLayerContainerExtension on TrafficLayer {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, TrafficLayer.getNativePtr);
+    return vector.toNativeVector(obj, TrafficLayerImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -64,7 +64,7 @@ extension TrafficLayerContainerExtension on TrafficLayer {
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => TrafficLayer.fromOptionalPtr(
+        (val) => TrafficLayerImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -90,7 +90,7 @@ extension TrafficLayerContainerExtension on TrafficLayer {
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => TrafficLayer.fromOptionalPtr(
+        (val) => TrafficLayerImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 

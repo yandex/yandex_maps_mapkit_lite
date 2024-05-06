@@ -4,7 +4,6 @@ import 'package:yandex_maps_mapkit_lite/src/bindings/common/library.dart'
 
 import 'dart:core' as core;
 import 'package:ffi/ffi.dart';
-import 'package:meta/meta.dart';
 import 'package:yandex_maps_mapkit_lite/src/bindings/annotations/annotations.dart'
     as bindings_annotations;
 import 'package:yandex_maps_mapkit_lite/src/bindings/common/string_map.dart'
@@ -13,27 +12,9 @@ import 'package:yandex_maps_mapkit_lite/src/bindings/common/vector.dart'
     as vector;
 
 part 'direction.containers.dart';
+part 'direction.impl.dart';
 
-/// @nodoc
-final class DirectionNative extends ffi.Struct {
-  @ffi.Double()
-  external core.double azimuth;
-  @ffi.Double()
-  external core.double tilt;
-}
-
-final DirectionNative Function(core.double, core.double) _DirectionNativeInit =
-    lib.library
-        .lookup<
-                ffi.NativeFunction<
-                    DirectionNative Function(ffi.Double, ffi.Double)>>(
-            'yandex_flutter_mapkit_geometry_Direction_init')
-        .asFunction(isLeaf: true);
-
-@bindings_annotations.ContainerData(
-    toNative: 'Direction.toPointer',
-    toPlatform: '(val) => Direction.fromPointer(val, needFree: false)')
-class Direction {
+final class Direction {
   final core.double azimuth;
   final core.double tilt;
 
@@ -42,41 +23,19 @@ class Direction {
     required this.tilt,
   });
 
-  /// @nodoc
-  @internal
-  Direction.fromNative(DirectionNative native)
-      : this(azimuth: native.azimuth, tilt: native.tilt);
+  @core.override
+  core.int get hashCode => core.Object.hashAll([azimuth, tilt]);
 
-  /// @nodoc
-  @internal
-  static DirectionNative toNative(Direction c) {
-    return _DirectionNativeInit(c.azimuth, c.tilt);
+  @core.override
+  core.bool operator ==(covariant Direction other) {
+    if (core.identical(this, other)) {
+      return true;
+    }
+    return azimuth == other.azimuth && tilt == other.tilt;
   }
 
-  /// @nodoc
-  @internal
-  static Direction? fromPointer(ffi.Pointer<ffi.Void> ptr,
-      {core.bool needFree = true}) {
-    if (ptr.address == 0) {
-      return null;
-    }
-    final result = Direction.fromNative(ptr.cast<DirectionNative>().ref);
-
-    if (needFree) {
-      malloc.free(ptr);
-    }
-    return result;
-  }
-
-  /// @nodoc
-  @internal
-  static ffi.Pointer<ffi.Void> toPointer(Direction? val) {
-    if (val == null) {
-      return ffi.nullptr;
-    }
-    final result = malloc.call<DirectionNative>();
-    result.ref = toNative(val);
-
-    return result.cast<ffi.Void>();
+  @core.override
+  core.String toString() {
+    return "Direction(azimuth: $azimuth, tilt: $tilt)";
   }
 }

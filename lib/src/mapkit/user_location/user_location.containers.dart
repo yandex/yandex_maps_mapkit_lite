@@ -13,7 +13,7 @@ extension UserLocationViewContainerExtension on UserLocationView {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, UserLocationView.getNativePtr);
+    return string_map.toNativeMap(obj, UserLocationViewImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -40,7 +40,7 @@ extension UserLocationViewContainerExtension on UserLocationView {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, UserLocationView.getNativePtr);
+    return vector.toNativeVector(obj, UserLocationViewImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -65,7 +65,7 @@ extension UserLocationViewContainerExtension on UserLocationView {
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => UserLocationView.fromOptionalPtr(
+        (val) => UserLocationViewImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -91,7 +91,7 @@ extension UserLocationViewContainerExtension on UserLocationView {
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => UserLocationView.fromOptionalPtr(
+        (val) => UserLocationViewImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -121,7 +121,8 @@ extension UserLocationIconChangedContainerExtension on UserLocationIconChanged {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, UserLocationIconChanged.getNativePtr);
+    return string_map.toNativeMap(
+        obj, UserLocationIconChangedImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -149,7 +150,7 @@ extension UserLocationIconChangedContainerExtension on UserLocationIconChanged {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, UserLocationIconChanged.getNativePtr);
+    return vector.toNativeVector(obj, UserLocationIconChangedImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -174,7 +175,7 @@ extension UserLocationIconChangedContainerExtension on UserLocationIconChanged {
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => UserLocationIconChanged.fromOptionalPtr(
+        (val) => UserLocationIconChangedImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -200,7 +201,7 @@ extension UserLocationIconChangedContainerExtension on UserLocationIconChanged {
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => UserLocationIconChanged.fromOptionalPtr(
+        (val) => UserLocationIconChangedImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -231,7 +232,8 @@ extension UserLocationAnchorChangedContainerExtension
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, UserLocationAnchorChanged.getNativePtr);
+    return string_map.toNativeMap(
+        obj, UserLocationAnchorChangedImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -259,7 +261,8 @@ extension UserLocationAnchorChangedContainerExtension
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, UserLocationAnchorChanged.getNativePtr);
+    return vector.toNativeVector(
+        obj, UserLocationAnchorChangedImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -284,7 +287,7 @@ extension UserLocationAnchorChangedContainerExtension
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => UserLocationAnchorChanged.fromOptionalPtr(
+        (val) => UserLocationAnchorChangedImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -310,7 +313,7 @@ extension UserLocationAnchorChangedContainerExtension
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => UserLocationAnchorChanged.fromOptionalPtr(
+        (val) => UserLocationAnchorChangedImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -340,7 +343,7 @@ extension UserLocationLayerContainerExtension on UserLocationLayer {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, UserLocationLayer.getNativePtr);
+    return string_map.toNativeMap(obj, UserLocationLayerImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -367,7 +370,7 @@ extension UserLocationLayerContainerExtension on UserLocationLayer {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, UserLocationLayer.getNativePtr);
+    return vector.toNativeVector(obj, UserLocationLayerImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -392,7 +395,7 @@ extension UserLocationLayerContainerExtension on UserLocationLayer {
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => UserLocationLayer.fromOptionalPtr(
+        (val) => UserLocationLayerImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -418,7 +421,7 @@ extension UserLocationLayerContainerExtension on UserLocationLayer {
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => UserLocationLayer.fromOptionalPtr(
+        (val) => UserLocationLayerImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -448,7 +451,7 @@ extension UserLocationIconTypeContainerExtension on UserLocationIconType {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, UserLocationIconType.toPointer);
+    return string_map.toNativeMap(obj, UserLocationIconTypeImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -476,7 +479,7 @@ extension UserLocationIconTypeContainerExtension on UserLocationIconType {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, UserLocationIconType.toPointer);
+    return vector.toNativeVector(obj, UserLocationIconTypeImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -499,8 +502,8 @@ extension UserLocationIconTypeContainerExtension on UserLocationIconType {
 
   static string_map.StringMap<UserLocationIconType> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
-    return string_map.StringMap(
-        ptr, (val) => UserLocationIconType.fromPointer(val, needFree: false));
+    return string_map.StringMap(ptr,
+        (val) => UserLocationIconTypeImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<UserLocationIconType>>
@@ -523,8 +526,8 @@ extension UserLocationIconTypeContainerExtension on UserLocationIconType {
 
   static vector.Vector<UserLocationIconType> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-        ptr, (val) => UserLocationIconType.fromPointer(val, needFree: false));
+    return vector.Vector(ptr,
+        (val) => UserLocationIconTypeImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<UserLocationIconType>>
@@ -553,7 +556,7 @@ extension UserLocationAnchorTypeContainerExtension on UserLocationAnchorType {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, UserLocationAnchorType.toPointer);
+    return string_map.toNativeMap(obj, UserLocationAnchorTypeImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -581,7 +584,7 @@ extension UserLocationAnchorTypeContainerExtension on UserLocationAnchorType {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, UserLocationAnchorType.toPointer);
+    return vector.toNativeVector(obj, UserLocationAnchorTypeImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -604,8 +607,8 @@ extension UserLocationAnchorTypeContainerExtension on UserLocationAnchorType {
 
   static string_map.StringMap<UserLocationAnchorType> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
-    return string_map.StringMap(
-        ptr, (val) => UserLocationAnchorType.fromPointer(val, needFree: false));
+    return string_map.StringMap(ptr,
+        (val) => UserLocationAnchorTypeImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<UserLocationAnchorType>>
@@ -628,8 +631,8 @@ extension UserLocationAnchorTypeContainerExtension on UserLocationAnchorType {
 
   static vector.Vector<UserLocationAnchorType> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-        ptr, (val) => UserLocationAnchorType.fromPointer(val, needFree: false));
+    return vector.Vector(ptr,
+        (val) => UserLocationAnchorTypeImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<UserLocationAnchorType>>

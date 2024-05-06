@@ -13,7 +13,7 @@ extension RoutePositionContainerExtension on RoutePosition {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, RoutePosition.getNativePtr);
+    return string_map.toNativeMap(obj, RoutePositionImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension RoutePositionContainerExtension on RoutePosition {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, RoutePosition.getNativePtr);
+    return vector.toNativeVector(obj, RoutePositionImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -64,7 +64,7 @@ extension RoutePositionContainerExtension on RoutePosition {
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => RoutePosition.fromOptionalPtr(
+        (val) => RoutePositionImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -90,7 +90,7 @@ extension RoutePositionContainerExtension on RoutePosition {
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => RoutePosition.fromOptionalPtr(
+        (val) => RoutePositionImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 

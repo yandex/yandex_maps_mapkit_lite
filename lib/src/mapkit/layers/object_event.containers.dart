@@ -13,7 +13,7 @@ extension ObjectEventContainerExtension on ObjectEvent {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, ObjectEvent.getNativePtr);
+    return string_map.toNativeMap(obj, ObjectEventImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension ObjectEventContainerExtension on ObjectEvent {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, ObjectEvent.getNativePtr);
+    return vector.toNativeVector(obj, ObjectEventImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -64,7 +64,7 @@ extension ObjectEventContainerExtension on ObjectEvent {
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => ObjectEvent.fromOptionalPtr(
+        (val) => ObjectEventImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -90,7 +90,7 @@ extension ObjectEventContainerExtension on ObjectEvent {
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => ObjectEvent.fromOptionalPtr(
+        (val) => ObjectEventImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 

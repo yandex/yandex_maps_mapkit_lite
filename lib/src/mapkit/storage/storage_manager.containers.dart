@@ -13,7 +13,7 @@ extension StorageManagerContainerExtension on StorageManager {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, StorageManager.getNativePtr);
+    return string_map.toNativeMap(obj, StorageManagerImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension StorageManagerContainerExtension on StorageManager {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, StorageManager.getNativePtr);
+    return vector.toNativeVector(obj, StorageManagerImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -64,7 +64,7 @@ extension StorageManagerContainerExtension on StorageManager {
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => StorageManager.fromOptionalPtr(
+        (val) => StorageManagerImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -90,7 +90,7 @@ extension StorageManagerContainerExtension on StorageManager {
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => StorageManager.fromOptionalPtr(
+        (val) => StorageManagerImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 

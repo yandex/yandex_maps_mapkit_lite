@@ -4,7 +4,6 @@ import 'package:yandex_maps_mapkit_lite/src/bindings/common/library.dart'
 
 import 'dart:core' as core;
 import 'package:ffi/ffi.dart';
-import 'package:meta/meta.dart';
 import 'package:yandex_maps_mapkit_lite/src/bindings/annotations/annotations.dart'
     as bindings_annotations;
 import 'package:yandex_maps_mapkit_lite/src/bindings/common/native_types.dart'
@@ -21,53 +20,9 @@ import 'package:yandex_maps_mapkit_lite/src/mapkit/layers/overzoom_mode.dart'
     as mapkit_layers_overzoom_mode;
 
 part 'layer_options.containers.dart';
+part 'layer_options.impl.dart';
 
-/// @nodoc
-final class LayerOptionsNative extends ffi.Struct {
-  @ffi.Bool()
-  external core.bool active;
-  @ffi.Bool()
-  external core.bool nightModeAvailable;
-  @ffi.Bool()
-  external core.bool cacheable;
-  @ffi.Bool()
-  external core.bool animateOnActivation;
-  external native_types.NativeInterval tileAppearingAnimationDuration;
-  @ffi.Int64()
-  external core.int overzoomMode;
-  @ffi.Bool()
-  external core.bool transparent;
-  @ffi.Bool()
-  external core.bool versionSupport;
-}
-
-final LayerOptionsNative Function(
-    core.bool,
-    core.bool,
-    core.bool,
-    core.bool,
-    native_types.NativeInterval,
-    core.int,
-    core.bool,
-    core
-        .bool) _LayerOptionsNativeInit = lib.library
-    .lookup<
-        ffi.NativeFunction<
-            LayerOptionsNative Function(
-                ffi.Bool,
-                ffi.Bool,
-                ffi.Bool,
-                ffi.Bool,
-                native_types.NativeInterval,
-                ffi.Int64,
-                ffi.Bool,
-                ffi.Bool)>>('yandex_flutter_mapkit_layers_LayerOptions_init')
-    .asFunction(isLeaf: true);
-
-@bindings_annotations.ContainerData(
-    toNative: 'LayerOptions.toPointer',
-    toPlatform: '(val) => LayerOptions.fromPointer(val, needFree: false)')
-class LayerOptions {
+final class LayerOptions {
   final core.bool active;
   final core.bool nightModeAvailable;
   final core.bool cacheable;
@@ -89,59 +44,36 @@ class LayerOptions {
     this.versionSupport = true,
   });
 
-  /// @nodoc
-  @internal
-  LayerOptions.fromNative(LayerOptionsNative native)
-      : this(
-            active: native.active,
-            nightModeAvailable: native.nightModeAvailable,
-            cacheable: native.cacheable,
-            animateOnActivation: native.animateOnActivation,
-            tileAppearingAnimationDuration: to_platform
-                .toPlatformTimeInterval(native.tileAppearingAnimationDuration),
-            overzoomMode: mapkit_layers_overzoom_mode.OverzoomMode.fromInt(
-                native.overzoomMode),
-            transparent: native.transparent,
-            versionSupport: native.versionSupport);
+  @core.override
+  core.int get hashCode => core.Object.hashAll([
+        active,
+        nightModeAvailable,
+        cacheable,
+        animateOnActivation,
+        tileAppearingAnimationDuration,
+        overzoomMode,
+        transparent,
+        versionSupport
+      ]);
 
-  /// @nodoc
-  @internal
-  static LayerOptionsNative toNative(LayerOptions c) {
-    return _LayerOptionsNativeInit(
-        c.active,
-        c.nightModeAvailable,
-        c.cacheable,
-        c.animateOnActivation,
-        to_native.toNativeTimeInterval(c.tileAppearingAnimationDuration),
-        mapkit_layers_overzoom_mode.OverzoomMode.toInt(c.overzoomMode),
-        c.transparent,
-        c.versionSupport);
+  @core.override
+  core.bool operator ==(covariant LayerOptions other) {
+    if (core.identical(this, other)) {
+      return true;
+    }
+    return active == other.active &&
+        nightModeAvailable == other.nightModeAvailable &&
+        cacheable == other.cacheable &&
+        animateOnActivation == other.animateOnActivation &&
+        tileAppearingAnimationDuration ==
+            other.tileAppearingAnimationDuration &&
+        overzoomMode == other.overzoomMode &&
+        transparent == other.transparent &&
+        versionSupport == other.versionSupport;
   }
 
-  /// @nodoc
-  @internal
-  static LayerOptions? fromPointer(ffi.Pointer<ffi.Void> ptr,
-      {core.bool needFree = true}) {
-    if (ptr.address == 0) {
-      return null;
-    }
-    final result = LayerOptions.fromNative(ptr.cast<LayerOptionsNative>().ref);
-
-    if (needFree) {
-      malloc.free(ptr);
-    }
-    return result;
-  }
-
-  /// @nodoc
-  @internal
-  static ffi.Pointer<ffi.Void> toPointer(LayerOptions? val) {
-    if (val == null) {
-      return ffi.nullptr;
-    }
-    final result = malloc.call<LayerOptionsNative>();
-    result.ref = toNative(val);
-
-    return result.cast<ffi.Void>();
+  @core.override
+  core.String toString() {
+    return "LayerOptions(active: $active, nightModeAvailable: $nightModeAvailable, cacheable: $cacheable, animateOnActivation: $animateOnActivation, tileAppearingAnimationDuration: $tileAppearingAnimationDuration, overzoomMode: $overzoomMode, transparent: $transparent, versionSupport: $versionSupport)";
   }
 }

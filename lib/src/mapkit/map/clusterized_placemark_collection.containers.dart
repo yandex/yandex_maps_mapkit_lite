@@ -15,7 +15,7 @@ extension ClusterizedPlacemarkCollectionContainerExtension
     }
 
     return string_map.toNativeMap(
-        obj, ClusterizedPlacemarkCollection.getNativePtr);
+        obj, ClusterizedPlacemarkCollectionImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -45,7 +45,7 @@ extension ClusterizedPlacemarkCollectionContainerExtension
     }
 
     return vector.toNativeVector(
-        obj, ClusterizedPlacemarkCollection.getNativePtr);
+        obj, ClusterizedPlacemarkCollectionImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -70,7 +70,7 @@ extension ClusterizedPlacemarkCollectionContainerExtension
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => ClusterizedPlacemarkCollection.fromOptionalPtr(
+        (val) => ClusterizedPlacemarkCollectionImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -97,7 +97,7 @@ extension ClusterizedPlacemarkCollectionContainerExtension
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => ClusterizedPlacemarkCollection.fromOptionalPtr(
+        (val) => ClusterizedPlacemarkCollectionImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 

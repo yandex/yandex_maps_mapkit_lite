@@ -13,7 +13,7 @@ extension IconStyleContainerExtension on IconStyle {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, IconStyle.toPointer);
+    return string_map.toNativeMap(obj, IconStyleImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension IconStyleContainerExtension on IconStyle {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, IconStyle.toPointer);
+    return vector.toNativeVector(obj, IconStyleImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -63,7 +63,7 @@ extension IconStyleContainerExtension on IconStyle {
   static string_map.StringMap<IconStyle> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => IconStyle.fromPointer(val, needFree: false));
+        ptr, (val) => IconStyleImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<IconStyle>> toPlatformMapVector(
@@ -86,7 +86,7 @@ extension IconStyleContainerExtension on IconStyle {
 
   static vector.Vector<IconStyle> toPlatformVector(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => IconStyle.fromPointer(val, needFree: false));
+        ptr, (val) => IconStyleImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<IconStyle>> toPlatformVectorVector(

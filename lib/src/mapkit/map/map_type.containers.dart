@@ -13,7 +13,7 @@ extension MapTypeContainerExtension on MapType {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, MapType.toPointer);
+    return string_map.toNativeMap(obj, MapTypeImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension MapTypeContainerExtension on MapType {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, MapType.toPointer);
+    return vector.toNativeVector(obj, MapTypeImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -63,7 +63,7 @@ extension MapTypeContainerExtension on MapType {
   static string_map.StringMap<MapType> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => MapType.fromPointer(val, needFree: false));
+        ptr, (val) => MapTypeImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<MapType>> toPlatformMapVector(
@@ -86,7 +86,7 @@ extension MapTypeContainerExtension on MapType {
 
   static vector.Vector<MapType> toPlatformVector(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => MapType.fromPointer(val, needFree: false));
+        ptr, (val) => MapTypeImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<MapType>> toPlatformVectorVector(

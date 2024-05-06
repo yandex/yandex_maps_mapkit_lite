@@ -14,7 +14,7 @@ extension ImagesImageDataDescriptorContainerExtension
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, ImagesImageDataDescriptor.toPointer);
+    return string_map.toNativeMap(obj, ImagesImageDataDescriptorImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -42,7 +42,7 @@ extension ImagesImageDataDescriptorContainerExtension
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, ImagesImageDataDescriptor.toPointer);
+    return vector.toNativeVector(obj, ImagesImageDataDescriptorImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -65,8 +65,10 @@ extension ImagesImageDataDescriptorContainerExtension
 
   static string_map.StringMap<ImagesImageDataDescriptor> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
-    return string_map.StringMap(ptr,
-        (val) => ImagesImageDataDescriptor.fromPointer(val, needFree: false));
+    return string_map.StringMap(
+        ptr,
+        (val) =>
+            ImagesImageDataDescriptorImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<ImagesImageDataDescriptor>>
@@ -89,8 +91,10 @@ extension ImagesImageDataDescriptorContainerExtension
 
   static vector.Vector<ImagesImageDataDescriptor> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(ptr,
-        (val) => ImagesImageDataDescriptor.fromPointer(val, needFree: false));
+    return vector.Vector(
+        ptr,
+        (val) =>
+            ImagesImageDataDescriptorImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<ImagesImageDataDescriptor>>

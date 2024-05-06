@@ -13,7 +13,7 @@ extension AttestationListenerContainerExtension on AttestationListener {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, AttestationListener.getNativePtr);
+    return string_map.toNativeMap(obj, AttestationListenerImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -41,7 +41,7 @@ extension AttestationListenerContainerExtension on AttestationListener {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, AttestationListener.getNativePtr);
+    return vector.toNativeVector(obj, AttestationListenerImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -66,7 +66,7 @@ extension AttestationListenerContainerExtension on AttestationListener {
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => AttestationListener.fromOptionalPtr(
+        (val) => AttestationListenerImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -92,7 +92,7 @@ extension AttestationListenerContainerExtension on AttestationListener {
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => AttestationListener.fromOptionalPtr(
+        (val) => AttestationListenerImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 

@@ -13,7 +13,7 @@ extension LocationManagerContainerExtension on LocationManager {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, LocationManager.getNativePtr);
+    return string_map.toNativeMap(obj, LocationManagerImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -40,7 +40,7 @@ extension LocationManagerContainerExtension on LocationManager {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, LocationManager.getNativePtr);
+    return vector.toNativeVector(obj, LocationManagerImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -65,7 +65,7 @@ extension LocationManagerContainerExtension on LocationManager {
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => LocationManager.fromOptionalPtr(
+        (val) => LocationManagerImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -91,7 +91,7 @@ extension LocationManagerContainerExtension on LocationManager {
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => LocationManager.fromOptionalPtr(
+        (val) => LocationManagerImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -121,7 +121,7 @@ extension LocationFilteringModeContainerExtension on LocationFilteringMode {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, LocationFilteringMode.toPointer);
+    return string_map.toNativeMap(obj, LocationFilteringModeImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -149,7 +149,7 @@ extension LocationFilteringModeContainerExtension on LocationFilteringMode {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, LocationFilteringMode.toPointer);
+    return vector.toNativeVector(obj, LocationFilteringModeImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -172,8 +172,8 @@ extension LocationFilteringModeContainerExtension on LocationFilteringMode {
 
   static string_map.StringMap<LocationFilteringMode> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
-    return string_map.StringMap(
-        ptr, (val) => LocationFilteringMode.fromPointer(val, needFree: false));
+    return string_map.StringMap(ptr,
+        (val) => LocationFilteringModeImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<LocationFilteringMode>>
@@ -196,8 +196,8 @@ extension LocationFilteringModeContainerExtension on LocationFilteringMode {
 
   static vector.Vector<LocationFilteringMode> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-        ptr, (val) => LocationFilteringMode.fromPointer(val, needFree: false));
+    return vector.Vector(ptr,
+        (val) => LocationFilteringModeImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<LocationFilteringMode>>

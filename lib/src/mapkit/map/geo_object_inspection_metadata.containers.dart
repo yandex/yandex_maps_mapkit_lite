@@ -14,7 +14,8 @@ extension GeoObjectInspectionMetadataContainerExtension
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, GeoObjectInspectionMetadata.toPointer);
+    return string_map.toNativeMap(
+        obj, GeoObjectInspectionMetadataImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -43,7 +44,8 @@ extension GeoObjectInspectionMetadataContainerExtension
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, GeoObjectInspectionMetadata.toPointer);
+    return vector.toNativeVector(
+        obj, GeoObjectInspectionMetadataImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -66,8 +68,10 @@ extension GeoObjectInspectionMetadataContainerExtension
 
   static string_map.StringMap<GeoObjectInspectionMetadata> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
-    return string_map.StringMap(ptr,
-        (val) => GeoObjectInspectionMetadata.fromPointer(val, needFree: false));
+    return string_map.StringMap(
+        ptr,
+        (val) =>
+            GeoObjectInspectionMetadataImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<GeoObjectInspectionMetadata>>
@@ -90,8 +94,10 @@ extension GeoObjectInspectionMetadataContainerExtension
 
   static vector.Vector<GeoObjectInspectionMetadata> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(ptr,
-        (val) => GeoObjectInspectionMetadata.fromPointer(val, needFree: false));
+    return vector.Vector(
+        ptr,
+        (val) =>
+            GeoObjectInspectionMetadataImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<GeoObjectInspectionMetadata>>
@@ -122,7 +128,7 @@ extension GeoObjectInspectionMetadataObjectTypeContainerExtension
     }
 
     return string_map.toNativeMap(
-        obj, GeoObjectInspectionMetadataObjectType.toPointer);
+        obj, GeoObjectInspectionMetadataObjectTypeImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -153,7 +159,7 @@ extension GeoObjectInspectionMetadataObjectTypeContainerExtension
     }
 
     return vector.toNativeVector(
-        obj, GeoObjectInspectionMetadataObjectType.toPointer);
+        obj, GeoObjectInspectionMetadataObjectTypeImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -179,7 +185,7 @@ extension GeoObjectInspectionMetadataObjectTypeContainerExtension
       toPlatformMap(ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => GeoObjectInspectionMetadataObjectType.fromPointer(val,
+        (val) => GeoObjectInspectionMetadataObjectTypeImpl.fromPointer(val,
             needFree: false));
   }
 
@@ -207,7 +213,7 @@ extension GeoObjectInspectionMetadataObjectTypeContainerExtension
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => GeoObjectInspectionMetadataObjectType.fromPointer(val,
+        (val) => GeoObjectInspectionMetadataObjectTypeImpl.fromPointer(val,
             needFree: false));
   }
 

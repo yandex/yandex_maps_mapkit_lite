@@ -13,7 +13,7 @@ extension CameraPositionContainerExtension on CameraPosition {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, CameraPosition.toPointer);
+    return string_map.toNativeMap(obj, CameraPositionImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension CameraPositionContainerExtension on CameraPosition {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, CameraPosition.toPointer);
+    return vector.toNativeVector(obj, CameraPositionImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -63,7 +63,7 @@ extension CameraPositionContainerExtension on CameraPosition {
   static string_map.StringMap<CameraPosition> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => CameraPosition.fromPointer(val, needFree: false));
+        ptr, (val) => CameraPositionImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<CameraPosition>>
@@ -87,7 +87,7 @@ extension CameraPositionContainerExtension on CameraPosition {
   static vector.Vector<CameraPosition> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => CameraPosition.fromPointer(val, needFree: false));
+        ptr, (val) => CameraPositionImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<CameraPosition>> toPlatformVectorVector(

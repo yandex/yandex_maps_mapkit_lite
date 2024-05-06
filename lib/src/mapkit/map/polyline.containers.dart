@@ -13,7 +13,7 @@ extension PolylineMapObjectContainerExtension on PolylineMapObject {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, PolylineMapObject.getNativePtr);
+    return string_map.toNativeMap(obj, PolylineMapObjectImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -40,7 +40,7 @@ extension PolylineMapObjectContainerExtension on PolylineMapObject {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, PolylineMapObject.getNativePtr);
+    return vector.toNativeVector(obj, PolylineMapObjectImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -65,7 +65,7 @@ extension PolylineMapObjectContainerExtension on PolylineMapObject {
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => PolylineMapObject.fromOptionalPtr(
+        (val) => PolylineMapObjectImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -91,7 +91,7 @@ extension PolylineMapObjectContainerExtension on PolylineMapObject {
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => PolylineMapObject.fromOptionalPtr(
+        (val) => PolylineMapObjectImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 

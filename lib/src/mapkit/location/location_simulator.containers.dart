@@ -13,7 +13,7 @@ extension LocationSimulatorContainerExtension on LocationSimulator {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, LocationSimulator.getNativePtr);
+    return string_map.toNativeMap(obj, LocationSimulatorImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -40,7 +40,7 @@ extension LocationSimulatorContainerExtension on LocationSimulator {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, LocationSimulator.getNativePtr);
+    return vector.toNativeVector(obj, LocationSimulatorImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -65,7 +65,7 @@ extension LocationSimulatorContainerExtension on LocationSimulator {
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => LocationSimulator.fromOptionalPtr(
+        (val) => LocationSimulatorImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -91,7 +91,7 @@ extension LocationSimulatorContainerExtension on LocationSimulator {
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => LocationSimulator.fromOptionalPtr(
+        (val) => LocationSimulatorImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -121,7 +121,7 @@ extension SimulationAccuracyContainerExtension on SimulationAccuracy {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, SimulationAccuracy.toPointer);
+    return string_map.toNativeMap(obj, SimulationAccuracyImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -148,7 +148,7 @@ extension SimulationAccuracyContainerExtension on SimulationAccuracy {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, SimulationAccuracy.toPointer);
+    return vector.toNativeVector(obj, SimulationAccuracyImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -172,7 +172,7 @@ extension SimulationAccuracyContainerExtension on SimulationAccuracy {
   static string_map.StringMap<SimulationAccuracy> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => SimulationAccuracy.fromPointer(val, needFree: false));
+        ptr, (val) => SimulationAccuracyImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<SimulationAccuracy>>
@@ -196,7 +196,7 @@ extension SimulationAccuracyContainerExtension on SimulationAccuracy {
   static vector.Vector<SimulationAccuracy> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => SimulationAccuracy.fromPointer(val, needFree: false));
+        ptr, (val) => SimulationAccuracyImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<SimulationAccuracy>>

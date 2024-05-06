@@ -13,7 +13,7 @@ extension OfflineCacheManagerContainerExtension on OfflineCacheManager {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, OfflineCacheManager.getNativePtr);
+    return string_map.toNativeMap(obj, OfflineCacheManagerImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -41,7 +41,7 @@ extension OfflineCacheManagerContainerExtension on OfflineCacheManager {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, OfflineCacheManager.getNativePtr);
+    return vector.toNativeVector(obj, OfflineCacheManagerImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -66,7 +66,7 @@ extension OfflineCacheManagerContainerExtension on OfflineCacheManager {
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
         ptr,
-        (val) => OfflineCacheManager.fromOptionalPtr(
+        (val) => OfflineCacheManagerImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
@@ -92,7 +92,7 @@ extension OfflineCacheManagerContainerExtension on OfflineCacheManager {
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => OfflineCacheManager.fromOptionalPtr(
+        (val) => OfflineCacheManagerImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 

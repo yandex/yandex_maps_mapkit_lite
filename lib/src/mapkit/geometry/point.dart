@@ -4,7 +4,6 @@ import 'package:yandex_maps_mapkit_lite/src/bindings/common/library.dart'
 
 import 'dart:core' as core;
 import 'package:ffi/ffi.dart';
-import 'package:meta/meta.dart';
 import 'package:yandex_maps_mapkit_lite/src/bindings/annotations/annotations.dart'
     as bindings_annotations;
 import 'package:yandex_maps_mapkit_lite/src/bindings/common/string_map.dart'
@@ -13,25 +12,9 @@ import 'package:yandex_maps_mapkit_lite/src/bindings/common/vector.dart'
     as vector;
 
 part 'point.containers.dart';
+part 'point.impl.dart';
 
-/// @nodoc
-final class PointNative extends ffi.Struct {
-  @ffi.Double()
-  external core.double latitude;
-  @ffi.Double()
-  external core.double longitude;
-}
-
-final PointNative Function(core.double, core.double) _PointNativeInit = lib
-    .library
-    .lookup<ffi.NativeFunction<PointNative Function(ffi.Double, ffi.Double)>>(
-        'yandex_flutter_mapkit_geometry_Point_init')
-    .asFunction(isLeaf: true);
-
-@bindings_annotations.ContainerData(
-    toNative: 'Point.toPointer',
-    toPlatform: '(val) => Point.fromPointer(val, needFree: false)')
-class Point {
+final class Point {
   final core.double latitude;
   final core.double longitude;
 
@@ -40,41 +23,19 @@ class Point {
     required this.longitude,
   });
 
-  /// @nodoc
-  @internal
-  Point.fromNative(PointNative native)
-      : this(latitude: native.latitude, longitude: native.longitude);
+  @core.override
+  core.int get hashCode => core.Object.hashAll([latitude, longitude]);
 
-  /// @nodoc
-  @internal
-  static PointNative toNative(Point c) {
-    return _PointNativeInit(c.latitude, c.longitude);
+  @core.override
+  core.bool operator ==(covariant Point other) {
+    if (core.identical(this, other)) {
+      return true;
+    }
+    return latitude == other.latitude && longitude == other.longitude;
   }
 
-  /// @nodoc
-  @internal
-  static Point? fromPointer(ffi.Pointer<ffi.Void> ptr,
-      {core.bool needFree = true}) {
-    if (ptr.address == 0) {
-      return null;
-    }
-    final result = Point.fromNative(ptr.cast<PointNative>().ref);
-
-    if (needFree) {
-      malloc.free(ptr);
-    }
-    return result;
-  }
-
-  /// @nodoc
-  @internal
-  static ffi.Pointer<ffi.Void> toPointer(Point? val) {
-    if (val == null) {
-      return ffi.nullptr;
-    }
-    final result = malloc.call<PointNative>();
-    result.ref = toNative(val);
-
-    return result.cast<ffi.Void>();
+  @core.override
+  core.String toString() {
+    return "Point(latitude: $latitude, longitude: $longitude)";
   }
 }

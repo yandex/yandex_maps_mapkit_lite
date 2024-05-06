@@ -13,7 +13,7 @@ extension RotationTypeContainerExtension on RotationType {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, RotationType.toPointer);
+    return string_map.toNativeMap(obj, RotationTypeImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension RotationTypeContainerExtension on RotationType {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, RotationType.toPointer);
+    return vector.toNativeVector(obj, RotationTypeImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -63,7 +63,7 @@ extension RotationTypeContainerExtension on RotationType {
   static string_map.StringMap<RotationType> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => RotationType.fromPointer(val, needFree: false));
+        ptr, (val) => RotationTypeImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<RotationType>> toPlatformMapVector(
@@ -87,7 +87,7 @@ extension RotationTypeContainerExtension on RotationType {
   static vector.Vector<RotationType> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => RotationType.fromPointer(val, needFree: false));
+        ptr, (val) => RotationTypeImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<RotationType>> toPlatformVectorVector(

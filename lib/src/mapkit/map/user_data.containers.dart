@@ -13,7 +13,7 @@ extension UserDataContainerExtension on UserData {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, UserData.toPointer);
+    return string_map.toNativeMap(obj, UserDataImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension UserDataContainerExtension on UserData {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, UserData.toPointer);
+    return vector.toNativeVector(obj, UserDataImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -63,7 +63,7 @@ extension UserDataContainerExtension on UserData {
   static string_map.StringMap<UserData> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => UserData.fromPointer(val, needFree: false));
+        ptr, (val) => UserDataImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<UserData>> toPlatformMapVector(
@@ -86,7 +86,7 @@ extension UserDataContainerExtension on UserData {
 
   static vector.Vector<UserData> toPlatformVector(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => UserData.fromPointer(val, needFree: false));
+        ptr, (val) => UserDataImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<UserData>> toPlatformVectorVector(

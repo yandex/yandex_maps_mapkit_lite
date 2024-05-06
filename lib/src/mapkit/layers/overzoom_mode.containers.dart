@@ -13,7 +13,7 @@ extension OverzoomModeContainerExtension on OverzoomMode {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, OverzoomMode.toPointer);
+    return string_map.toNativeMap(obj, OverzoomModeImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension OverzoomModeContainerExtension on OverzoomMode {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, OverzoomMode.toPointer);
+    return vector.toNativeVector(obj, OverzoomModeImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -63,7 +63,7 @@ extension OverzoomModeContainerExtension on OverzoomMode {
   static string_map.StringMap<OverzoomMode> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => OverzoomMode.fromPointer(val, needFree: false));
+        ptr, (val) => OverzoomModeImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<OverzoomMode>> toPlatformMapVector(
@@ -87,7 +87,7 @@ extension OverzoomModeContainerExtension on OverzoomMode {
   static vector.Vector<OverzoomMode> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => OverzoomMode.fromPointer(val, needFree: false));
+        ptr, (val) => OverzoomModeImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<OverzoomMode>> toPlatformVectorVector(

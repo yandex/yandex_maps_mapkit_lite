@@ -5,8 +5,13 @@ class WeakInterface {
 }
 
 class ContainerData {
-  const ContainerData({required this.toNative, required this.toPlatform});
+  const ContainerData({
+    required this.toNative,
+    required this.toPlatform,
+    this.platformType,
+  });
 
   final String toNative;
   final String toPlatform;
+  final String? platformType;
 }

@@ -13,7 +13,7 @@ extension LocationActivityTypeContainerExtension on LocationActivityType {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, LocationActivityType.toPointer);
+    return string_map.toNativeMap(obj, LocationActivityTypeImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -41,7 +41,7 @@ extension LocationActivityTypeContainerExtension on LocationActivityType {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, LocationActivityType.toPointer);
+    return vector.toNativeVector(obj, LocationActivityTypeImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -64,8 +64,8 @@ extension LocationActivityTypeContainerExtension on LocationActivityType {
 
   static string_map.StringMap<LocationActivityType> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
-    return string_map.StringMap(
-        ptr, (val) => LocationActivityType.fromPointer(val, needFree: false));
+    return string_map.StringMap(ptr,
+        (val) => LocationActivityTypeImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<LocationActivityType>>
@@ -88,8 +88,8 @@ extension LocationActivityTypeContainerExtension on LocationActivityType {
 
   static vector.Vector<LocationActivityType> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-        ptr, (val) => LocationActivityType.fromPointer(val, needFree: false));
+    return vector.Vector(ptr,
+        (val) => LocationActivityTypeImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<LocationActivityType>>

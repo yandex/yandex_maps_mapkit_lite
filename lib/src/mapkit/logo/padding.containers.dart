@@ -13,7 +13,7 @@ extension LogoPaddingContainerExtension on LogoPadding {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, LogoPadding.toPointer);
+    return string_map.toNativeMap(obj, LogoPaddingImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension LogoPaddingContainerExtension on LogoPadding {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, LogoPadding.toPointer);
+    return vector.toNativeVector(obj, LogoPaddingImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -63,7 +63,7 @@ extension LogoPaddingContainerExtension on LogoPadding {
   static string_map.StringMap<LogoPadding> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => LogoPadding.fromPointer(val, needFree: false));
+        ptr, (val) => LogoPaddingImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<LogoPadding>> toPlatformMapVector(
@@ -87,7 +87,7 @@ extension LogoPaddingContainerExtension on LogoPadding {
   static vector.Vector<LogoPadding> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => LogoPadding.fromPointer(val, needFree: false));
+        ptr, (val) => LogoPaddingImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<LogoPadding>> toPlatformVectorVector(

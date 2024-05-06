@@ -13,7 +13,7 @@ extension RequestPointContainerExtension on RequestPoint {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, RequestPoint.toPointer);
+    return string_map.toNativeMap(obj, RequestPointImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension RequestPointContainerExtension on RequestPoint {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, RequestPoint.toPointer);
+    return vector.toNativeVector(obj, RequestPointImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -63,7 +63,7 @@ extension RequestPointContainerExtension on RequestPoint {
   static string_map.StringMap<RequestPoint> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => RequestPoint.fromPointer(val, needFree: false));
+        ptr, (val) => RequestPointImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<RequestPoint>> toPlatformMapVector(
@@ -87,7 +87,7 @@ extension RequestPointContainerExtension on RequestPoint {
   static vector.Vector<RequestPoint> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => RequestPoint.fromPointer(val, needFree: false));
+        ptr, (val) => RequestPointImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<RequestPoint>> toPlatformVectorVector(
@@ -116,7 +116,7 @@ extension RequestPointTypeContainerExtension on RequestPointType {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, RequestPointType.toPointer);
+    return string_map.toNativeMap(obj, RequestPointTypeImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -143,7 +143,7 @@ extension RequestPointTypeContainerExtension on RequestPointType {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, RequestPointType.toPointer);
+    return vector.toNativeVector(obj, RequestPointTypeImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -167,7 +167,7 @@ extension RequestPointTypeContainerExtension on RequestPointType {
   static string_map.StringMap<RequestPointType> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => RequestPointType.fromPointer(val, needFree: false));
+        ptr, (val) => RequestPointTypeImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<RequestPointType>>
@@ -191,7 +191,7 @@ extension RequestPointTypeContainerExtension on RequestPointType {
   static vector.Vector<RequestPointType> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => RequestPointType.fromPointer(val, needFree: false));
+        ptr, (val) => RequestPointTypeImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<RequestPointType>> toPlatformVectorVector(

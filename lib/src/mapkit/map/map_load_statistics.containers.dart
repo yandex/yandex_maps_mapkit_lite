@@ -13,7 +13,7 @@ extension MapLoadStatisticsContainerExtension on MapLoadStatistics {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, MapLoadStatistics.toPointer);
+    return string_map.toNativeMap(obj, MapLoadStatisticsImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -40,7 +40,7 @@ extension MapLoadStatisticsContainerExtension on MapLoadStatistics {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, MapLoadStatistics.toPointer);
+    return vector.toNativeVector(obj, MapLoadStatisticsImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -64,7 +64,7 @@ extension MapLoadStatisticsContainerExtension on MapLoadStatistics {
   static string_map.StringMap<MapLoadStatistics> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => MapLoadStatistics.fromPointer(val, needFree: false));
+        ptr, (val) => MapLoadStatisticsImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<MapLoadStatistics>>
@@ -88,7 +88,7 @@ extension MapLoadStatisticsContainerExtension on MapLoadStatistics {
   static vector.Vector<MapLoadStatistics> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => MapLoadStatistics.fromPointer(val, needFree: false));
+        ptr, (val) => MapLoadStatisticsImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<MapLoadStatistics>> toPlatformVectorVector(

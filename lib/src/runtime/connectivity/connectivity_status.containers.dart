@@ -13,7 +13,7 @@ extension ConnectivityStatusContainerExtension on ConnectivityStatus {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, ConnectivityStatus.toPointer);
+    return string_map.toNativeMap(obj, ConnectivityStatusImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -40,7 +40,7 @@ extension ConnectivityStatusContainerExtension on ConnectivityStatus {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, ConnectivityStatus.toPointer);
+    return vector.toNativeVector(obj, ConnectivityStatusImpl.toPointer);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -64,7 +64,7 @@ extension ConnectivityStatusContainerExtension on ConnectivityStatus {
   static string_map.StringMap<ConnectivityStatus> toPlatformMap(
       ffi.Pointer<ffi.Void> ptr) {
     return string_map.StringMap(
-        ptr, (val) => ConnectivityStatus.fromPointer(val, needFree: false));
+        ptr, (val) => ConnectivityStatusImpl.fromPointer(val, needFree: false));
   }
 
   static string_map.StringMap<vector.Vector<ConnectivityStatus>>
@@ -88,7 +88,7 @@ extension ConnectivityStatusContainerExtension on ConnectivityStatus {
   static vector.Vector<ConnectivityStatus> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => ConnectivityStatus.fromPointer(val, needFree: false));
+        ptr, (val) => ConnectivityStatusImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<ConnectivityStatus>>
