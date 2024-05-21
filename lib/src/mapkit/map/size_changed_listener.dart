@@ -16,7 +16,7 @@ part 'size_changed_listener.impl.dart';
 
 /// Listener for MapWindow size changes.
 abstract class MapSizeChangedListener {
-  /// Called when MapWindow handles the platform SizeChanged event. param@
+  /// Called when MapWindow handles the platform SizeChanged event. param\@
   /// absolute Screen coordinates.
   void onMapWindowSizeChanged(mapkit_map_map_window.MapWindow mapWindow,
       core.int newWidth, core.int newHeight);

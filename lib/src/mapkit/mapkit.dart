@@ -48,9 +48,9 @@ part 'mapkit.impl.dart';
 ///
 /// Initialize the MapKit factory before using this class.
 ///
-/// @attention MapKit holds listener/delegate objects by weak references.
-/// You need to have strong references to them somewhere in the client
-/// code.
+/// \@attention MapKit holds listener/delegate objects by weak
+/// references. You need to have strong references to them somewhere in
+/// the client code.
 abstract class MapKit implements ffi.Finalizable {
   /// Returns a manager that handles offline maps, search index and road
   /// graph.

@@ -2,8 +2,8 @@ export 'package:yandex_maps_mapkit_lite/src/mapkit/offline_cache/offline_cache_m
     hide
         OfflineCacheManagerErrorListenerImpl,
         OfflineCacheManagerClearListenerImpl,
-        OfflineCacheManagerPathGetterListenerImpl,
         OfflineCacheManagerSizeListenerImpl,
-        OfflineCacheManagerContainerExtension,
+        OfflineCacheManagerPathGetterListenerImpl,
         OfflineCacheManagerPathSetterListenerImpl,
-        OfflineCacheManagerImpl;
+        OfflineCacheManagerImpl,
+        OfflineCacheManagerContainerExtension;

@@ -35,8 +35,6 @@ abstract class DataSourceLayer implements ffi.Finalizable {
   /// Invalidates data source and reloads all tiles. Must not be called if
   /// DataSource does not support versioning: LayerOptions.versionSupport =
   /// false;
-  ///
-  /// This method may be called on any thread. Its implementation must be thread-safe.
   void invalidate(core.String version);
 
   /// Clears all cached tiles and starts new requests for tiles that are

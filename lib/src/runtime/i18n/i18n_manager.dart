@@ -95,7 +95,7 @@ class I18nManagerFactory {
   }
 
   /// Sets the application's locale. Useful only if MapKit is not used by
-  /// the application. Otherwise, use {@code
+  /// the application. Otherwise, use {\@code
   /// mapkit.MapKitFactory.setLocale()}. Also useless if someone else has
   /// already set the locale (produses warning and does nothing). Can be
   /// set to none, in this case system locale will be used.

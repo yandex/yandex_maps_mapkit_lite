@@ -12,14 +12,19 @@ class ViewProvider {
   ViewProvider(
       {FlutterView? view,
       required FutureOr<Widget> Function() builder,
+      required ViewConfiguration Function(MediaQueryData mediaQuery)
+          configurationFactory,
       this.textDirection = TextDirection.ltr,
       this.id,
       this.cacheable = false})
       : _view = view ?? WidgetsBinding.instance.window,
-        _builder = builder;
+        _builder = builder,
+        _configurationFactory = configurationFactory;
 
   final FlutterView _view;
   final FutureOr<Widget> Function() _builder;
+  final ViewConfiguration Function(MediaQueryData mediaQuery)
+      _configurationFactory;
   final TextDirection textDirection;
   final String? id;
   final bool cacheable;
@@ -29,14 +34,9 @@ class ViewProvider {
   Future<Image> _drawWidget() async {
     final repaintBoundary = RenderRepaintBoundary();
     final widget = await _builder();
-    final mediaQuery = MediaQueryData.fromWindow(_view);
+    final mediaQuery = MediaQueryData.fromView(_view);
     final renderView = _OffscreenRenderView(
-        _view,
-        ViewConfiguration(
-          size: mediaQuery.size,
-          devicePixelRatio: mediaQuery.devicePixelRatio,
-        ),
-        repaintBoundary);
+        _view, _configurationFactory(mediaQuery), repaintBoundary);
 
     renderView.markNeedsLayout();
     final pipelineOwner = PipelineOwner()..rootNode = renderView;

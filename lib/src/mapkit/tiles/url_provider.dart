@@ -27,8 +27,6 @@ abstract class TilesUrlProvider {
   /// Create s a URL based on the tile ID, version, and features. Features
   /// are some layer customisations. Tiles with appropriate features are
   /// prioretized over tiles without them when loading.
-  ///
-  /// This method may be called on any thread. Its implementation must be thread-safe.
   core.String formatUrl(
       mapkit_tile_id.TileId tileId,
       mapkit_version.Version version,

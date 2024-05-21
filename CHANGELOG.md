@@ -1,3 +1,8 @@
+## 4.6.1-beta2
+
+* Fix ViewProvider for compability with flutter 3.22.0
+* Remove empty files
+
 ## 4.6.1-beta1
 
 * Fix crashes

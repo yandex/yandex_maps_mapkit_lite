@@ -20,8 +20,6 @@ part 'image_url_provider.impl.dart';
 
 abstract class ImagesImageUrlProvider {
   /// Generates an URL that is used to load described image.
-  ///
-  /// This method may be called on any thread. Its implementation must be thread-safe.
   core.String formatUrl(
       mapkit_images_image_data_descriptor.ImagesImageDataDescriptor descriptor);
 }

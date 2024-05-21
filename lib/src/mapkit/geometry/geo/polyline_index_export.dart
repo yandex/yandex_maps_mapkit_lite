@@ -2,5 +2,5 @@ export 'package:yandex_maps_mapkit_lite/src/mapkit/geometry/geo/polyline_index.d
     hide
         PolylineIndexPriorityImpl,
         PolylineIndexPriorityContainerExtension,
-        PolylineIndexContainerExtension,
-        PolylineIndexImpl;
+        PolylineIndexImpl,
+        PolylineIndexContainerExtension;

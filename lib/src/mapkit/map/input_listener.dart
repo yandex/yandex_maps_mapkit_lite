@@ -19,7 +19,7 @@ part 'input_listener.impl.dart';
 /// Listener for user interactions with the map.
 abstract class MapInputListener {
   /// Called when a tap occurred unless a tap was handled by geo objects or
-  /// map objects. param@ position absolute screen coordinates
+  /// map objects. param\@ position absolute screen coordinates
   void onMapTap(mapkit_map_map.Map map, mapkit_geometry_point.Point point);
 
   /// Called when a long tap occurred.

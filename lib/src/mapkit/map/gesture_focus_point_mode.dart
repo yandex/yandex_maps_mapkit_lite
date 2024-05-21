@@ -21,8 +21,8 @@ enum GestureFocusPointMode {
 
   /// All gestures: pinch and stretch, tap and swipe, double tap, tap with
   /// two fingers, rotation use provided gesture focus point and ignore
-  /// their source point. @attention Scroll is suppressed when this mode is
-  /// on and "pinch and stretch" or "rotation" gesture performed
+  /// their source point. \@attention Scroll is suppressed when this mode
+  /// is on and "pinch and stretch" or "rotation" gesture performed
   AffectsAllGestures,
   ;
 }

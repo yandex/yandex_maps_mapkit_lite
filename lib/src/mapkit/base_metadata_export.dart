@@ -1,2 +1,1 @@
-export 'package:yandex_maps_mapkit_lite/src/mapkit/base_metadata.dart'
-    hide BaseMetadataImpl;
+export 'package:yandex_maps_mapkit_lite/src/mapkit/base_metadata.dart';

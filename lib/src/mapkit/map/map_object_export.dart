@@ -1,2 +1,2 @@
 export 'package:yandex_maps_mapkit_lite/src/mapkit/map/map_object.dart'
-    hide MapObjectContainerExtension, MapObjectImpl;
+    hide MapObjectImpl, MapObjectContainerExtension;

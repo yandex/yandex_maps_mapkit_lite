@@ -25,8 +25,6 @@ part 'tile_provider.impl.dart';
 /// Generates tiles.
 abstract class TileProvider {
   /// Generates tile.
-  ///
-  /// This method will be called on a background thread.
   core.Future<mapkit_raw_tile.RawTile> load(
       mapkit_tile_id.TileId tileId,
       mapkit_version.Version version,

@@ -25,7 +25,7 @@ part 'dummy_location_manager.impl.dart';
 /// passing any locations via setLocation method and notifying all
 /// consumers.
 ///
-/// @attention The main reason why we need this class is to allow the
+/// \@attention The main reason why we need this class is to allow the
 /// user to set this LocationManager to Guide via setLocationManager,
 /// just to correct any desirable location via Guide.
 abstract class DummyLocationManager

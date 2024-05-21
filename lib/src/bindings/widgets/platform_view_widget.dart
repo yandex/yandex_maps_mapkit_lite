@@ -1,29 +1,24 @@
-import 'package:flutter/material.dart';
-
-import 'package:yandex_maps_mapkit_lite/mapkit.dart';
-import 'package:yandex_maps_mapkit_lite/mapkit_factory.dart';
+import 'package:flutter/widgets.dart';
 import 'package:yandex_maps_mapkit_lite/src/bindings/view/platform_view.dart';
 import 'package:yandex_maps_mapkit_lite/src/bindings/view/platform_view_type.dart';
 
-class YandexMap extends StatefulWidget {
-  const YandexMap({
+abstract class PlatformViewWidget extends StatefulWidget {
+  const PlatformViewWidget({
     super.key,
-    required this.onMapCreated,
+    required this.onViewCreated,
     this.platformViewType = PlatformViewType.Compat,
     this.textDirection,
   });
 
-  @override
-  State<StatefulWidget> createState() {
-    return _MapState();
-  }
-
-  final void Function(MapWindow) onMapCreated;
+  final bool Function(PlatformView) onViewCreated;
   final PlatformViewType platformViewType;
   final TextDirection? textDirection;
+
+  @override
+  State createState() => _PlatformViewWidgetState();
 }
 
-class _MapState extends State<YandexMap> {
+class _PlatformViewWidgetState extends State<PlatformViewWidget> {
   @override
   Widget build(BuildContext context) {
     return PlatformView.create(
@@ -31,11 +26,7 @@ class _MapState extends State<YandexMap> {
         if (!mounted) {
           return false;
         }
-
-        final window = mapkit.createMapWindow(view);
-        widget.onMapCreated(window);
-
-        return true;
+        return widget.onViewCreated(view);
       },
       platformViewType: widget.platformViewType,
       textDirection: widget.textDirection,

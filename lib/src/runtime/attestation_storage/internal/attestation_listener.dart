@@ -22,12 +22,8 @@ part 'attestation_listener.impl.dart';
 ///
 abstract class AttestationListener implements ffi.Finalizable {
   /// Attestation was received.
-  ///
-  /// This method will be called on a background thread.
   void onAttestationReceived(typed_data.ByteBuffer response);
 
   /// An error occurred during Attestation request.
-  ///
-  /// This method will be called on a background thread.
   void onAttestationFailed(core.String message);
 }

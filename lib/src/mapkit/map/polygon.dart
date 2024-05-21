@@ -50,7 +50,7 @@ abstract class PolygonMapObject
   set strokeWidth(core.double val);
 
   /// Sets the fill color. Default: hexademical RGBA code 0x0066FF99.
-  /// @attention Fill color is ignored if a pattern is set.
+  /// \@attention Fill color is ignored if a pattern is set.
   ui.Color get fillColor;
   set fillColor(ui.Color val);
 
@@ -61,16 +61,16 @@ abstract class PolygonMapObject
   core.bool get geodesic;
   set geodesic(core.bool val);
 
-  /// Sets pattern to fill polygon. @attention Original linear sizes of
-  /// pattern should be equal to power of 2. @attention Fill color is
+  /// Sets pattern to fill polygon. \@attention Original linear sizes of
+  /// pattern should be equal to power of 2. \@attention Fill color is
   /// ignored if a pattern is set.
   void setAnimatedPattern(
     animated_image_provider.AnimatedImageProvider animatedImage, {
     required core.double scale,
   });
 
-  /// Sets pattern to fill polygon. @attention Original linear sizes of
-  /// pattern should be equal to power of 2. @attention Fill color is
+  /// Sets pattern to fill polygon. \@attention Original linear sizes of
+  /// pattern should be equal to power of 2. \@attention Fill color is
   /// ignored if pattern is set.
   void setPattern(
     image_provider.ImageProvider image, {
