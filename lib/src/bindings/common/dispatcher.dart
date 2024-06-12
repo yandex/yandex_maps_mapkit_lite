@@ -1,5 +1,6 @@
 import 'package:meta/meta.dart';
 import 'package:ffi/ffi.dart';
+import 'package:yandex_maps_mapkit_lite/src/bindings/common/platform_user_data.dart';
 
 import 'dart:ffi';
 import 'dart:isolate';
@@ -108,3 +109,14 @@ abstract class AsyncDispatcherHeap<T> {
     }
   }
 }
+
+void _interfaceDestructedHandler(dynamic data) {
+  final int nativePtr = data;
+  platformUserData.remove(nativePtr);
+}
+
+int createInterfaceDestructedPort() =>
+    _interfaceDestructedPort.sendPort.nativePort;
+
+final _interfaceDestructedPort = ReceivePort()
+  ..listen(_interfaceDestructedHandler);

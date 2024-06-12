@@ -10,6 +10,7 @@ export 'package:yandex_maps_mapkit_lite/src/runtime/network/errors_export.dart';
 export 'package:yandex_maps_mapkit_lite/src/runtime/attestation_storage/internal/attestation_listener_export.dart';
 export 'package:yandex_maps_mapkit_lite/src/runtime/attestation_storage/internal/platform_keystore_export.dart';
 export 'package:yandex_maps_mapkit_lite/src/runtime/graphics_state/graphics_view_state_export.dart';
+export 'package:yandex_maps_mapkit_lite/src/runtime/view/gpu_info_export.dart';
 export 'package:yandex_maps_mapkit_lite/src/runtime/view/graphics_api_type_export.dart';
 export 'package:yandex_maps_mapkit_lite/src/runtime/attestation/ec_public_key_export.dart';
 export 'package:yandex_maps_mapkit_lite/src/runtime/i18n/i18n_manager_export.dart';

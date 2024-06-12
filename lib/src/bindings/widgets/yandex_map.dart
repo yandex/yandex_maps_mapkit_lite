@@ -7,6 +7,8 @@ class YandexMap extends PlatformViewWidget {
     super.key,
     super.platformViewType,
     super.textDirection,
+    super.gestureRecognizers,
+    super.hitTestBehavior,
     required this.onMapCreated,
     this.scale,
   }) : super(

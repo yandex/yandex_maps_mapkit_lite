@@ -1,0 +1,1 @@
+final platformUserData = <int, Object>{};

@@ -1,3 +1,8 @@
+## 4.6.1-beta3
+
+* Add userData property to MapObject
+* Add settings gestureRecognizer for widgets
+
 ## 4.6.1-beta2
 
 * Fix ViewProvider for compability with flutter 3.22.0
