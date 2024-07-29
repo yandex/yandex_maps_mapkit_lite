@@ -33,6 +33,7 @@ class GeoObjectTapEventImpl implements GeoObjectTapEvent, ffi.Finalizable {
     return (obj as GeoObjectTapEventImpl).ptr;
   }
 
+  @core.override
   core.bool isValid() {
     return _GeoObjectTapEvent_check(ptr);
   }
@@ -68,3 +69,11 @@ final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)
                     ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
             'yandex_flutter_mapkit_layers_GeoObjectTapEvent_get_geoObject')
         .asFunction();
+
+final void Function(ffi.Pointer<ffi.Void>, core.int) _GeoObjectTapEvent_set =
+    lib.library
+        .lookup<
+                ffi.NativeFunction<
+                    ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Int64)>>(
+            'yandex_flutter_mapkit_layers_GeoObjectTapEvent_set_')
+        .asFunction(isLeaf: true);

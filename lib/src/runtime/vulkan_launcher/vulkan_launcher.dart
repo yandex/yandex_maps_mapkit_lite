@@ -6,7 +6,7 @@ import 'dart:core' as core;
 
 part 'vulkan_launcher.impl.dart';
 
-///
+/// @nodoc
 class VulkanLauncher {
   VulkanLauncher._();
 

@@ -33,6 +33,7 @@ class MapKitImpl implements MapKit, ffi.Finalizable {
     return (obj as MapKitImpl).ptr;
   }
 
+  @core.override
   core.bool isValid() {
     return _MapKit_check(ptr);
   }
@@ -94,16 +95,6 @@ class MapKitImpl implements MapKit, ffi.Finalizable {
   mapkit_location_location_manager.LocationManager createLocationManager() {
     return mapkit_location_location_manager.LocationManagerImpl.fromNativePtr(
         _MapKit_createLocationManager(ptr));
-  }
-
-  mapkit_location_location_manager.LocationManager
-      createLocationManagerWithActivityType(
-          runtime_sensors_sensors.LocationActivityType activityType) {
-    return mapkit_location_location_manager.LocationManagerImpl.fromNativePtr(
-        _MapKit_createLocationManagerWithActivityType(
-            ptr,
-            runtime_sensors_sensors.LocationActivityTypeImpl.toInt(
-                activityType)));
   }
 
   mapkit_location_location_simulator.LocationSimulator
@@ -234,16 +225,6 @@ final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)
             'yandex_flutter_mapkit_MapKit_createLocationManager')
         .asFunction();
 final ffi.Pointer<ffi.Void> Function(
-    ffi.Pointer<ffi.Void>,
-    core
-        .int) _MapKit_createLocationManagerWithActivityType = lib.library
-    .lookup<
-            ffi.NativeFunction<
-                ffi.Pointer<ffi.Void> Function(
-                    ffi.Pointer<ffi.Void>, ffi.Int64)>>(
-        'yandex_flutter_mapkit_MapKit_createLocationManagerWithActivityType')
-    .asFunction();
-final ffi.Pointer<ffi.Void> Function(
         ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)
     _MapKit_createLocationSimulatorWithGeometry = lib.library
         .lookup<
@@ -302,3 +283,9 @@ final ffi.Pointer<ffi.Void> Function(
                         ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>(
             'yandex_flutter_mapkit_MapKit_createUserLocationLayer')
         .asFunction();
+final void Function(ffi.Pointer<ffi.Void>, core.int) _MapKit_set = lib.library
+    .lookup<
+        ffi.NativeFunction<
+            ffi.Void Function(ffi.Pointer<ffi.Void>,
+                ffi.Int64)>>('yandex_flutter_mapkit_MapKit_set_')
+    .asFunction(isLeaf: true);

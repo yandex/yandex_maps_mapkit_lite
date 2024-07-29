@@ -33,6 +33,7 @@ class ErrorImpl implements Error, ffi.Finalizable {
     return (obj as ErrorImpl).ptr;
   }
 
+  @core.override
   core.bool isValid() {
     return _Error_check(ptr);
   }
@@ -52,4 +53,11 @@ final _Error_free = lib.library
 final core.bool Function(ffi.Pointer<ffi.Void>) _Error_check = lib.library
     .lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ffi.Void>)>>(
         'yandex_flutter_runtime_Error_check')
+    .asFunction(isLeaf: true);
+
+final void Function(ffi.Pointer<ffi.Void>, core.int) _Error_set = lib.library
+    .lookup<
+        ffi.NativeFunction<
+            ffi.Void Function(ffi.Pointer<ffi.Void>,
+                ffi.Int64)>>('yandex_flutter_runtime_Error_set_')
     .asFunction(isLeaf: true);

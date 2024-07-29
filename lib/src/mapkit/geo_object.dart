@@ -26,6 +26,8 @@ import 'package:yandex_maps_mapkit_lite/src/mapkit/geometry/geometry.dart'
 part 'geo_object.containers.dart';
 part 'geo_object.impl.dart';
 
+/// Geo object. Can be displayed as a placemark, polyline, polygon, and
+/// other, depending on the geometry type.
 abstract final class GeoObject implements ffi.Finalizable {
   factory GeoObject(
           core.String? name,
@@ -39,13 +41,29 @@ abstract final class GeoObject implements ffi.Finalizable {
       GeoObjectImpl(name, descriptionText, geometry, boundingBox,
           attributionMap, metadataContainer, aref);
 
+  /// Object name.
+  ///
   core.String? get name;
+
+  /// The description of the object.
+  ///
   core.String? get descriptionText;
+
+  /// The object's geometry.
   core.List<mapkit_geometry_geometry.Geometry> get geometry;
+
+  /// A rectangular box around the object.
+  ///
   mapkit_geometry_geometry.BoundingBox? get boundingBox;
+
+  /// The attribution of information to a specific author.
   core.Map<core.String, mapkit_attribution.Attribution> get attributionMap;
+
+  /// The object's metadata.
   type_dictionary.TypeDictionaryBase<mapkit_base_metadata.BaseMetadata>
       get metadataContainer;
+
+  /// The name of the internet resource.
   core.List<core.String> get aref;
 
   @core.override

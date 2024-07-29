@@ -22,14 +22,37 @@ import 'package:yandex_maps_mapkit_lite/src/mapkit/geometry/point.dart'
 part 'location.containers.dart';
 part 'location.impl.dart';
 
+/// The geographical position of the object.
+
 final class Location {
+  /// The geographical position.
   final mapkit_geometry_point.Point position;
+
+  /// Location accuracy in meters.
+  ///
   final core.double? accuracy;
+
+  /// The altitude of the location in meters.
+  ///
   final core.double? altitude;
+
+  /// The accuracy of the altitude in meters.
+  ///
   final core.double? altitudeAccuracy;
+
+  /// The current heading in degrees relative to true north, clockwise.
+  ///
   final core.double? heading;
+
+  /// The speed in meters per second.
+  ///
   final core.double? speed;
+
+  /// Absolute timestamp, in milliseconds since January 1, 1970.
   final core.DateTime absoluteTimestamp;
+
+  /// Relative timestamp, number of milliseconds passed on steady clock.
+  /// Use for interval calculation.
   final core.DateTime relativeTimestamp;
 
   const Location(

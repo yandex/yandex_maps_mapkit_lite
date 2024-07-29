@@ -100,6 +100,13 @@ final ffi.Pointer<ffi.Void> Function(
                     ffi.Double)>>(
         'yandex_flutter_mapkit_geometry_geo_PolylineIndex_closestPolylinePosition')
     .asFunction();
+final void Function(ffi.Pointer<ffi.Void>, core.int) _PolylineIndex_set = lib
+    .library
+    .lookup<
+            ffi.NativeFunction<
+                ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Int64)>>(
+        'yandex_flutter_mapkit_geometry_geo_PolylineIndex_set_')
+    .asFunction(isLeaf: true);
 
 @bindings_annotations.ContainerData(
     toNative: 'PolylineIndexPriorityImpl.toPointer',

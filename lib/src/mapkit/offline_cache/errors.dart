@@ -20,4 +20,6 @@ part 'errors.impl.dart';
 
 /// Cache path doesn't exist or there no read permissions.
 abstract class CachePathUnavailable
-    implements runtime_local_error.LocalError, ffi.Finalizable {}
+    implements runtime_local_error.LocalError, ffi.Finalizable {
+  core.bool isValid();
+}

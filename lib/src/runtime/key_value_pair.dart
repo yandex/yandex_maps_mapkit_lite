@@ -20,8 +20,13 @@ import 'package:yandex_maps_mapkit_lite/src/bindings/common/vector.dart'
 part 'key_value_pair.containers.dart';
 part 'key_value_pair.impl.dart';
 
+/// Universal key-value data.
+
 final class KeyValuePair {
+  /// Data key. For example, "currency".
   final core.String key;
+
+  /// Data value. For example, "USD".
   final core.String value;
 
   const KeyValuePair({

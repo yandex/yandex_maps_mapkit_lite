@@ -34,6 +34,7 @@ class PolylineMapObjectImpl extends mapkit_map_map_object.MapObjectImpl
     return (obj as PolylineMapObjectImpl).ptr;
   }
 
+  @core.override
   core.bool isValid() {
     return _PolylineMapObject_check(ptr);
   }
@@ -503,3 +504,10 @@ final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)
                     ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
             'yandex_flutter_mapkit_map_PolylineMapObject_arrows')
         .asFunction();
+final void Function(ffi.Pointer<ffi.Void>, core.int) _PolylineMapObject_set =
+    lib.library
+        .lookup<
+                ffi.NativeFunction<
+                    ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Int64)>>(
+            'yandex_flutter_mapkit_map_PolylineMapObject_set_')
+        .asFunction(isLeaf: true);

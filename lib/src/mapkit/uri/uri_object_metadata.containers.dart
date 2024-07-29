@@ -13,7 +13,7 @@ extension UriObjectMetadataContainerExtension on UriObjectMetadata {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, UriObjectMetadataImpl.toPointer);
+    return string_map.toNativeMap(obj, UriObjectMetadataImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -40,7 +40,7 @@ extension UriObjectMetadataContainerExtension on UriObjectMetadata {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, UriObjectMetadataImpl.toPointer);
+    return vector.toNativeVector(obj, UriObjectMetadataImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(

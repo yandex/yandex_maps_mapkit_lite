@@ -13,7 +13,7 @@ extension EcPublicKeyContainerExtension on EcPublicKey {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, EcPublicKeyImpl.toPointer);
+    return string_map.toNativeMap(obj, EcPublicKeyImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension EcPublicKeyContainerExtension on EcPublicKey {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, EcPublicKeyImpl.toPointer);
+    return vector.toNativeVector(obj, EcPublicKeyImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(

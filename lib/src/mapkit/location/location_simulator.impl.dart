@@ -316,3 +316,10 @@ final void Function(
                 ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Bool)>>(
         'yandex_flutter_mapkit_location_LocationSimulator_setLocationSpeedProviding')
     .asFunction();
+final void Function(ffi.Pointer<ffi.Void>, core.int) _LocationSimulator_set =
+    lib.library
+        .lookup<
+                ffi.NativeFunction<
+                    ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Int64)>>(
+            'yandex_flutter_mapkit_location_LocationSimulator_set_')
+        .asFunction(isLeaf: true);

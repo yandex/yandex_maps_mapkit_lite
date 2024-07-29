@@ -18,10 +18,19 @@ import 'package:yandex_maps_mapkit_lite/src/mapkit/geometry/point.dart'
 part 'visible_region.containers.dart';
 part 'visible_region.impl.dart';
 
+/// Defines the visible region.
+
 final class VisibleRegion {
+  /// Top-left of the visible region.
   final mapkit_geometry_point.Point topLeft;
+
+  /// Top-right of the visible region.
   final mapkit_geometry_point.Point topRight;
+
+  /// Bottom-left of the visible region.
   final mapkit_geometry_point.Point bottomLeft;
+
+  /// Bottom-right of the visible region.
   final mapkit_geometry_point.Point bottomRight;
 
   const VisibleRegion(

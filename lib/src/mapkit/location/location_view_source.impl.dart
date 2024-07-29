@@ -40,3 +40,11 @@ class LocationViewSourceImpl implements LocationViewSource, ffi.Finalizable {
 final _LocationViewSource_free = lib.library
     .lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
         'yandex_flutter_mapkit_location_LocationViewSource_free');
+
+final void Function(ffi.Pointer<ffi.Void>, core.int) _LocationViewSource_set =
+    lib.library
+        .lookup<
+                ffi.NativeFunction<
+                    ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Int64)>>(
+            'yandex_flutter_mapkit_location_LocationViewSource_set_')
+        .asFunction(isLeaf: true);

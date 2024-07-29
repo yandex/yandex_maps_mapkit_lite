@@ -1,7 +1,7 @@
 part of 'personalized_poi_metadata.dart';
 
 @bindings_annotations.ContainerData(
-    toNative: 'PersonalizedPoiExtraMetadataEntryImpl.toPointer',
+    toNative: 'PersonalizedPoiExtraMetadataEntryImpl.getNativePtr',
     toPlatform:
         '(val) => PersonalizedPoiExtraMetadataEntryImpl.fromPointer(val, needFree: false)',
     platformType: 'PersonalizedPoiExtraMetadataEntry')
@@ -58,18 +58,6 @@ final class PersonalizedPoiExtraMetadataEntryImpl
 
     return result;
   }
-
-  static ffi.Pointer<ffi.Void> toPointer(
-      PersonalizedPoiExtraMetadataEntry? val) {
-    if (val == null) {
-      return ffi.nullptr;
-    }
-
-    final result = malloc.call<ffi.Pointer<ffi.Void>>();
-    result.value = _PersonalizedPoiExtraMetadataEntry_clone(getNativePtr(val));
-
-    return result.cast<ffi.Void>();
-  }
 }
 
 class _PersonalizedPoiExtraMetadataEntryFactory
@@ -125,16 +113,6 @@ final native_types.NativeString Function()
             'yandex_flutter_mapkit_personalized_poi_PersonalizedPoiExtraMetadataEntry_name')
         .asFunction(isLeaf: true);
 
-final ffi.Pointer<ffi.Void> Function(
-    ffi
-        .Pointer<ffi.Void>) _PersonalizedPoiExtraMetadataEntry_clone = lib
-    .library
-    .lookup<
-            ffi.NativeFunction<
-                ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
-        'yandex_flutter_mapkit_personalized_poi_PersonalizedPoiExtraMetadataEntry_clone')
-    .asFunction(isLeaf: true);
-
 final _PersonalizedPoiExtraMetadataEntry_free = lib.library.lookup<
         ffi.NativeFunction<ffi.Void Function(ffi.Void)>>(
     'yandex_flutter_mapkit_personalized_poi_PersonalizedPoiExtraMetadataEntry_free');
@@ -171,7 +149,7 @@ final ffi.Pointer<ffi.Void> Function(
     .asFunction(isLeaf: true);
 
 @bindings_annotations.ContainerData(
-    toNative: 'PersonalizedPoiExtraMetadataImpl.toPointer',
+    toNative: 'PersonalizedPoiExtraMetadataImpl.getNativePtr',
     toPlatform:
         '(val) => PersonalizedPoiExtraMetadataImpl.fromPointer(val, needFree: false)',
     platformType: 'PersonalizedPoiExtraMetadata')
@@ -225,17 +203,6 @@ final class PersonalizedPoiExtraMetadataImpl
 
     return result;
   }
-
-  static ffi.Pointer<ffi.Void> toPointer(PersonalizedPoiExtraMetadata? val) {
-    if (val == null) {
-      return ffi.nullptr;
-    }
-
-    final result = malloc.call<ffi.Pointer<ffi.Void>>();
-    result.value = _PersonalizedPoiExtraMetadata_clone(getNativePtr(val));
-
-    return result.cast<ffi.Void>();
-  }
 }
 
 class _PersonalizedPoiExtraMetadataFactory
@@ -287,15 +254,6 @@ final native_types.NativeString Function() _PersonalizedPoiExtraMetadata_name = 
     .library
     .lookup<ffi.NativeFunction<native_types.NativeString Function()>>(
         'yandex_flutter_mapkit_personalized_poi_PersonalizedPoiExtraMetadata_name')
-    .asFunction(isLeaf: true);
-
-final ffi.Pointer<ffi.Void> Function(
-    ffi
-        .Pointer<ffi.Void>) _PersonalizedPoiExtraMetadata_clone = lib.library
-    .lookup<
-            ffi.NativeFunction<
-                ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
-        'yandex_flutter_mapkit_personalized_poi_PersonalizedPoiExtraMetadata_clone')
     .asFunction(isLeaf: true);
 
 final _PersonalizedPoiExtraMetadata_free = lib.library.lookup<

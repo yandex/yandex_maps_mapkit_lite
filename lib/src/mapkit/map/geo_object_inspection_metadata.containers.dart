@@ -15,7 +15,7 @@ extension GeoObjectInspectionMetadataContainerExtension
     }
 
     return string_map.toNativeMap(
-        obj, GeoObjectInspectionMetadataImpl.toPointer);
+        obj, GeoObjectInspectionMetadataImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -45,7 +45,7 @@ extension GeoObjectInspectionMetadataContainerExtension
     }
 
     return vector.toNativeVector(
-        obj, GeoObjectInspectionMetadataImpl.toPointer);
+        obj, GeoObjectInspectionMetadataImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(

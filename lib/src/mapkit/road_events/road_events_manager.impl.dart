@@ -69,6 +69,13 @@ final void Function(ffi.Pointer<ffi.Void>) _EventInfoSession_cancel = lib
     .lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
         'yandex_flutter_mapkit_road_events_RoadEventsEventInfoSession_cancel')
     .asFunction();
+final void Function(ffi.Pointer<ffi.Void>, core.int)
+    _RoadEventsEventInfoSession_set = lib.library
+        .lookup<
+                ffi.NativeFunction<
+                    ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Int64)>>(
+            'yandex_flutter_mapkit_road_events_RoadEventsEventInfoSession_set_')
+        .asFunction(isLeaf: true);
 
 final class RoadEventsEventInfoSessionEventInfoListenerImpl
     implements RoadEventsEventInfoSessionEventInfoListener {
@@ -240,3 +247,10 @@ final ffi.Pointer<ffi.Void> Function(
                     native_types.NativeString, ffi.Pointer<ffi.Void>)>>(
         'yandex_flutter_mapkit_road_events_RoadEventsManager_requestEventInfo')
     .asFunction();
+final void Function(ffi.Pointer<ffi.Void>, core.int) _RoadEventsManager_set =
+    lib.library
+        .lookup<
+                ffi.NativeFunction<
+                    ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Int64)>>(
+            'yandex_flutter_mapkit_road_events_RoadEventsManager_set_')
+        .asFunction(isLeaf: true);

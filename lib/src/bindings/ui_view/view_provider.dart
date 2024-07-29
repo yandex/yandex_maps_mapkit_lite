@@ -16,7 +16,8 @@ class ViewProvider {
           configurationFactory,
       this.textDirection = TextDirection.ltr,
       this.id,
-      this.cacheable = false})
+      this.cacheable = false,
+      this.onError})
       : _view = view ?? WidgetsBinding.instance.window,
         _builder = builder,
         _configurationFactory = configurationFactory;
@@ -28,6 +29,7 @@ class ViewProvider {
   final TextDirection textDirection;
   final String? id;
   final bool cacheable;
+  final Function? onError;
 
   static final _heap = <Pointer<Void>, ViewProvider>{};
 
@@ -43,7 +45,13 @@ class ViewProvider {
     renderView.prepareInitialFrame();
     pipelineOwner.requestVisualUpdate();
 
-    final buildOwner = BuildOwner(focusManager: FocusManager());
+    bool isDirty = false;
+
+    final buildOwner = BuildOwner(
+        focusManager: FocusManager(),
+        onBuildScheduled: () {
+          isDirty = true;
+        });
     final rootElement = RenderObjectToWidgetAdapter<RenderBox>(
       container: repaintBoundary,
       child: MediaQuery(
@@ -72,11 +80,39 @@ class ViewProvider {
     pipelineOwner
       ..flushCompositingBits()
       ..flushPaint();
+
     renderView.compositeFrame();
     pipelineOwner.flushSemantics();
     buildOwner.finalizeTree();
 
-    return repaintBoundary.toImage(pixelRatio: mediaQuery.devicePixelRatio);
+    Image? image;
+
+    int retryCounter = 3;
+
+    do {
+      isDirty = false;
+
+      image?.dispose();
+
+      image = await repaintBoundary.toImage(
+          pixelRatio: mediaQuery.devicePixelRatio);
+
+      if (isDirty) {
+        buildOwner.buildScope(rootElement);
+        pipelineOwner.flushLayout();
+        pipelineOwner.flushCompositingBits();
+        pipelineOwner.flushPaint();
+        renderView.compositeFrame();
+        pipelineOwner.flushSemantics();
+        buildOwner.finalizeTree();
+      }
+
+      retryCounter--;
+    } while (isDirty && retryCounter >= 0);
+
+    buildOwner.finalizeTree();
+
+    return image;
   }
 }
 
@@ -99,11 +135,10 @@ class _OffscreenRenderView extends RenderView {
 
 Pointer<Void> _onRequest(Pointer<Void> nativeObject) {
   final provider = ViewProvider._heap[nativeObject]!;
-  return toNativeImageProvider(ImageProvider(
-    provider._drawWidget,
-    id: provider.id,
-    cacheable: provider.cacheable,
-  ));
+  return toNativeImageProvider(ImageProvider(provider._drawWidget,
+      id: provider.id,
+      cacheable: provider.cacheable,
+      onError: provider.onError));
 }
 
 void _onDestruction(Pointer<Void> nativeObject) {

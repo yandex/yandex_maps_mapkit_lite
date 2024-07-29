@@ -13,7 +13,7 @@ extension JamStyleContainerExtension on JamStyle {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, JamStyleImpl.toPointer);
+    return string_map.toNativeMap(obj, JamStyleImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension JamStyleContainerExtension on JamStyle {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, JamStyleImpl.toPointer);
+    return vector.toNativeVector(obj, JamStyleImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(

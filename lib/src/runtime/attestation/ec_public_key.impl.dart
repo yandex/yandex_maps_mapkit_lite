@@ -1,7 +1,7 @@
 part of 'ec_public_key.dart';
 
 @bindings_annotations.ContainerData(
-    toNative: 'EcPublicKeyImpl.toPointer',
+    toNative: 'EcPublicKeyImpl.getNativePtr',
     toPlatform: '(val) => EcPublicKeyImpl.fromPointer(val, needFree: false)',
     platformType: 'EcPublicKey')
 final class EcPublicKeyImpl implements EcPublicKey {
@@ -45,27 +45,7 @@ final class EcPublicKeyImpl implements EcPublicKey {
 
     return result;
   }
-
-  static ffi.Pointer<ffi.Void> toPointer(EcPublicKey? val) {
-    if (val == null) {
-      return ffi.nullptr;
-    }
-
-    final result = malloc.call<ffi.Pointer<ffi.Void>>();
-    result.value = _EcPublicKey_clone(getNativePtr(val));
-
-    return result.cast<ffi.Void>();
-  }
 }
-
-final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>) _EcPublicKey_clone =
-    lib
-        .library
-        .lookup<
-                ffi.NativeFunction<
-                    ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
-            'yandex_flutter_runtime_attestation_EcPublicKey_clone')
-        .asFunction(isLeaf: true);
 
 final _EcPublicKey_free = lib.library
     .lookup<ffi.NativeFunction<ffi.Void Function(ffi.Void)>>(

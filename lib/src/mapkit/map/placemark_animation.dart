@@ -66,4 +66,6 @@ abstract class PlacemarkAnimation implements ffi.Finalizable {
 
   /// Pauses animation.
   void pause();
+
+  core.bool isValid();
 }

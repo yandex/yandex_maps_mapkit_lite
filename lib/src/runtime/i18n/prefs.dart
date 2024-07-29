@@ -41,8 +41,13 @@ enum TimeFormat {
   ;
 }
 
+/// Localization preferences.
+
 final class I18nPrefs {
+  /// System of measurement (metric or imperial).
   final SystemOfMeasurement som;
+
+  /// Time format (12- or 24-hour).
   final TimeFormat timeFormat;
 
   const I18nPrefs(this.som, this.timeFormat);

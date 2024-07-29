@@ -38,8 +38,6 @@ import 'package:yandex_maps_mapkit_lite/src/mapkit/traffic/traffic_layer.dart'
     as mapkit_traffic_traffic_layer;
 import 'package:yandex_maps_mapkit_lite/src/mapkit/user_location/user_location.dart'
     as mapkit_user_location_user_location;
-import 'package:yandex_maps_mapkit_lite/src/runtime/sensors/sensors.dart'
-    as runtime_sensors_sensors;
 
 part 'mapkit.containers.dart';
 part 'mapkit.impl.dart';
@@ -64,7 +62,7 @@ abstract class MapKit implements ffi.Finalizable {
   /// Returns the version of the MapKit bundle.
   core.String get version;
 
-  ///
+  /// @nodoc
   /// Sets the key for API access.
   ///
   /// [key] Key issued in the Developer Dashboard.
@@ -101,12 +99,6 @@ abstract class MapKit implements ffi.Finalizable {
   /// Creates a manager that allows to listen for device location updates.
   mapkit_location_location_manager.LocationManager createLocationManager();
 
-  /// Creates a manager that allows to listen for device location updates,
-  /// uses activityType as a hint.
-  mapkit_location_location_manager.LocationManager
-      createLocationManagerWithActivityType(
-          runtime_sensors_sensors.LocationActivityType activityType);
-
   /// Creates a suspended LocationSimulator object with the given geometry.
   mapkit_location_location_simulator.LocationSimulator
       createLocationSimulatorWithGeometry(
@@ -121,7 +113,7 @@ abstract class MapKit implements ffi.Finalizable {
   mapkit_location_dummy_location_manager.DummyLocationManager
       createDummyLocationManager();
 
-  ///
+  /// @nodoc
   /// Creates an internal "window" object that is used to show the map.
   ///
   /// Do not call this method - it is for internal use only. To show the
@@ -133,7 +125,7 @@ abstract class MapKit implements ffi.Finalizable {
   mapkit_traffic_traffic_layer.TrafficLayer createTrafficLayer(
       mapkit_map_map_window.MapWindow mapWindow);
 
-  ///
+  /// @nodoc
   /// Creates an internal "window" object that is used to show the map with
   /// a custom scale factor. The scale factor is equal to the number of
   /// pixels per device-independent point.
@@ -148,4 +140,6 @@ abstract class MapKit implements ffi.Finalizable {
   /// Create layer with the user location icon.
   mapkit_user_location_user_location.UserLocationLayer createUserLocationLayer(
       mapkit_map_map_window.MapWindow mapWindow);
+
+  core.bool isValid();
 }

@@ -16,10 +16,21 @@ import 'package:yandex_maps_mapkit_lite/src/mapkit/geometry/point.dart'
 part 'camera_position.containers.dart';
 part 'camera_position.impl.dart';
 
+/// The position of the camera.
+
 final class CameraPosition {
+  /// The point the camera is looking at.
   final mapkit_geometry_point.Point target;
+
+  /// Zoom level. 0 corresponds to the whole world displayed in a single
+  /// tile.
   final core.double zoom;
+
+  /// Angle between north and the direction of interest on the map plane,
+  /// in degrees in the range \[0, 360).
   final core.double azimuth;
+
+  /// Camera tilt in degrees. 0 means vertical downward.
   final core.double tilt;
 
   const CameraPosition(

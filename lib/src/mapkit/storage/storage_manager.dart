@@ -59,6 +59,8 @@ abstract class StorageManager implements ffi.Finalizable {
 
   /// Obtains the current storage size limit in bytes.
   void maxTileStorageSize(StorageManagerSizeListener callback);
+
+  core.bool isValid();
 }
 
 abstract final class StorageManagerClearListener {

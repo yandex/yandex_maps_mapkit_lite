@@ -35,6 +35,7 @@ class PlacemarkMapObjectImpl extends mapkit_map_map_object.MapObjectImpl
     return (obj as PlacemarkMapObjectImpl).ptr;
   }
 
+  @core.override
   core.bool isValid() {
     return _PlacemarkMapObject_check(ptr);
   }
@@ -379,3 +380,10 @@ final void Function(
                         mapkit_map_text_style.TextStyleNative)>>(
             'yandex_flutter_mapkit_map_PlacemarkMapObject_setTextStyle')
         .asFunction();
+final void Function(ffi.Pointer<ffi.Void>, core.int) _PlacemarkMapObject_set =
+    lib.library
+        .lookup<
+                ffi.NativeFunction<
+                    ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Int64)>>(
+            'yandex_flutter_mapkit_map_PlacemarkMapObject_set_')
+        .asFunction(isLeaf: true);

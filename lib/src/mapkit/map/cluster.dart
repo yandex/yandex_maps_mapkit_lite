@@ -41,4 +41,6 @@ abstract class Cluster implements ffi.Finalizable {
   /// Removes tap listener.
   void removeClusterTapListener(
       mapkit_map_cluster_tap_listener.ClusterTapListener clusterTapListener);
+
+  core.bool isValid();
 }

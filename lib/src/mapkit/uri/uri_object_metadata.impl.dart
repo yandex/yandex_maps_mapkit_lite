@@ -47,7 +47,7 @@ extension UriImpl on Uri {
 }
 
 @bindings_annotations.ContainerData(
-    toNative: 'UriObjectMetadataImpl.toPointer',
+    toNative: 'UriObjectMetadataImpl.getNativePtr',
     toPlatform:
         '(val) => UriObjectMetadataImpl.fromPointer(val, needFree: false)',
     platformType: 'UriObjectMetadata')
@@ -92,17 +92,6 @@ final class UriObjectMetadataImpl implements UriObjectMetadata {
     }
 
     return result;
-  }
-
-  static ffi.Pointer<ffi.Void> toPointer(UriObjectMetadata? val) {
-    if (val == null) {
-      return ffi.nullptr;
-    }
-
-    final result = malloc.call<ffi.Pointer<ffi.Void>>();
-    result.value = _UriObjectMetadata_clone(getNativePtr(val));
-
-    return result.cast<ffi.Void>();
   }
 }
 
@@ -152,14 +141,6 @@ final native_types.NativeString Function() _UriObjectMetadata_name = lib.library
     .lookup<ffi.NativeFunction<native_types.NativeString Function()>>(
         'yandex_flutter_mapkit_uri_UriObjectMetadata_name')
     .asFunction(isLeaf: true);
-
-final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)
-    _UriObjectMetadata_clone = lib.library
-        .lookup<
-                ffi.NativeFunction<
-                    ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
-            'yandex_flutter_mapkit_uri_UriObjectMetadata_clone')
-        .asFunction(isLeaf: true);
 
 final _UriObjectMetadata_free = lib.library
     .lookup<ffi.NativeFunction<ffi.Void Function(ffi.Void)>>(

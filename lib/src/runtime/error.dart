@@ -17,4 +17,6 @@ part 'error.containers.dart';
 part 'error.impl.dart';
 
 /// An error has occurred.
-abstract class Error implements ffi.Finalizable {}
+abstract class Error implements ffi.Finalizable {
+  core.bool isValid();
+}

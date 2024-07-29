@@ -24,13 +24,29 @@ import 'package:yandex_maps_mapkit_lite/src/mapkit/localized_value.dart'
 part 'region.containers.dart';
 part 'region.impl.dart';
 
+/// @attention This feature is not available in the free MapKit version.
+
 final class OfflineCacheRegion {
+  /// Region ID.
   final core.int id;
+
+  /// Name of the region.
   final core.String name;
+
+  /// Country of the region.
   final core.String country;
+
+  /// Center point.
   final mapkit_geometry_point.Point center;
+
+  /// Region size
   final mapkit_localized_value.LocalizedValue size;
+
+  /// Returns the region creation time.
   final core.DateTime releaseTime;
+
+  /// Region id of the parent region.
+  ///
   final core.int? parentId;
 
   const OfflineCacheRegion(

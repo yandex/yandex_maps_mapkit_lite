@@ -14,8 +14,13 @@ import 'package:yandex_maps_mapkit_lite/src/bindings/common/vector.dart'
 part 'animation.containers.dart';
 part 'animation.impl.dart';
 
+/// The animation that is used to switch between states.
+
 final class Animation {
+  /// Animation type.
   final AnimationType type;
+
+  /// Animation duration, in seconds.
   final core.double duration;
 
   const Animation(

@@ -1,7 +1,7 @@
 part of 'spannable_string.dart';
 
 @bindings_annotations.ContainerData(
-    toNative: 'SpannableStringImpl.toPointer',
+    toNative: 'SpannableStringImpl.getNativePtr',
     toPlatform:
         '(val) => SpannableStringImpl.fromPointer(val, needFree: false)',
     platformType: 'SpannableString')
@@ -46,26 +46,7 @@ final class SpannableStringImpl implements SpannableString {
 
     return result;
   }
-
-  static ffi.Pointer<ffi.Void> toPointer(SpannableString? val) {
-    if (val == null) {
-      return ffi.nullptr;
-    }
-
-    final result = malloc.call<ffi.Pointer<ffi.Void>>();
-    result.value = _SpannableString_clone(getNativePtr(val));
-
-    return result.cast<ffi.Void>();
-  }
 }
-
-final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)
-    _SpannableString_clone = lib.library
-        .lookup<
-                ffi.NativeFunction<
-                    ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
-            'yandex_flutter_mapkit_SpannableString_clone')
-        .asFunction(isLeaf: true);
 
 final _SpannableString_free = lib.library
     .lookup<ffi.NativeFunction<ffi.Void Function(ffi.Void)>>(

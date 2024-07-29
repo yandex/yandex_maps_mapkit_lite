@@ -13,7 +13,7 @@ extension SpannableStringContainerExtension on SpannableString {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, SpannableStringImpl.toPointer);
+    return string_map.toNativeMap(obj, SpannableStringImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -40,7 +40,7 @@ extension SpannableStringContainerExtension on SpannableString {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, SpannableStringImpl.toPointer);
+    return vector.toNativeVector(obj, SpannableStringImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(

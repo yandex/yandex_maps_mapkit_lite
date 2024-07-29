@@ -13,7 +13,7 @@ extension RawTileContainerExtension on RawTile {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, RawTileImpl.toPointer);
+    return string_map.toNativeMap(obj, RawTileImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension RawTileContainerExtension on RawTile {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, RawTileImpl.toPointer);
+    return vector.toNativeVector(obj, RawTileImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(

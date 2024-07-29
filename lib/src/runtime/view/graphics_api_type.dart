@@ -12,7 +12,7 @@ import 'package:yandex_maps_mapkit_lite/src/bindings/common/vector.dart'
 part 'graphics_api_type.containers.dart';
 part 'graphics_api_type.impl.dart';
 
-///
+/// @nodoc
 /// Graphics API used by View
 enum GraphicsAPIType {
   OpenGl,

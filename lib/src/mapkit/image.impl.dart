@@ -1,7 +1,7 @@
 part of 'image.dart';
 
 @bindings_annotations.ContainerData(
-    toNative: 'ImageImpl.toPointer',
+    toNative: 'ImageImpl.getNativePtr',
     toPlatform: '(val) => ImageImpl.fromPointer(val, needFree: false)',
     platformType: 'Image')
 final class ImageImpl implements Image {
@@ -50,26 +50,7 @@ final class ImageImpl implements Image {
 
     return result;
   }
-
-  static ffi.Pointer<ffi.Void> toPointer(Image? val) {
-    if (val == null) {
-      return ffi.nullptr;
-    }
-
-    final result = malloc.call<ffi.Pointer<ffi.Void>>();
-    result.value = _Image_clone(getNativePtr(val));
-
-    return result.cast<ffi.Void>();
-  }
 }
-
-final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>) _Image_clone = lib
-    .library
-    .lookup<
-        ffi.NativeFunction<
-            ffi.Pointer<ffi.Void> Function(
-                ffi.Pointer<ffi.Void>)>>('yandex_flutter_mapkit_Image_clone')
-    .asFunction(isLeaf: true);
 
 final _Image_free = lib.library
     .lookup<ffi.NativeFunction<ffi.Void Function(ffi.Void)>>(

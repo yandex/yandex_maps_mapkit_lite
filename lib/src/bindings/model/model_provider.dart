@@ -36,8 +36,11 @@ class _ModelProviderHeap extends AsyncDispatcherHeap<ModelProvider> {
 
   @override
   void requestData(ModelProvider object, Pointer<Void> nativeData) {
-    _getModel(object).then(
-        (value) => _onModelComplete(nativeData, toNativeBytes(value.buffer)));
+    _getModel(object)
+        .then((value) =>
+            _onModelComplete(nativeData, toNativeBytes(value.buffer)))
+        .catchError((e, stackTrace) =>
+            onHandlerException(object, nativeData, e, stackTrace));
   }
 
   @override

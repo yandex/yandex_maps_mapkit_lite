@@ -13,7 +13,7 @@ extension GnssClockContainerExtension on GnssClock {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, GnssClockImpl.toPointer);
+    return string_map.toNativeMap(obj, GnssClockImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension GnssClockContainerExtension on GnssClock {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, GnssClockImpl.toPointer);
+    return vector.toNativeVector(obj, GnssClockImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -115,7 +115,7 @@ extension GnssMeasurementContainerExtension on GnssMeasurement {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, GnssMeasurementImpl.toPointer);
+    return string_map.toNativeMap(obj, GnssMeasurementImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -142,7 +142,7 @@ extension GnssMeasurementContainerExtension on GnssMeasurement {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, GnssMeasurementImpl.toPointer);
+    return vector.toNativeVector(obj, GnssMeasurementImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -219,7 +219,7 @@ extension GnssMeasurementsEventContainerExtension on GnssMeasurementsEvent {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, GnssMeasurementsEventImpl.toPointer);
+    return string_map.toNativeMap(obj, GnssMeasurementsEventImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -247,7 +247,7 @@ extension GnssMeasurementsEventContainerExtension on GnssMeasurementsEvent {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, GnssMeasurementsEventImpl.toPointer);
+    return vector.toNativeVector(obj, GnssMeasurementsEventImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(

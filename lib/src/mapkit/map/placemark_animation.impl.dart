@@ -34,6 +34,7 @@ class PlacemarkAnimationImpl implements PlacemarkAnimation, ffi.Finalizable {
     return (obj as PlacemarkAnimationImpl).ptr;
   }
 
+  @core.override
   core.bool isValid() {
     return _PlacemarkAnimation_check(ptr);
   }
@@ -184,3 +185,10 @@ final void Function(ffi.Pointer<ffi.Void>) _PlacemarkAnimation_pause = lib
     .lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
         'yandex_flutter_mapkit_map_PlacemarkAnimation_pause')
     .asFunction();
+final void Function(ffi.Pointer<ffi.Void>, core.int) _PlacemarkAnimation_set =
+    lib.library
+        .lookup<
+                ffi.NativeFunction<
+                    ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Int64)>>(
+            'yandex_flutter_mapkit_map_PlacemarkAnimation_set_')
+        .asFunction(isLeaf: true);

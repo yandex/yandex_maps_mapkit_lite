@@ -33,6 +33,7 @@ class ClusterImpl implements Cluster, ffi.Finalizable {
     return (obj as ClusterImpl).ptr;
   }
 
+  @core.override
   core.bool isValid() {
     return _Cluster_check(ptr);
   }
@@ -124,3 +125,9 @@ final void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)
                         ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>(
             'yandex_flutter_mapkit_map_Cluster_removeClusterTapListener')
         .asFunction();
+final void Function(ffi.Pointer<ffi.Void>, core.int) _Cluster_set = lib.library
+    .lookup<
+        ffi.NativeFunction<
+            ffi.Void Function(ffi.Pointer<ffi.Void>,
+                ffi.Int64)>>('yandex_flutter_mapkit_map_Cluster_set_')
+    .asFunction(isLeaf: true);

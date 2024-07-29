@@ -24,6 +24,7 @@ import 'package:yandex_maps_mapkit_lite/src/mapkit/base_metadata.dart'
 part 'geo_object_inspection_metadata.containers.dart';
 part 'geo_object_inspection_metadata.impl.dart';
 
+/// Metadata type added to all objects returned by Map.visibleObjects
 abstract final class GeoObjectInspectionMetadata
     extends mapkit_base_metadata.BaseMetadata implements ffi.Finalizable {
   factory GeoObjectInspectionMetadata(core.String layerId,

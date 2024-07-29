@@ -85,4 +85,5 @@ abstract class MapObject implements ffi.Finalizable {
 
   core.Object? get userData;
   set userData(core.Object? val);
+  core.bool isValid();
 }

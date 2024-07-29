@@ -56,4 +56,6 @@ abstract class CompositeIcon implements ffi.Finalizable {
 
   /// Removes all layers.
   void removeAll();
+
+  core.bool isValid();
 }

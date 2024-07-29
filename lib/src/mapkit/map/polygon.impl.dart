@@ -34,6 +34,7 @@ class PolygonMapObjectImpl extends mapkit_map_map_object.MapObjectImpl
     return (obj as PolygonMapObjectImpl).ptr;
   }
 
+  @core.override
   core.bool isValid() {
     return _PolygonMapObject_check(ptr);
   }
@@ -224,3 +225,10 @@ final void Function(ffi.Pointer<ffi.Void>) _PolygonMapObject_resetPattern = lib
     .lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
         'yandex_flutter_mapkit_map_PolygonMapObject_resetPattern')
     .asFunction();
+final void Function(ffi.Pointer<ffi.Void>, core.int) _PolygonMapObject_set = lib
+    .library
+    .lookup<
+        ffi.NativeFunction<
+            ffi.Void Function(ffi.Pointer<ffi.Void>,
+                ffi.Int64)>>('yandex_flutter_mapkit_map_PolygonMapObject_set_')
+    .asFunction(isLeaf: true);

@@ -62,4 +62,6 @@ abstract class TrafficLayer implements ffi.Finalizable {
   /// Removes a traffic listener.
   void removeTrafficListener(
       mapkit_traffic_traffic_listener.TrafficListener trafficListener);
+
+  core.bool isValid();
 }

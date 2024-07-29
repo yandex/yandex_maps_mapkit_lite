@@ -71,3 +71,12 @@ final void Function(
                     ffi.Pointer<ffi.Void>, native_types.NativeString)>>(
         'yandex_flutter_runtime_attestation_storage_internal_AttestationListener_onAttestationFailed')
     .asFunction();
+final void Function(
+    ffi.Pointer<ffi.Void>,
+    core
+        .int) _AttestationListener_set = lib.library
+    .lookup<
+            ffi.NativeFunction<
+                ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Int64)>>(
+        'yandex_flutter_runtime_attestation_storage_internal_AttestationListener_set_')
+    .asFunction(isLeaf: true);

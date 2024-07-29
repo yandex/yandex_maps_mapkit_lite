@@ -33,6 +33,7 @@ class ProjectionImpl implements Projection, ffi.Finalizable {
     return (obj as ProjectionImpl).ptr;
   }
 
+  @core.override
   core.bool isValid() {
     return _Projection_check(ptr);
   }
@@ -93,3 +94,10 @@ final mapkit_geometry_point.PointNative Function(ffi.Pointer<ffi.Void>,
                         ffi.Int)>>(
             'yandex_flutter_mapkit_geometry_geo_Projection_xyToWorld')
         .asFunction();
+final void Function(ffi.Pointer<ffi.Void>, core.int) _Projection_set = lib
+    .library
+    .lookup<
+            ffi.NativeFunction<
+                ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Int64)>>(
+        'yandex_flutter_mapkit_geometry_geo_Projection_set_')
+    .asFunction(isLeaf: true);

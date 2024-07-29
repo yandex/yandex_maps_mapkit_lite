@@ -1,7 +1,7 @@
 part of 'geo_object_collection.dart';
 
 @bindings_annotations.ContainerData(
-    toNative: 'GeoObjectCollectionImpl.toPointer',
+    toNative: 'GeoObjectCollectionImpl.getNativePtr',
     toPlatform:
         '(val) => GeoObjectCollectionImpl.fromPointer(val, needFree: false)',
     platformType: 'GeoObjectCollection')
@@ -60,26 +60,7 @@ final class GeoObjectCollectionImpl implements GeoObjectCollection {
 
     return result;
   }
-
-  static ffi.Pointer<ffi.Void> toPointer(GeoObjectCollection? val) {
-    if (val == null) {
-      return ffi.nullptr;
-    }
-
-    final result = malloc.call<ffi.Pointer<ffi.Void>>();
-    result.value = _GeoObjectCollection_clone(getNativePtr(val));
-
-    return result.cast<ffi.Void>();
-  }
 }
-
-final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)
-    _GeoObjectCollection_clone = lib.library
-        .lookup<
-                ffi.NativeFunction<
-                    ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
-            'yandex_flutter_mapkit_GeoObjectCollection_clone')
-        .asFunction(isLeaf: true);
 
 final _GeoObjectCollection_free = lib.library
     .lookup<ffi.NativeFunction<ffi.Void Function(ffi.Void)>>(

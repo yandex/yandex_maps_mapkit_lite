@@ -20,4 +20,6 @@ part 'error.impl.dart';
 
 /// This error is returned if the location is not available.
 abstract class LocationUnavailableError
-    implements runtime_error.Error, ffi.Finalizable {}
+    implements runtime_error.Error, ffi.Finalizable {
+  core.bool isValid();
+}

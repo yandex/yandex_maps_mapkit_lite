@@ -34,6 +34,7 @@ class OfflineCacheManagerImpl implements OfflineCacheManager, ffi.Finalizable {
     return (obj as OfflineCacheManagerImpl).ptr;
   }
 
+  @core.override
   core.bool isValid() {
     return _OfflineCacheManager_check(ptr);
   }
@@ -427,6 +428,13 @@ final void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)
                         ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>(
             'yandex_flutter_mapkit_offline_cache_OfflineCacheManager_clear')
         .asFunction();
+final void Function(ffi.Pointer<ffi.Void>, core.int) _OfflineCacheManager_set =
+    lib.library
+        .lookup<
+                ffi.NativeFunction<
+                    ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Int64)>>(
+            'yandex_flutter_mapkit_offline_cache_OfflineCacheManager_set_')
+        .asFunction(isLeaf: true);
 
 final class OfflineCacheManagerClearListenerImpl
     implements OfflineCacheManagerClearListener {

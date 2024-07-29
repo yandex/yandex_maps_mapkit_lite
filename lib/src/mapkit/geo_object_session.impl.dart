@@ -62,6 +62,13 @@ final void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)
                         ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>(
             'yandex_flutter_mapkit_GeoObjectSession_retry')
         .asFunction();
+final void Function(ffi.Pointer<ffi.Void>, core.int) _GeoObjectSession_set = lib
+    .library
+    .lookup<
+        ffi.NativeFunction<
+            ffi.Void Function(ffi.Pointer<ffi.Void>,
+                ffi.Int64)>>('yandex_flutter_mapkit_GeoObjectSession_set_')
+    .asFunction(isLeaf: true);
 
 final class GeoObjectSessionGeoObjectListenerImpl
     implements GeoObjectSessionGeoObjectListener {

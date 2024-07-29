@@ -33,6 +33,7 @@ class PlacemarksStylerImpl implements PlacemarksStyler, ffi.Finalizable {
     return (obj as PlacemarksStylerImpl).ptr;
   }
 
+  @core.override
   core.bool isValid() {
     return _PlacemarksStyler_check(ptr);
   }
@@ -68,3 +69,10 @@ final void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)
                         ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>(
             'yandex_flutter_mapkit_map_PlacemarksStyler_setScaleFunction')
         .asFunction();
+final void Function(ffi.Pointer<ffi.Void>, core.int) _PlacemarksStyler_set = lib
+    .library
+    .lookup<
+        ffi.NativeFunction<
+            ffi.Void Function(ffi.Pointer<ffi.Void>,
+                ffi.Int64)>>('yandex_flutter_mapkit_map_PlacemarksStyler_set_')
+    .asFunction(isLeaf: true);

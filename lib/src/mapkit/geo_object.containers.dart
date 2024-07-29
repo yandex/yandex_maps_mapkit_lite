@@ -13,7 +13,7 @@ extension GeoObjectContainerExtension on GeoObject {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, GeoObjectImpl.toPointer);
+    return string_map.toNativeMap(obj, GeoObjectImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension GeoObjectContainerExtension on GeoObject {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, GeoObjectImpl.toPointer);
+    return vector.toNativeVector(obj, GeoObjectImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(

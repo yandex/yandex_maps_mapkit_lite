@@ -33,6 +33,7 @@ class MapImpl implements Map, ffi.Finalizable {
     return (obj as MapImpl).ptr;
   }
 
+  @core.override
   core.bool isValid() {
     return _Map_check(ptr);
   }
@@ -152,6 +153,36 @@ class MapImpl implements Map, ffi.Finalizable {
   @core.override
   set poiLimit(core.int? val) {
     _Map_set_poiLimit(ptr, to_native.toNativePtrUint32(val));
+  }
+
+  @core.override
+  mapkit_map_map_mode.MapMode get mode {
+    return mapkit_map_map_mode.MapModeImpl.fromInt(_Map_get_mode(ptr));
+  }
+
+  @core.override
+  set mode(mapkit_map_map_mode.MapMode val) {
+    _Map_set_mode(ptr, mapkit_map_map_mode.MapModeImpl.toInt(val));
+  }
+
+  @core.override
+  core.bool get hdModeEnabled {
+    return _Map_get_hdModeEnabled(ptr);
+  }
+
+  @core.override
+  set hdModeEnabled(core.bool val) {
+    _Map_set_hdModeEnabled(ptr, val);
+  }
+
+  @core.override
+  core.bool get awesomeModelsEnabled {
+    return _Map_get_awesomeModelsEnabled(ptr);
+  }
+
+  @core.override
+  set awesomeModelsEnabled(core.bool val) {
+    _Map_set_awesomeModelsEnabled(ptr, val);
   }
 
   mapkit_map_camera_position.CameraPosition cameraPositionForGeometry(
@@ -486,6 +517,43 @@ final void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)
             'yandex_flutter_mapkit_map_Map_set_poiLimit')
         .asFunction();
 
+final core.int Function(ffi.Pointer<ffi.Void>) _Map_get_mode = lib.library
+    .lookup<ffi.NativeFunction<ffi.Int64 Function(ffi.Pointer<ffi.Void>)>>(
+        'yandex_flutter_mapkit_map_Map_get_mode')
+    .asFunction();
+final void Function(ffi.Pointer<ffi.Void>, core.int) _Map_set_mode = lib.library
+    .lookup<
+        ffi.NativeFunction<
+            ffi.Void Function(ffi.Pointer<ffi.Void>,
+                ffi.Int64)>>('yandex_flutter_mapkit_map_Map_set_mode')
+    .asFunction();
+
+final core.bool Function(ffi.Pointer<ffi.Void>) _Map_get_hdModeEnabled = lib
+    .library
+    .lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ffi.Void>)>>(
+        'yandex_flutter_mapkit_map_Map_get_hdModeEnabled')
+    .asFunction();
+final void Function(ffi.Pointer<ffi.Void>, core.bool) _Map_set_hdModeEnabled =
+    lib.library
+        .lookup<
+                ffi.NativeFunction<
+                    ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Bool)>>(
+            'yandex_flutter_mapkit_map_Map_set_hdModeEnabled')
+        .asFunction();
+
+final core.bool Function(ffi.Pointer<ffi.Void>) _Map_get_awesomeModelsEnabled =
+    lib.library
+        .lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ffi.Void>)>>(
+            'yandex_flutter_mapkit_map_Map_get_awesomeModelsEnabled')
+        .asFunction();
+final void Function(ffi.Pointer<ffi.Void>, core.bool)
+    _Map_set_awesomeModelsEnabled = lib.library
+        .lookup<
+                ffi.NativeFunction<
+                    ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Bool)>>(
+            'yandex_flutter_mapkit_map_Map_set_awesomeModelsEnabled')
+        .asFunction();
+
 final mapkit_map_camera_position.CameraPositionNative Function(
         ffi.Pointer<ffi.Void>, mapkit_geometry_geometry.GeometryNative)
     _Map_cameraPositionForGeometry = lib.library
@@ -682,6 +750,12 @@ final ffi.Pointer<ffi.Void> Function(
                         ffi.Pointer<ffi.Void>)>>(
             'yandex_flutter_mapkit_map_Map_addTileLayer')
         .asFunction();
+final void Function(ffi.Pointer<ffi.Void>, core.int) _Map_set = lib.library
+    .lookup<
+        ffi.NativeFunction<
+            ffi.Void Function(ffi.Pointer<ffi.Void>,
+                ffi.Int64)>>('yandex_flutter_mapkit_map_Map_set_')
+    .asFunction(isLeaf: true);
 
 final class MapCameraCallbackImpl implements MapCameraCallback {
   static final _pointerToListener =

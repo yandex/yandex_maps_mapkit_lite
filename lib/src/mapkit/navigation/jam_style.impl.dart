@@ -58,7 +58,7 @@ extension JamTypeColorImpl on JamTypeColor {
 }
 
 @bindings_annotations.ContainerData(
-    toNative: 'JamStyleImpl.toPointer',
+    toNative: 'JamStyleImpl.getNativePtr',
     toPlatform: '(val) => JamStyleImpl.fromPointer(val, needFree: false)',
     platformType: 'JamStyle')
 final class JamStyleImpl implements JamStyle {
@@ -99,26 +99,7 @@ final class JamStyleImpl implements JamStyle {
 
     return result;
   }
-
-  static ffi.Pointer<ffi.Void> toPointer(JamStyle? val) {
-    if (val == null) {
-      return ffi.nullptr;
-    }
-
-    final result = malloc.call<ffi.Pointer<ffi.Void>>();
-    result.value = _JamStyle_clone(getNativePtr(val));
-
-    return result.cast<ffi.Void>();
-  }
 }
-
-final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>) _JamStyle_clone =
-    lib.library
-        .lookup<
-                ffi.NativeFunction<
-                    ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
-            'yandex_flutter_mapkit_navigation_JamStyle_clone')
-        .asFunction(isLeaf: true);
 
 final _JamStyle_free = lib.library
     .lookup<ffi.NativeFunction<ffi.Void Function(ffi.Void)>>(

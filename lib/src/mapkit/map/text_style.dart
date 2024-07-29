@@ -19,14 +19,38 @@ import 'package:yandex_maps_mapkit_lite/src/bindings/common/vector.dart'
 part 'text_style.containers.dart';
 part 'text_style.impl.dart';
 
+/// The style of placemarks's text.
+
 final class TextStyle {
+  /// Text font size in units. default: 8
   final core.double size;
+
+  /// Text color. default: black
+  ///
   final ui.Color? color;
+
+  /// Outline width in units. default: 1
   final core.double outlineWidth;
+
+  /// Outline color. default: white
+  ///
   final ui.Color? outlineColor;
+
+  /// Text placement position. default: Center
   final TextStylePlacement placement;
+
+  /// Text offset in units. Measured either from point or form icon edges,
+  /// depending on [TextStyle.offsetFromIcon] value Direction of the offset
+  /// specified with [TextStyle.placement] property Ignored when
+  /// [placement] is 'Center' default: 0
   final core.double offset;
+
+  /// When set, [TextStyle.offset] is a padding between the text and icon
+  /// edges. default: true
   final core.bool offsetFromIcon;
+
+  /// Allow dropping text but keeping icon during conflict resolution
+  /// default: false
   final core.bool textOptional;
 
   const TextStyle({

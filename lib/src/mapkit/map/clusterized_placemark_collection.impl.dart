@@ -39,6 +39,7 @@ class ClusterizedPlacemarkCollectionImpl
     return (obj as ClusterizedPlacemarkCollectionImpl).ptr;
   }
 
+  @core.override
   core.bool isValid() {
     return _ClusterizedPlacemarkCollection_check(ptr);
   }
@@ -327,3 +328,10 @@ final void Function(
                     ffi.Pointer<ffi.Void>, ffi.Double, ffi.Uint32)>>(
         'yandex_flutter_mapkit_map_ClusterizedPlacemarkCollection_clusterPlacemarks')
     .asFunction();
+final void Function(ffi.Pointer<ffi.Void>, core.int)
+    _ClusterizedPlacemarkCollection_set = lib.library
+        .lookup<
+                ffi.NativeFunction<
+                    ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Int64)>>(
+            'yandex_flutter_mapkit_map_ClusterizedPlacemarkCollection_set_')
+        .asFunction(isLeaf: true);

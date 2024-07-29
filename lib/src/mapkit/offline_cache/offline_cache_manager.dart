@@ -170,6 +170,8 @@ abstract class OfflineCacheManager implements ffi.Finalizable {
   /// Erases all data for downloads and regions and wipes the cache. Forces
   /// reloading the list from the remote source
   void clear(OfflineCacheManagerClearListener callback);
+
+  core.bool isValid();
 }
 
 abstract final class OfflineCacheManagerClearListener {

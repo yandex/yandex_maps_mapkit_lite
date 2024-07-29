@@ -35,6 +35,7 @@ class CachePathUnavailableImpl extends runtime_local_error.LocalErrorImpl
     return (obj as CachePathUnavailableImpl).ptr;
   }
 
+  @core.override
   core.bool isValid() {
     return _CachePathUnavailable_check(ptr);
   }
@@ -55,4 +56,13 @@ final core.bool Function(ffi.Pointer<ffi.Void>) _CachePathUnavailable_check =
     lib.library
         .lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ffi.Void>)>>(
             'yandex_flutter_mapkit_offline_cache_CachePathUnavailable_check')
+        .asFunction(isLeaf: true);
+
+final void Function(ffi.Pointer<ffi.Void>, core.int) _CachePathUnavailable_set =
+    lib
+        .library
+        .lookup<
+                ffi.NativeFunction<
+                    ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Int64)>>(
+            'yandex_flutter_mapkit_offline_cache_CachePathUnavailable_set_')
         .asFunction(isLeaf: true);

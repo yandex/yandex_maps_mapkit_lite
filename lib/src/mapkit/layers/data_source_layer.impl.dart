@@ -33,6 +33,7 @@ class DataSourceLayerImpl implements DataSourceLayer, ffi.Finalizable {
     return (obj as DataSourceLayerImpl).ptr;
   }
 
+  @core.override
   core.bool isValid() {
     return _DataSourceLayer_check(ptr);
   }
@@ -53,10 +54,6 @@ class DataSourceLayerImpl implements DataSourceLayer, ffi.Finalizable {
   @core.override
   set active(core.bool val) {
     _DataSourceLayer_set_active(ptr, val);
-  }
-
-  void invalidate(core.String version) {
-    _DataSourceLayer_invalidate(ptr, to_native.toNativeString(version));
   }
 
   void clear() {
@@ -118,14 +115,6 @@ final void Function(ffi.Pointer<ffi.Void>, core.bool)
             'yandex_flutter_mapkit_layers_DataSourceLayer_set_active')
         .asFunction();
 
-final void Function(ffi.Pointer<ffi.Void>, native_types.NativeString)
-    _DataSourceLayer_invalidate = lib.library
-        .lookup<
-                ffi.NativeFunction<
-                    ffi.Void Function(
-                        ffi.Pointer<ffi.Void>, native_types.NativeString)>>(
-            'yandex_flutter_mapkit_layers_DataSourceLayer_invalidate')
-        .asFunction();
 final void Function(ffi.Pointer<ffi.Void>) _DataSourceLayer_clear = lib.library
     .lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
         'yandex_flutter_mapkit_layers_DataSourceLayer_clear')
@@ -169,3 +158,10 @@ final void Function(
                     ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>(
         'yandex_flutter_mapkit_layers_DataSourceLayer_setDataSourceListener')
     .asFunction();
+final void Function(ffi.Pointer<ffi.Void>, core.int) _DataSourceLayer_set = lib
+    .library
+    .lookup<
+            ffi.NativeFunction<
+                ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Int64)>>(
+        'yandex_flutter_mapkit_layers_DataSourceLayer_set_')
+    .asFunction(isLeaf: true);

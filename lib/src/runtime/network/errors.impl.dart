@@ -34,6 +34,7 @@ class RemoteErrorImpl extends runtime_error.ErrorImpl
     return (obj as RemoteErrorImpl).ptr;
   }
 
+  @core.override
   core.bool isValid() {
     return _RemoteError_check(ptr);
   }
@@ -53,6 +54,14 @@ final _RemoteError_free = lib.library
 final core.bool Function(ffi.Pointer<ffi.Void>) _RemoteError_check = lib.library
     .lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ffi.Void>)>>(
         'yandex_flutter_runtime_network_RemoteError_check')
+    .asFunction(isLeaf: true);
+
+final void Function(ffi.Pointer<ffi.Void>, core.int) _RemoteError_set = lib
+    .library
+    .lookup<
+        ffi.NativeFunction<
+            ffi.Void Function(ffi.Pointer<ffi.Void>,
+                ffi.Int64)>>('yandex_flutter_runtime_network_RemoteError_set_')
     .asFunction(isLeaf: true);
 
 @bindings_annotations.WeakInterface('runtime.network.BadRequestError')
@@ -89,6 +98,7 @@ class BadRequestErrorImpl extends RemoteErrorImpl
     return (obj as BadRequestErrorImpl).ptr;
   }
 
+  @core.override
   core.bool isValid() {
     return _BadRequestError_check(ptr);
   }
@@ -109,6 +119,14 @@ final core.bool Function(ffi.Pointer<ffi.Void>) _BadRequestError_check = lib
     .library
     .lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ffi.Void>)>>(
         'yandex_flutter_runtime_network_BadRequestError_check')
+    .asFunction(isLeaf: true);
+
+final void Function(ffi.Pointer<ffi.Void>, core.int) _BadRequestError_set = lib
+    .library
+    .lookup<
+            ffi.NativeFunction<
+                ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Int64)>>(
+        'yandex_flutter_runtime_network_BadRequestError_set_')
     .asFunction(isLeaf: true);
 
 @bindings_annotations.WeakInterface('runtime.network.NotFoundError')
@@ -145,6 +163,7 @@ class NotFoundErrorImpl extends RemoteErrorImpl
     return (obj as NotFoundErrorImpl).ptr;
   }
 
+  @core.override
   core.bool isValid() {
     return _NotFoundError_check(ptr);
   }
@@ -165,6 +184,14 @@ final core.bool Function(ffi.Pointer<ffi.Void>) _NotFoundError_check = lib
     .library
     .lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ffi.Void>)>>(
         'yandex_flutter_runtime_network_NotFoundError_check')
+    .asFunction(isLeaf: true);
+
+final void Function(ffi.Pointer<ffi.Void>, core.int) _NotFoundError_set = lib
+    .library
+    .lookup<
+            ffi.NativeFunction<
+                ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Int64)>>(
+        'yandex_flutter_runtime_network_NotFoundError_set_')
     .asFunction(isLeaf: true);
 
 @bindings_annotations
@@ -204,6 +231,7 @@ class RequestEntityTooLargeErrorImpl extends RemoteErrorImpl
     return (obj as RequestEntityTooLargeErrorImpl).ptr;
   }
 
+  @core.override
   core.bool isValid() {
     return _RequestEntityTooLargeError_check(ptr);
   }
@@ -225,6 +253,14 @@ final core.bool Function(ffi.Pointer<ffi.Void>)
     _RequestEntityTooLargeError_check = lib.library
         .lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ffi.Void>)>>(
             'yandex_flutter_runtime_network_RequestEntityTooLargeError_check')
+        .asFunction(isLeaf: true);
+
+final void Function(ffi.Pointer<ffi.Void>, core.int)
+    _RequestEntityTooLargeError_set = lib.library
+        .lookup<
+                ffi.NativeFunction<
+                    ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Int64)>>(
+            'yandex_flutter_runtime_network_RequestEntityTooLargeError_set_')
         .asFunction(isLeaf: true);
 
 @bindings_annotations.WeakInterface('runtime.network.ForbiddenError')
@@ -261,6 +297,7 @@ class ForbiddenErrorImpl extends RemoteErrorImpl
     return (obj as ForbiddenErrorImpl).ptr;
   }
 
+  @core.override
   core.bool isValid() {
     return _ForbiddenError_check(ptr);
   }
@@ -281,6 +318,14 @@ final core.bool Function(ffi.Pointer<ffi.Void>) _ForbiddenError_check = lib
     .library
     .lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ffi.Void>)>>(
         'yandex_flutter_runtime_network_ForbiddenError_check')
+    .asFunction(isLeaf: true);
+
+final void Function(ffi.Pointer<ffi.Void>, core.int) _ForbiddenError_set = lib
+    .library
+    .lookup<
+            ffi.NativeFunction<
+                ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Int64)>>(
+        'yandex_flutter_runtime_network_ForbiddenError_set_')
     .asFunction(isLeaf: true);
 
 @bindings_annotations.WeakInterface('runtime.network.UnauthorizedError')
@@ -317,6 +362,7 @@ class UnauthorizedErrorImpl extends RemoteErrorImpl
     return (obj as UnauthorizedErrorImpl).ptr;
   }
 
+  @core.override
   core.bool isValid() {
     return _UnauthorizedError_check(ptr);
   }
@@ -338,6 +384,14 @@ final core.bool Function(ffi.Pointer<ffi.Void>) _UnauthorizedError_check = lib
     .lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ffi.Void>)>>(
         'yandex_flutter_runtime_network_UnauthorizedError_check')
     .asFunction(isLeaf: true);
+
+final void Function(ffi.Pointer<ffi.Void>, core.int) _UnauthorizedError_set =
+    lib.library
+        .lookup<
+                ffi.NativeFunction<
+                    ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Int64)>>(
+            'yandex_flutter_runtime_network_UnauthorizedError_set_')
+        .asFunction(isLeaf: true);
 
 @bindings_annotations.WeakInterface('runtime.network.NetworkError')
 @bindings_annotations.ContainerData(
@@ -373,6 +427,7 @@ class NetworkErrorImpl extends runtime_error.ErrorImpl
     return (obj as NetworkErrorImpl).ptr;
   }
 
+  @core.override
   core.bool isValid() {
     return _NetworkError_check(ptr);
   }
@@ -393,4 +448,12 @@ final core.bool Function(ffi.Pointer<ffi.Void>) _NetworkError_check = lib
     .library
     .lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ffi.Void>)>>(
         'yandex_flutter_runtime_network_NetworkError_check')
+    .asFunction(isLeaf: true);
+
+final void Function(ffi.Pointer<ffi.Void>, core.int) _NetworkError_set = lib
+    .library
+    .lookup<
+        ffi.NativeFunction<
+            ffi.Void Function(ffi.Pointer<ffi.Void>,
+                ffi.Int64)>>('yandex_flutter_runtime_network_NetworkError_set_')
     .asFunction(isLeaf: true);

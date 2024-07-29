@@ -20,15 +20,27 @@ import 'package:yandex_maps_mapkit_lite/src/bindings/common/vector.dart'
 part 'map_load_statistics.containers.dart';
 part 'map_load_statistics.impl.dart';
 
+/// The time it took to load map elements.
+
 final class MapLoadStatistics {
   final core.Duration curZoomGeometryLoaded;
   final core.Duration curZoomPlacemarksLoaded;
   final core.Duration curZoomLabelsLoaded;
+
+  /// The time it took to load delayed geometry.
   final core.Duration delayedGeometryLoaded;
+
+  /// The time it took to load models.
   final core.Duration curZoomModelsLoaded;
+
+  /// The time it took to load all map objects.
   final core.Duration fullyLoaded;
+
+  /// The time it took for all map objects to appear.
   final core.Duration fullyAppeared;
   final core.int renderObjectCount;
+
+  /// Tile memory usage in bytes
   final core.int tileMemoryUsage;
 
   const MapLoadStatistics(

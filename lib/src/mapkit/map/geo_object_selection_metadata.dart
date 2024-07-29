@@ -24,6 +24,7 @@ import 'package:yandex_maps_mapkit_lite/src/mapkit/base_metadata.dart'
 part 'geo_object_selection_metadata.containers.dart';
 part 'geo_object_selection_metadata.impl.dart';
 
+/// Geo object metadata which is needed to select object.
 abstract final class GeoObjectSelectionMetadata
     extends mapkit_base_metadata.BaseMetadata implements ffi.Finalizable {
   factory GeoObjectSelectionMetadata(core.String objectId,
@@ -31,9 +32,17 @@ abstract final class GeoObjectSelectionMetadata
       GeoObjectSelectionMetadataImpl(
           objectId, dataSourceName, layerId, groupId);
 
+  /// Object ID.
   core.String get objectId;
+
+  /// Data source name.
   core.String get dataSourceName;
+
+  /// Layer ID.
   core.String get layerId;
+
+  /// Group ID.
+  ///
   core.int? get groupId;
 
   @core.override

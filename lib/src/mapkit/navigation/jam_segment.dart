@@ -36,8 +36,13 @@ enum JamType {
   ;
 }
 
+/// A segment of a traffic jam that has specific traffic conditions.
+
 final class JamSegment {
+  /// The type of the traffic jam.
   final JamType jamType;
+
+  /// The speed at which traffic is moving.
   final core.double speed;
 
   const JamSegment(

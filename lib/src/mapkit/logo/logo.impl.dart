@@ -33,6 +33,7 @@ class LogoImpl implements Logo, ffi.Finalizable {
     return (obj as LogoImpl).ptr;
   }
 
+  @core.override
   core.bool isValid() {
     return _Logo_check(ptr);
   }
@@ -82,3 +83,9 @@ final void Function(
                         mapkit_logo_padding.LogoPaddingNative)>>(
             'yandex_flutter_mapkit_logo_Logo_setPadding')
         .asFunction();
+final void Function(ffi.Pointer<ffi.Void>, core.int) _Logo_set = lib.library
+    .lookup<
+        ffi.NativeFunction<
+            ffi.Void Function(ffi.Pointer<ffi.Void>,
+                ffi.Int64)>>('yandex_flutter_mapkit_logo_Logo_set_')
+    .asFunction(isLeaf: true);

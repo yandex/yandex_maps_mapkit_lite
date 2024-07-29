@@ -14,8 +14,15 @@ import 'package:yandex_maps_mapkit_lite/src/bindings/common/vector.dart'
 part 'screen_types.containers.dart';
 part 'screen_types.impl.dart';
 
+/// A point on the device screen.
+
 final class ScreenPoint {
+  /// The horizontal position of the point in pixels from the left screen
+  /// border.
   final core.double x;
+
+  /// The vertical position of the point in pixels from the top screen
+  /// border.
   final core.double y;
 
   const ScreenPoint({
@@ -40,8 +47,13 @@ final class ScreenPoint {
   }
 }
 
+/// A rectangle on the device screen.
+
 final class ScreenRect {
+  /// The position of the top left corner of the rectangle.
   final ScreenPoint topLeft;
+
+  /// The position of the bottom right corner of the rectangle.
   final ScreenPoint bottomRight;
 
   const ScreenRect(this.topLeft, this.bottomRight);

@@ -1,7 +1,7 @@
 part of 'gnss_measurements.dart';
 
 @bindings_annotations.ContainerData(
-    toNative: 'GnssClockImpl.toPointer',
+    toNative: 'GnssClockImpl.getNativePtr',
     toPlatform: '(val) => GnssClockImpl.fromPointer(val, needFree: false)',
     platformType: 'GnssClock')
 final class GnssClockImpl implements GnssClock {
@@ -83,26 +83,7 @@ final class GnssClockImpl implements GnssClock {
 
     return result;
   }
-
-  static ffi.Pointer<ffi.Void> toPointer(GnssClock? val) {
-    if (val == null) {
-      return ffi.nullptr;
-    }
-
-    final result = malloc.call<ffi.Pointer<ffi.Void>>();
-    result.value = _GnssClock_clone(getNativePtr(val));
-
-    return result.cast<ffi.Void>();
-  }
 }
-
-final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>) _GnssClock_clone =
-    lib.library
-        .lookup<
-                ffi.NativeFunction<
-                    ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
-            'yandex_flutter_runtime_sensors_internal_GnssClock_clone')
-        .asFunction(isLeaf: true);
 
 final _GnssClock_free = lib.library
     .lookup<ffi.NativeFunction<ffi.Void Function(ffi.Void)>>(
@@ -203,7 +184,7 @@ final core.int Function(
     .asFunction(isLeaf: true);
 
 @bindings_annotations.ContainerData(
-    toNative: 'GnssMeasurementImpl.toPointer',
+    toNative: 'GnssMeasurementImpl.getNativePtr',
     toPlatform:
         '(val) => GnssMeasurementImpl.fromPointer(val, needFree: false)',
     platformType: 'GnssMeasurement')
@@ -325,26 +306,7 @@ final class GnssMeasurementImpl implements GnssMeasurement {
 
     return result;
   }
-
-  static ffi.Pointer<ffi.Void> toPointer(GnssMeasurement? val) {
-    if (val == null) {
-      return ffi.nullptr;
-    }
-
-    final result = malloc.call<ffi.Pointer<ffi.Void>>();
-    result.value = _GnssMeasurement_clone(getNativePtr(val));
-
-    return result.cast<ffi.Void>();
-  }
 }
-
-final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)
-    _GnssMeasurement_clone = lib.library
-        .lookup<
-                ffi.NativeFunction<
-                    ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
-            'yandex_flutter_runtime_sensors_internal_GnssMeasurement_clone')
-        .asFunction(isLeaf: true);
 
 final _GnssMeasurement_free = lib.library
     .lookup<ffi.NativeFunction<ffi.Void Function(ffi.Void)>>(
@@ -519,7 +481,7 @@ final ffi.Pointer<ffi.Void> Function(
     .asFunction(isLeaf: true);
 
 @bindings_annotations.ContainerData(
-    toNative: 'GnssMeasurementsEventImpl.toPointer',
+    toNative: 'GnssMeasurementsEventImpl.getNativePtr',
     toPlatform:
         '(val) => GnssMeasurementsEventImpl.fromPointer(val, needFree: false)',
     platformType: 'GnssMeasurementsEvent')
@@ -569,27 +531,7 @@ final class GnssMeasurementsEventImpl implements GnssMeasurementsEvent {
 
     return result;
   }
-
-  static ffi.Pointer<ffi.Void> toPointer(GnssMeasurementsEvent? val) {
-    if (val == null) {
-      return ffi.nullptr;
-    }
-
-    final result = malloc.call<ffi.Pointer<ffi.Void>>();
-    result.value = _GnssMeasurementsEvent_clone(getNativePtr(val));
-
-    return result.cast<ffi.Void>();
-  }
 }
-
-final ffi.Pointer<ffi.Void> Function(
-    ffi
-        .Pointer<ffi.Void>) _GnssMeasurementsEvent_clone = lib.library
-    .lookup<
-            ffi.NativeFunction<
-                ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
-        'yandex_flutter_runtime_sensors_internal_GnssMeasurementsEvent_clone')
-    .asFunction(isLeaf: true);
 
 final _GnssMeasurementsEvent_free = lib.library
     .lookup<ffi.NativeFunction<ffi.Void Function(ffi.Void)>>(
@@ -685,6 +627,15 @@ final void Function(
                     ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>(
         'yandex_flutter_runtime_sensors_internal_GnssMeasurementsEventsNativeListener_onGnssMeasurementsEvent')
     .asFunction();
+final void Function(
+    ffi.Pointer<ffi.Void>,
+    core
+        .int) _GnssMeasurementsEventsNativeListener_set = lib.library
+    .lookup<
+            ffi.NativeFunction<
+                ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Int64)>>(
+        'yandex_flutter_runtime_sensors_internal_GnssMeasurementsEventsNativeListener_set_')
+    .asFunction(isLeaf: true);
 
 extension GnssMeasurementsEventsPlatformProviderImpl
     on GnssMeasurementsEventsPlatformProvider {

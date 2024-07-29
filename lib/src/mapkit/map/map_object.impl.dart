@@ -33,6 +33,7 @@ class MapObjectImpl implements MapObject, ffi.Finalizable {
     return (obj as MapObjectImpl).ptr;
   }
 
+  @core.override
   core.bool isValid() {
     return _MapObject_check(ptr);
   }
@@ -237,6 +238,13 @@ final void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)
                         ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>(
             'yandex_flutter_mapkit_map_MapObject_setDragListener')
         .asFunction();
+final void Function(ffi.Pointer<ffi.Void>, core.int) _MapObject_set = lib
+    .library
+    .lookup<
+        ffi.NativeFunction<
+            ffi.Void Function(ffi.Pointer<ffi.Void>,
+                ffi.Int64)>>('yandex_flutter_mapkit_map_MapObject_set_')
+    .asFunction(isLeaf: true);
 final core.int Function(ffi.Pointer<ffi.Void>) _MapObject_native_id = lib
     .library
     .lookup<ffi.NativeFunction<ffi.Uint64 Function(ffi.Pointer<ffi.Void>)>>(

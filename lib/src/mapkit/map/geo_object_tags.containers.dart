@@ -13,7 +13,7 @@ extension GeoObjectTagsContainerExtension on GeoObjectTags {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, GeoObjectTagsImpl.toPointer);
+    return string_map.toNativeMap(obj, GeoObjectTagsImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension GeoObjectTagsContainerExtension on GeoObjectTags {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, GeoObjectTagsImpl.toPointer);
+    return vector.toNativeVector(obj, GeoObjectTagsImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(

@@ -28,4 +28,6 @@ abstract class Logo implements ffi.Finalizable {
   /// Set logo padding relative to the left/right and top/bottom edges.
   /// Values must be positive.
   void setPadding(mapkit_logo_padding.LogoPadding padding);
+
+  core.bool isValid();
 }

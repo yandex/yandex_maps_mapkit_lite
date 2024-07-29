@@ -40,7 +40,7 @@ extension RequestPointTypeImpl on RequestPointType {
 }
 
 @bindings_annotations.ContainerData(
-    toNative: 'RequestPointImpl.toPointer',
+    toNative: 'RequestPointImpl.getNativePtr',
     toPlatform: '(val) => RequestPointImpl.fromPointer(val, needFree: false)',
     platformType: 'RequestPoint')
 final class RequestPointImpl implements RequestPoint {
@@ -93,26 +93,7 @@ final class RequestPointImpl implements RequestPoint {
 
     return result;
   }
-
-  static ffi.Pointer<ffi.Void> toPointer(RequestPoint? val) {
-    if (val == null) {
-      return ffi.nullptr;
-    }
-
-    final result = malloc.call<ffi.Pointer<ffi.Void>>();
-    result.value = _RequestPoint_clone(getNativePtr(val));
-
-    return result.cast<ffi.Void>();
-  }
 }
-
-final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)
-    _RequestPoint_clone = lib.library
-        .lookup<
-                ffi.NativeFunction<
-                    ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
-            'yandex_flutter_mapkit_RequestPoint_clone')
-        .asFunction(isLeaf: true);
 
 final _RequestPoint_free = lib.library
     .lookup<ffi.NativeFunction<ffi.Void Function(ffi.Void)>>(

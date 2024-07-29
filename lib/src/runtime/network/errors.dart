@@ -20,25 +20,39 @@ part 'errors.impl.dart';
 
 /// Server responded in unexpected way: unparsable content, wrong content
 /// or unexpected HTTP code.
-abstract class RemoteError implements runtime_error.Error, ffi.Finalizable {}
+abstract class RemoteError implements runtime_error.Error, ffi.Finalizable {
+  core.bool isValid();
+}
 
 /// Client request is invalid (server returned the 400 'Bad Request'
 /// response).
-abstract class BadRequestError implements RemoteError, ffi.Finalizable {}
+abstract class BadRequestError implements RemoteError, ffi.Finalizable {
+  core.bool isValid();
+}
 
 /// Requested object has not been found. Most likely, your link is
 /// outdated or the object has been deleted.
-abstract class NotFoundError implements RemoteError, ffi.Finalizable {}
+abstract class NotFoundError implements RemoteError, ffi.Finalizable {
+  core.bool isValid();
+}
 
 /// Request entity is too large.
 abstract class RequestEntityTooLargeError
-    implements RemoteError, ffi.Finalizable {}
+    implements RemoteError, ffi.Finalizable {
+  core.bool isValid();
+}
 
 /// You are not allowed to access the requested object.
-abstract class ForbiddenError implements RemoteError, ffi.Finalizable {}
+abstract class ForbiddenError implements RemoteError, ffi.Finalizable {
+  core.bool isValid();
+}
 
 /// You do not have a valid MapKit API key.
-abstract class UnauthorizedError implements RemoteError, ffi.Finalizable {}
+abstract class UnauthorizedError implements RemoteError, ffi.Finalizable {
+  core.bool isValid();
+}
 
 /// Failed to retrieve data due to network instability.
-abstract class NetworkError implements runtime_error.Error, ffi.Finalizable {}
+abstract class NetworkError implements runtime_error.Error, ffi.Finalizable {
+  core.bool isValid();
+}

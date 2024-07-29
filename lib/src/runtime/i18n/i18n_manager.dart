@@ -25,8 +25,13 @@ import 'package:yandex_maps_mapkit_lite/src/runtime/i18n/prefs.dart'
 part 'i18n_manager.containers.dart';
 part 'i18n_manager.impl.dart';
 
+/// Represents a unit with the value and measurement separated.
+
 final class CanonicalUnit {
+  /// The unit of measurement.
   final core.String unit;
+
+  /// The numerical value.
   final core.double value;
 
   const CanonicalUnit({
@@ -83,6 +88,8 @@ abstract class I18nManager implements ffi.Finalizable {
 
   /// Localizes a value represented by canonical units.
   core.String localizeCanonicalUnit(CanonicalUnit canonicalUnit);
+
+  core.bool isValid();
 }
 
 class I18nManagerFactory {

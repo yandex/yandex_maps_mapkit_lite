@@ -14,8 +14,13 @@ import 'package:yandex_maps_mapkit_lite/src/bindings/common/vector.dart'
 part 'span.containers.dart';
 part 'span.impl.dart';
 
+/// The panorama field of view.
+
 final class Span {
+  /// The horizontal view angle.
   final core.double horizontalAngle;
+
+  /// The vertical view angle.
   final core.double verticalAngle;
 
   const Span({

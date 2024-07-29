@@ -26,6 +26,9 @@ import 'package:yandex_maps_mapkit_lite/src/mapkit/geometry/geometry.dart'
 part 'geo_object_collection.containers.dart';
 part 'geo_object_collection.impl.dart';
 
+/// A collection of geo objects. Allows you to group geo objects for
+/// adding them to the map, setting options, etc. Collections are geo
+/// objects too.
 abstract final class GeoObjectCollection implements ffi.Finalizable {
   factory GeoObjectCollection(
           mapkit_geometry_geometry.BoundingBox? boundingBox,
@@ -34,7 +37,11 @@ abstract final class GeoObjectCollection implements ffi.Finalizable {
           core.List<GeoObjectCollectionItem> children) =>
       GeoObjectCollectionImpl(boundingBox, metadataContainer, children);
 
+  /// The bounds around the collection of objects.
+  ///
   mapkit_geometry_geometry.BoundingBox? get boundingBox;
+
+  /// The metadata for the objects.
   type_dictionary.TypeDictionaryBase<mapkit_base_metadata.BaseMetadata>
       get metadataContainer;
   core.List<GeoObjectCollectionItem> get children;

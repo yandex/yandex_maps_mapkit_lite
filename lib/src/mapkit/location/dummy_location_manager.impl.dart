@@ -56,3 +56,11 @@ final void Function(
                         mapkit_location_location.LocationNative)>>(
             'yandex_flutter_mapkit_location_DummyLocationManager_setLocation')
         .asFunction();
+final void Function(ffi.Pointer<ffi.Void>, core.int) _DummyLocationManager_set =
+    lib
+        .library
+        .lookup<
+                ffi.NativeFunction<
+                    ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Int64)>>(
+            'yandex_flutter_mapkit_location_DummyLocationManager_set_')
+        .asFunction(isLeaf: true);

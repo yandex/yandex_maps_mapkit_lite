@@ -88,6 +88,7 @@ class I18nManagerImpl implements I18nManager, ffi.Finalizable {
     return (obj as I18nManagerImpl).ptr;
   }
 
+  @core.override
   core.bool isValid() {
     return _I18nManager_check(ptr);
   }
@@ -265,6 +266,13 @@ final native_types.NativeString Function(
                         ffi.Pointer<ffi.Void>, CanonicalUnitNative)>>(
             'yandex_flutter_runtime_i18n_I18nManager_localizeCanonicalUnit')
         .asFunction();
+final void Function(ffi.Pointer<ffi.Void>, core.int) _I18nManager_set = lib
+    .library
+    .lookup<
+        ffi.NativeFunction<
+            ffi.Void Function(ffi.Pointer<ffi.Void>,
+                ffi.Int64)>>('yandex_flutter_runtime_i18n_I18nManager_set_')
+    .asFunction(isLeaf: true);
 
 core.String _getLocale() {
   return to_platform.toPlatformString(_I18nManagerFactory_getLocale());

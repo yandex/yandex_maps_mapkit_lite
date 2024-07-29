@@ -140,4 +140,6 @@ abstract class PolylineMapObject
 
   /// Provides arrows.
   core.List<mapkit_map_arrow.Arrow> arrows();
+
+  core.bool isValid();
 }

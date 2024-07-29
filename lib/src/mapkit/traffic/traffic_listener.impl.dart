@@ -39,7 +39,7 @@ extension TrafficColorImpl on TrafficColor {
 }
 
 @bindings_annotations.ContainerData(
-    toNative: 'TrafficLevelImpl.toPointer',
+    toNative: 'TrafficLevelImpl.getNativePtr',
     toPlatform: '(val) => TrafficLevelImpl.fromPointer(val, needFree: false)',
     platformType: 'TrafficLevel')
 final class TrafficLevelImpl implements TrafficLevel {
@@ -81,26 +81,7 @@ final class TrafficLevelImpl implements TrafficLevel {
 
     return result;
   }
-
-  static ffi.Pointer<ffi.Void> toPointer(TrafficLevel? val) {
-    if (val == null) {
-      return ffi.nullptr;
-    }
-
-    final result = malloc.call<ffi.Pointer<ffi.Void>>();
-    result.value = _TrafficLevel_clone(getNativePtr(val));
-
-    return result.cast<ffi.Void>();
-  }
 }
-
-final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)
-    _TrafficLevel_clone = lib.library
-        .lookup<
-                ffi.NativeFunction<
-                    ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
-            'yandex_flutter_mapkit_traffic_TrafficLevel_clone')
-        .asFunction(isLeaf: true);
 
 final _TrafficLevel_free = lib.library
     .lookup<ffi.NativeFunction<ffi.Void Function(ffi.Void)>>(

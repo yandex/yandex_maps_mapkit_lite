@@ -1,3 +1,9 @@
+## 4.7.0-beta
+
+* Upgrade MapKit to 4.7.0
+* Fix ViewProvider rendering
+* Add error catching in ImageProvider, AnimatedImageProvider and ViewProvider
+
 ## 4.6.1-beta3
 
 * Add userData property to MapObject

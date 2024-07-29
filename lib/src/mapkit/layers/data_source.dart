@@ -3,6 +3,7 @@ import 'package:yandex_maps_mapkit_lite/src/bindings/common/library.dart'
     as lib;
 
 import 'dart:core' as core;
+import 'dart:typed_data' as typed_data;
 import 'package:meta/meta.dart';
 import 'package:yandex_maps_mapkit_lite/src/bindings/annotations/annotations.dart'
     as bindings_annotations;
@@ -28,16 +29,30 @@ import 'package:yandex_maps_mapkit_lite/src/bindings/weak_map/weak_map.dart'
 part 'data_source.containers.dart';
 part 'data_source.impl.dart';
 
-abstract class DataSource implements ffi.Finalizable {
+abstract class BaseDataSource implements ffi.Finalizable {
   /// Stores id of data source.
   core.String get id;
+  core.bool isValid();
+}
 
+abstract class TileDataSource implements BaseDataSource, ffi.Finalizable {
   /// Invalidates data source and reloads all tiles. Must not be called if
   /// DataSource does not support versioning: LayerOptions.versionSupport =
   /// false;
   void invalidate(core.String version);
+
+  core.bool isValid();
+}
+
+abstract class DataSource implements BaseDataSource, ffi.Finalizable {
+  /// Updates all data. This method works synchronously and blocks UI
+  /// thread. It is intended for passing not more than 500kB of data;
+  /// otherwise, it will affect the responsiveness of UI and map.
+  void setData(typed_data.ByteBuffer data);
+
+  core.bool isValid();
 }
 
 abstract class DataSourceListener {
-  void onDataSourceUpdated(DataSource dataSource);
+  void onDataSourceUpdated(BaseDataSource dataSource);
 }

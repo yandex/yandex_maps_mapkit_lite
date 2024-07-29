@@ -22,4 +22,5 @@ part 'geo_object_tap_event.impl.dart';
 abstract class GeoObjectTapEvent implements ffi.Finalizable {
   /// Return GeoObject The object that was tapped.
   mapkit_geo_object.GeoObject get geoObject;
+  core.bool isValid();
 }

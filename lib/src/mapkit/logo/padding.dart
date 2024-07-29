@@ -14,8 +14,13 @@ import 'package:yandex_maps_mapkit_lite/src/bindings/common/vector.dart'
 part 'padding.containers.dart';
 part 'padding.impl.dart';
 
+/// Logo padding class.
+
 final class LogoPadding {
+  /// Defines horizontal padding.
   final core.int horizontalPadding;
+
+  /// Defines vertical padding.
   final core.int verticalPadding;
 
   const LogoPadding({

@@ -168,7 +168,7 @@ extension SegmentImpl on Segment {
 }
 
 @bindings_annotations.ContainerData(
-    toNative: 'PolylineImpl.toPointer',
+    toNative: 'PolylineImpl.getNativePtr',
     toPlatform: '(val) => PolylineImpl.fromPointer(val, needFree: false)',
     platformType: 'Polyline')
 final class PolylineImpl implements Polyline {
@@ -211,26 +211,7 @@ final class PolylineImpl implements Polyline {
 
     return result;
   }
-
-  static ffi.Pointer<ffi.Void> toPointer(Polyline? val) {
-    if (val == null) {
-      return ffi.nullptr;
-    }
-
-    final result = malloc.call<ffi.Pointer<ffi.Void>>();
-    result.value = _Polyline_clone(getNativePtr(val));
-
-    return result.cast<ffi.Void>();
-  }
 }
-
-final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>) _Polyline_clone =
-    lib.library
-        .lookup<
-                ffi.NativeFunction<
-                    ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
-            'yandex_flutter_mapkit_geometry_Polyline_clone')
-        .asFunction(isLeaf: true);
 
 final _Polyline_free = lib.library
     .lookup<ffi.NativeFunction<ffi.Void Function(ffi.Void)>>(
@@ -363,7 +344,7 @@ extension SubpolylineImpl on Subpolyline {
 }
 
 @bindings_annotations.ContainerData(
-    toNative: 'LinearRingImpl.toPointer',
+    toNative: 'LinearRingImpl.getNativePtr',
     toPlatform: '(val) => LinearRingImpl.fromPointer(val, needFree: false)',
     platformType: 'LinearRing')
 final class LinearRingImpl implements LinearRing {
@@ -406,26 +387,7 @@ final class LinearRingImpl implements LinearRing {
 
     return result;
   }
-
-  static ffi.Pointer<ffi.Void> toPointer(LinearRing? val) {
-    if (val == null) {
-      return ffi.nullptr;
-    }
-
-    final result = malloc.call<ffi.Pointer<ffi.Void>>();
-    result.value = _LinearRing_clone(getNativePtr(val));
-
-    return result.cast<ffi.Void>();
-  }
 }
-
-final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>) _LinearRing_clone =
-    lib.library
-        .lookup<
-                ffi.NativeFunction<
-                    ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
-            'yandex_flutter_mapkit_geometry_LinearRing_clone')
-        .asFunction(isLeaf: true);
 
 final _LinearRing_free = lib.library
     .lookup<ffi.NativeFunction<ffi.Void Function(ffi.Void)>>(
@@ -448,7 +410,7 @@ final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)
         .asFunction(isLeaf: true);
 
 @bindings_annotations.ContainerData(
-    toNative: 'PolygonImpl.toPointer',
+    toNative: 'PolygonImpl.getNativePtr',
     toPlatform: '(val) => PolygonImpl.fromPointer(val, needFree: false)',
     platformType: 'Polygon')
 final class PolygonImpl implements Polygon {
@@ -492,26 +454,7 @@ final class PolygonImpl implements Polygon {
 
     return result;
   }
-
-  static ffi.Pointer<ffi.Void> toPointer(Polygon? val) {
-    if (val == null) {
-      return ffi.nullptr;
-    }
-
-    final result = malloc.call<ffi.Pointer<ffi.Void>>();
-    result.value = _Polygon_clone(getNativePtr(val));
-
-    return result.cast<ffi.Void>();
-  }
 }
-
-final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>) _Polygon_clone = lib
-    .library
-    .lookup<
-            ffi.NativeFunction<
-                ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
-        'yandex_flutter_mapkit_geometry_Polygon_clone')
-    .asFunction(isLeaf: true);
 
 final _Polygon_free = lib.library
     .lookup<ffi.NativeFunction<ffi.Void Function(ffi.Void)>>(
@@ -543,7 +486,7 @@ final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)
         .asFunction(isLeaf: true);
 
 @bindings_annotations.ContainerData(
-    toNative: 'MultiPolygonImpl.toPointer',
+    toNative: 'MultiPolygonImpl.getNativePtr',
     toPlatform: '(val) => MultiPolygonImpl.fromPointer(val, needFree: false)',
     platformType: 'MultiPolygon')
 final class MultiPolygonImpl implements MultiPolygon {
@@ -584,26 +527,7 @@ final class MultiPolygonImpl implements MultiPolygon {
 
     return result;
   }
-
-  static ffi.Pointer<ffi.Void> toPointer(MultiPolygon? val) {
-    if (val == null) {
-      return ffi.nullptr;
-    }
-
-    final result = malloc.call<ffi.Pointer<ffi.Void>>();
-    result.value = _MultiPolygon_clone(getNativePtr(val));
-
-    return result.cast<ffi.Void>();
-  }
 }
-
-final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)
-    _MultiPolygon_clone = lib.library
-        .lookup<
-                ffi.NativeFunction<
-                    ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
-            'yandex_flutter_mapkit_geometry_MultiPolygon_clone')
-        .asFunction(isLeaf: true);
 
 final _MultiPolygon_free = lib.library
     .lookup<ffi.NativeFunction<ffi.Void Function(ffi.Void)>>(

@@ -19,14 +19,22 @@ part 'local_error.containers.dart';
 part 'local_error.impl.dart';
 
 /// Local error has occurred.
-abstract class LocalError implements runtime_error.Error, ffi.Finalizable {}
+abstract class LocalError implements runtime_error.Error, ffi.Finalizable {
+  core.bool isValid();
+}
 
 /// Disk is full.
-abstract class DiskFullError implements LocalError, ffi.Finalizable {}
+abstract class DiskFullError implements LocalError, ffi.Finalizable {
+  core.bool isValid();
+}
 
 /// Disk is corrupted.
-abstract class DiskCorruptError implements LocalError, ffi.Finalizable {}
+abstract class DiskCorruptError implements LocalError, ffi.Finalizable {
+  core.bool isValid();
+}
 
 /// The application does not have the required write permissions.
 abstract class DiskWriteAccessError
-    implements DiskCorruptError, ffi.Finalizable {}
+    implements DiskCorruptError, ffi.Finalizable {
+  core.bool isValid();
+}

@@ -153,4 +153,6 @@ abstract class MapObjectCollection
   /// A styler for all placemarks in this collection, including placemarks
   /// in child collections.
   mapkit_map_placemarks_styler.PlacemarksStyler placemarksStyler();
+
+  core.bool isValid();
 }

@@ -13,7 +13,7 @@ extension AttributionContainerExtension on Attribution {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, AttributionImpl.toPointer);
+    return string_map.toNativeMap(obj, AttributionImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension AttributionContainerExtension on Attribution {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, AttributionImpl.toPointer);
+    return vector.toNativeVector(obj, AttributionImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(

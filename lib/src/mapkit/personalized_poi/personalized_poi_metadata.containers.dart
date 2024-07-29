@@ -15,7 +15,7 @@ extension PersonalizedPoiExtraMetadataEntryContainerExtension
     }
 
     return string_map.toNativeMap(
-        obj, PersonalizedPoiExtraMetadataEntryImpl.toPointer);
+        obj, PersonalizedPoiExtraMetadataEntryImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -46,7 +46,7 @@ extension PersonalizedPoiExtraMetadataEntryContainerExtension
     }
 
     return vector.toNativeVector(
-        obj, PersonalizedPoiExtraMetadataEntryImpl.toPointer);
+        obj, PersonalizedPoiExtraMetadataEntryImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -131,7 +131,7 @@ extension PersonalizedPoiExtraMetadataContainerExtension
     }
 
     return string_map.toNativeMap(
-        obj, PersonalizedPoiExtraMetadataImpl.toPointer);
+        obj, PersonalizedPoiExtraMetadataImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -161,7 +161,7 @@ extension PersonalizedPoiExtraMetadataContainerExtension
     }
 
     return vector.toNativeVector(
-        obj, PersonalizedPoiExtraMetadataImpl.toPointer);
+        obj, PersonalizedPoiExtraMetadataImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(

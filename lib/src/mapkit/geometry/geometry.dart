@@ -16,8 +16,13 @@ import 'package:yandex_maps_mapkit_lite/src/mapkit/geometry/point.dart'
 part 'geometry.containers.dart';
 part 'geometry.impl.dart';
 
+/// A rectangular box around the object.
+
 final class BoundingBox {
+  /// The coordinates of the southwest corner of the box.
   final mapkit_geometry_point.Point southWest;
+
+  /// The coordinates of the northeast corner of the box.
   final mapkit_geometry_point.Point northEast;
 
   const BoundingBox(this.southWest, this.northEast);
@@ -39,8 +44,13 @@ final class BoundingBox {
   }
 }
 
+/// A circle around the specified point.
+
 final class Circle {
+  /// The coordinates of the center of the circle.
   final mapkit_geometry_point.Point center;
+
+  /// The radius of the circle in meters.
   final core.double radius;
 
   const Circle(
@@ -65,8 +75,13 @@ final class Circle {
   }
 }
 
+/// A line between two points.
+
 final class Segment {
+  /// Starting point of the segment.
   final mapkit_geometry_point.Point startPoint;
+
+  /// End point of the segment.
   final mapkit_geometry_point.Point endPoint;
 
   const Segment(this.startPoint, this.endPoint);
@@ -88,10 +103,13 @@ final class Segment {
   }
 }
 
+/// A polyline between a number of points. A polyline is drawn between
+/// consecutive points.
 abstract final class Polyline implements ffi.Finalizable {
   factory Polyline(core.List<mapkit_geometry_point.Point> points) =>
       PolylineImpl(points);
 
+  /// The list of points to connect.
   core.List<mapkit_geometry_point.Point> get points;
 
   @core.override
@@ -111,8 +129,14 @@ abstract final class Polyline implements ffi.Finalizable {
   }
 }
 
+/// The position on a polyline.
+
 final class PolylinePosition {
+  /// Zero-based index of the polyline segment.
   final core.int segmentIndex;
+
+  /// Position in the specified segment. Possible values: from 0 to 1,
+  /// where 0 is the start of the segment and 1 is the end of it.
   final core.double segmentPosition;
 
   const PolylinePosition({
@@ -138,8 +162,13 @@ final class PolylinePosition {
   }
 }
 
+/// A part of a polyline.
+
 final class Subpolyline {
+  /// The start of the selected part of the polyline.
   final PolylinePosition begin;
+
+  /// The end of the selected part of the polyline.
   final PolylinePosition end;
 
   const Subpolyline(this.begin, this.end);
@@ -161,10 +190,16 @@ final class Subpolyline {
   }
 }
 
+/// A sequence of four or more vertices, with all points along the
+/// linearly-interpolated curves (line segments) between each pair of
+/// consecutive vertices. A ring must have either 0, 4 or more points.
+/// The first and last points of the ring must be in the same position.
+/// The ring must not intersect with itself.
 abstract final class LinearRing implements ffi.Finalizable {
   factory LinearRing(core.List<mapkit_geometry_point.Point> points) =>
       LinearRingImpl(points);
 
+  /// The list of points to connect.
   core.List<mapkit_geometry_point.Point> get points;
 
   @core.override
@@ -184,11 +219,16 @@ abstract final class LinearRing implements ffi.Finalizable {
   }
 }
 
+/// A polygon with one or more polygons in it. The exterior and interior
+/// areas are specified using LinearRing.
 abstract final class Polygon implements ffi.Finalizable {
   factory Polygon(LinearRing outerRing, core.List<LinearRing> innerRings) =>
       PolygonImpl(outerRing, innerRings);
 
+  /// The ring specifying the area.
   LinearRing get outerRing;
+
+  /// The list of rings in the specified area.
   core.List<LinearRing> get innerRings;
 
   @core.override
@@ -208,6 +248,7 @@ abstract final class Polygon implements ffi.Finalizable {
   }
 }
 
+/// An area consisting of multiple external polygons.
 abstract final class MultiPolygon implements ffi.Finalizable {
   factory MultiPolygon(core.List<Polygon> polygons) =>
       MultiPolygonImpl(polygons);

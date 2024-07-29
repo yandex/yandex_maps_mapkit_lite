@@ -23,6 +23,7 @@ import 'package:yandex_maps_mapkit_lite/src/mapkit/version.dart'
 part 'raw_tile.containers.dart';
 part 'raw_tile.impl.dart';
 
+/// A raw tile that can be displayed on the map.
 abstract final class RawTile implements ffi.Finalizable {
   factory RawTile(
           mapkit_version.Version version,

@@ -33,11 +33,15 @@ enum TrafficColor {
   ;
 }
 
+/// The level of traffic.
 abstract final class TrafficLevel implements ffi.Finalizable {
   factory TrafficLevel(TrafficColor color, core.int level) =>
       TrafficLevelImpl(color, level);
 
+  /// The color that represents traffic.
   TrafficColor get color;
+
+  /// Traffic level.
   core.int get level;
 
   @core.override

@@ -112,6 +112,7 @@ class BaseMapObjectCollectionImpl extends mapkit_map_map_object.MapObjectImpl
     return (obj as BaseMapObjectCollectionImpl).ptr;
   }
 
+  @core.override
   core.bool isValid() {
     return _BaseMapObjectCollection_check(ptr);
   }
@@ -207,3 +208,10 @@ final void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)
                         ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>(
             'yandex_flutter_mapkit_map_BaseMapObjectCollection_removeListener')
         .asFunction();
+final void Function(ffi.Pointer<ffi.Void>, core.int)
+    _BaseMapObjectCollection_set = lib.library
+        .lookup<
+                ffi.NativeFunction<
+                    ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Int64)>>(
+            'yandex_flutter_mapkit_map_BaseMapObjectCollection_set_')
+        .asFunction(isLeaf: true);

@@ -174,3 +174,10 @@ final core.double Function(ffi.Pointer<ffi.Void>) _RoutePosition_timeToFinish =
         .lookup<ffi.NativeFunction<ffi.Double Function(ffi.Pointer<ffi.Void>)>>(
             'yandex_flutter_mapkit_navigation_RoutePosition_timeToFinish')
         .asFunction();
+final void Function(ffi.Pointer<ffi.Void>, core.int) _RoutePosition_set = lib
+    .library
+    .lookup<
+            ffi.NativeFunction<
+                ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Int64)>>(
+        'yandex_flutter_mapkit_navigation_RoutePosition_set_')
+    .asFunction(isLeaf: true);

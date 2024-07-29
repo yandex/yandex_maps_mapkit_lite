@@ -99,7 +99,7 @@ abstract class MapWindow implements ffi.Finalizable {
   /// another instance of the world beyond this edge.
   mapkit_map_visible_region.VisibleRegion get focusRegion;
 
-  ///
+  /// @nodoc
   /// Defines the scale factor, which equals the number of pixels per
   /// device-independent point.
   core.double get scaleFactor;
@@ -143,4 +143,6 @@ abstract class MapWindow implements ffi.Finalizable {
   void removeSizeChangedListener(
       mapkit_map_size_changed_listener.MapSizeChangedListener
           sizeChangedListener);
+
+  core.bool isValid();
 }

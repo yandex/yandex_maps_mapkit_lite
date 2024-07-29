@@ -33,6 +33,7 @@ class LayerImpl implements Layer, ffi.Finalizable {
     return (obj as LayerImpl).ptr;
   }
 
+  @core.override
   core.bool isValid() {
     return _Layer_check(ptr);
   }
@@ -74,3 +75,9 @@ final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)
                     ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
             'yandex_flutter_mapkit_layers_Layer_dataSourceLayer')
         .asFunction();
+final void Function(ffi.Pointer<ffi.Void>, core.int) _Layer_set = lib.library
+    .lookup<
+        ffi.NativeFunction<
+            ffi.Void Function(ffi.Pointer<ffi.Void>,
+                ffi.Int64)>>('yandex_flutter_mapkit_layers_Layer_set_')
+    .asFunction(isLeaf: true);

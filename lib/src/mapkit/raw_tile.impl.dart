@@ -1,7 +1,7 @@
 part of 'raw_tile.dart';
 
 @bindings_annotations.ContainerData(
-    toNative: 'RawTileImpl.toPointer',
+    toNative: 'RawTileImpl.getNativePtr',
     toPlatform: '(val) => RawTileImpl.fromPointer(val, needFree: false)',
     platformType: 'RawTile')
 final class RawTileImpl implements RawTile {
@@ -64,26 +64,7 @@ final class RawTileImpl implements RawTile {
 
     return result;
   }
-
-  static ffi.Pointer<ffi.Void> toPointer(RawTile? val) {
-    if (val == null) {
-      return ffi.nullptr;
-    }
-
-    final result = malloc.call<ffi.Pointer<ffi.Void>>();
-    result.value = _RawTile_clone(getNativePtr(val));
-
-    return result.cast<ffi.Void>();
-  }
 }
-
-final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>) _RawTile_clone = lib
-    .library
-    .lookup<
-        ffi.NativeFunction<
-            ffi.Pointer<ffi.Void> Function(
-                ffi.Pointer<ffi.Void>)>>('yandex_flutter_mapkit_RawTile_clone')
-    .asFunction(isLeaf: true);
 
 final _RawTile_free = lib.library
     .lookup<ffi.NativeFunction<ffi.Void Function(ffi.Void)>>(

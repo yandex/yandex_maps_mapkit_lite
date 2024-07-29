@@ -34,6 +34,7 @@ class CircleMapObjectImpl extends mapkit_map_map_object.MapObjectImpl
     return (obj as CircleMapObjectImpl).ptr;
   }
 
+  @core.override
   core.bool isValid() {
     return _CircleMapObject_check(ptr);
   }
@@ -183,3 +184,11 @@ final void Function(ffi.Pointer<ffi.Void>, core.bool)
                     ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Bool)>>(
             'yandex_flutter_mapkit_map_CircleMapObject_set_geodesic')
         .asFunction();
+
+final void Function(ffi.Pointer<ffi.Void>, core.int) _CircleMapObject_set = lib
+    .library
+    .lookup<
+        ffi.NativeFunction<
+            ffi.Void Function(ffi.Pointer<ffi.Void>,
+                ffi.Int64)>>('yandex_flutter_mapkit_map_CircleMapObject_set_')
+    .asFunction(isLeaf: true);

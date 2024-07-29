@@ -21,8 +21,13 @@ import 'package:yandex_maps_mapkit_lite/src/bindings/common/vector.dart'
 part 'rect.containers.dart';
 part 'rect.impl.dart';
 
+/// The rectangle to display on the map.
+
 final class Rect {
+  /// Minimum rectangle coordinates.
   final math.Point<core.double> min;
+
+  /// Maximum rectangle coordinates.
   final math.Point<core.double> max;
 
   const Rect(this.min, this.max);

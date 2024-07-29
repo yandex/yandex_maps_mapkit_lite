@@ -1,7 +1,7 @@
 part of 'geo_object_tags.dart';
 
 @bindings_annotations.ContainerData(
-    toNative: 'GeoObjectTagsImpl.toPointer',
+    toNative: 'GeoObjectTagsImpl.getNativePtr',
     toPlatform: '(val) => GeoObjectTagsImpl.fromPointer(val, needFree: false)',
     platformType: 'GeoObjectTags')
 final class GeoObjectTagsImpl implements GeoObjectTags {
@@ -43,17 +43,6 @@ final class GeoObjectTagsImpl implements GeoObjectTags {
     }
 
     return result;
-  }
-
-  static ffi.Pointer<ffi.Void> toPointer(GeoObjectTags? val) {
-    if (val == null) {
-      return ffi.nullptr;
-    }
-
-    final result = malloc.call<ffi.Pointer<ffi.Void>>();
-    result.value = _GeoObjectTags_clone(getNativePtr(val));
-
-    return result.cast<ffi.Void>();
   }
 }
 
@@ -102,14 +91,6 @@ final native_types.NativeString Function() _GeoObjectTags_name = lib.library
     .lookup<ffi.NativeFunction<native_types.NativeString Function()>>(
         'yandex_flutter_mapkit_map_GeoObjectTags_name')
     .asFunction(isLeaf: true);
-
-final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)
-    _GeoObjectTags_clone = lib.library
-        .lookup<
-                ffi.NativeFunction<
-                    ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
-            'yandex_flutter_mapkit_map_GeoObjectTags_clone')
-        .asFunction(isLeaf: true);
 
 final _GeoObjectTags_free = lib.library
     .lookup<ffi.NativeFunction<ffi.Void Function(ffi.Void)>>(

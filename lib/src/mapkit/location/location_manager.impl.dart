@@ -40,6 +40,45 @@ extension LocationFilteringModeImpl on LocationFilteringMode {
 }
 
 @bindings_annotations.ContainerData(
+    toNative: 'LocationPurposeImpl.toPointer',
+    toPlatform:
+        '(val) => LocationPurposeImpl.fromPointer(val, needFree: false)',
+    platformType: 'LocationPurpose')
+extension LocationPurposeImpl on LocationPurpose {
+  static core.int toInt(LocationPurpose e) {
+    return e.index;
+  }
+
+  static LocationPurpose fromInt(core.int val) {
+    return LocationPurpose.values[val];
+  }
+
+  static LocationPurpose? fromPointer(ffi.Pointer<ffi.Void> ptr,
+      {core.bool needFree = true}) {
+    if (ptr == ffi.nullptr) {
+      return null;
+    }
+    final result = fromInt(ptr.cast<ffi.Int64>().value);
+
+    if (needFree) {
+      malloc.free(ptr);
+    }
+    return result;
+  }
+
+  static ffi.Pointer<ffi.Void> toPointer(LocationPurpose? val) {
+    if (val == null) {
+      return ffi.nullptr;
+    }
+
+    final result = malloc.call<ffi.Int64>();
+    result.value = toInt(val);
+
+    return result.cast();
+  }
+}
+
+@bindings_annotations.ContainerData(
     toNative: 'LocationManagerImpl.getNativePtr',
     toPlatform:
         '(val) => LocationManagerImpl.fromOptionalPtr(val.cast<ffi.Pointer<ffi.Void>>().value)',
@@ -76,6 +115,7 @@ class LocationManagerImpl implements LocationManager, ffi.Finalizable {
 
   void subscribeForLocationUpdates(
     LocationFilteringMode filteringMode,
+    LocationPurpose purpose,
     mapkit_location_location_listener.LocationListener locationListener, {
     required core.double desiredAccuracy,
     required core.int minTime,
@@ -89,6 +129,7 @@ class LocationManagerImpl implements LocationManager, ffi.Finalizable {
       minDistance,
       allowUseInBackground,
       LocationFilteringModeImpl.toInt(filteringMode),
+      LocationPurposeImpl.toInt(purpose),
       mapkit_location_location_listener.LocationListenerImpl.getNativePtr(
           locationListener),
     );
@@ -130,13 +171,21 @@ final void Function(
     core.double,
     core.bool,
     core.int,
+    core.int,
     ffi
         .Pointer<ffi.Void>) _LocationManager_subscribeForLocationUpdates = lib
     .library
     .lookup<
             ffi.NativeFunction<
-                ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Double, ffi.Int64,
-                    ffi.Double, ffi.Bool, ffi.Int64, ffi.Pointer<ffi.Void>)>>(
+                ffi.Void Function(
+                    ffi.Pointer<ffi.Void>,
+                    ffi.Double,
+                    ffi.Int64,
+                    ffi.Double,
+                    ffi.Bool,
+                    ffi.Int64,
+                    ffi.Int64,
+                    ffi.Pointer<ffi.Void>)>>(
         'yandex_flutter_mapkit_location_LocationManager_subscribeForLocationUpdates')
     .asFunction();
 final void Function(
@@ -166,6 +215,13 @@ final void Function(ffi.Pointer<ffi.Void>) _LocationManager_resume = lib.library
     .lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
         'yandex_flutter_mapkit_location_LocationManager_resume')
     .asFunction();
+final void Function(ffi.Pointer<ffi.Void>, core.int) _LocationManager_set = lib
+    .library
+    .lookup<
+            ffi.NativeFunction<
+                ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Int64)>>(
+        'yandex_flutter_mapkit_location_LocationManager_set_')
+    .asFunction(isLeaf: true);
 
 mapkit_location_location.Location? get _lastKnownLocation {
   return mapkit_location_location.LocationImpl.fromPointer(

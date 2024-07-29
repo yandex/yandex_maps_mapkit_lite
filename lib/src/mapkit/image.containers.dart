@@ -12,7 +12,7 @@ extension ImageContainerExtension on Image {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, ImageImpl.toPointer);
+    return string_map.toNativeMap(obj, ImageImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -38,7 +38,7 @@ extension ImageContainerExtension on Image {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, ImageImpl.toPointer);
+    return vector.toNativeVector(obj, ImageImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(

@@ -90,8 +90,11 @@ class ImageProviderHeap extends AsyncDispatcherHeap<ImageProvider> {
 
   @override
   void requestData(ImageProvider object, Pointer<Void> nativeData) {
-    _getImageProviderResult(object).then(
-        (value) => _onImageProviderComplete(nativeData, value.imageProvider));
+    _getImageProviderResult(object)
+        .then((value) =>
+            _onImageProviderComplete(nativeData, value.imageProvider))
+        .catchError((e, stackTrace) =>
+            onHandlerException(object, nativeData, e, stackTrace));
   }
 
   @override

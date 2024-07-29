@@ -1,7 +1,7 @@
 part of 'geo_object_selection_metadata.dart';
 
 @bindings_annotations.ContainerData(
-    toNative: 'GeoObjectSelectionMetadataImpl.toPointer',
+    toNative: 'GeoObjectSelectionMetadataImpl.getNativePtr',
     toPlatform:
         '(val) => GeoObjectSelectionMetadataImpl.fromPointer(val, needFree: false)',
     platformType: 'GeoObjectSelectionMetadata')
@@ -65,17 +65,6 @@ final class GeoObjectSelectionMetadataImpl
 
     return result;
   }
-
-  static ffi.Pointer<ffi.Void> toPointer(GeoObjectSelectionMetadata? val) {
-    if (val == null) {
-      return ffi.nullptr;
-    }
-
-    final result = malloc.call<ffi.Pointer<ffi.Void>>();
-    result.value = _GeoObjectSelectionMetadata_clone(getNativePtr(val));
-
-    return result.cast<ffi.Void>();
-  }
 }
 
 class _GeoObjectSelectionMetadataFactory
@@ -125,14 +114,6 @@ final native_types.NativeString Function() _GeoObjectSelectionMetadata_name =
     lib.library
         .lookup<ffi.NativeFunction<native_types.NativeString Function()>>(
             'yandex_flutter_mapkit_map_GeoObjectSelectionMetadata_name')
-        .asFunction(isLeaf: true);
-
-final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)
-    _GeoObjectSelectionMetadata_clone = lib.library
-        .lookup<
-                ffi.NativeFunction<
-                    ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
-            'yandex_flutter_mapkit_map_GeoObjectSelectionMetadata_clone')
         .asFunction(isLeaf: true);
 
 final _GeoObjectSelectionMetadata_free = lib.library

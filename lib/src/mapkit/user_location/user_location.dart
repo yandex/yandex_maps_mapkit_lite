@@ -51,6 +51,7 @@ abstract class UserLocationView implements ffi.Finalizable {
 
   /// Gets the GPS accuracy circle map object.
   mapkit_map_circle.CircleMapObject get accuracyCircle;
+  core.bool isValid();
 }
 
 /// The type of icon to use.
@@ -78,6 +79,7 @@ abstract class UserLocationIconChanged
     implements mapkit_layers_object_event.ObjectEvent, ffi.Finalizable {
   /// Gets the type of user location icon used.
   UserLocationIconType get iconType;
+  core.bool isValid();
 }
 
 /// Event for a change in the user location icon anchor.
@@ -85,6 +87,7 @@ abstract class UserLocationAnchorChanged
     implements mapkit_layers_object_event.ObjectEvent, ffi.Finalizable {
   /// Gets the type of anchor used.
   UserLocationAnchorType get anchorType;
+  core.bool isValid();
 }
 
 /// User location events object listener. Use it to customize the user
@@ -171,4 +174,6 @@ abstract class UserLocationLayer implements ffi.Finalizable {
   /// It is your responsibility to maintain a strong reference to
   /// the target object while it is attached to a class.
   void setObjectListener(UserLocationObjectListener? objectListener);
+
+  core.bool isValid();
 }

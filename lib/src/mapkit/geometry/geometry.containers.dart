@@ -13,7 +13,7 @@ extension PolylineContainerExtension on Polyline {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, PolylineImpl.toPointer);
+    return string_map.toNativeMap(obj, PolylineImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension PolylineContainerExtension on Polyline {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, PolylineImpl.toPointer);
+    return vector.toNativeVector(obj, PolylineImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -115,7 +115,7 @@ extension LinearRingContainerExtension on LinearRing {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, LinearRingImpl.toPointer);
+    return string_map.toNativeMap(obj, LinearRingImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -141,7 +141,7 @@ extension LinearRingContainerExtension on LinearRing {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, LinearRingImpl.toPointer);
+    return vector.toNativeVector(obj, LinearRingImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -217,7 +217,7 @@ extension PolygonContainerExtension on Polygon {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, PolygonImpl.toPointer);
+    return string_map.toNativeMap(obj, PolygonImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -243,7 +243,7 @@ extension PolygonContainerExtension on Polygon {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, PolygonImpl.toPointer);
+    return vector.toNativeVector(obj, PolygonImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(
@@ -319,7 +319,7 @@ extension MultiPolygonContainerExtension on MultiPolygon {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, MultiPolygonImpl.toPointer);
+    return string_map.toNativeMap(obj, MultiPolygonImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -345,7 +345,7 @@ extension MultiPolygonContainerExtension on MultiPolygon {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, MultiPolygonImpl.toPointer);
+    return vector.toNativeVector(obj, MultiPolygonImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(

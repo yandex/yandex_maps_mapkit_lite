@@ -55,4 +55,6 @@ abstract class CircleMapObject
   /// defined in projected space.</li></ul> Default: false.
   core.bool get geodesic;
   set geodesic(core.bool val);
+
+  core.bool isValid();
 }

@@ -16,39 +16,55 @@ import 'package:yandex_maps_mapkit_lite/src/bindings/common/to_platform.dart'
     as to_platform;
 import 'package:yandex_maps_mapkit_lite/src/bindings/common/vector.dart'
     as vector;
+import 'package:yandex_maps_mapkit_lite/src/mapkit/image.dart' as mapkit_image;
 
 part 'attribution.containers.dart';
 part 'attribution.impl.dart';
 
-final class Attribution {
-  final AttributionAuthor? author;
-  final AttributionLink? link;
+/// Details about the source of information.
+abstract final class Attribution implements ffi.Finalizable {
+  factory Attribution(AttributionAuthor? author, AttributionLink? link,
+          mapkit_image.Image? avatarImage) =>
+      AttributionImpl(author, link, avatarImage);
 
-  const Attribution({
-    this.author,
-    this.link,
-  });
+  /// Additional information about the author.
+  ///
+  AttributionAuthor? get author;
+
+  /// Link to a specific page on the author's site. To link to the website
+  /// as a whole, use author.uri.
+  ///
+  AttributionLink? get link;
+  mapkit_image.Image? get avatarImage;
 
   @core.override
-  core.int get hashCode => core.Object.hashAll([author, link]);
+  core.int get hashCode => core.Object.hashAll([author, link, avatarImage]);
 
   @core.override
   core.bool operator ==(covariant Attribution other) {
     if (core.identical(this, other)) {
       return true;
     }
-    return author == other.author && link == other.link;
+    return author == other.author &&
+        link == other.link &&
+        avatarImage == other.avatarImage;
   }
 
   @core.override
   core.String toString() {
-    return "Attribution(author: $author, link: $link)";
+    return "Attribution(author: $author, link: $link, avatarImage: $avatarImage)";
   }
 }
 
 final class AttributionAuthor {
   final core.String name;
+
+  /// A reference to the author's site.
+  ///
   final core.String? uri;
+
+  /// Author's email. Must contain at least one \@ symbol.
+  ///
   final core.String? email;
 
   const AttributionAuthor({

@@ -23,13 +23,40 @@ import 'package:yandex_maps_mapkit_lite/src/mapkit/map/rotation_type.dart'
 part 'icon_style.containers.dart';
 part 'icon_style.impl.dart';
 
+/// The style of created icons.
+
 final class IconStyle {
+  /// An anchor is used to alter image placement. Normalized: (0.0f, 0.0f)
+  /// denotes the top left image corner; (1.0f, 1.0f) denotes bottom right.
+  /// Default is (0.5f, 0.5f).
+  ///
   final math.Point<core.double>? anchor;
+
+  /// Icon rotation type. Default: NoRotation.
+  ///
   final mapkit_map_rotation_type.RotationType? rotationType;
+
+  /// Z-index of the icon, relative to the placemark's z-index.
+  ///
   final core.double? zIndex;
+
+  /// If true, the icon is displayed on the map surface. If false, the icon
+  /// is displayed on the screen surface. Default: false.
+  ///
   final core.bool? flat;
+
+  /// Sets icon visibility. Default: true.
+  ///
   final core.bool? visible;
+
+  /// Scale of the icon. Default: 1.0f.
+  ///
   final core.double? scale;
+
+  /// Tappable area on the icon. Coordinates are measured the same way as
+  /// anchor coordinates. If rect is empty or invalid, the icon will not
+  /// process taps. By default, icons process all taps.
+  ///
   final mapkit_map_rect.Rect? tappableArea;
 
   const IconStyle({

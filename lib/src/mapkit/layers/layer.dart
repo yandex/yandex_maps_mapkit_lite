@@ -25,4 +25,6 @@ abstract class Layer implements ffi.Finalizable {
   void remove();
 
   mapkit_layers_data_source_layer.DataSourceLayer dataSourceLayer();
+
+  core.bool isValid();
 }

@@ -1,7 +1,7 @@
 part of 'geo_object_inspection_metadata.dart';
 
 @bindings_annotations.ContainerData(
-    toNative: 'GeoObjectInspectionMetadataImpl.toPointer',
+    toNative: 'GeoObjectInspectionMetadataImpl.getNativePtr',
     toPlatform:
         '(val) => GeoObjectInspectionMetadataImpl.fromPointer(val, needFree: false)',
     platformType: 'GeoObjectInspectionMetadata')
@@ -57,17 +57,6 @@ final class GeoObjectInspectionMetadataImpl
 
     return result;
   }
-
-  static ffi.Pointer<ffi.Void> toPointer(GeoObjectInspectionMetadata? val) {
-    if (val == null) {
-      return ffi.nullptr;
-    }
-
-    final result = malloc.call<ffi.Pointer<ffi.Void>>();
-    result.value = _GeoObjectInspectionMetadata_clone(getNativePtr(val));
-
-    return result.cast<ffi.Void>();
-  }
 }
 
 class _GeoObjectInspectionMetadataFactory
@@ -117,14 +106,6 @@ final native_types.NativeString Function() _GeoObjectInspectionMetadata_name =
     lib.library
         .lookup<ffi.NativeFunction<native_types.NativeString Function()>>(
             'yandex_flutter_mapkit_map_GeoObjectInspectionMetadata_name')
-        .asFunction(isLeaf: true);
-
-final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)
-    _GeoObjectInspectionMetadata_clone = lib.library
-        .lookup<
-                ffi.NativeFunction<
-                    ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
-            'yandex_flutter_mapkit_map_GeoObjectInspectionMetadata_clone')
         .asFunction(isLeaf: true);
 
 final _GeoObjectInspectionMetadata_free = lib.library

@@ -7,18 +7,19 @@ part of 'tile_data_source_builder.dart';
         '(val) => BaseTileDataSourceBuilderImpl.fromOptionalPtr(val.cast<ffi.Pointer<ffi.Void>>().value)',
     platformType: 'BaseTileDataSourceBuilder')
 class BaseTileDataSourceBuilderImpl
+    extends mapkit_map_base_data_source_builder.BaseDataSourceBuilderImpl
     implements BaseTileDataSourceBuilder, ffi.Finalizable {
-  @protected
-  final ffi.Pointer<ffi.Void> ptr;
   static final _finalizer =
       ffi.NativeFinalizer(_BaseTileDataSourceBuilder_free.cast());
 
   /// @nodoc
-  BaseTileDataSourceBuilderImpl.fromExternalPtr(this.ptr);
+  BaseTileDataSourceBuilderImpl.fromExternalPtr(ffi.Pointer<ffi.Void> ptr)
+      : super.fromExternalPtr(ptr);
 
   /// @nodoc
   @internal
-  BaseTileDataSourceBuilderImpl.fromNativePtrImpl(this.ptr) {
+  BaseTileDataSourceBuilderImpl.fromNativePtrImpl(ffi.Pointer<ffi.Void> ptr)
+      : super.fromExternalPtr(ptr) {
     _finalizer.attach(this, ptr);
   }
 
@@ -36,6 +37,7 @@ class BaseTileDataSourceBuilderImpl
     return (obj as BaseTileDataSourceBuilderImpl).ptr;
   }
 
+  @core.override
   core.bool isValid() {
     return _BaseTileDataSourceBuilder_check(ptr);
   }
@@ -59,14 +61,6 @@ class BaseTileDataSourceBuilderImpl
   void setTileProvider(mapkit_tiles_tile_provider.TileProvider tileProvider) {
     _BaseTileDataSourceBuilder_setTileProvider(ptr,
         mapkit_tiles_tile_provider.TileProviderImpl.getNativePtr(tileProvider));
-  }
-
-  void setImageUrlProvider(
-      mapkit_images_image_url_provider.ImagesImageUrlProvider urlProvider) {
-    _BaseTileDataSourceBuilder_setImageUrlProvider(
-        ptr,
-        mapkit_images_image_url_provider.ImagesImageUrlProviderImpl
-            .getNativePtr(urlProvider));
   }
 
   void setProjection(mapkit_geometry_geo_projection.Projection projection) {
@@ -118,17 +112,6 @@ final void Function(
                     ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>(
         'yandex_flutter_mapkit_map_BaseTileDataSourceBuilder_setTileProvider')
     .asFunction();
-final void Function(
-    ffi.Pointer<ffi.Void>,
-    ffi
-        .Pointer<ffi.Void>) _BaseTileDataSourceBuilder_setImageUrlProvider = lib
-    .library
-    .lookup<
-            ffi.NativeFunction<
-                ffi.Void Function(
-                    ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>(
-        'yandex_flutter_mapkit_map_BaseTileDataSourceBuilder_setImageUrlProvider')
-    .asFunction();
 final void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)
     _BaseTileDataSourceBuilder_setProjection = lib.library
         .lookup<
@@ -152,6 +135,13 @@ final void Function(ffi.Pointer<ffi.Void>, core.int)
                     ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Int64)>>(
             'yandex_flutter_mapkit_map_BaseTileDataSourceBuilder_setTileFormat')
         .asFunction();
+final void Function(ffi.Pointer<ffi.Void>, core.int)
+    _BaseTileDataSourceBuilder_set = lib.library
+        .lookup<
+                ffi.NativeFunction<
+                    ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Int64)>>(
+            'yandex_flutter_mapkit_map_BaseTileDataSourceBuilder_set_')
+        .asFunction(isLeaf: true);
 
 @bindings_annotations.WeakInterface('mapkit.map.TileDataSourceBuilder')
 @bindings_annotations.ContainerData(
@@ -188,6 +178,7 @@ class TileDataSourceBuilderImpl extends BaseTileDataSourceBuilderImpl
     return (obj as TileDataSourceBuilderImpl).ptr;
   }
 
+  @core.override
   core.bool isValid() {
     return _TileDataSourceBuilder_check(ptr);
   }
@@ -208,6 +199,14 @@ final core.bool Function(ffi.Pointer<ffi.Void>) _TileDataSourceBuilder_check =
     lib.library
         .lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ffi.Void>)>>(
             'yandex_flutter_mapkit_map_TileDataSourceBuilder_check')
+        .asFunction(isLeaf: true);
+
+final void Function(ffi.Pointer<ffi.Void>, core.int)
+    _TileDataSourceBuilder_set = lib.library
+        .lookup<
+                ffi.NativeFunction<
+                    ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Int64)>>(
+            'yandex_flutter_mapkit_map_TileDataSourceBuilder_set_')
         .asFunction(isLeaf: true);
 
 final class CreateTileDataSourceImpl implements CreateTileDataSource {

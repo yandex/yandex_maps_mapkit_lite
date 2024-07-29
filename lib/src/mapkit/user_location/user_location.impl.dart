@@ -33,6 +33,7 @@ class UserLocationViewImpl implements UserLocationView, ffi.Finalizable {
     return (obj as UserLocationViewImpl).ptr;
   }
 
+  @core.override
   core.bool isValid() {
     return _UserLocationView_check(ptr);
   }
@@ -97,6 +98,14 @@ final ffi.Pointer<ffi.Void> Function(
                 ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
         'yandex_flutter_mapkit_user_location_UserLocationView_get_accuracyCircle')
     .asFunction();
+
+final void Function(ffi.Pointer<ffi.Void>, core.int) _UserLocationView_set = lib
+    .library
+    .lookup<
+            ffi.NativeFunction<
+                ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Int64)>>(
+        'yandex_flutter_mapkit_user_location_UserLocationView_set_')
+    .asFunction(isLeaf: true);
 
 @bindings_annotations.ContainerData(
     toNative: 'UserLocationIconTypeImpl.toPointer',
@@ -213,6 +222,7 @@ class UserLocationIconChangedImpl extends mapkit_layers_object_event
     return (obj as UserLocationIconChangedImpl).ptr;
   }
 
+  @core.override
   core.bool isValid() {
     return _UserLocationIconChanged_check(ptr);
   }
@@ -248,6 +258,14 @@ final core.int Function(
     .lookup<ffi.NativeFunction<ffi.Int64 Function(ffi.Pointer<ffi.Void>)>>(
         'yandex_flutter_mapkit_user_location_UserLocationIconChanged_get_iconType')
     .asFunction();
+
+final void Function(ffi.Pointer<ffi.Void>, core.int)
+    _UserLocationIconChanged_set = lib.library
+        .lookup<
+                ffi.NativeFunction<
+                    ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Int64)>>(
+            'yandex_flutter_mapkit_user_location_UserLocationIconChanged_set_')
+        .asFunction(isLeaf: true);
 
 @bindings_annotations
     .WeakInterface('mapkit.user_location.UserLocationAnchorChanged')
@@ -286,6 +304,7 @@ class UserLocationAnchorChangedImpl extends mapkit_layers_object_event
     return (obj as UserLocationAnchorChangedImpl).ptr;
   }
 
+  @core.override
   core.bool isValid() {
     return _UserLocationAnchorChanged_check(ptr);
   }
@@ -322,6 +341,16 @@ final core.int Function(
     .lookup<ffi.NativeFunction<ffi.Int64 Function(ffi.Pointer<ffi.Void>)>>(
         'yandex_flutter_mapkit_user_location_UserLocationAnchorChanged_get_anchorType')
     .asFunction();
+
+final void Function(
+    ffi.Pointer<ffi.Void>,
+    core
+        .int) _UserLocationAnchorChanged_set = lib.library
+    .lookup<
+            ffi.NativeFunction<
+                ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Int64)>>(
+        'yandex_flutter_mapkit_user_location_UserLocationAnchorChanged_set_')
+    .asFunction(isLeaf: true);
 
 final class _UserLocationObjectListenerWrapper implements ffi.Finalizable {
   _UserLocationObjectListenerWrapper(this.ptr) {
@@ -585,6 +614,7 @@ class UserLocationLayerImpl implements UserLocationLayer, ffi.Finalizable {
     return (obj as UserLocationLayerImpl).ptr;
   }
 
+  @core.override
   core.bool isValid() {
     return _UserLocationLayer_check(ptr);
   }
@@ -784,3 +814,10 @@ final void Function(
                     ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>(
         'yandex_flutter_mapkit_user_location_UserLocationLayer_setObjectListener')
     .asFunction();
+final void Function(ffi.Pointer<ffi.Void>, core.int) _UserLocationLayer_set =
+    lib.library
+        .lookup<
+                ffi.NativeFunction<
+                    ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Int64)>>(
+            'yandex_flutter_mapkit_user_location_UserLocationLayer_set_')
+        .asFunction(isLeaf: true);

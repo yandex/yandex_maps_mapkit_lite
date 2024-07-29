@@ -33,6 +33,7 @@ class StorageManagerImpl implements StorageManager, ffi.Finalizable {
     return (obj as StorageManagerImpl).ptr;
   }
 
+  @core.override
   core.bool isValid() {
     return _StorageManager_check(ptr);
   }
@@ -172,6 +173,13 @@ final void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)
                         ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>(
             'yandex_flutter_mapkit_storage_StorageManager_maxTileStorageSize')
         .asFunction();
+final void Function(ffi.Pointer<ffi.Void>, core.int) _StorageManager_set = lib
+    .library
+    .lookup<
+            ffi.NativeFunction<
+                ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Int64)>>(
+        'yandex_flutter_mapkit_storage_StorageManager_set_')
+    .asFunction(isLeaf: true);
 
 final class StorageManagerClearListenerImpl
     implements StorageManagerClearListener {

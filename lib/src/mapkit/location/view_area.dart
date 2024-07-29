@@ -14,8 +14,13 @@ import 'package:yandex_maps_mapkit_lite/src/bindings/common/vector.dart'
 part 'view_area.containers.dart';
 part 'view_area.impl.dart';
 
+/// Defines the visible area.
+
 final class ViewArea {
+  /// The length of the view area in meters.
   final core.double lengthwise;
+
+  /// The width of the view area from center in meters.
   final core.double transverse;
 
   const ViewArea({

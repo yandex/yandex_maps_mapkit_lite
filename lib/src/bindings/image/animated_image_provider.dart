@@ -74,8 +74,12 @@ class RawData extends AnimatedImageProviderData {
 class AnimatedImageProviderHeap extends AsyncDispatcherHeap<RawData> {
   @override
   void requestData(RawData object, Pointer<Void> nativeData) {
-    object.onDataRequest().then((value) => _onAnimatedImageProviderComplete(
-        nativeData, toNativeBytes(value.buffer)));
+    object
+        .onDataRequest()
+        .then((value) => _onAnimatedImageProviderComplete(
+            nativeData, toNativeBytes(value.buffer)))
+        .catchError((e, stackTrace) =>
+            onHandlerException(object, nativeData, e, stackTrace));
   }
 
   @override

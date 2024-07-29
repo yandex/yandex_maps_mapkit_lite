@@ -21,6 +21,7 @@ import 'package:yandex_maps_mapkit_lite/src/bindings/common/vector.dart'
 part 'ec_public_key.containers.dart';
 part 'ec_public_key.impl.dart';
 
+/// @nodoc
 abstract final class EcPublicKey implements ffi.Finalizable {
   factory EcPublicKey(
           typed_data.ByteBuffer affineX, typed_data.ByteBuffer affineY) =>

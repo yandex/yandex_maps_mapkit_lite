@@ -24,7 +24,10 @@ import 'package:yandex_maps_mapkit_lite/src/mapkit/base_metadata.dart'
 part 'uri_object_metadata.containers.dart';
 part 'uri_object_metadata.impl.dart';
 
+/// URI that can be used for requests.
+
 final class Uri {
+  /// Gets URI.
   final core.String value;
 
   const Uri({
@@ -48,10 +51,12 @@ final class Uri {
   }
 }
 
+/// URI metadata.
 abstract final class UriObjectMetadata extends mapkit_base_metadata.BaseMetadata
     implements ffi.Finalizable {
   factory UriObjectMetadata(core.List<Uri> uris) => UriObjectMetadataImpl(uris);
 
+  /// Gets a list of URIs.
   core.List<Uri> get uris;
 
   @core.override

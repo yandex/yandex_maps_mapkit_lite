@@ -56,4 +56,6 @@ abstract class Arrow implements ffi.Finalizable {
   /// Describes height of the arrowhead in units. Default: 0.2 * length.
   core.double get triangleHeight;
   set triangleHeight(core.double val);
+
+  core.bool isValid();
 }

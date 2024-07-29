@@ -19,7 +19,7 @@ import 'package:yandex_maps_mapkit_lite/src/bindings/common/vector.dart'
 part 'attestation_listener.containers.dart';
 part 'attestation_listener.impl.dart';
 
-///
+/// @nodoc
 abstract class AttestationListener implements ffi.Finalizable {
   /// Attestation was received.
   void onAttestationReceived(typed_data.ByteBuffer response);

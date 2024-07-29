@@ -24,6 +24,7 @@ import 'package:yandex_maps_mapkit_lite/src/mapkit/base_metadata.dart'
 part 'geo_object_tags.containers.dart';
 part 'geo_object_tags.impl.dart';
 
+/// Geo object tags.
 abstract final class GeoObjectTags extends mapkit_base_metadata.BaseMetadata
     implements ffi.Finalizable {
   factory GeoObjectTags(core.List<core.String> tags) => GeoObjectTagsImpl(tags);

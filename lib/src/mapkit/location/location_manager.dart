@@ -29,6 +29,17 @@ enum LocationFilteringMode {
   ;
 }
 
+enum LocationPurpose {
+  /// This mode uses less resources and is the default.
+  General,
+
+  /// This mode is used to configure LocationManager for navigation when
+  /// frequent location updates are desired even though more resources are
+  /// used.
+  Navigation,
+  ;
+}
+
 /// Handles location updates and changes.
 abstract class LocationManager implements ffi.Finalizable {
   /// Subscribe for location update events. If the listener was already
@@ -54,9 +65,11 @@ abstract class LocationManager implements ffi.Finalizable {
   /// allowUseInBackground is true, set the `location` flag in
   /// `UIBackgroundModes` for your application.
   /// [filteringMode] Defines whether locations should be filtered.
+  /// [purpose] Defines whether locations will be used for navigation.
   /// [locationListener] Location update listener.
   void subscribeForLocationUpdates(
     LocationFilteringMode filteringMode,
+    LocationPurpose purpose,
     mapkit_location_location_listener.LocationListener locationListener, {
     required core.double desiredAccuracy,
     required core.int minTime,

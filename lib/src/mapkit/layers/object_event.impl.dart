@@ -33,6 +33,7 @@ class ObjectEventImpl implements ObjectEvent, ffi.Finalizable {
     return (obj as ObjectEventImpl).ptr;
   }
 
+  @core.override
   core.bool isValid() {
     return _ObjectEvent_check(ptr);
   }
@@ -52,4 +53,12 @@ final _ObjectEvent_free = lib.library
 final core.bool Function(ffi.Pointer<ffi.Void>) _ObjectEvent_check = lib.library
     .lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ffi.Void>)>>(
         'yandex_flutter_mapkit_layers_ObjectEvent_check')
+    .asFunction(isLeaf: true);
+
+final void Function(ffi.Pointer<ffi.Void>, core.int) _ObjectEvent_set = lib
+    .library
+    .lookup<
+        ffi.NativeFunction<
+            ffi.Void Function(ffi.Pointer<ffi.Void>,
+                ffi.Int64)>>('yandex_flutter_mapkit_layers_ObjectEvent_set_')
     .asFunction(isLeaf: true);

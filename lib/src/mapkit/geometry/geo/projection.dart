@@ -35,4 +35,6 @@ abstract class Projection implements ffi.Finalizable {
     mapkit_geometry_geo_xy_point.XYPoint xyPoint, {
     required core.int zoom,
   });
+
+  core.bool isValid();
 }

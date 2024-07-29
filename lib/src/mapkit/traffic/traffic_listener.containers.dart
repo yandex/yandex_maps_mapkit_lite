@@ -13,7 +13,7 @@ extension TrafficLevelContainerExtension on TrafficLevel {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, TrafficLevelImpl.toPointer);
+    return string_map.toNativeMap(obj, TrafficLevelImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension TrafficLevelContainerExtension on TrafficLevel {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, TrafficLevelImpl.toPointer);
+    return vector.toNativeVector(obj, TrafficLevelImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(

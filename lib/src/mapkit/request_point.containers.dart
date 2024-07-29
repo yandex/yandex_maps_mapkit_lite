@@ -13,7 +13,7 @@ extension RequestPointContainerExtension on RequestPoint {
       return ffi.nullptr;
     }
 
-    return string_map.toNativeMap(obj, RequestPointImpl.toPointer);
+    return string_map.toNativeMap(obj, RequestPointImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeMapVector(
@@ -39,7 +39,7 @@ extension RequestPointContainerExtension on RequestPoint {
       return ffi.nullptr;
     }
 
-    return vector.toNativeVector(obj, RequestPointImpl.toPointer);
+    return vector.toNativeVector(obj, RequestPointImpl.getNativePtr);
   }
 
   static ffi.Pointer<ffi.Void> toNativeVectorVector(

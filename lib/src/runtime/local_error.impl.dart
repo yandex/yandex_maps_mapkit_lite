@@ -34,6 +34,7 @@ class LocalErrorImpl extends runtime_error.ErrorImpl
     return (obj as LocalErrorImpl).ptr;
   }
 
+  @core.override
   core.bool isValid() {
     return _LocalError_check(ptr);
   }
@@ -53,6 +54,14 @@ final _LocalError_free = lib.library
 final core.bool Function(ffi.Pointer<ffi.Void>) _LocalError_check = lib.library
     .lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ffi.Void>)>>(
         'yandex_flutter_runtime_LocalError_check')
+    .asFunction(isLeaf: true);
+
+final void Function(ffi.Pointer<ffi.Void>, core.int) _LocalError_set = lib
+    .library
+    .lookup<
+        ffi.NativeFunction<
+            ffi.Void Function(ffi.Pointer<ffi.Void>,
+                ffi.Int64)>>('yandex_flutter_runtime_LocalError_set_')
     .asFunction(isLeaf: true);
 
 @bindings_annotations.WeakInterface('runtime.DiskFullError')
@@ -89,6 +98,7 @@ class DiskFullErrorImpl extends LocalErrorImpl
     return (obj as DiskFullErrorImpl).ptr;
   }
 
+  @core.override
   core.bool isValid() {
     return _DiskFullError_check(ptr);
   }
@@ -109,6 +119,14 @@ final core.bool Function(ffi.Pointer<ffi.Void>) _DiskFullError_check = lib
     .library
     .lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ffi.Void>)>>(
         'yandex_flutter_runtime_DiskFullError_check')
+    .asFunction(isLeaf: true);
+
+final void Function(ffi.Pointer<ffi.Void>, core.int) _DiskFullError_set = lib
+    .library
+    .lookup<
+        ffi.NativeFunction<
+            ffi.Void Function(ffi.Pointer<ffi.Void>,
+                ffi.Int64)>>('yandex_flutter_runtime_DiskFullError_set_')
     .asFunction(isLeaf: true);
 
 @bindings_annotations.WeakInterface('runtime.DiskCorruptError')
@@ -145,6 +163,7 @@ class DiskCorruptErrorImpl extends LocalErrorImpl
     return (obj as DiskCorruptErrorImpl).ptr;
   }
 
+  @core.override
   core.bool isValid() {
     return _DiskCorruptError_check(ptr);
   }
@@ -165,6 +184,14 @@ final core.bool Function(ffi.Pointer<ffi.Void>) _DiskCorruptError_check = lib
     .library
     .lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ffi.Void>)>>(
         'yandex_flutter_runtime_DiskCorruptError_check')
+    .asFunction(isLeaf: true);
+
+final void Function(ffi.Pointer<ffi.Void>, core.int) _DiskCorruptError_set = lib
+    .library
+    .lookup<
+        ffi.NativeFunction<
+            ffi.Void Function(ffi.Pointer<ffi.Void>,
+                ffi.Int64)>>('yandex_flutter_runtime_DiskCorruptError_set_')
     .asFunction(isLeaf: true);
 
 @bindings_annotations.WeakInterface('runtime.DiskWriteAccessError')
@@ -202,6 +229,7 @@ class DiskWriteAccessErrorImpl extends DiskCorruptErrorImpl
     return (obj as DiskWriteAccessErrorImpl).ptr;
   }
 
+  @core.override
   core.bool isValid() {
     return _DiskWriteAccessError_check(ptr);
   }
@@ -222,4 +250,13 @@ final core.bool Function(ffi.Pointer<ffi.Void>) _DiskWriteAccessError_check =
     lib.library
         .lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ffi.Void>)>>(
             'yandex_flutter_runtime_DiskWriteAccessError_check')
+        .asFunction(isLeaf: true);
+
+final void Function(ffi.Pointer<ffi.Void>, core.int) _DiskWriteAccessError_set =
+    lib
+        .library
+        .lookup<
+                ffi.NativeFunction<
+                    ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Int64)>>(
+            'yandex_flutter_runtime_DiskWriteAccessError_set_')
         .asFunction(isLeaf: true);

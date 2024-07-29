@@ -36,4 +36,6 @@ abstract class PlacemarksStyler implements ffi.Finalizable {
   /// points.empty(), it resets the function to the default. If
   /// points.size() == 1, the scale is constant and equals point.y.
   void setScaleFunction(core.List<math.Point<core.double>> points);
+
+  core.bool isValid();
 }
