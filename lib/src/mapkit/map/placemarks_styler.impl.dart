@@ -49,6 +49,7 @@ class PlacemarksStylerImpl implements PlacemarksStyler, ffi.Finalizable {
   void setScaleFunction(core.List<math.Point<core.double>> points) {
     _PlacemarksStyler_setScaleFunction(
         ptr, to_native.toNativeVectorPoint(points));
+    exception.checkCallResult();
   }
 }
 

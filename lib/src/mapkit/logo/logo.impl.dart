@@ -49,11 +49,13 @@ class LogoImpl implements Logo, ffi.Finalizable {
   void setAlignment(mapkit_logo_alignment.LogoAlignment alignment) {
     _Logo_setAlignment(
         ptr, mapkit_logo_alignment.LogoAlignmentImpl.toNative(alignment));
+    exception.checkCallResult();
   }
 
   void setPadding(mapkit_logo_padding.LogoPadding padding) {
     _Logo_setPadding(
         ptr, mapkit_logo_padding.LogoPaddingImpl.toNative(padding));
+    exception.checkCallResult();
   }
 }
 

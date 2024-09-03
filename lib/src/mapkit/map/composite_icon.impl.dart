@@ -57,6 +57,7 @@ class CompositeIconImpl implements CompositeIcon, ffi.Finalizable {
       to_native.toNativeImageProvider(image),
       mapkit_map_icon_style.IconStyleImpl.toNative(style),
     );
+    exception.checkCallResult();
   }
 
   void setIconWithCallback(
@@ -72,6 +73,7 @@ class CompositeIconImpl implements CompositeIcon, ffi.Finalizable {
       mapkit_map_icon_style.IconStyleImpl.toNative(style),
       mapkit_map_callback.CallbackImpl.getNativePtr(onFinished),
     );
+    exception.checkCallResult();
   }
 
   void setIconStyle(
@@ -83,14 +85,17 @@ class CompositeIconImpl implements CompositeIcon, ffi.Finalizable {
       to_native.toNativeString(name),
       mapkit_map_icon_style.IconStyleImpl.toNative(style),
     );
+    exception.checkCallResult();
   }
 
   void removeIcon(core.String name) {
     _CompositeIcon_removeIcon(ptr, to_native.toNativeString(name));
+    exception.checkCallResult();
   }
 
   void removeAll() {
     _CompositeIcon_removeAll(ptr);
+    exception.checkCallResult();
   }
 }
 

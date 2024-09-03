@@ -54,6 +54,7 @@ class BaseDataSourceBuilderImpl
         ptr,
         mapkit_images_image_url_provider.ImagesImageUrlProviderImpl
             .getNativePtr(urlProvider));
+    exception.checkCallResult();
   }
 }
 

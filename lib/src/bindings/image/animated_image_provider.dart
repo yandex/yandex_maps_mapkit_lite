@@ -83,9 +83,11 @@ class AnimatedImageProviderHeap extends AsyncDispatcherHeap<RawData> {
   }
 
   @override
-  void onHandlerException(RawData object, Pointer<Void> nativeData, Object e,
+  void onHandlerException(RawData? object, Pointer<Void> nativeData, Object e,
       StackTrace stackTrace) {
-    object.errorHandler.onError(e, stackTrace);
+    if (object != null) {
+      object.errorHandler.onError(e, stackTrace);
+    }
     _onAnimatedImageProviderComplete(nativeData, newNativeBytes(nullptr, 0));
   }
 }

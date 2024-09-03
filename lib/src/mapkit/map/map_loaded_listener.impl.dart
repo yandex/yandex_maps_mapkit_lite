@@ -60,10 +60,15 @@ final void Function(ffi.Pointer<ffi.Void>, core.int, core.int)
 
 final ffi.Pointer<ffi.Void> Function(
         ffi.Pointer<
-            ffi.NativeFunction<
-                ffi.Void Function(ffi.Pointer<ffi.Void>,
-                    mapkit_map_map_load_statistics.MapLoadStatisticsNative)>>)
-    _MapLoadedListener_new = lib.library
+            ffi
+            .NativeFunction<
+                ffi.Void Function(
+                    ffi.Pointer<ffi.Void>,
+                    mapkit_map_map_load_statistics
+                        .MapLoadStatisticsNative)>>)
+    _MapLoadedListener_new =
+    lib
+        .library
         .lookup<ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>, mapkit_map_map_load_statistics.MapLoadStatisticsNative)>>)>>(
             'yandex_flutter_mapkit_map_MapLoadedListener_new')
         .asFunction(isLeaf: true);

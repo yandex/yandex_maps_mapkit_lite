@@ -50,38 +50,48 @@ class PlacemarkMapObjectImpl extends mapkit_map_map_object.MapObjectImpl
 
   @core.override
   mapkit_geometry_point.Point get geometry {
-    return mapkit_geometry_point.PointImpl.fromNative(
+    final result = mapkit_geometry_point.PointImpl.fromNative(
         _PlacemarkMapObject_get_geometry(ptr));
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   set geometry(mapkit_geometry_point.Point val) {
     _PlacemarkMapObject_set_geometry(
         ptr, mapkit_geometry_point.PointImpl.toNative(val));
+    exception.checkCallResult();
   }
 
   @core.override
   core.double get direction {
-    return _PlacemarkMapObject_get_direction(ptr);
+    final result = _PlacemarkMapObject_get_direction(ptr);
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   set direction(core.double val) {
     _PlacemarkMapObject_set_direction(ptr, val);
+    exception.checkCallResult();
   }
 
   @core.override
   core.double get opacity {
-    return _PlacemarkMapObject_get_opacity(ptr);
+    final result = _PlacemarkMapObject_get_opacity(ptr);
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   set opacity(core.double val) {
     _PlacemarkMapObject_set_opacity(ptr, val);
+    exception.checkCallResult();
   }
 
   void setIcon(image_provider.ImageProvider image) {
     _PlacemarkMapObject_setIcon(ptr, to_native.toNativeImageProvider(image));
+    exception.checkCallResult();
   }
 
   void setIconWithStyle(image_provider.ImageProvider image,
@@ -90,6 +100,7 @@ class PlacemarkMapObjectImpl extends mapkit_map_map_object.MapObjectImpl
         ptr,
         to_native.toNativeImageProvider(image),
         mapkit_map_icon_style.IconStyleImpl.toNative(style));
+    exception.checkCallResult();
   }
 
   void setIconWithCallback(image_provider.ImageProvider image,
@@ -98,6 +109,7 @@ class PlacemarkMapObjectImpl extends mapkit_map_map_object.MapObjectImpl
         ptr,
         to_native.toNativeImageProvider(image),
         mapkit_map_callback.CallbackImpl.getNativePtr(onFinished));
+    exception.checkCallResult();
   }
 
   void setIconWithStyleAndCallback(
@@ -109,25 +121,33 @@ class PlacemarkMapObjectImpl extends mapkit_map_map_object.MapObjectImpl
         to_native.toNativeImageProvider(image),
         mapkit_map_icon_style.IconStyleImpl.toNative(style),
         mapkit_map_callback.CallbackImpl.getNativePtr(onFinished));
+    exception.checkCallResult();
   }
 
   void setIconStyle(mapkit_map_icon_style.IconStyle style) {
     _PlacemarkMapObject_setIconStyle(
         ptr, mapkit_map_icon_style.IconStyleImpl.toNative(style));
+    exception.checkCallResult();
   }
 
   mapkit_map_composite_icon.CompositeIcon useCompositeIcon() {
-    return mapkit_map_composite_icon.CompositeIconImpl.fromNativePtr(
+    final result = mapkit_map_composite_icon.CompositeIconImpl.fromNativePtr(
         _PlacemarkMapObject_useCompositeIcon(ptr));
+    exception.checkCallResult();
+    return result;
   }
 
   mapkit_map_placemark_animation.PlacemarkAnimation useAnimation() {
-    return mapkit_map_placemark_animation.PlacemarkAnimationImpl.fromNativePtr(
-        _PlacemarkMapObject_useAnimation(ptr));
+    final result =
+        mapkit_map_placemark_animation.PlacemarkAnimationImpl.fromNativePtr(
+            _PlacemarkMapObject_useAnimation(ptr));
+    exception.checkCallResult();
+    return result;
   }
 
   void setView(view_provider.ViewProvider view) {
     _PlacemarkMapObject_setView(ptr, to_native.toNativeViewProvider(view));
+    exception.checkCallResult();
   }
 
   void setViewWithStyle(
@@ -136,6 +156,7 @@ class PlacemarkMapObjectImpl extends mapkit_map_map_object.MapObjectImpl
         ptr,
         to_native.toNativeViewProvider(view),
         mapkit_map_icon_style.IconStyleImpl.toNative(style));
+    exception.checkCallResult();
   }
 
   void setViewWithCallback(view_provider.ViewProvider view,
@@ -144,6 +165,7 @@ class PlacemarkMapObjectImpl extends mapkit_map_map_object.MapObjectImpl
         ptr,
         to_native.toNativeViewProvider(view),
         mapkit_map_callback.CallbackImpl.getNativePtr(onFinished));
+    exception.checkCallResult();
   }
 
   void setViewWithStyleAndCallback(
@@ -155,15 +177,18 @@ class PlacemarkMapObjectImpl extends mapkit_map_map_object.MapObjectImpl
         to_native.toNativeViewProvider(view),
         mapkit_map_icon_style.IconStyleImpl.toNative(style),
         mapkit_map_callback.CallbackImpl.getNativePtr(onFinished));
+    exception.checkCallResult();
   }
 
   void setScaleFunction(core.List<math.Point<core.double>> points) {
     _PlacemarkMapObject_setScaleFunction(
         ptr, to_native.toNativeVectorPoint(points));
+    exception.checkCallResult();
   }
 
   void setText(core.String text) {
     _PlacemarkMapObject_setText(ptr, to_native.toNativeString(text));
+    exception.checkCallResult();
   }
 
   void setTextWithStyle(
@@ -175,11 +200,13 @@ class PlacemarkMapObjectImpl extends mapkit_map_map_object.MapObjectImpl
       to_native.toNativeString(text),
       mapkit_map_text_style.TextStyleImpl.toNative(style),
     );
+    exception.checkCallResult();
   }
 
   void setTextStyle(mapkit_map_text_style.TextStyle style) {
     _PlacemarkMapObject_setTextStyle(
         ptr, mapkit_map_text_style.TextStyleImpl.toNative(style));
+    exception.checkCallResult();
   }
 }
 

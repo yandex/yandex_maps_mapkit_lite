@@ -256,7 +256,8 @@ final void Function(ffi.Pointer<ffi.Void>, core.int) _DiskWriteAccessError_set =
     lib
         .library
         .lookup<
-                ffi.NativeFunction<
+                ffi
+                .NativeFunction<
                     ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Int64)>>(
             'yandex_flutter_runtime_DiskWriteAccessError_set_')
         .asFunction(isLeaf: true);

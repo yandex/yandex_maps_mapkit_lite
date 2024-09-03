@@ -103,66 +103,89 @@ class I18nManagerImpl implements I18nManager, ffi.Finalizable {
 
   @core.override
   runtime_i18n_prefs.I18nPrefs get prefs {
-    return runtime_i18n_prefs.I18nPrefsImpl.fromNative(
+    final result = runtime_i18n_prefs.I18nPrefsImpl.fromNative(
         _I18nManager_get_prefs(ptr));
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   set prefs(runtime_i18n_prefs.I18nPrefs val) {
     _I18nManager_set_prefs(ptr, runtime_i18n_prefs.I18nPrefsImpl.toNative(val));
+    exception.checkCallResult();
   }
 
   @core.override
   runtime_i18n_prefs.SystemOfMeasurement get som {
-    return runtime_i18n_prefs.SystemOfMeasurementImpl.fromInt(
+    final result = runtime_i18n_prefs.SystemOfMeasurementImpl.fromInt(
         _I18nManager_get_som(ptr));
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   set som(runtime_i18n_prefs.SystemOfMeasurement val) {
     _I18nManager_set_som(
         ptr, runtime_i18n_prefs.SystemOfMeasurementImpl.toInt(val));
+    exception.checkCallResult();
   }
 
   @core.override
   runtime_i18n_prefs.TimeFormat get timeFormat {
-    return runtime_i18n_prefs.TimeFormatImpl.fromInt(
+    final result = runtime_i18n_prefs.TimeFormatImpl.fromInt(
         _I18nManager_get_timeFormat(ptr));
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   set timeFormat(runtime_i18n_prefs.TimeFormat val) {
     _I18nManager_set_timeFormat(
         ptr, runtime_i18n_prefs.TimeFormatImpl.toInt(val));
+    exception.checkCallResult();
   }
 
   core.String localizeDistance(core.int distance) {
-    return to_platform
+    final result = to_platform
         .toPlatformString(_I18nManager_localizeDistance(ptr, distance));
+    exception.checkCallResult();
+    return result;
   }
 
   core.String localizeDuration(core.int duration) {
-    return to_platform
+    final result = to_platform
         .toPlatformString(_I18nManager_localizeDuration(ptr, duration));
+    exception.checkCallResult();
+    return result;
   }
 
   core.String localizeSpeed(core.double speed) {
-    return to_platform.toPlatformString(_I18nManager_localizeSpeed(ptr, speed));
+    final result =
+        to_platform.toPlatformString(_I18nManager_localizeSpeed(ptr, speed));
+    exception.checkCallResult();
+    return result;
   }
 
   core.String localizeDataSize(core.int dataSize) {
-    return to_platform
+    final result = to_platform
         .toPlatformString(_I18nManager_localizeDataSize(ptr, dataSize));
+    exception.checkCallResult();
+    return result;
   }
 
   CanonicalUnit canonicalSpeed(core.double speed) {
-    return CanonicalUnitImpl.fromNative(
-        _I18nManager_canonicalSpeed(ptr, speed));
+    final result =
+        CanonicalUnitImpl.fromNative(_I18nManager_canonicalSpeed(ptr, speed));
+    exception.checkCallResult();
+    return result;
   }
 
   core.String localizeCanonicalUnit(CanonicalUnit canonicalUnit) {
-    return to_platform.toPlatformString(_I18nManager_localizeCanonicalUnit(
-        ptr, CanonicalUnitImpl.toNative(canonicalUnit)));
+    final result = to_platform.toPlatformString(
+        _I18nManager_localizeCanonicalUnit(
+            ptr, CanonicalUnitImpl.toNative(canonicalUnit)));
+    exception.checkCallResult();
+    return result;
   }
 }
 
@@ -275,7 +298,8 @@ final void Function(ffi.Pointer<ffi.Void>, core.int) _I18nManager_set = lib
     .asFunction(isLeaf: true);
 
 core.String _getLocale() {
-  return to_platform.toPlatformString(_I18nManagerFactory_getLocale());
+  final result = to_platform.toPlatformString(_I18nManagerFactory_getLocale());
+  return result;
 }
 
 void _setLocale(core.String? locale) {
@@ -283,8 +307,9 @@ void _setLocale(core.String? locale) {
 }
 
 I18nManager _getI18nManagerInstance() {
-  return I18nManagerImpl.fromNativePtr(
+  final result = I18nManagerImpl.fromNativePtr(
       _I18nManagerFactory_getI18nManagerInstance());
+  return result;
 }
 
 final native_types.NativeString Function() _I18nManagerFactory_getLocale = lib

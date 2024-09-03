@@ -67,9 +67,7 @@ final ffi.Pointer<ffi.Void> Function(
                 mapkit_tile_id.TileIdNative,
                 mapkit_version.VersionNative,
                 ffi.Pointer<ffi.Void>)>>) _TilesUrlProvider_new = lib.library
-    .lookup<
-            ffi
-            .NativeFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.NativeFunction<native_types.NativeString Function(ffi.Pointer<ffi.Void>, mapkit_tile_id.TileIdNative, mapkit_version.VersionNative, ffi.Pointer<ffi.Void>)>>)>>(
+    .lookup<ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.NativeFunction<native_types.NativeString Function(ffi.Pointer<ffi.Void>, mapkit_tile_id.TileIdNative, mapkit_version.VersionNative, ffi.Pointer<ffi.Void>)>>)>>(
         'yandex_flutter_mapkit_tiles_TilesUrlProvider_new')
     .asFunction(isLeaf: true);
 

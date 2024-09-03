@@ -1,3 +1,7 @@
+# 4.7.2-beta5
+
+* Fix crashes
+
 ## 4.7.2-beta4
 
 * Upgrade MapKit to 4.7.2

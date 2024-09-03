@@ -49,27 +49,37 @@ class MapKitImpl implements MapKit, ffi.Finalizable {
   @core.override
   mapkit_offline_cache_offline_cache_manager.OfflineCacheManager
       get offlineCacheManager {
-    return mapkit_offline_cache_offline_cache_manager.OfflineCacheManagerImpl
-        .fromNativePtr(_MapKit_get_offlineCacheManager(ptr));
+    final result =
+        mapkit_offline_cache_offline_cache_manager.OfflineCacheManagerImpl
+            .fromNativePtr(_MapKit_get_offlineCacheManager(ptr));
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   mapkit_storage_storage_manager.StorageManager get storageManager {
-    return mapkit_storage_storage_manager.StorageManagerImpl.fromNativePtr(
-        _MapKit_get_storageManager(ptr));
+    final result =
+        mapkit_storage_storage_manager.StorageManagerImpl.fromNativePtr(
+            _MapKit_get_storageManager(ptr));
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   core.String get version {
-    return to_platform.toPlatformString(_MapKit_get_version(ptr));
+    final result = to_platform.toPlatformString(_MapKit_get_version(ptr));
+    exception.checkCallResult();
+    return result;
   }
 
   void setApiKey(core.String key) {
     _MapKit_setApiKey(ptr, to_native.toNativeString(key));
+    exception.checkCallResult();
   }
 
   void setUserId(core.String id) {
     _MapKit_setUserId(ptr, to_native.toNativeString(id));
+    exception.checkCallResult();
   }
 
   void setLocationManager(
@@ -78,73 +88,98 @@ class MapKitImpl implements MapKit, ffi.Finalizable {
         ptr,
         mapkit_location_location_manager.LocationManagerImpl.getNativePtr(
             locationManager));
+    exception.checkCallResult();
   }
 
   void resetLocationManagerToDefault() {
     _MapKit_resetLocationManagerToDefault(ptr);
+    exception.checkCallResult();
   }
 
   void onStart() {
     _MapKit_onStart(ptr);
+    exception.checkCallResult();
   }
 
   void onStop() {
     _MapKit_onStop(ptr);
+    exception.checkCallResult();
   }
 
   mapkit_location_location_manager.LocationManager createLocationManager() {
-    return mapkit_location_location_manager.LocationManagerImpl.fromNativePtr(
-        _MapKit_createLocationManager(ptr));
+    final result =
+        mapkit_location_location_manager.LocationManagerImpl.fromNativePtr(
+            _MapKit_createLocationManager(ptr));
+    exception.checkCallResult();
+    return result;
   }
 
   mapkit_location_location_simulator.LocationSimulator
       createLocationSimulatorWithGeometry(
           mapkit_geometry_geometry.Polyline geometry) {
-    return mapkit_location_location_simulator.LocationSimulatorImpl
-        .fromNativePtr(_MapKit_createLocationSimulatorWithGeometry(
-            ptr, mapkit_geometry_geometry.PolylineImpl.getNativePtr(geometry)));
+    final result =
+        mapkit_location_location_simulator.LocationSimulatorImpl.fromNativePtr(
+            _MapKit_createLocationSimulatorWithGeometry(ptr,
+                mapkit_geometry_geometry.PolylineImpl.getNativePtr(geometry)));
+    exception.checkCallResult();
+    return result;
   }
 
   mapkit_location_location_simulator.LocationSimulator
       createLocationSimulator() {
-    return mapkit_location_location_simulator.LocationSimulatorImpl
-        .fromNativePtr(_MapKit_createLocationSimulator(ptr));
+    final result =
+        mapkit_location_location_simulator.LocationSimulatorImpl.fromNativePtr(
+            _MapKit_createLocationSimulator(ptr));
+    exception.checkCallResult();
+    return result;
   }
 
   mapkit_location_dummy_location_manager.DummyLocationManager
       createDummyLocationManager() {
-    return mapkit_location_dummy_location_manager.DummyLocationManagerImpl
-        .fromNativePtr(_MapKit_createDummyLocationManager(ptr));
+    final result =
+        mapkit_location_dummy_location_manager.DummyLocationManagerImpl
+            .fromNativePtr(_MapKit_createDummyLocationManager(ptr));
+    exception.checkCallResult();
+    return result;
   }
 
   mapkit_map_map_window.MapWindow createMapWindow(
       platform_view.PlatformView platformView) {
-    return mapkit_map_map_window.MapWindowImpl.fromNativePtr(
+    final result = mapkit_map_map_window.MapWindowImpl.fromNativePtr(
         _MapKit_createMapWindow(
             ptr, to_native.toNativePlatformView(platformView)));
+    exception.checkCallResult();
+    return result;
   }
 
   mapkit_traffic_traffic_layer.TrafficLayer createTrafficLayer(
       mapkit_map_map_window.MapWindow mapWindow) {
-    return mapkit_traffic_traffic_layer.TrafficLayerImpl.fromNativePtr(
+    final result = mapkit_traffic_traffic_layer.TrafficLayerImpl.fromNativePtr(
         _MapKit_createTrafficLayer(
             ptr, mapkit_map_map_window.MapWindowImpl.getNativePtr(mapWindow)));
+    exception.checkCallResult();
+    return result;
   }
 
   mapkit_map_map_window.MapWindow createMapWindowWithScale(
     platform_view.PlatformView platformView, {
     required core.double customScaleFactor,
   }) {
-    return mapkit_map_map_window.MapWindowImpl.fromNativePtr(
+    final result = mapkit_map_map_window.MapWindowImpl.fromNativePtr(
         _MapKit_createMapWindowWithScale(ptr,
             to_native.toNativePlatformView(platformView), customScaleFactor));
+    exception.checkCallResult();
+    return result;
   }
 
   mapkit_user_location_user_location.UserLocationLayer createUserLocationLayer(
       mapkit_map_map_window.MapWindow mapWindow) {
-    return mapkit_user_location_user_location.UserLocationLayerImpl
-        .fromNativePtr(_MapKit_createUserLocationLayer(
-            ptr, mapkit_map_map_window.MapWindowImpl.getNativePtr(mapWindow)));
+    final result =
+        mapkit_user_location_user_location.UserLocationLayerImpl.fromNativePtr(
+            _MapKit_createUserLocationLayer(ptr,
+                mapkit_map_map_window.MapWindowImpl.getNativePtr(mapWindow)));
+    exception.checkCallResult();
+    return result;
   }
 }
 

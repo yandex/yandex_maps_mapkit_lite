@@ -131,15 +131,18 @@ class BaseMapObjectCollectionImpl extends mapkit_map_map_object.MapObjectImpl
         ptr,
         mapkit_map_map_object_visitor.MapObjectVisitorImpl.getNativePtr(
             mapObjectVisitor));
+    exception.checkCallResult();
   }
 
   void remove(mapkit_map_map_object.MapObject mapObject) {
     _BaseMapObjectCollection_remove(
         ptr, mapkit_map_map_object.MapObjectImpl.getNativePtr(mapObject));
+    exception.checkCallResult();
   }
 
   void clear() {
     _BaseMapObjectCollection_clear(ptr);
+    exception.checkCallResult();
   }
 
   void addListener(
@@ -149,6 +152,7 @@ class BaseMapObjectCollectionImpl extends mapkit_map_map_object.MapObjectImpl
         ptr,
         mapkit_map_map_object_collection_listener
             .MapObjectCollectionListenerImpl.getNativePtr(collectionListener));
+    exception.checkCallResult();
   }
 
   void removeListener(
@@ -158,6 +162,7 @@ class BaseMapObjectCollectionImpl extends mapkit_map_map_object.MapObjectImpl
         ptr,
         mapkit_map_map_object_collection_listener
             .MapObjectCollectionListenerImpl.getNativePtr(collectionListener));
+    exception.checkCallResult();
   }
 }
 

@@ -9,6 +9,11 @@ final void Function(NativeString) _nativeAssert = library
         'yandex_maps_flutter_native_assert')
     .asFunction(isLeaf: true);
 
+final bool Function() _lastCallSuccess = library
+    .lookup<NativeFunction<Bool Function()>>(
+        'yandex_maps_flutter_last_call_success')
+    .asFunction(isLeaf: true);
+
 void nativeAssert(String message) {
   _nativeAssert(toNativeString(message));
 }
@@ -30,5 +35,20 @@ class AsyncErrorHandler {
     } else if (_onError is Function(Object, StackTrace)) {
       _onError!(error, stack);
     }
+  }
+}
+
+class NativeNullException implements Exception {
+  const NativeNullException();
+
+  @override
+  String toString() {
+    return 'NativeNullException: access to deleted native object.';
+  }
+}
+
+void checkCallResult() {
+  if (!_lastCallSuccess()) {
+    throw NativeNullException();
   }
 }

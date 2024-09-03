@@ -46,7 +46,7 @@ android {
     }
 
     dependencies {
-        api 'com.yandex.android:maps.mobile:4.7.2-beta4-lite-flutter'
+        api 'com.yandex.android:maps.mobile:4.7.2-beta5-lite-flutter'
     }
 
     defaultConfig {

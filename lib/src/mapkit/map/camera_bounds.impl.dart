@@ -48,34 +48,44 @@ class CameraBoundsImpl implements CameraBounds, ffi.Finalizable {
 
   @core.override
   mapkit_geometry_geometry.BoundingBox? get latLngBounds {
-    return mapkit_geometry_geometry.BoundingBoxImpl.fromPointer(
+    final result = mapkit_geometry_geometry.BoundingBoxImpl.fromPointer(
         _CameraBounds_get_latLngBounds(ptr));
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   set latLngBounds(mapkit_geometry_geometry.BoundingBox? val) {
     _CameraBounds_set_latLngBounds(
         ptr, mapkit_geometry_geometry.BoundingBoxImpl.toPointer(val));
+    exception.checkCallResult();
   }
 
   core.double getMinZoom() {
-    return _CameraBounds_getMinZoom(ptr);
+    final result = _CameraBounds_getMinZoom(ptr);
+    exception.checkCallResult();
+    return result;
   }
 
   core.double getMaxZoom() {
-    return _CameraBounds_getMaxZoom(ptr);
+    final result = _CameraBounds_getMaxZoom(ptr);
+    exception.checkCallResult();
+    return result;
   }
 
   void setMinZoomPreference(core.double zoom) {
     _CameraBounds_setMinZoomPreference(ptr, zoom);
+    exception.checkCallResult();
   }
 
   void setMaxZoomPreference(core.double zoom) {
     _CameraBounds_setMaxZoomPreference(ptr, zoom);
+    exception.checkCallResult();
   }
 
   void resetMinMaxZoomPreference() {
     _CameraBounds_resetMinMaxZoomPreference(ptr);
+    exception.checkCallResult();
   }
 }
 

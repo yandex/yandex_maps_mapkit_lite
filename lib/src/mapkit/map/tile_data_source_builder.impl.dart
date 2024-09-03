@@ -56,16 +56,19 @@ class BaseTileDataSourceBuilderImpl
         ptr,
         mapkit_tiles_url_provider.TilesUrlProviderImpl.getNativePtr(
             urlProvider));
+    exception.checkCallResult();
   }
 
   void setTileProvider(mapkit_tiles_tile_provider.TileProvider tileProvider) {
     _BaseTileDataSourceBuilder_setTileProvider(ptr,
         mapkit_tiles_tile_provider.TileProviderImpl.getNativePtr(tileProvider));
+    exception.checkCallResult();
   }
 
   void setProjection(mapkit_geometry_geo_projection.Projection projection) {
     _BaseTileDataSourceBuilder_setProjection(ptr,
         mapkit_geometry_geo_projection.ProjectionImpl.getNativePtr(projection));
+    exception.checkCallResult();
   }
 
   void setZoomRanges(core.List<mapkit_zoom_range.ZoomRangeIdl> zoomRanges) {
@@ -73,11 +76,13 @@ class BaseTileDataSourceBuilderImpl
         ptr,
         mapkit_zoom_range.ZoomRangeIdlContainerExtension.toNativeVector(
             zoomRanges));
+    exception.checkCallResult();
   }
 
   void setTileFormat(mapkit_layers_tile_format.TileFormat format) {
     _BaseTileDataSourceBuilder_setTileFormat(
         ptr, mapkit_layers_tile_format.TileFormatImpl.toInt(format));
+    exception.checkCallResult();
   }
 }
 

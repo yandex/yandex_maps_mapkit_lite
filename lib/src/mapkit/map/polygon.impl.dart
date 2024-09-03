@@ -49,54 +49,71 @@ class PolygonMapObjectImpl extends mapkit_map_map_object.MapObjectImpl
 
   @core.override
   mapkit_geometry_geometry.Polygon get geometry {
-    return mapkit_geometry_geometry.PolygonImpl.fromNativePtr(
+    final result = mapkit_geometry_geometry.PolygonImpl.fromNativePtr(
         _PolygonMapObject_get_geometry(ptr));
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   set geometry(mapkit_geometry_geometry.Polygon val) {
     _PolygonMapObject_set_geometry(
         ptr, mapkit_geometry_geometry.PolygonImpl.getNativePtr(val));
+    exception.checkCallResult();
   }
 
   @core.override
   ui.Color get strokeColor {
-    return to_platform.toPlatformColor(_PolygonMapObject_get_strokeColor(ptr));
+    final result =
+        to_platform.toPlatformColor(_PolygonMapObject_get_strokeColor(ptr));
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   set strokeColor(ui.Color val) {
     _PolygonMapObject_set_strokeColor(ptr, to_native.toNativeColor(val));
+    exception.checkCallResult();
   }
 
   @core.override
   core.double get strokeWidth {
-    return _PolygonMapObject_get_strokeWidth(ptr);
+    final result = _PolygonMapObject_get_strokeWidth(ptr);
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   set strokeWidth(core.double val) {
     _PolygonMapObject_set_strokeWidth(ptr, val);
+    exception.checkCallResult();
   }
 
   @core.override
   ui.Color get fillColor {
-    return to_platform.toPlatformColor(_PolygonMapObject_get_fillColor(ptr));
+    final result =
+        to_platform.toPlatformColor(_PolygonMapObject_get_fillColor(ptr));
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   set fillColor(ui.Color val) {
     _PolygonMapObject_set_fillColor(ptr, to_native.toNativeColor(val));
+    exception.checkCallResult();
   }
 
   @core.override
   core.bool get geodesic {
-    return _PolygonMapObject_get_geodesic(ptr);
+    final result = _PolygonMapObject_get_geodesic(ptr);
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   set geodesic(core.bool val) {
     _PolygonMapObject_set_geodesic(ptr, val);
+    exception.checkCallResult();
   }
 
   void setAnimatedPattern(
@@ -105,6 +122,7 @@ class PolygonMapObjectImpl extends mapkit_map_map_object.MapObjectImpl
   }) {
     _PolygonMapObject_setAnimatedPattern(
         ptr, to_native.toNativeAnimatedImageProvider(animatedImage), scale);
+    exception.checkCallResult();
   }
 
   void setPattern(
@@ -113,10 +131,12 @@ class PolygonMapObjectImpl extends mapkit_map_map_object.MapObjectImpl
   }) {
     _PolygonMapObject_setPattern(
         ptr, to_native.toNativeImageProvider(image), scale);
+    exception.checkCallResult();
   }
 
   void resetPattern() {
     _PolygonMapObject_resetPattern(ptr);
+    exception.checkCallResult();
   }
 }
 

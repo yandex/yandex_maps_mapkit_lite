@@ -48,38 +48,49 @@ class MapObjectImpl implements MapObject, ffi.Finalizable {
 
   @core.override
   mapkit_map_base_map_object_collection.BaseMapObjectCollection get parent {
-    return mapkit_map_base_map_object_collection.BaseMapObjectCollectionImpl
-        .fromNativePtr(_MapObject_get_parent(ptr));
+    final result = mapkit_map_base_map_object_collection
+        .BaseMapObjectCollectionImpl.fromNativePtr(_MapObject_get_parent(ptr));
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   core.bool get visible {
-    return _MapObject_get_visible(ptr);
+    final result = _MapObject_get_visible(ptr);
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   set visible(core.bool val) {
     _MapObject_set_visible(ptr, val);
+    exception.checkCallResult();
   }
 
   @core.override
   core.double get zIndex {
-    return _MapObject_get_zIndex(ptr);
+    final result = _MapObject_get_zIndex(ptr);
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   set zIndex(core.double val) {
     _MapObject_set_zIndex(ptr, val);
+    exception.checkCallResult();
   }
 
   @core.override
   core.bool get draggable {
-    return _MapObject_get_draggable(ptr);
+    final result = _MapObject_get_draggable(ptr);
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   set draggable(core.bool val) {
     _MapObject_set_draggable(ptr, val);
+    exception.checkCallResult();
   }
 
   void setVisible(
@@ -92,6 +103,7 @@ class MapObjectImpl implements MapObject, ffi.Finalizable {
         visible,
         mapkit_animation.AnimationImpl.toNative(animation),
         mapkit_map_callback.CallbackImpl.getNativePtr(onFinished));
+    exception.checkCallResult();
   }
 
   void addTapListener(
@@ -100,6 +112,7 @@ class MapObjectImpl implements MapObject, ffi.Finalizable {
         ptr,
         mapkit_map_map_object_tap_listener.MapObjectTapListenerImpl
             .getNativePtr(tapListener));
+    exception.checkCallResult();
   }
 
   void removeTapListener(
@@ -108,6 +121,7 @@ class MapObjectImpl implements MapObject, ffi.Finalizable {
         ptr,
         mapkit_map_map_object_tap_listener.MapObjectTapListenerImpl
             .getNativePtr(tapListener));
+    exception.checkCallResult();
   }
 
   void setDragListener(
@@ -116,6 +130,7 @@ class MapObjectImpl implements MapObject, ffi.Finalizable {
         ptr,
         mapkit_map_map_object_drag_listener.MapObjectDragListenerImpl
             .getNativePtr(dragListener));
+    exception.checkCallResult();
   }
 
   core.bool _setUserDataHolder = false;
@@ -197,7 +212,8 @@ final void Function(ffi.Pointer<ffi.Void>, core.bool) _MapObject_set_draggable =
     lib
         .library
         .lookup<
-                ffi.NativeFunction<
+                ffi
+                .NativeFunction<
                     ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Bool)>>(
             'yandex_flutter_mapkit_map_MapObject_set_draggable')
         .asFunction();

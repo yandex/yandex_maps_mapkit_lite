@@ -150,10 +150,10 @@ final ffi.Pointer<ffi.Void> Function(
         ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>)
     _RoadEventsEventInfoSessionEventInfoListener_new = lib.library
         .lookup<
-                ffi.NativeFunction<
-                    ffi.Pointer<ffi.Void> Function(
-                        ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>, ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>)>>(
-            'yandex_flutter_mapkit_road_events_EventInfoSession_RoadEventsEventInfoSessionEventInfoListener_new')
+            ffi.NativeFunction<
+                ffi.Pointer<ffi.Void> Function(
+                    ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>,
+                    ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>)>>('yandex_flutter_mapkit_road_events_EventInfoSession_RoadEventsEventInfoSessionEventInfoListener_new')
         .asFunction(isLeaf: true);
 
 void _RoadEventsEventInfoSessionEventInfoListener_onEventInfoReceived(
@@ -222,13 +222,14 @@ class RoadEventsManagerImpl implements RoadEventsManager, ffi.Finalizable {
     RoadEventsEventInfoSessionEventInfoListener eventInfoListener, {
     required core.String eventId,
   }) {
-    return RoadEventsEventInfoSessionImpl.fromNativePtr(
+    final result = RoadEventsEventInfoSessionImpl.fromNativePtr(
         _RoadEventsManager_requestEventInfo(
       ptr,
       to_native.toNativeString(eventId),
       RoadEventsEventInfoSessionEventInfoListenerImpl.getNativePtr(
           eventInfoListener),
     ));
+    return result;
   }
 }
 

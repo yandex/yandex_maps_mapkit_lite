@@ -45,8 +45,9 @@ void _logViewCreateAttempt(GraphicsViewType graphicsView) {
 }
 
 core.bool _viewCreateAttempted(GraphicsViewType graphicsView) {
-  return _GraphicsViewState_viewCreateAttempted(
+  final result = _GraphicsViewState_viewCreateAttempted(
       GraphicsViewTypeImpl.toInt(graphicsView));
+  return result;
 }
 
 final void Function(core.int) _GraphicsViewState_logViewCreateAttempt = lib

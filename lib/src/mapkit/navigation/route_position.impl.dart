@@ -37,54 +37,67 @@ class RoutePositionImpl implements RoutePosition, ffi.Finalizable {
 
   @core.override
   mapkit_geometry_point.Point get point {
-    return mapkit_geometry_point.PointImpl.fromNative(
+    final result = mapkit_geometry_point.PointImpl.fromNative(
         _RoutePosition_get_point(ptr));
+    return result;
   }
 
   core.bool onRoute(core.String routeId) {
-    return _RoutePosition_onRoute(ptr, to_native.toNativeString(routeId));
+    final result =
+        _RoutePosition_onRoute(ptr, to_native.toNativeString(routeId));
+    return result;
   }
 
   mapkit_geometry_geometry.PolylinePosition? positionOnRoute(
       core.String routeId) {
-    return mapkit_geometry_geometry.PolylinePositionImpl.fromPointer(
+    final result = mapkit_geometry_geometry.PolylinePositionImpl.fromPointer(
         _RoutePosition_positionOnRoute(ptr, to_native.toNativeString(routeId)));
+    return result;
   }
 
   RoutePosition advance(core.double distance) {
-    return RoutePositionImpl.fromNativePtr(
-        _RoutePosition_advance(ptr, distance));
+    final result =
+        RoutePositionImpl.fromNativePtr(_RoutePosition_advance(ptr, distance));
+    return result;
   }
 
   core.double? distanceTo(RoutePosition to) {
-    return to_platform.toPlatformFromPointerDouble(
+    final result = to_platform.toPlatformFromPointerDouble(
         _RoutePosition_distanceTo(ptr, RoutePositionImpl.getNativePtr(to)));
+    return result;
   }
 
   core.bool precedes(RoutePosition another) {
-    return _RoutePosition_precedes(
-        ptr, RoutePositionImpl.getNativePtr(another));
+    final result =
+        _RoutePosition_precedes(ptr, RoutePositionImpl.getNativePtr(another));
+    return result;
   }
 
   core.bool precedesOrEquals(RoutePosition another) {
-    return _RoutePosition_precedesOrEquals(
+    final result = _RoutePosition_precedesOrEquals(
         ptr, RoutePositionImpl.getNativePtr(another));
+    return result;
   }
 
   core.bool equals(RoutePosition another) {
-    return _RoutePosition_equals(ptr, RoutePositionImpl.getNativePtr(another));
+    final result =
+        _RoutePosition_equals(ptr, RoutePositionImpl.getNativePtr(another));
+    return result;
   }
 
   core.double heading() {
-    return _RoutePosition_heading(ptr);
+    final result = _RoutePosition_heading(ptr);
+    return result;
   }
 
   core.double distanceToFinish() {
-    return _RoutePosition_distanceToFinish(ptr);
+    final result = _RoutePosition_distanceToFinish(ptr);
+    return result;
   }
 
   core.double timeToFinish() {
-    return _RoutePosition_timeToFinish(ptr);
+    final result = _RoutePosition_timeToFinish(ptr);
+    return result;
   }
 }
 

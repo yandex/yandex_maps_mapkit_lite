@@ -73,7 +73,8 @@ final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>) _UserData_downcast =
     lib
         .library
         .lookup<
-                ffi.NativeFunction<
+                ffi
+                .NativeFunction<
                     ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
             'yandex_flutter_mapkit_UserData_downcast')
         .asFunction(isLeaf: true);
@@ -107,7 +108,8 @@ final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>) _UserData_get_data =
     lib
         .library
         .lookup<
-                ffi.NativeFunction<
+                ffi
+                .NativeFunction<
                     ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
             'yandex_flutter_mapkit_UserData_get_data')
         .asFunction(isLeaf: true);

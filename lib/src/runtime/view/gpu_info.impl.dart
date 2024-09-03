@@ -1,11 +1,13 @@
 part of 'gpu_info.dart';
 
 core.String _glGpuVendor() {
-  return to_platform.toPlatformString(_GpuInfoManager_glGpuVendor());
+  final result = to_platform.toPlatformString(_GpuInfoManager_glGpuVendor());
+  return result;
 }
 
 core.String _glGpuRenderer() {
-  return to_platform.toPlatformString(_GpuInfoManager_glGpuRenderer());
+  final result = to_platform.toPlatformString(_GpuInfoManager_glGpuRenderer());
+  return result;
 }
 
 final native_types.NativeString Function() _GpuInfoManager_glGpuVendor = lib

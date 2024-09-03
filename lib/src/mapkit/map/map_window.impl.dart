@@ -48,50 +48,65 @@ class MapWindowImpl implements MapWindow, ffi.Finalizable {
 
   @core.override
   mapkit_map_map.Map get map {
-    return mapkit_map_map.MapImpl.fromNativePtr(_MapWindow_get_map(ptr));
+    final result =
+        mapkit_map_map.MapImpl.fromNativePtr(_MapWindow_get_map(ptr));
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   mapkit_screen_types.ScreenRect? get focusRect {
-    return mapkit_screen_types.ScreenRectImpl.fromPointer(
+    final result = mapkit_screen_types.ScreenRectImpl.fromPointer(
         _MapWindow_get_focusRect(ptr));
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   set focusRect(mapkit_screen_types.ScreenRect? val) {
     _MapWindow_set_focusRect(
         ptr, mapkit_screen_types.ScreenRectImpl.toPointer(val));
+    exception.checkCallResult();
   }
 
   @core.override
   mapkit_screen_types.ScreenPoint? get focusPoint {
-    return mapkit_screen_types.ScreenPointImpl.fromPointer(
+    final result = mapkit_screen_types.ScreenPointImpl.fromPointer(
         _MapWindow_get_focusPoint(ptr));
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   set focusPoint(mapkit_screen_types.ScreenPoint? val) {
     _MapWindow_set_focusPoint(
         ptr, mapkit_screen_types.ScreenPointImpl.toPointer(val));
+    exception.checkCallResult();
   }
 
   @core.override
   mapkit_screen_types.ScreenPoint? get gestureFocusPoint {
-    return mapkit_screen_types.ScreenPointImpl.fromPointer(
+    final result = mapkit_screen_types.ScreenPointImpl.fromPointer(
         _MapWindow_get_gestureFocusPoint(ptr));
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   set gestureFocusPoint(mapkit_screen_types.ScreenPoint? val) {
     _MapWindow_set_gestureFocusPoint(
         ptr, mapkit_screen_types.ScreenPointImpl.toPointer(val));
+    exception.checkCallResult();
   }
 
   @core.override
   mapkit_map_gesture_focus_point_mode.GestureFocusPointMode
       get gestureFocusPointMode {
-    return mapkit_map_gesture_focus_point_mode.GestureFocusPointModeImpl
-        .fromInt(_MapWindow_get_gestureFocusPointMode(ptr));
+    final result =
+        mapkit_map_gesture_focus_point_mode.GestureFocusPointModeImpl.fromInt(
+            _MapWindow_get_gestureFocusPointMode(ptr));
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
@@ -101,55 +116,73 @@ class MapWindowImpl implements MapWindow, ffi.Finalizable {
         ptr,
         mapkit_map_gesture_focus_point_mode.GestureFocusPointModeImpl.toInt(
             val));
+    exception.checkCallResult();
   }
 
   @core.override
   mapkit_map_point_of_view.PointOfView get pointOfView {
-    return mapkit_map_point_of_view.PointOfViewImpl.fromInt(
+    final result = mapkit_map_point_of_view.PointOfViewImpl.fromInt(
         _MapWindow_get_pointOfView(ptr));
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   set pointOfView(mapkit_map_point_of_view.PointOfView val) {
     _MapWindow_set_pointOfView(
         ptr, mapkit_map_point_of_view.PointOfViewImpl.toInt(val));
+    exception.checkCallResult();
   }
 
   @core.override
   mapkit_map_visible_region.VisibleRegion get focusRegion {
-    return mapkit_map_visible_region.VisibleRegionImpl.fromNative(
+    final result = mapkit_map_visible_region.VisibleRegionImpl.fromNative(
         _MapWindow_get_focusRegion(ptr));
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   core.double get scaleFactor {
-    return _MapWindow_get_scaleFactor(ptr);
+    final result = _MapWindow_get_scaleFactor(ptr);
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   set scaleFactor(core.double val) {
     _MapWindow_set_scaleFactor(ptr, val);
+    exception.checkCallResult();
   }
 
   core.int width() {
-    return _MapWindow_width(ptr);
+    final result = _MapWindow_width(ptr);
+    exception.checkCallResult();
+    return result;
   }
 
   core.int height() {
-    return _MapWindow_height(ptr);
+    final result = _MapWindow_height(ptr);
+    exception.checkCallResult();
+    return result;
   }
 
   mapkit_screen_types.ScreenPoint? worldToScreen(
       mapkit_geometry_point.Point worldPoint) {
-    return mapkit_screen_types.ScreenPointImpl.fromPointer(
+    final result = mapkit_screen_types.ScreenPointImpl.fromPointer(
         _MapWindow_worldToScreen(
             ptr, mapkit_geometry_point.PointImpl.toNative(worldPoint)));
+    exception.checkCallResult();
+    return result;
   }
 
   mapkit_geometry_point.Point? screenToWorld(
       mapkit_screen_types.ScreenPoint screenPoint) {
-    return mapkit_geometry_point.PointImpl.fromPointer(_MapWindow_screenToWorld(
-        ptr, mapkit_screen_types.ScreenPointImpl.toNative(screenPoint)));
+    final result = mapkit_geometry_point.PointImpl.fromPointer(
+        _MapWindow_screenToWorld(
+            ptr, mapkit_screen_types.ScreenPointImpl.toNative(screenPoint)));
+    exception.checkCallResult();
+    return result;
   }
 
   void addSizeChangedListener(
@@ -159,6 +192,7 @@ class MapWindowImpl implements MapWindow, ffi.Finalizable {
         ptr,
         mapkit_map_size_changed_listener.MapSizeChangedListenerImpl
             .getNativePtr(sizeChangedListener));
+    exception.checkCallResult();
   }
 
   void removeSizeChangedListener(
@@ -168,6 +202,7 @@ class MapWindowImpl implements MapWindow, ffi.Finalizable {
         ptr,
         mapkit_map_size_changed_listener.MapSizeChangedListenerImpl
             .getNativePtr(sizeChangedListener));
+    exception.checkCallResult();
   }
 }
 
@@ -183,7 +218,8 @@ final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>) _MapWindow_get_map =
     lib
         .library
         .lookup<
-                ffi.NativeFunction<
+                ffi
+                .NativeFunction<
                     ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
             'yandex_flutter_mapkit_map_MapWindow_get_map')
         .asFunction();

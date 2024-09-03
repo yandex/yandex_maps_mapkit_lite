@@ -54,95 +54,115 @@ class ClusterizedPlacemarkCollectionImpl
   }
 
   mapkit_map_placemark.PlacemarkMapObject addPlacemark() {
-    return mapkit_map_placemark.PlacemarkMapObjectImpl.fromNativePtr(
+    final result = mapkit_map_placemark.PlacemarkMapObjectImpl.fromNativePtr(
         _ClusterizedPlacemarkCollection_addPlacemark(ptr));
+    exception.checkCallResult();
+    return result;
   }
 
   mapkit_map_placemark.PlacemarkMapObject addPlacemarkWithCallback(
       mapkit_map_base_map_object_collection.PlacemarkCreatedCallback
           placemarkCreatedCallback) {
-    return mapkit_map_placemark.PlacemarkMapObjectImpl.fromNativePtr(
+    final result = mapkit_map_placemark.PlacemarkMapObjectImpl.fromNativePtr(
         _ClusterizedPlacemarkCollection_addPlacemarkWithCallback(
             ptr,
             mapkit_map_base_map_object_collection.PlacemarkCreatedCallbackImpl
                 .getNativePtr(placemarkCreatedCallback)));
+    exception.checkCallResult();
+    return result;
   }
 
   mapkit_map_placemark.PlacemarkMapObject addEmptyPlacemark(
       mapkit_geometry_point.Point point) {
-    return mapkit_map_placemark.PlacemarkMapObjectImpl.fromNativePtr(
+    final result = mapkit_map_placemark.PlacemarkMapObjectImpl.fromNativePtr(
         _ClusterizedPlacemarkCollection_addEmptyPlacemark(
             ptr, mapkit_geometry_point.PointImpl.toNative(point)));
+    exception.checkCallResult();
+    return result;
   }
 
   core.List<mapkit_map_placemark.PlacemarkMapObject> addEmptyPlacemarks(
       core.List<mapkit_geometry_point.Point> points) {
-    return mapkit_map_placemark.PlacemarkMapObjectContainerExtension
+    final result = mapkit_map_placemark.PlacemarkMapObjectContainerExtension
         .toPlatformVector(_ClusterizedPlacemarkCollection_addEmptyPlacemarks(
             ptr,
             mapkit_geometry_point.PointContainerExtension.toNativeVector(
                 points)));
+    exception.checkCallResult();
+    return result;
   }
 
   mapkit_map_placemark.PlacemarkMapObject addPlacemarkWithPoint(
       mapkit_geometry_point.Point point) {
-    return mapkit_map_placemark.PlacemarkMapObjectImpl.fromNativePtr(
+    final result = mapkit_map_placemark.PlacemarkMapObjectImpl.fromNativePtr(
         _ClusterizedPlacemarkCollection_addPlacemarkWithPoint(
             ptr, mapkit_geometry_point.PointImpl.toNative(point)));
+    exception.checkCallResult();
+    return result;
   }
 
   mapkit_map_placemark.PlacemarkMapObject addPlacemarkWithImage(
       mapkit_geometry_point.Point point, image_provider.ImageProvider image) {
-    return mapkit_map_placemark.PlacemarkMapObjectImpl.fromNativePtr(
+    final result = mapkit_map_placemark.PlacemarkMapObjectImpl.fromNativePtr(
         _ClusterizedPlacemarkCollection_addPlacemarkWithImage(
             ptr,
             mapkit_geometry_point.PointImpl.toNative(point),
             to_native.toNativeImageProvider(image)));
+    exception.checkCallResult();
+    return result;
   }
 
   mapkit_map_placemark.PlacemarkMapObject addPlacemarkWithStyle(
       mapkit_geometry_point.Point point,
       image_provider.ImageProvider image,
       mapkit_map_icon_style.IconStyle style) {
-    return mapkit_map_placemark.PlacemarkMapObjectImpl.fromNativePtr(
+    final result = mapkit_map_placemark.PlacemarkMapObjectImpl.fromNativePtr(
         _ClusterizedPlacemarkCollection_addPlacemarkWithStyle(
             ptr,
             mapkit_geometry_point.PointImpl.toNative(point),
             to_native.toNativeImageProvider(image),
             mapkit_map_icon_style.IconStyleImpl.toNative(style)));
+    exception.checkCallResult();
+    return result;
   }
 
   mapkit_map_placemark.PlacemarkMapObject addPlacemarkWithView(
       mapkit_geometry_point.Point point, view_provider.ViewProvider view) {
-    return mapkit_map_placemark.PlacemarkMapObjectImpl.fromNativePtr(
+    final result = mapkit_map_placemark.PlacemarkMapObjectImpl.fromNativePtr(
         _ClusterizedPlacemarkCollection_addPlacemarkWithView(
             ptr,
             mapkit_geometry_point.PointImpl.toNative(point),
             to_native.toNativeViewProvider(view)));
+    exception.checkCallResult();
+    return result;
   }
 
   mapkit_map_placemark.PlacemarkMapObject addPlacemarkWithViewStyle(
       mapkit_geometry_point.Point point,
       view_provider.ViewProvider view,
       mapkit_map_icon_style.IconStyle style) {
-    return mapkit_map_placemark.PlacemarkMapObjectImpl.fromNativePtr(
+    final result = mapkit_map_placemark.PlacemarkMapObjectImpl.fromNativePtr(
         _ClusterizedPlacemarkCollection_addPlacemarkWithViewStyle(
             ptr,
             mapkit_geometry_point.PointImpl.toNative(point),
             to_native.toNativeViewProvider(view),
             mapkit_map_icon_style.IconStyleImpl.toNative(style)));
+    exception.checkCallResult();
+    return result;
   }
 
   mapkit_map_placemark.PlacemarkMapObject addPlacemarkWithAnimatedImageStyle(
       mapkit_geometry_point.Point point,
       animated_image_provider.AnimatedImageProvider animatedImage,
       mapkit_map_icon_style.IconStyle style) {
-    return mapkit_map_placemark.PlacemarkMapObjectImpl.fromNativePtr(
+    final result = mapkit_map_placemark.PlacemarkMapObjectImpl.fromNativePtr(
         _ClusterizedPlacemarkCollection_addPlacemarkWithAnimatedImageStyle(
             ptr,
             mapkit_geometry_point.PointImpl.toNative(point),
             to_native.toNativeAnimatedImageProvider(animatedImage),
             mapkit_map_icon_style.IconStyleImpl.toNative(style)));
+    exception.checkCallResult();
+    return result;
   }
 
   core.List<mapkit_map_placemark.PlacemarkMapObject> addPlacemarkWithImageStyle(
@@ -150,7 +170,7 @@ class ClusterizedPlacemarkCollectionImpl
     mapkit_map_icon_style.IconStyle style, {
     required core.List<mapkit_geometry_point.Point> points,
   }) {
-    return mapkit_map_placemark.PlacemarkMapObjectContainerExtension
+    final result = mapkit_map_placemark.PlacemarkMapObjectContainerExtension
         .toPlatformVector(
             _ClusterizedPlacemarkCollection_addPlacemarkWithImageStyle(
       ptr,
@@ -158,6 +178,8 @@ class ClusterizedPlacemarkCollectionImpl
       to_native.toNativeImageProvider(image),
       mapkit_map_icon_style.IconStyleImpl.toNative(style),
     ));
+    exception.checkCallResult();
+    return result;
   }
 
   void clusterPlacemarks({
@@ -166,6 +188,7 @@ class ClusterizedPlacemarkCollectionImpl
   }) {
     _ClusterizedPlacemarkCollection_clusterPlacemarks(
         ptr, clusterRadius, minZoom);
+    exception.checkCallResult();
   }
 }
 

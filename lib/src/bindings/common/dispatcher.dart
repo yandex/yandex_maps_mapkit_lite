@@ -1,5 +1,6 @@
 import 'package:meta/meta.dart';
 import 'package:ffi/ffi.dart';
+import 'package:yandex_maps_mapkit_lite/src/bindings/common/exception.dart';
 import 'package:yandex_maps_mapkit_lite/src/bindings/common/platform_user_data.dart';
 
 import 'dart:ffi';
@@ -70,7 +71,7 @@ abstract class AsyncDispatcherHeap<T> {
   void requestData(T object, Pointer<Void> nativeData);
 
   void onHandlerException(
-      T object, Pointer<Void> nativeData, Object e, StackTrace stackTrace);
+      T? object, Pointer<Void> nativeData, Object e, StackTrace stackTrace);
 
   int get sendPort => _port.sendPort.nativePort;
 
@@ -97,8 +98,13 @@ abstract class AsyncDispatcherHeap<T> {
         break;
       case _GetPlatformObjectData:
         try {
-          requestData(
-              _heap[callbackData.nativeObject]!, callbackData.nativeData);
+          final obj = _heap[callbackData.nativeData];
+          if (obj == null) {
+            onHandlerException(null, callbackData.nativeData,
+                NativeNullException(), StackTrace.current);
+            return;
+          }
+          requestData(obj, callbackData.nativeData);
         } catch (e, stack) {
           onHandlerException(_heap[callbackData.nativeObject]!,
               callbackData.nativeObject, e, stack);

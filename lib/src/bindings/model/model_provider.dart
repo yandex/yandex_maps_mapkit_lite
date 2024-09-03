@@ -44,9 +44,11 @@ class _ModelProviderHeap extends AsyncDispatcherHeap<ModelProvider> {
   }
 
   @override
-  void onHandlerException(ModelProvider object, Pointer<Void> nativeData,
+  void onHandlerException(ModelProvider? object, Pointer<Void> nativeData,
       Object e, StackTrace stackTrace) {
-    object._errorHandler.onError(e, stackTrace);
+    if (object != null) {
+      object._errorHandler.onError(e, stackTrace);
+    }
     _onModelComplete(nativeData, newNativeBytes(nullptr, 0));
   }
 }

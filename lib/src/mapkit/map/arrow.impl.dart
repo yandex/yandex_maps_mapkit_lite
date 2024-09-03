@@ -48,68 +48,88 @@ class ArrowImpl implements Arrow, ffi.Finalizable {
 
   @core.override
   mapkit_geometry_geometry.PolylinePosition get position {
-    return mapkit_geometry_geometry.PolylinePositionImpl.fromNative(
+    final result = mapkit_geometry_geometry.PolylinePositionImpl.fromNative(
         _Arrow_get_position(ptr));
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   ui.Color get fillColor {
-    return to_platform.toPlatformColor(_Arrow_get_fillColor(ptr));
+    final result = to_platform.toPlatformColor(_Arrow_get_fillColor(ptr));
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   set fillColor(ui.Color val) {
     _Arrow_set_fillColor(ptr, to_native.toNativeColor(val));
+    exception.checkCallResult();
   }
 
   @core.override
   ui.Color get outlineColor {
-    return to_platform.toPlatformColor(_Arrow_get_outlineColor(ptr));
+    final result = to_platform.toPlatformColor(_Arrow_get_outlineColor(ptr));
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   set outlineColor(ui.Color val) {
     _Arrow_set_outlineColor(ptr, to_native.toNativeColor(val));
+    exception.checkCallResult();
   }
 
   @core.override
   core.double get outlineWidth {
-    return _Arrow_get_outlineWidth(ptr);
+    final result = _Arrow_get_outlineWidth(ptr);
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   set outlineWidth(core.double val) {
     _Arrow_set_outlineWidth(ptr, val);
+    exception.checkCallResult();
   }
 
   @core.override
   core.double get length {
-    return _Arrow_get_length(ptr);
+    final result = _Arrow_get_length(ptr);
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   set length(core.double val) {
     _Arrow_set_length(ptr, val);
+    exception.checkCallResult();
   }
 
   @core.override
   core.bool get visible {
-    return _Arrow_get_visible(ptr);
+    final result = _Arrow_get_visible(ptr);
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   set visible(core.bool val) {
     _Arrow_set_visible(ptr, val);
+    exception.checkCallResult();
   }
 
   @core.override
   core.double get triangleHeight {
-    return _Arrow_get_triangleHeight(ptr);
+    final result = _Arrow_get_triangleHeight(ptr);
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   set triangleHeight(core.double val) {
     _Arrow_set_triangleHeight(ptr, val);
+    exception.checkCallResult();
   }
 }
 

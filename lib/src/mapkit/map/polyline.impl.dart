@@ -49,126 +49,161 @@ class PolylineMapObjectImpl extends mapkit_map_map_object.MapObjectImpl
 
   @core.override
   mapkit_geometry_geometry.Polyline get geometry {
-    return mapkit_geometry_geometry.PolylineImpl.fromNativePtr(
+    final result = mapkit_geometry_geometry.PolylineImpl.fromNativePtr(
         _PolylineMapObject_get_geometry(ptr));
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   set geometry(mapkit_geometry_geometry.Polyline val) {
     _PolylineMapObject_set_geometry(
         ptr, mapkit_geometry_geometry.PolylineImpl.getNativePtr(val));
+    exception.checkCallResult();
   }
 
   @core.override
   core.double get strokeWidth {
-    return _PolylineMapObject_get_strokeWidth(ptr);
+    final result = _PolylineMapObject_get_strokeWidth(ptr);
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   set strokeWidth(core.double val) {
     _PolylineMapObject_set_strokeWidth(ptr, val);
+    exception.checkCallResult();
   }
 
   @core.override
   core.double get gradientLength {
-    return _PolylineMapObject_get_gradientLength(ptr);
+    final result = _PolylineMapObject_get_gradientLength(ptr);
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   set gradientLength(core.double val) {
     _PolylineMapObject_set_gradientLength(ptr, val);
+    exception.checkCallResult();
   }
 
   @core.override
   ui.Color get outlineColor {
-    return to_platform
-        .toPlatformColor(_PolylineMapObject_get_outlineColor(ptr));
+    final result =
+        to_platform.toPlatformColor(_PolylineMapObject_get_outlineColor(ptr));
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   set outlineColor(ui.Color val) {
     _PolylineMapObject_set_outlineColor(ptr, to_native.toNativeColor(val));
+    exception.checkCallResult();
   }
 
   @core.override
   core.double get outlineWidth {
-    return _PolylineMapObject_get_outlineWidth(ptr);
+    final result = _PolylineMapObject_get_outlineWidth(ptr);
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   set outlineWidth(core.double val) {
     _PolylineMapObject_set_outlineWidth(ptr, val);
+    exception.checkCallResult();
   }
 
   @core.override
   core.bool get innerOutlineEnabled {
-    return _PolylineMapObject_get_innerOutlineEnabled(ptr);
+    final result = _PolylineMapObject_get_innerOutlineEnabled(ptr);
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   set innerOutlineEnabled(core.bool val) {
     _PolylineMapObject_set_innerOutlineEnabled(ptr, val);
+    exception.checkCallResult();
   }
 
   @core.override
   core.double get turnRadius {
-    return _PolylineMapObject_get_turnRadius(ptr);
+    final result = _PolylineMapObject_get_turnRadius(ptr);
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   set turnRadius(core.double val) {
     _PolylineMapObject_set_turnRadius(ptr, val);
+    exception.checkCallResult();
   }
 
   @core.override
   core.double get arcApproximationStep {
-    return _PolylineMapObject_get_arcApproximationStep(ptr);
+    final result = _PolylineMapObject_get_arcApproximationStep(ptr);
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   set arcApproximationStep(core.double val) {
     _PolylineMapObject_set_arcApproximationStep(ptr, val);
+    exception.checkCallResult();
   }
 
   @core.override
   core.double get dashLength {
-    return _PolylineMapObject_get_dashLength(ptr);
+    final result = _PolylineMapObject_get_dashLength(ptr);
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   set dashLength(core.double val) {
     _PolylineMapObject_set_dashLength(ptr, val);
+    exception.checkCallResult();
   }
 
   @core.override
   core.double get gapLength {
-    return _PolylineMapObject_get_gapLength(ptr);
+    final result = _PolylineMapObject_get_gapLength(ptr);
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   set gapLength(core.double val) {
     _PolylineMapObject_set_gapLength(ptr, val);
+    exception.checkCallResult();
   }
 
   @core.override
   core.double get dashOffset {
-    return _PolylineMapObject_get_dashOffset(ptr);
+    final result = _PolylineMapObject_get_dashOffset(ptr);
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   set dashOffset(core.double val) {
     _PolylineMapObject_set_dashOffset(ptr, val);
+    exception.checkCallResult();
   }
 
   void select(ui.Color selectionColor,
       mapkit_geometry_geometry.Subpolyline subpolyline) {
     _PolylineMapObject_select(ptr, to_native.toNativeColor(selectionColor),
         mapkit_geometry_geometry.SubpolylineImpl.toNative(subpolyline));
+    exception.checkCallResult();
   }
 
   void hide(mapkit_geometry_geometry.Subpolyline subpolyline) {
     _PolylineMapObject_hide(
         ptr, mapkit_geometry_geometry.SubpolylineImpl.toNative(subpolyline));
+    exception.checkCallResult();
   }
 
   void hideMultiple(
@@ -177,6 +212,7 @@ class PolylineMapObjectImpl extends mapkit_map_map_object.MapObjectImpl
         ptr,
         mapkit_geometry_geometry.SubpolylineContainerExtension.toNativeVector(
             subpolylines));
+    exception.checkCallResult();
   }
 
   void setStrokeColorsWithWeights({
@@ -187,11 +223,13 @@ class PolylineMapObjectImpl extends mapkit_map_map_object.MapObjectImpl
         ptr,
         to_native.toNativeVectorUint32(colors),
         to_native.toNativeVectorDouble(weights));
+    exception.checkCallResult();
   }
 
   void setStrokeColors(core.List<core.int> colors) {
     _PolylineMapObject_setStrokeColors(
         ptr, to_native.toNativeVectorUint32(colors));
+    exception.checkCallResult();
   }
 
   void setPaletteColor(
@@ -203,19 +241,25 @@ class PolylineMapObjectImpl extends mapkit_map_map_object.MapObjectImpl
       colorIndex,
       to_native.toNativeColor(color),
     );
+    exception.checkCallResult();
   }
 
   ui.Color getPaletteColor(core.int colorIndex) {
-    return to_platform
+    final result = to_platform
         .toPlatformColor(_PolylineMapObject_getPaletteColor(ptr, colorIndex));
+    exception.checkCallResult();
+    return result;
   }
 
   void setStrokeColor(ui.Color color) {
     _PolylineMapObject_setStrokeColor(ptr, to_native.toNativeColor(color));
+    exception.checkCallResult();
   }
 
   core.int getStrokeColor(core.int segmentIndex) {
-    return _PolylineMapObject_getStrokeColor(ptr, segmentIndex);
+    final result = _PolylineMapObject_getStrokeColor(ptr, segmentIndex);
+    exception.checkCallResult();
+    return result;
   }
 
   mapkit_map_arrow.Arrow addArrow(
@@ -223,17 +267,22 @@ class PolylineMapObjectImpl extends mapkit_map_map_object.MapObjectImpl
     ui.Color fillColor, {
     required core.double length,
   }) {
-    return mapkit_map_arrow.ArrowImpl.fromNativePtr(_PolylineMapObject_addArrow(
+    final result =
+        mapkit_map_arrow.ArrowImpl.fromNativePtr(_PolylineMapObject_addArrow(
       ptr,
       mapkit_geometry_geometry.PolylinePositionImpl.toNative(position),
       length,
       to_native.toNativeColor(fillColor),
     ));
+    exception.checkCallResult();
+    return result;
   }
 
   core.List<mapkit_map_arrow.Arrow> arrows() {
-    return mapkit_map_arrow.ArrowContainerExtension.toPlatformVector(
+    final result = mapkit_map_arrow.ArrowContainerExtension.toPlatformVector(
         _PolylineMapObject_arrows(ptr));
+    exception.checkCallResult();
+    return result;
   }
 }
 

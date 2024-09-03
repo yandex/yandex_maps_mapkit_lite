@@ -49,54 +49,71 @@ class CircleMapObjectImpl extends mapkit_map_map_object.MapObjectImpl
 
   @core.override
   mapkit_geometry_geometry.Circle get geometry {
-    return mapkit_geometry_geometry.CircleImpl.fromNative(
+    final result = mapkit_geometry_geometry.CircleImpl.fromNative(
         _CircleMapObject_get_geometry(ptr));
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   set geometry(mapkit_geometry_geometry.Circle val) {
     _CircleMapObject_set_geometry(
         ptr, mapkit_geometry_geometry.CircleImpl.toNative(val));
+    exception.checkCallResult();
   }
 
   @core.override
   ui.Color get strokeColor {
-    return to_platform.toPlatformColor(_CircleMapObject_get_strokeColor(ptr));
+    final result =
+        to_platform.toPlatformColor(_CircleMapObject_get_strokeColor(ptr));
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   set strokeColor(ui.Color val) {
     _CircleMapObject_set_strokeColor(ptr, to_native.toNativeColor(val));
+    exception.checkCallResult();
   }
 
   @core.override
   core.double get strokeWidth {
-    return _CircleMapObject_get_strokeWidth(ptr);
+    final result = _CircleMapObject_get_strokeWidth(ptr);
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   set strokeWidth(core.double val) {
     _CircleMapObject_set_strokeWidth(ptr, val);
+    exception.checkCallResult();
   }
 
   @core.override
   ui.Color get fillColor {
-    return to_platform.toPlatformColor(_CircleMapObject_get_fillColor(ptr));
+    final result =
+        to_platform.toPlatformColor(_CircleMapObject_get_fillColor(ptr));
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   set fillColor(ui.Color val) {
     _CircleMapObject_set_fillColor(ptr, to_native.toNativeColor(val));
+    exception.checkCallResult();
   }
 
   @core.override
   core.bool get geodesic {
-    return _CircleMapObject_get_geodesic(ptr);
+    final result = _CircleMapObject_get_geodesic(ptr);
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   set geodesic(core.bool val) {
     _CircleMapObject_set_geodesic(ptr, val);
+    exception.checkCallResult();
   }
 }
 

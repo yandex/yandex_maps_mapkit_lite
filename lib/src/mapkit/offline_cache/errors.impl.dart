@@ -62,7 +62,8 @@ final void Function(ffi.Pointer<ffi.Void>, core.int) _CachePathUnavailable_set =
     lib
         .library
         .lookup<
-                ffi.NativeFunction<
+                ffi
+                .NativeFunction<
                     ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Int64)>>(
             'yandex_flutter_mapkit_offline_cache_CachePathUnavailable_set_')
         .asFunction(isLeaf: true);

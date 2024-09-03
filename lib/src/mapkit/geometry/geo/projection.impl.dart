@@ -50,17 +50,22 @@ class ProjectionImpl implements Projection, ffi.Finalizable {
     mapkit_geometry_point.Point geoPoint, {
     required core.int zoom,
   }) {
-    return mapkit_geometry_geo_xy_point.XYPointImpl.fromNative(
+    final result = mapkit_geometry_geo_xy_point.XYPointImpl.fromNative(
         _Projection_worldToXY(
             ptr, mapkit_geometry_point.PointImpl.toNative(geoPoint), zoom));
+    exception.checkCallResult();
+    return result;
   }
 
   mapkit_geometry_point.Point xyToWorld(
     mapkit_geometry_geo_xy_point.XYPoint xyPoint, {
     required core.int zoom,
   }) {
-    return mapkit_geometry_point.PointImpl.fromNative(_Projection_xyToWorld(
-        ptr, mapkit_geometry_geo_xy_point.XYPointImpl.toNative(xyPoint), zoom));
+    final result = mapkit_geometry_point.PointImpl.fromNative(
+        _Projection_xyToWorld(ptr,
+            mapkit_geometry_geo_xy_point.XYPointImpl.toNative(xyPoint), zoom));
+    exception.checkCallResult();
+    return result;
   }
 }
 

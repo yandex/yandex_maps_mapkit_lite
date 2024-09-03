@@ -48,20 +48,26 @@ class UserLocationViewImpl implements UserLocationView, ffi.Finalizable {
 
   @core.override
   mapkit_map_placemark.PlacemarkMapObject get arrow {
-    return mapkit_map_placemark.PlacemarkMapObjectImpl.fromNativePtr(
+    final result = mapkit_map_placemark.PlacemarkMapObjectImpl.fromNativePtr(
         _UserLocationView_get_arrow(ptr));
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   mapkit_map_placemark.PlacemarkMapObject get pin {
-    return mapkit_map_placemark.PlacemarkMapObjectImpl.fromNativePtr(
+    final result = mapkit_map_placemark.PlacemarkMapObjectImpl.fromNativePtr(
         _UserLocationView_get_pin(ptr));
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   mapkit_map_circle.CircleMapObject get accuracyCircle {
-    return mapkit_map_circle.CircleMapObjectImpl.fromNativePtr(
+    final result = mapkit_map_circle.CircleMapObjectImpl.fromNativePtr(
         _UserLocationView_get_accuracyCircle(ptr));
+    exception.checkCallResult();
+    return result;
   }
 }
 
@@ -237,8 +243,10 @@ class UserLocationIconChangedImpl extends mapkit_layers_object_event
 
   @core.override
   UserLocationIconType get iconType {
-    return UserLocationIconTypeImpl.fromInt(
+    final result = UserLocationIconTypeImpl.fromInt(
         _UserLocationIconChanged_get_iconType(ptr));
+    exception.checkCallResult();
+    return result;
   }
 }
 
@@ -319,8 +327,10 @@ class UserLocationAnchorChangedImpl extends mapkit_layers_object_event
 
   @core.override
   UserLocationAnchorType get anchorType {
-    return UserLocationAnchorTypeImpl.fromInt(
+    final result = UserLocationAnchorTypeImpl.fromInt(
         _UserLocationAnchorChanged_get_anchorType(ptr));
+    exception.checkCallResult();
+    return result;
   }
 }
 
@@ -427,11 +437,12 @@ final ffi.Pointer<ffi.Void> Function(
         ffi.Pointer<
             ffi.NativeFunction<
                 ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>,
-        ffi.Pointer<
-            ffi.NativeFunction<
-                ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>,
-        ffi.Pointer<
-            ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>)
+        ffi
+            .Pointer<
+                ffi.NativeFunction<
+                    ffi.Void Function(
+                        ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>,
+        ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>)
     _UserLocationObjectListener_new = lib.library
         .lookup<ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>, ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>, ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>)>>(
             'yandex_flutter_mapkit_user_location_UserLocationObjectListener_new')
@@ -629,50 +640,65 @@ class UserLocationLayerImpl implements UserLocationLayer, ffi.Finalizable {
 
   @core.override
   core.bool get headingEnabled {
-    return _UserLocationLayer_get_headingEnabled(ptr);
+    final result = _UserLocationLayer_get_headingEnabled(ptr);
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   set headingEnabled(core.bool val) {
     _UserLocationLayer_set_headingEnabled(ptr, val);
+    exception.checkCallResult();
   }
 
   @core.override
   core.bool get anchorEnabled {
-    return _UserLocationLayer_get_anchorEnabled(ptr);
+    final result = _UserLocationLayer_get_anchorEnabled(ptr);
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   core.bool get autoZoomEnabled {
-    return _UserLocationLayer_get_autoZoomEnabled(ptr);
+    final result = _UserLocationLayer_get_autoZoomEnabled(ptr);
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   set autoZoomEnabled(core.bool val) {
     _UserLocationLayer_set_autoZoomEnabled(ptr, val);
+    exception.checkCallResult();
   }
 
   void setVisible(core.bool on) {
     _UserLocationLayer_setVisible(ptr, on);
+    exception.checkCallResult();
   }
 
   core.bool isVisible() {
-    return _UserLocationLayer_isVisible(ptr);
+    final result = _UserLocationLayer_isVisible(ptr);
+    exception.checkCallResult();
+    return result;
   }
 
   void setAnchor(math.Point<core.double> anchorNormal,
       math.Point<core.double> anchorCourse) {
     _UserLocationLayer_setAnchor(ptr, to_native.toNativePoint(anchorNormal),
         to_native.toNativePoint(anchorCourse));
+    exception.checkCallResult();
   }
 
   void resetAnchor() {
     _UserLocationLayer_resetAnchor(ptr);
+    exception.checkCallResult();
   }
 
   mapkit_map_camera_position.CameraPosition? cameraPosition() {
-    return mapkit_map_camera_position.CameraPositionImpl.fromPointer(
+    final result = mapkit_map_camera_position.CameraPositionImpl.fromPointer(
         _UserLocationLayer_cameraPosition(ptr));
+    exception.checkCallResult();
+    return result;
   }
 
   void setSource(
@@ -681,20 +707,24 @@ class UserLocationLayerImpl implements UserLocationLayer, ffi.Finalizable {
         ptr,
         mapkit_location_location_view_source.LocationViewSourceImpl
             .getNativePtr(source));
+    exception.checkCallResult();
   }
 
   void setDefaultSource() {
     _UserLocationLayer_setDefaultSource(ptr);
+    exception.checkCallResult();
   }
 
   void setTapListener(UserLocationTapListener? tapListener) {
     _UserLocationLayer_setTapListener(
         ptr, UserLocationTapListenerImpl.getNativePtr(tapListener));
+    exception.checkCallResult();
   }
 
   void setObjectListener(UserLocationObjectListener? objectListener) {
     _UserLocationLayer_setObjectListener(
         ptr, UserLocationObjectListenerImpl.getNativePtr(objectListener));
+    exception.checkCallResult();
   }
 }
 

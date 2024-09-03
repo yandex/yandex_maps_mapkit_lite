@@ -48,7 +48,9 @@ class BaseDataSourceImpl implements BaseDataSource, ffi.Finalizable {
 
   @core.override
   core.String get id {
-    return to_platform.toPlatformString(_BaseDataSource_get_id(ptr));
+    final result = to_platform.toPlatformString(_BaseDataSource_get_id(ptr));
+    exception.checkCallResult();
+    return result;
   }
 }
 
@@ -126,6 +128,7 @@ class TileDataSourceImpl extends BaseDataSourceImpl
 
   void invalidate(core.String version) {
     _TileDataSource_invalidate(ptr, to_native.toNativeString(version));
+    exception.checkCallResult();
   }
 }
 
@@ -203,6 +206,7 @@ class DataSourceImpl extends BaseDataSourceImpl
 
   void setData(typed_data.ByteBuffer data) {
     _DataSource_setData(ptr, to_native.toNativeBytes(data));
+    exception.checkCallResult();
   }
 }
 

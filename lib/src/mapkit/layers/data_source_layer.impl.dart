@@ -48,27 +48,35 @@ class DataSourceLayerImpl implements DataSourceLayer, ffi.Finalizable {
 
   @core.override
   core.bool get active {
-    return _DataSourceLayer_get_active(ptr);
+    final result = _DataSourceLayer_get_active(ptr);
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   set active(core.bool val) {
     _DataSourceLayer_set_active(ptr, val);
+    exception.checkCallResult();
   }
 
   void clear() {
     _DataSourceLayer_clear(ptr);
+    exception.checkCallResult();
   }
 
   core.bool setStyle({
     required core.int id,
     required core.String style,
   }) {
-    return _DataSourceLayer_setStyle(ptr, id, to_native.toNativeString(style));
+    final result =
+        _DataSourceLayer_setStyle(ptr, id, to_native.toNativeString(style));
+    exception.checkCallResult();
+    return result;
   }
 
   void resetStyles() {
     _DataSourceLayer_resetStyles(ptr);
+    exception.checkCallResult();
   }
 
   void setLayerLoadedListener(
@@ -78,10 +86,12 @@ class DataSourceLayerImpl implements DataSourceLayer, ffi.Finalizable {
         ptr,
         mapkit_layers_layer_loaded_listener.LayerLoadedListenerImpl
             .getNativePtr(layerLoadedListener));
+    exception.checkCallResult();
   }
 
   void remove() {
     _DataSourceLayer_remove(ptr);
+    exception.checkCallResult();
   }
 
   void setDataSourceListener(
@@ -90,6 +100,7 @@ class DataSourceLayerImpl implements DataSourceLayer, ffi.Finalizable {
         ptr,
         mapkit_layers_data_source.DataSourceListenerImpl.getNativePtr(
             dataSourceListener));
+    exception.checkCallResult();
   }
 }
 

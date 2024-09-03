@@ -47,27 +47,36 @@ class TrafficLayerImpl implements TrafficLayer, ffi.Finalizable {
   }
 
   core.bool isTrafficVisible() {
-    return _TrafficLayer_isTrafficVisible(ptr);
+    final result = _TrafficLayer_isTrafficVisible(ptr);
+    exception.checkCallResult();
+    return result;
   }
 
   void setTrafficVisible(core.bool on) {
     _TrafficLayer_setTrafficVisible(ptr, on);
+    exception.checkCallResult();
   }
 
   core.bool setTrafficStyle(core.String style) {
-    return _TrafficLayer_setTrafficStyle(ptr, to_native.toNativeString(style));
+    final result =
+        _TrafficLayer_setTrafficStyle(ptr, to_native.toNativeString(style));
+    exception.checkCallResult();
+    return result;
   }
 
   core.bool setTrafficStyleWithId({
     required core.int id,
     required core.String style,
   }) {
-    return _TrafficLayer_setTrafficStyleWithId(
+    final result = _TrafficLayer_setTrafficStyleWithId(
         ptr, id, to_native.toNativeString(style));
+    exception.checkCallResult();
+    return result;
   }
 
   void resetTrafficStyles() {
     _TrafficLayer_resetTrafficStyles(ptr);
+    exception.checkCallResult();
   }
 
   void addTrafficListener(
@@ -76,6 +85,7 @@ class TrafficLayerImpl implements TrafficLayer, ffi.Finalizable {
         ptr,
         mapkit_traffic_traffic_listener.TrafficListenerImpl.getNativePtr(
             trafficListener));
+    exception.checkCallResult();
   }
 
   void removeTrafficListener(
@@ -84,6 +94,7 @@ class TrafficLayerImpl implements TrafficLayer, ffi.Finalizable {
         ptr,
         mapkit_traffic_traffic_listener.TrafficListenerImpl.getNativePtr(
             trafficListener));
+    exception.checkCallResult();
   }
 }
 

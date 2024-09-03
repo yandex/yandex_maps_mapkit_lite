@@ -49,12 +49,15 @@ class PlacemarkAnimationImpl implements PlacemarkAnimation, ffi.Finalizable {
 
   @core.override
   core.bool get reversed {
-    return _PlacemarkAnimation_get_reversed(ptr);
+    final result = _PlacemarkAnimation_get_reversed(ptr);
+    exception.checkCallResult();
+    return result;
   }
 
   @core.override
   set reversed(core.bool val) {
     _PlacemarkAnimation_set_reversed(ptr, val);
+    exception.checkCallResult();
   }
 
   void setIcon(animated_image_provider.AnimatedImageProvider image,
@@ -63,6 +66,7 @@ class PlacemarkAnimationImpl implements PlacemarkAnimation, ffi.Finalizable {
         ptr,
         to_native.toNativeAnimatedImageProvider(image),
         mapkit_map_icon_style.IconStyleImpl.toNative(style));
+    exception.checkCallResult();
   }
 
   void setIconWithCallback(
@@ -74,32 +78,39 @@ class PlacemarkAnimationImpl implements PlacemarkAnimation, ffi.Finalizable {
         to_native.toNativeAnimatedImageProvider(image),
         mapkit_map_icon_style.IconStyleImpl.toNative(style),
         mapkit_map_callback.CallbackImpl.getNativePtr(onFinished));
+    exception.checkCallResult();
   }
 
   void setIconStyle(mapkit_map_icon_style.IconStyle style) {
     _PlacemarkAnimation_setIconStyle(
         ptr, mapkit_map_icon_style.IconStyleImpl.toNative(style));
+    exception.checkCallResult();
   }
 
   void play() {
     _PlacemarkAnimation_play(ptr);
+    exception.checkCallResult();
   }
 
   void playWithCallback(mapkit_map_callback.Callback onFinished) {
     _PlacemarkAnimation_playWithCallback(
         ptr, mapkit_map_callback.CallbackImpl.getNativePtr(onFinished));
+    exception.checkCallResult();
   }
 
   void resume() {
     _PlacemarkAnimation_resume(ptr);
+    exception.checkCallResult();
   }
 
   void stop() {
     _PlacemarkAnimation_stop(ptr);
+    exception.checkCallResult();
   }
 
   void pause() {
     _PlacemarkAnimation_pause(ptr);
+    exception.checkCallResult();
   }
 }
 
