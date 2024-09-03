@@ -1,3 +1,7 @@
+## 4.7.2-beta6
+
+* Fix Provider classes
+
 # 4.7.2-beta5
 
 * Fix crashes

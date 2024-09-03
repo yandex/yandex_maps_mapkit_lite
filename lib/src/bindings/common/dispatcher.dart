@@ -98,7 +98,7 @@ abstract class AsyncDispatcherHeap<T> {
         break;
       case _GetPlatformObjectData:
         try {
-          final obj = _heap[callbackData.nativeData];
+          final obj = _heap[callbackData.nativeObject];
           if (obj == null) {
             onHandlerException(null, callbackData.nativeData,
                 NativeNullException(), StackTrace.current);
