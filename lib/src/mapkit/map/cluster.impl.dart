@@ -48,10 +48,10 @@ class ClusterImpl implements Cluster, ffi.Finalizable {
 
   @core.override
   core.List<mapkit_map_placemark.PlacemarkMapObject> get placemarks {
-    final result = mapkit_map_placemark.PlacemarkMapObjectContainerExtension
-        .toPlatformVector(_Cluster_get_placemarks(ptr));
+    final result = _Cluster_get_placemarks(ptr);
     exception.checkCallResult();
-    return result;
+    return mapkit_map_placemark.PlacemarkMapObjectContainerExtension
+        .toPlatformVector(result);
   }
 
   @core.override
@@ -63,10 +63,9 @@ class ClusterImpl implements Cluster, ffi.Finalizable {
 
   @core.override
   mapkit_map_placemark.PlacemarkMapObject get appearance {
-    final result = mapkit_map_placemark.PlacemarkMapObjectImpl.fromNativePtr(
-        _Cluster_get_appearance(ptr));
+    final result = _Cluster_get_appearance(ptr);
     exception.checkCallResult();
-    return result;
+    return mapkit_map_placemark.PlacemarkMapObjectImpl.fromNativePtr(result);
   }
 
   void addClusterTapListener(

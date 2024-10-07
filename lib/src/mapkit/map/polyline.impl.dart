@@ -49,10 +49,9 @@ class PolylineMapObjectImpl extends mapkit_map_map_object.MapObjectImpl
 
   @core.override
   mapkit_geometry_geometry.Polyline get geometry {
-    final result = mapkit_geometry_geometry.PolylineImpl.fromNativePtr(
-        _PolylineMapObject_get_geometry(ptr));
+    final result = _PolylineMapObject_get_geometry(ptr);
     exception.checkCallResult();
-    return result;
+    return mapkit_geometry_geometry.PolylineImpl.fromNativePtr(result);
   }
 
   @core.override
@@ -90,10 +89,9 @@ class PolylineMapObjectImpl extends mapkit_map_map_object.MapObjectImpl
 
   @core.override
   ui.Color get outlineColor {
-    final result =
-        to_platform.toPlatformColor(_PolylineMapObject_get_outlineColor(ptr));
+    final result = _PolylineMapObject_get_outlineColor(ptr);
     exception.checkCallResult();
-    return result;
+    return to_platform.toPlatformColor(result);
   }
 
   @core.override
@@ -245,10 +243,9 @@ class PolylineMapObjectImpl extends mapkit_map_map_object.MapObjectImpl
   }
 
   ui.Color getPaletteColor(core.int colorIndex) {
-    final result = to_platform
-        .toPlatformColor(_PolylineMapObject_getPaletteColor(ptr, colorIndex));
+    final result = _PolylineMapObject_getPaletteColor(ptr, colorIndex);
     exception.checkCallResult();
-    return result;
+    return to_platform.toPlatformColor(result);
   }
 
   void setStrokeColor(ui.Color color) {
@@ -267,22 +264,20 @@ class PolylineMapObjectImpl extends mapkit_map_map_object.MapObjectImpl
     ui.Color fillColor, {
     required core.double length,
   }) {
-    final result =
-        mapkit_map_arrow.ArrowImpl.fromNativePtr(_PolylineMapObject_addArrow(
+    final result = _PolylineMapObject_addArrow(
       ptr,
       mapkit_geometry_geometry.PolylinePositionImpl.toNative(position),
       length,
       to_native.toNativeColor(fillColor),
-    ));
+    );
     exception.checkCallResult();
-    return result;
+    return mapkit_map_arrow.ArrowImpl.fromNativePtr(result);
   }
 
   core.List<mapkit_map_arrow.Arrow> arrows() {
-    final result = mapkit_map_arrow.ArrowContainerExtension.toPlatformVector(
-        _PolylineMapObject_arrows(ptr));
+    final result = _PolylineMapObject_arrows(ptr);
     exception.checkCallResult();
-    return result;
+    return mapkit_map_arrow.ArrowContainerExtension.toPlatformVector(result);
   }
 }
 

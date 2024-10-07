@@ -35,6 +35,8 @@ import 'package:yandex_maps_mapkit_lite/src/mapkit/map/icon_style.dart'
     as mapkit_map_icon_style;
 import 'package:yandex_maps_mapkit_lite/src/mapkit/map/map_object.dart'
     as mapkit_map_map_object;
+import 'package:yandex_maps_mapkit_lite/src/mapkit/map/model.dart'
+    as mapkit_map_model;
 import 'package:yandex_maps_mapkit_lite/src/mapkit/map/placemark_animation.dart'
     as mapkit_map_placemark_animation;
 import 'package:yandex_maps_mapkit_lite/src/mapkit/map/text_style.dart'
@@ -59,30 +61,28 @@ abstract class PlacemarkMapObject
   core.double get opacity;
   set opacity(core.double val);
 
-  /// Sets an icon with the default style for the placemark. Resets the
-  /// animation, the composite icon, the view and the model.
+  /// Sets an icon with the default style for the placemark. Switches off
+  /// and resets model/composite icon/animation/view.
   void setIcon(image_provider.ImageProvider image);
 
-  /// Sets an icon with the given style for the placemark. Resets the
-  /// animation, the composite icon, the view and the model.
+  /// Sets an icon with the given style for the placemark. Switches off and
+  /// resets model/composite icon/animation/view.
   void setIconWithStyle(image_provider.ImageProvider image,
       mapkit_map_icon_style.IconStyle style);
 
-  /// Sets an icon with the default style for the placemark. Resets the
-  /// animation, the composite icon, the view and the model. The callback
-  /// is called immediately after the image finished loading. This means
-  /// you can, for example, change the placemark visibility with a new
-  /// icon.
+  /// Sets an icon with the default style for the placemark. Switches off
+  /// and resets model/composite icon/animation/view. The callback is
+  /// called immediately after the image finished loading. This means you
+  /// can, for example, change the placemark visibility with a new icon.
   ///
   /// [onFinished] Called when the icon is loaded.
   void setIconWithCallback(image_provider.ImageProvider image,
       mapkit_map_callback.Callback onFinished);
 
-  /// Sets an icon with the given style for the placemark. Resets the
-  /// animation, the composite icon, the view and the model. The callback
-  /// is called immediately after the image finished loading. This means
-  /// you can, for example, change the placemark visibility with a new
-  /// icon.
+  /// Sets an icon with the given style for the placemark. Switches off and
+  /// resets model/composite icon/animation/view. The callback is called
+  /// immediately after the image finished loading. This means you can, for
+  /// example, change the placemark visibility with a new icon.
   ///
   /// [onFinished] Called when the icon is loaded.
   void setIconWithStyleAndCallback(
@@ -94,34 +94,41 @@ abstract class PlacemarkMapObject
   /// the animated icon.
   void setIconStyle(mapkit_map_icon_style.IconStyle style);
 
-  /// Sets and returns the composite icon. Resets the single icon, the
-  /// animation, the view and the model.
+  /// Returns CompositeIcon object that can be used to set icons and their
+  /// styles for the placemark. Switches off and resets
+  /// icon/model/animation/view.
   mapkit_map_composite_icon.CompositeIcon useCompositeIcon();
 
-  /// Sets and returns the placemark animation. Resets the single icon, the
-  /// composite icon, the view and the model.
+  /// Returns Model object that can be used to set model and its style for
+  /// the placemark. Switches off and resets icon/composite
+  /// icon/animation/view.
+  mapkit_map_model.Model useModel();
+
+  /// Returns PlacemarkAnimation object that can be used to control
+  /// animation of the placemark. Switches off and resets icon/composite
+  /// icon/model/view.
   mapkit_map_placemark_animation.PlacemarkAnimation useAnimation();
 
-  /// Sets the view with the default style for the placemark. Resets icons,
-  /// animation and the model.
+  /// Sets the view with the default style for the placemark. Switches off
+  /// and resets icon/composite icon/animation/model.
   void setView(view_provider.ViewProvider view);
 
-  /// Sets the view with the given style for the placemark. Resets icons,
-  /// animation and the model.
+  /// Sets the view with the given style for the placemark. Switches off
+  /// and resets icon/composite icon/animation/view.
   void setViewWithStyle(
       view_provider.ViewProvider view, mapkit_map_icon_style.IconStyle style);
 
-  /// Sets the view with the default style for the placemark. Resets icons,
-  /// animation and the model. The callback will be called immediately
-  /// after the view finished loading.
+  /// Sets the view with the default style for the placemark. Switches off
+  /// and resets icon/composite icon/animation/view. The callback will be
+  /// called immediately after the view finished loading.
   ///
   /// [onFinished] Called when the icon is loaded.
   void setViewWithCallback(
       view_provider.ViewProvider view, mapkit_map_callback.Callback onFinished);
 
-  /// Sets the view with the given style for the placemark. Resets icons,
-  /// animation and the model. The callback will be called immediately
-  /// after the view finished loading.
+  /// Sets the view with the given style for the placemark. Switches off
+  /// and resets icon/composite icon/animation/view. The callback will be
+  /// called immediately after the view finished loading.
   ///
   /// [onFinished] Called when the icon is loaded.
   void setViewWithStyleAndCallback(

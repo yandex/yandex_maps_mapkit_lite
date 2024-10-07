@@ -50,10 +50,9 @@ class PlacemarkMapObjectImpl extends mapkit_map_map_object.MapObjectImpl
 
   @core.override
   mapkit_geometry_point.Point get geometry {
-    final result = mapkit_geometry_point.PointImpl.fromNative(
-        _PlacemarkMapObject_get_geometry(ptr));
+    final result = _PlacemarkMapObject_get_geometry(ptr);
     exception.checkCallResult();
-    return result;
+    return mapkit_geometry_point.PointImpl.fromNative(result);
   }
 
   @core.override
@@ -131,18 +130,22 @@ class PlacemarkMapObjectImpl extends mapkit_map_map_object.MapObjectImpl
   }
 
   mapkit_map_composite_icon.CompositeIcon useCompositeIcon() {
-    final result = mapkit_map_composite_icon.CompositeIconImpl.fromNativePtr(
-        _PlacemarkMapObject_useCompositeIcon(ptr));
+    final result = _PlacemarkMapObject_useCompositeIcon(ptr);
     exception.checkCallResult();
-    return result;
+    return mapkit_map_composite_icon.CompositeIconImpl.fromNativePtr(result);
+  }
+
+  mapkit_map_model.Model useModel() {
+    final result = _PlacemarkMapObject_useModel(ptr);
+    exception.checkCallResult();
+    return mapkit_map_model.ModelImpl.fromNativePtr(result);
   }
 
   mapkit_map_placemark_animation.PlacemarkAnimation useAnimation() {
-    final result =
-        mapkit_map_placemark_animation.PlacemarkAnimationImpl.fromNativePtr(
-            _PlacemarkMapObject_useAnimation(ptr));
+    final result = _PlacemarkMapObject_useAnimation(ptr);
     exception.checkCallResult();
-    return result;
+    return mapkit_map_placemark_animation.PlacemarkAnimationImpl.fromNativePtr(
+        result);
   }
 
   void setView(view_provider.ViewProvider view) {
@@ -320,6 +323,13 @@ final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)
                 ffi.NativeFunction<
                     ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
             'yandex_flutter_mapkit_map_PlacemarkMapObject_useCompositeIcon')
+        .asFunction();
+final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)
+    _PlacemarkMapObject_useModel = lib.library
+        .lookup<
+                ffi.NativeFunction<
+                    ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
+            'yandex_flutter_mapkit_map_PlacemarkMapObject_useModel')
         .asFunction();
 final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)
     _PlacemarkMapObject_useAnimation = lib.library

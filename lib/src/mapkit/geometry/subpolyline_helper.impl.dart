@@ -3,11 +3,10 @@ part of 'subpolyline_helper.dart';
 mapkit_geometry_geometry.Polyline _subpolyline(
     mapkit_geometry_geometry.Polyline polyline,
     mapkit_geometry_geometry.Subpolyline subpolyline) {
-  final result = mapkit_geometry_geometry.PolylineImpl.fromNativePtr(
-      _SubpolylineHelper_subpolyline(
-          mapkit_geometry_geometry.PolylineImpl.getNativePtr(polyline),
-          mapkit_geometry_geometry.SubpolylineImpl.toNative(subpolyline)));
-  return result;
+  final result = _SubpolylineHelper_subpolyline(
+      mapkit_geometry_geometry.PolylineImpl.getNativePtr(polyline),
+      mapkit_geometry_geometry.SubpolylineImpl.toNative(subpolyline));
+  return mapkit_geometry_geometry.PolylineImpl.fromNativePtr(result);
 }
 
 core.double _subpolylineLength(mapkit_geometry_geometry.Polyline polyline,

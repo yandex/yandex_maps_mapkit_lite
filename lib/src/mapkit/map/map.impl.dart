@@ -48,26 +48,23 @@ class MapImpl implements Map, ffi.Finalizable {
 
   @core.override
   mapkit_map_camera_position.CameraPosition get cameraPosition {
-    final result = mapkit_map_camera_position.CameraPositionImpl.fromNative(
-        _Map_get_cameraPosition(ptr));
+    final result = _Map_get_cameraPosition(ptr);
     exception.checkCallResult();
-    return result;
+    return mapkit_map_camera_position.CameraPositionImpl.fromNative(result);
   }
 
   @core.override
   mapkit_map_visible_region.VisibleRegion get visibleRegion {
-    final result = mapkit_map_visible_region.VisibleRegionImpl.fromNative(
-        _Map_get_visibleRegion(ptr));
+    final result = _Map_get_visibleRegion(ptr);
     exception.checkCallResult();
-    return result;
+    return mapkit_map_visible_region.VisibleRegionImpl.fromNative(result);
   }
 
   @core.override
   mapkit_map_camera_bounds.CameraBounds get cameraBounds {
-    final result = mapkit_map_camera_bounds.CameraBoundsImpl.fromNativePtr(
-        _Map_get_cameraBounds(ptr));
+    final result = _Map_get_cameraBounds(ptr);
     exception.checkCallResult();
-    return result;
+    return mapkit_map_camera_bounds.CameraBoundsImpl.fromNativePtr(result);
   }
 
   @core.override
@@ -150,10 +147,9 @@ class MapImpl implements Map, ffi.Finalizable {
 
   @core.override
   mapkit_map_map_type.MapType get mapType {
-    final result =
-        mapkit_map_map_type.MapTypeImpl.fromInt(_Map_get_mapType(ptr));
+    final result = _Map_get_mapType(ptr);
     exception.checkCallResult();
-    return result;
+    return mapkit_map_map_type.MapTypeImpl.fromInt(result);
   }
 
   @core.override
@@ -164,26 +160,24 @@ class MapImpl implements Map, ffi.Finalizable {
 
   @core.override
   mapkit_map_map_object_collection.MapObjectCollection get mapObjects {
-    final result =
-        mapkit_map_map_object_collection.MapObjectCollectionImpl.fromNativePtr(
-            _Map_get_mapObjects(ptr));
+    final result = _Map_get_mapObjects(ptr);
     exception.checkCallResult();
-    return result;
+    return mapkit_map_map_object_collection.MapObjectCollectionImpl
+        .fromNativePtr(result);
   }
 
   @core.override
   mapkit_logo_logo.Logo get logo {
-    final result = mapkit_logo_logo.LogoImpl.fromNativePtr(_Map_get_logo(ptr));
+    final result = _Map_get_logo(ptr);
     exception.checkCallResult();
-    return result;
+    return mapkit_logo_logo.LogoImpl.fromNativePtr(result);
   }
 
   @core.override
   core.int? get poiLimit {
-    final result =
-        to_platform.toPlatformFromPointerUint32(_Map_get_poiLimit(ptr));
+    final result = _Map_get_poiLimit(ptr);
     exception.checkCallResult();
-    return result;
+    return to_platform.toPlatformFromPointerUint32(result);
   }
 
   @core.override
@@ -194,9 +188,9 @@ class MapImpl implements Map, ffi.Finalizable {
 
   @core.override
   mapkit_map_map_mode.MapMode get mode {
-    final result = mapkit_map_map_mode.MapModeImpl.fromInt(_Map_get_mode(ptr));
+    final result = _Map_get_mode(ptr);
     exception.checkCallResult();
-    return result;
+    return mapkit_map_map_mode.MapModeImpl.fromInt(result);
   }
 
   @core.override
@@ -233,23 +227,21 @@ class MapImpl implements Map, ffi.Finalizable {
 
   mapkit_map_camera_position.CameraPosition cameraPositionForGeometry(
       mapkit_geometry_geometry.Geometry geometry) {
-    final result = mapkit_map_camera_position.CameraPositionImpl.fromNative(
-        _Map_cameraPositionForGeometry(
-            ptr, mapkit_geometry_geometry.GeometryImpl.toNative(geometry)));
+    final result = _Map_cameraPositionForGeometry(
+        ptr, mapkit_geometry_geometry.GeometryImpl.toNative(geometry));
     exception.checkCallResult();
-    return result;
+    return mapkit_map_camera_position.CameraPositionImpl.fromNative(result);
   }
 
   mapkit_map_camera_position.CameraPosition cameraPositionWithFocus(
       mapkit_geometry_geometry.Geometry geometry,
       mapkit_screen_types.ScreenRect focusRect) {
-    final result = mapkit_map_camera_position.CameraPositionImpl.fromNative(
-        _Map_cameraPositionWithFocus(
-            ptr,
-            mapkit_geometry_geometry.GeometryImpl.toNative(geometry),
-            mapkit_screen_types.ScreenRectImpl.toNative(focusRect)));
+    final result = _Map_cameraPositionWithFocus(
+        ptr,
+        mapkit_geometry_geometry.GeometryImpl.toNative(geometry),
+        mapkit_screen_types.ScreenRectImpl.toNative(focusRect));
     exception.checkCallResult();
-    return result;
+    return mapkit_map_camera_position.CameraPositionImpl.fromNative(result);
   }
 
   mapkit_map_camera_position.CameraPosition cameraPositionWithAzimut(
@@ -258,26 +250,22 @@ class MapImpl implements Map, ffi.Finalizable {
     required core.double tilt,
     mapkit_screen_types.ScreenRect? focusRect,
   }) {
-    final result = mapkit_map_camera_position.CameraPositionImpl.fromNative(
-        _Map_cameraPositionWithAzimut(
-            ptr,
-            mapkit_geometry_geometry.GeometryImpl.toNative(geometry),
-            azimuth,
-            tilt,
-            mapkit_screen_types.ScreenRectImpl.toPointer(focusRect)));
+    final result = _Map_cameraPositionWithAzimut(
+        ptr,
+        mapkit_geometry_geometry.GeometryImpl.toNative(geometry),
+        azimuth,
+        tilt,
+        mapkit_screen_types.ScreenRectImpl.toPointer(focusRect));
     exception.checkCallResult();
-    return result;
+    return mapkit_map_camera_position.CameraPositionImpl.fromNative(result);
   }
 
   mapkit_map_visible_region.VisibleRegion visibleRegionForPosition(
       mapkit_map_camera_position.CameraPosition cameraPosition) {
-    final result = mapkit_map_visible_region.VisibleRegionImpl.fromNative(
-        _Map_visibleRegionForPosition(
-            ptr,
-            mapkit_map_camera_position.CameraPositionImpl.toNative(
-                cameraPosition)));
+    final result = _Map_visibleRegionForPosition(ptr,
+        mapkit_map_camera_position.CameraPositionImpl.toNative(cameraPosition));
     exception.checkCallResult();
-    return result;
+    return mapkit_map_visible_region.VisibleRegionImpl.fromNative(result);
   }
 
   void moveWithAnimation(
@@ -406,10 +394,9 @@ class MapImpl implements Map, ffi.Finalizable {
   }
 
   mapkit_geometry_geo_projection.Projection projection() {
-    final result = mapkit_geometry_geo_projection.ProjectionImpl.fromNativePtr(
-        _Map_projection(ptr));
+    final result = _Map_projection(ptr);
     exception.checkCallResult();
-    return result;
+    return mapkit_geometry_geo_projection.ProjectionImpl.fromNativePtr(result);
   }
 
   void wipe() {
@@ -422,16 +409,15 @@ class MapImpl implements Map, ffi.Finalizable {
     mapkit_map_tile_data_source_builder.CreateTileDataSource createDataSource, {
     required core.String layerId,
   }) {
-    final result =
-        mapkit_layers_layer.LayerImpl.fromNativePtr(_Map_addTileLayer(
+    final result = _Map_addTileLayer(
       ptr,
       to_native.toNativeString(layerId),
       mapkit_layers_layer_options.LayerOptionsImpl.toNative(layerOptions),
       mapkit_map_tile_data_source_builder.CreateTileDataSourceImpl.getNativePtr(
           createDataSource),
-    ));
+    );
     exception.checkCallResult();
-    return result;
+    return mapkit_layers_layer.LayerImpl.fromNativePtr(result);
   }
 }
 

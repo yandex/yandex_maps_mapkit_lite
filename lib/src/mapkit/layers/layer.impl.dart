@@ -52,11 +52,10 @@ class LayerImpl implements Layer, ffi.Finalizable {
   }
 
   mapkit_layers_data_source_layer.DataSourceLayer dataSourceLayer() {
-    final result =
-        mapkit_layers_data_source_layer.DataSourceLayerImpl.fromNativePtr(
-            _Layer_dataSourceLayer(ptr));
+    final result = _Layer_dataSourceLayer(ptr);
     exception.checkCallResult();
-    return result;
+    return mapkit_layers_data_source_layer.DataSourceLayerImpl.fromNativePtr(
+        result);
   }
 }
 

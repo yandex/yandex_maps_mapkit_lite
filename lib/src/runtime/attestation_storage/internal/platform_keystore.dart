@@ -34,7 +34,7 @@ abstract class PlatformKeystore {
 
   /// Get application id. For the purposes of attestation frameworks it can
   /// differ from general purpose one.
-  core.Future<core.String> getApplicationId();
+  core.Future<core.String?> getApplicationId();
 
   /// Returns platform keystore key proof. On Android it is a certificate
   /// chain, on iOS it is exported public  secondary key.

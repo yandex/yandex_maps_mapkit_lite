@@ -64,16 +64,6 @@ core.String get _routePinsLayerId {
   return to_platform.toPlatformString(_LayerIds_get_routePinsLayerId());
 }
 
-core.String get _mrcPhotoAutomotiveLayerId {
-  return to_platform
-      .toPlatformString(_LayerIds_get_mrcPhotoAutomotiveLayerId());
-}
-
-core.String get _mrcPhotoPedestrianLayerId {
-  return to_platform
-      .toPlatformString(_LayerIds_get_mrcPhotoPedestrianLayerId());
-}
-
 core.String get _roadEventsLayerId {
   return to_platform.toPlatformString(_LayerIds_get_roadEventsLayerId());
 }
@@ -159,16 +149,6 @@ final native_types.NativeString Function() _LayerIds_get_routePinsLayerId = lib
     .lookup<ffi.NativeFunction<native_types.NativeString Function()>>(
         'yandex_flutter_mapkit_map_LayerIds_get_routePinsLayerId')
     .asFunction(isLeaf: true);
-final native_types.NativeString Function()
-    _LayerIds_get_mrcPhotoAutomotiveLayerId = lib.library
-        .lookup<ffi.NativeFunction<native_types.NativeString Function()>>(
-            'yandex_flutter_mapkit_map_LayerIds_get_mrcPhotoAutomotiveLayerId')
-        .asFunction(isLeaf: true);
-final native_types.NativeString Function()
-    _LayerIds_get_mrcPhotoPedestrianLayerId = lib.library
-        .lookup<ffi.NativeFunction<native_types.NativeString Function()>>(
-            'yandex_flutter_mapkit_map_LayerIds_get_mrcPhotoPedestrianLayerId')
-        .asFunction(isLeaf: true);
 final native_types.NativeString Function() _LayerIds_get_roadEventsLayerId = lib
     .library
     .lookup<ffi.NativeFunction<native_types.NativeString Function()>>(

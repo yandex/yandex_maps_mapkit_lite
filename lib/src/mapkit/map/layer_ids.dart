@@ -29,9 +29,5 @@ class LayerIds {
   static core.String get toponymPhotoLayerId => _toponymPhotoLayerId;
   static core.String get drivingNavigationLayerId => _drivingNavigationLayerId;
   static core.String get routePinsLayerId => _routePinsLayerId;
-  static core.String get mrcPhotoAutomotiveLayerId =>
-      _mrcPhotoAutomotiveLayerId;
-  static core.String get mrcPhotoPedestrianLayerId =>
-      _mrcPhotoPedestrianLayerId;
   static core.String get roadEventsLayerId => _roadEventsLayerId;
 }

@@ -48,10 +48,9 @@ class CameraBoundsImpl implements CameraBounds, ffi.Finalizable {
 
   @core.override
   mapkit_geometry_geometry.BoundingBox? get latLngBounds {
-    final result = mapkit_geometry_geometry.BoundingBoxImpl.fromPointer(
-        _CameraBounds_get_latLngBounds(ptr));
+    final result = _CameraBounds_get_latLngBounds(ptr);
     exception.checkCallResult();
-    return result;
+    return mapkit_geometry_geometry.BoundingBoxImpl.fromPointer(result);
   }
 
   @core.override

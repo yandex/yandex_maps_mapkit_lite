@@ -48,9 +48,9 @@ class BaseDataSourceImpl implements BaseDataSource, ffi.Finalizable {
 
   @core.override
   core.String get id {
-    final result = to_platform.toPlatformString(_BaseDataSource_get_id(ptr));
+    final result = _BaseDataSource_get_id(ptr);
     exception.checkCallResult();
-    return result;
+    return to_platform.toPlatformString(result);
   }
 }
 

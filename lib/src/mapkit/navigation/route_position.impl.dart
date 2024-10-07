@@ -37,9 +37,8 @@ class RoutePositionImpl implements RoutePosition, ffi.Finalizable {
 
   @core.override
   mapkit_geometry_point.Point get point {
-    final result = mapkit_geometry_point.PointImpl.fromNative(
-        _RoutePosition_get_point(ptr));
-    return result;
+    final result = _RoutePosition_get_point(ptr);
+    return mapkit_geometry_point.PointImpl.fromNative(result);
   }
 
   core.bool onRoute(core.String routeId) {
@@ -50,21 +49,20 @@ class RoutePositionImpl implements RoutePosition, ffi.Finalizable {
 
   mapkit_geometry_geometry.PolylinePosition? positionOnRoute(
       core.String routeId) {
-    final result = mapkit_geometry_geometry.PolylinePositionImpl.fromPointer(
-        _RoutePosition_positionOnRoute(ptr, to_native.toNativeString(routeId)));
-    return result;
+    final result =
+        _RoutePosition_positionOnRoute(ptr, to_native.toNativeString(routeId));
+    return mapkit_geometry_geometry.PolylinePositionImpl.fromPointer(result);
   }
 
   RoutePosition advance(core.double distance) {
-    final result =
-        RoutePositionImpl.fromNativePtr(_RoutePosition_advance(ptr, distance));
-    return result;
+    final result = _RoutePosition_advance(ptr, distance);
+    return RoutePositionImpl.fromNativePtr(result);
   }
 
   core.double? distanceTo(RoutePosition to) {
-    final result = to_platform.toPlatformFromPointerDouble(
-        _RoutePosition_distanceTo(ptr, RoutePositionImpl.getNativePtr(to)));
-    return result;
+    final result =
+        _RoutePosition_distanceTo(ptr, RoutePositionImpl.getNativePtr(to));
+    return to_platform.toPlatformFromPointerDouble(result);
   }
 
   core.bool precedes(RoutePosition another) {

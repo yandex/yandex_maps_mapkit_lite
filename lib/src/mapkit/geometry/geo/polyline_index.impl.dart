@@ -41,13 +41,12 @@ class PolylineIndexImpl implements PolylineIndex, ffi.Finalizable {
     PolylineIndexPriority priority, {
     required core.double maxLocationBias,
   }) {
-    final result = mapkit_geometry_geometry.PolylinePositionImpl.fromPointer(
-        _PolylineIndex_closestPolylinePositionWithPriority(
-            ptr,
-            mapkit_geometry_point.PointImpl.toNative(point),
-            PolylineIndexPriorityImpl.toInt(priority),
-            maxLocationBias));
-    return result;
+    final result = _PolylineIndex_closestPolylinePositionWithPriority(
+        ptr,
+        mapkit_geometry_point.PointImpl.toNative(point),
+        PolylineIndexPriorityImpl.toInt(priority),
+        maxLocationBias);
+    return mapkit_geometry_geometry.PolylinePositionImpl.fromPointer(result);
   }
 
   mapkit_geometry_geometry.PolylinePosition? closestPolylinePosition(
@@ -56,15 +55,13 @@ class PolylineIndexImpl implements PolylineIndex, ffi.Finalizable {
     mapkit_geometry_geometry.PolylinePosition positionTo, {
     required core.double maxLocationBias,
   }) {
-    final result = mapkit_geometry_geometry.PolylinePositionImpl.fromPointer(
-        _PolylineIndex_closestPolylinePosition(
-            ptr,
-            mapkit_geometry_point.PointImpl.toNative(point),
-            mapkit_geometry_geometry.PolylinePositionImpl.toNative(
-                positionFrom),
-            mapkit_geometry_geometry.PolylinePositionImpl.toNative(positionTo),
-            maxLocationBias));
-    return result;
+    final result = _PolylineIndex_closestPolylinePosition(
+        ptr,
+        mapkit_geometry_point.PointImpl.toNative(point),
+        mapkit_geometry_geometry.PolylinePositionImpl.toNative(positionFrom),
+        mapkit_geometry_geometry.PolylinePositionImpl.toNative(positionTo),
+        maxLocationBias);
+    return mapkit_geometry_geometry.PolylinePositionImpl.fromPointer(result);
   }
 }
 

@@ -46,10 +46,10 @@ android {
     }
 
     dependencies {
-        api 'com.yandex.android:maps.mobile:4.7.2-beta5-lite-flutter'
+        api 'com.yandex.android:maps.mobile:4.8.0-beta-lite-flutter'
     }
 
     defaultConfig {
-        minSdkVersion 23
+        minSdkVersion 26
     }
 }

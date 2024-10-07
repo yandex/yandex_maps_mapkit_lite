@@ -235,20 +235,19 @@ void _PlatformKeystore_getApplicationId(
 
   listener.getApplicationId().then(
       (result) => _PlatformKeystoregetApplicationIdInvokeOnResult(
-          _onResult, to_native.toNativeString(result)), onError: (e, stack) {
+          _onResult, to_native.toNativePtrString(result)), onError: (e, stack) {
     exception.nativeAssert('Unhandled exception $e\n$stack');
   });
 }
 
 final void Function(
     ffi.Pointer<ffi.Void>,
-    native_types
-        .NativeString) _PlatformKeystoregetApplicationIdInvokeOnResult = lib
-    .library
+    ffi.Pointer<
+        ffi.Void>) _PlatformKeystoregetApplicationIdInvokeOnResult = lib.library
     .lookup<
             ffi.NativeFunction<
                 ffi.Void Function(
-                    ffi.Pointer<ffi.Void>, native_types.NativeString)>>(
+                    ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>(
         'yandex_flutter_runtime_attestation_storage_internal_PlatformKeystore_getApplicationId_invokeOnResult')
     .asFunction(isLeaf: true);
 

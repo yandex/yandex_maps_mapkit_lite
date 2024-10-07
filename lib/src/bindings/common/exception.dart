@@ -9,10 +9,8 @@ final void Function(NativeString) _nativeAssert = library
         'yandex_maps_flutter_native_assert')
     .asFunction(isLeaf: true);
 
-final bool Function() _lastCallSuccess = library
-    .lookup<NativeFunction<Bool Function()>>(
-        'yandex_maps_flutter_last_call_success')
-    .asFunction(isLeaf: true);
+final Pointer<Bool> _lastCallSuccess =
+    library.lookup<Bool>('yandex_maps_flutter_last_call_success');
 
 void nativeAssert(String message) {
   _nativeAssert(toNativeString(message));
@@ -48,7 +46,7 @@ class NativeNullException implements Exception {
 }
 
 void checkCallResult() {
-  if (!_lastCallSuccess()) {
+  if (!_lastCallSuccess.value) {
     throw NativeNullException();
   }
 }

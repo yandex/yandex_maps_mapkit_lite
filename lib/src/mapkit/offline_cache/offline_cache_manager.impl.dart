@@ -48,11 +48,10 @@ class OfflineCacheManagerImpl implements OfflineCacheManager, ffi.Finalizable {
   }
 
   core.List<mapkit_offline_cache_region.OfflineCacheRegion> regions() {
-    final result =
-        mapkit_offline_cache_region.OfflineCacheRegionContainerExtension
-            .toPlatformVector(_OfflineCacheManager_regions(ptr));
+    final result = _OfflineCacheManager_regions(ptr);
     exception.checkCallResult();
-    return result;
+    return mapkit_offline_cache_region.OfflineCacheRegionContainerExtension
+        .toPlatformVector(result);
   }
 
   void allowUseCellularNetwork(core.bool useCellular) {
@@ -117,26 +116,23 @@ class OfflineCacheManagerImpl implements OfflineCacheManager, ffi.Finalizable {
   }
 
   core.List<core.String> getCities(core.int regionId) {
-    final result = to_platform
-        .toVectorString(_OfflineCacheManager_getCities(ptr, regionId));
+    final result = _OfflineCacheManager_getCities(ptr, regionId);
     exception.checkCallResult();
-    return result;
+    return to_platform.toVectorString(result);
   }
 
   mapkit_offline_cache_region_state.OfflineCacheRegionState getState(
       core.int regionId) {
-    final result =
-        mapkit_offline_cache_region_state.OfflineCacheRegionStateImpl.fromInt(
-            _OfflineCacheManager_getState(ptr, regionId));
+    final result = _OfflineCacheManager_getState(ptr, regionId);
     exception.checkCallResult();
-    return result;
+    return mapkit_offline_cache_region_state.OfflineCacheRegionStateImpl
+        .fromInt(result);
   }
 
   core.DateTime? getDownloadedReleaseTime(core.int regionId) {
-    final result = to_platform.toPlatformFromPointerAbsTimestamp(
-        _OfflineCacheManager_getDownloadedReleaseTime(ptr, regionId));
+    final result = _OfflineCacheManager_getDownloadedReleaseTime(ptr, regionId);
     exception.checkCallResult();
-    return result;
+    return to_platform.toPlatformFromPointerAbsTimestamp(result);
   }
 
   core.double getProgress(core.int regionId) {
@@ -224,6 +220,18 @@ class OfflineCacheManagerImpl implements OfflineCacheManager, ffi.Finalizable {
   void clear(OfflineCacheManagerClearListener callback) {
     _OfflineCacheManager_clear(
         ptr, OfflineCacheManagerClearListenerImpl.getNativePtr(callback));
+    exception.checkCallResult();
+  }
+
+  void requestRegionsAtPoint(
+      mapkit_geometry_point.Point point,
+      mapkit_offline_cache_regions_at_point_listener.RegionsAtPointListener
+          callback) {
+    _OfflineCacheManager_requestRegionsAtPoint(
+        ptr,
+        mapkit_geometry_point.PointImpl.toNative(point),
+        mapkit_offline_cache_regions_at_point_listener
+            .RegionsAtPointListenerImpl.getNativePtr(callback));
     exception.checkCallResult();
   }
 }
@@ -462,6 +470,18 @@ final void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)
                         ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>(
             'yandex_flutter_mapkit_offline_cache_OfflineCacheManager_clear')
         .asFunction();
+final void Function(
+    ffi.Pointer<ffi.Void>,
+    mapkit_geometry_point.PointNative,
+    ffi
+        .Pointer<ffi.Void>) _OfflineCacheManager_requestRegionsAtPoint = lib
+    .library
+    .lookup<
+            ffi.NativeFunction<
+                ffi.Void Function(ffi.Pointer<ffi.Void>,
+                    mapkit_geometry_point.PointNative, ffi.Pointer<ffi.Void>)>>(
+        'yandex_flutter_mapkit_offline_cache_OfflineCacheManager_requestRegionsAtPoint')
+    .asFunction();
 final void Function(ffi.Pointer<ffi.Void>, core.int) _OfflineCacheManager_set =
     lib.library
         .lookup<

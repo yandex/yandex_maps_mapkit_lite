@@ -48,17 +48,16 @@ class ArrowImpl implements Arrow, ffi.Finalizable {
 
   @core.override
   mapkit_geometry_geometry.PolylinePosition get position {
-    final result = mapkit_geometry_geometry.PolylinePositionImpl.fromNative(
-        _Arrow_get_position(ptr));
+    final result = _Arrow_get_position(ptr);
     exception.checkCallResult();
-    return result;
+    return mapkit_geometry_geometry.PolylinePositionImpl.fromNative(result);
   }
 
   @core.override
   ui.Color get fillColor {
-    final result = to_platform.toPlatformColor(_Arrow_get_fillColor(ptr));
+    final result = _Arrow_get_fillColor(ptr);
     exception.checkCallResult();
-    return result;
+    return to_platform.toPlatformColor(result);
   }
 
   @core.override
@@ -69,9 +68,9 @@ class ArrowImpl implements Arrow, ffi.Finalizable {
 
   @core.override
   ui.Color get outlineColor {
-    final result = to_platform.toPlatformColor(_Arrow_get_outlineColor(ptr));
+    final result = _Arrow_get_outlineColor(ptr);
     exception.checkCallResult();
-    return result;
+    return to_platform.toPlatformColor(result);
   }
 
   @core.override

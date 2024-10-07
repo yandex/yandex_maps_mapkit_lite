@@ -49,10 +49,9 @@ class PolygonMapObjectImpl extends mapkit_map_map_object.MapObjectImpl
 
   @core.override
   mapkit_geometry_geometry.Polygon get geometry {
-    final result = mapkit_geometry_geometry.PolygonImpl.fromNativePtr(
-        _PolygonMapObject_get_geometry(ptr));
+    final result = _PolygonMapObject_get_geometry(ptr);
     exception.checkCallResult();
-    return result;
+    return mapkit_geometry_geometry.PolygonImpl.fromNativePtr(result);
   }
 
   @core.override
@@ -64,10 +63,9 @@ class PolygonMapObjectImpl extends mapkit_map_map_object.MapObjectImpl
 
   @core.override
   ui.Color get strokeColor {
-    final result =
-        to_platform.toPlatformColor(_PolygonMapObject_get_strokeColor(ptr));
+    final result = _PolygonMapObject_get_strokeColor(ptr);
     exception.checkCallResult();
-    return result;
+    return to_platform.toPlatformColor(result);
   }
 
   @core.override
@@ -91,10 +89,9 @@ class PolygonMapObjectImpl extends mapkit_map_map_object.MapObjectImpl
 
   @core.override
   ui.Color get fillColor {
-    final result =
-        to_platform.toPlatformColor(_PolygonMapObject_get_fillColor(ptr));
+    final result = _PolygonMapObject_get_fillColor(ptr);
     exception.checkCallResult();
-    return result;
+    return to_platform.toPlatformColor(result);
   }
 
   @core.override

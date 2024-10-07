@@ -1,3 +1,7 @@
+## 4.8.0-beta
+
+* Upgrade MapKit to 4.8.0
+
 ## 4.7.2-beta6
 
 * Fix Provider classes

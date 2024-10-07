@@ -1,8 +1,8 @@
 part of 'runtime.dart';
 
 core.String _version() {
-  final result = to_platform.toPlatformString(_Runtime_version());
-  return result;
+  final result = _Runtime_version();
+  return to_platform.toPlatformString(result);
 }
 
 void _setPreinitializationOptions(

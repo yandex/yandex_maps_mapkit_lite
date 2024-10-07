@@ -103,10 +103,9 @@ class I18nManagerImpl implements I18nManager, ffi.Finalizable {
 
   @core.override
   runtime_i18n_prefs.I18nPrefs get prefs {
-    final result = runtime_i18n_prefs.I18nPrefsImpl.fromNative(
-        _I18nManager_get_prefs(ptr));
+    final result = _I18nManager_get_prefs(ptr);
     exception.checkCallResult();
-    return result;
+    return runtime_i18n_prefs.I18nPrefsImpl.fromNative(result);
   }
 
   @core.override
@@ -117,10 +116,9 @@ class I18nManagerImpl implements I18nManager, ffi.Finalizable {
 
   @core.override
   runtime_i18n_prefs.SystemOfMeasurement get som {
-    final result = runtime_i18n_prefs.SystemOfMeasurementImpl.fromInt(
-        _I18nManager_get_som(ptr));
+    final result = _I18nManager_get_som(ptr);
     exception.checkCallResult();
-    return result;
+    return runtime_i18n_prefs.SystemOfMeasurementImpl.fromInt(result);
   }
 
   @core.override
@@ -132,10 +130,9 @@ class I18nManagerImpl implements I18nManager, ffi.Finalizable {
 
   @core.override
   runtime_i18n_prefs.TimeFormat get timeFormat {
-    final result = runtime_i18n_prefs.TimeFormatImpl.fromInt(
-        _I18nManager_get_timeFormat(ptr));
+    final result = _I18nManager_get_timeFormat(ptr);
     exception.checkCallResult();
-    return result;
+    return runtime_i18n_prefs.TimeFormatImpl.fromInt(result);
   }
 
   @core.override
@@ -146,46 +143,40 @@ class I18nManagerImpl implements I18nManager, ffi.Finalizable {
   }
 
   core.String localizeDistance(core.int distance) {
-    final result = to_platform
-        .toPlatformString(_I18nManager_localizeDistance(ptr, distance));
+    final result = _I18nManager_localizeDistance(ptr, distance);
     exception.checkCallResult();
-    return result;
+    return to_platform.toPlatformString(result);
   }
 
   core.String localizeDuration(core.int duration) {
-    final result = to_platform
-        .toPlatformString(_I18nManager_localizeDuration(ptr, duration));
+    final result = _I18nManager_localizeDuration(ptr, duration);
     exception.checkCallResult();
-    return result;
+    return to_platform.toPlatformString(result);
   }
 
   core.String localizeSpeed(core.double speed) {
-    final result =
-        to_platform.toPlatformString(_I18nManager_localizeSpeed(ptr, speed));
+    final result = _I18nManager_localizeSpeed(ptr, speed);
     exception.checkCallResult();
-    return result;
+    return to_platform.toPlatformString(result);
   }
 
   core.String localizeDataSize(core.int dataSize) {
-    final result = to_platform
-        .toPlatformString(_I18nManager_localizeDataSize(ptr, dataSize));
+    final result = _I18nManager_localizeDataSize(ptr, dataSize);
     exception.checkCallResult();
-    return result;
+    return to_platform.toPlatformString(result);
   }
 
   CanonicalUnit canonicalSpeed(core.double speed) {
-    final result =
-        CanonicalUnitImpl.fromNative(_I18nManager_canonicalSpeed(ptr, speed));
+    final result = _I18nManager_canonicalSpeed(ptr, speed);
     exception.checkCallResult();
-    return result;
+    return CanonicalUnitImpl.fromNative(result);
   }
 
   core.String localizeCanonicalUnit(CanonicalUnit canonicalUnit) {
-    final result = to_platform.toPlatformString(
-        _I18nManager_localizeCanonicalUnit(
-            ptr, CanonicalUnitImpl.toNative(canonicalUnit)));
+    final result = _I18nManager_localizeCanonicalUnit(
+        ptr, CanonicalUnitImpl.toNative(canonicalUnit));
     exception.checkCallResult();
-    return result;
+    return to_platform.toPlatformString(result);
   }
 }
 
@@ -298,8 +289,8 @@ final void Function(ffi.Pointer<ffi.Void>, core.int) _I18nManager_set = lib
     .asFunction(isLeaf: true);
 
 core.String _getLocale() {
-  final result = to_platform.toPlatformString(_I18nManagerFactory_getLocale());
-  return result;
+  final result = _I18nManagerFactory_getLocale();
+  return to_platform.toPlatformString(result);
 }
 
 void _setLocale(core.String? locale) {
@@ -307,9 +298,8 @@ void _setLocale(core.String? locale) {
 }
 
 I18nManager _getI18nManagerInstance() {
-  final result = I18nManagerImpl.fromNativePtr(
-      _I18nManagerFactory_getI18nManagerInstance());
-  return result;
+  final result = _I18nManagerFactory_getI18nManagerInstance();
+  return I18nManagerImpl.fromNativePtr(result);
 }
 
 final native_types.NativeString Function() _I18nManagerFactory_getLocale = lib

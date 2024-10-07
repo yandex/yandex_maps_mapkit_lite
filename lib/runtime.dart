@@ -5,6 +5,7 @@ export 'package:yandex_maps_mapkit_lite/src/runtime/local_error_export.dart';
 export 'package:yandex_maps_mapkit_lite/src/runtime/vulkan_launcher/vulkan_launcher_export.dart';
 export 'package:yandex_maps_mapkit_lite/src/runtime/sensors/internal/gnss_measurements_export.dart';
 export 'package:yandex_maps_mapkit_lite/src/runtime/connectivity/connectivity_status_export.dart';
+export 'package:yandex_maps_mapkit_lite/src/runtime/config/ui_experiment_export.dart';
 export 'package:yandex_maps_mapkit_lite/src/runtime/network/errors_export.dart';
 export 'package:yandex_maps_mapkit_lite/src/runtime/attestation_storage/internal/attestation_listener_export.dart';
 export 'package:yandex_maps_mapkit_lite/src/runtime/attestation_storage/internal/platform_keystore_export.dart';
