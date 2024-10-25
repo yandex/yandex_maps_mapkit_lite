@@ -1,3 +1,7 @@
+## 4.8.2-beta
+
+* Fix flutter package
+
 ## 4.8.1-beta
 
 * Upgrade MapKit to 4.8.1
