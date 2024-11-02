@@ -1,3 +1,7 @@
+## 4.8.3-beta
+
+* Fix passing bytes in flutter
+
 ## 4.8.2-beta
 
 * Fix flutter package
