@@ -15,6 +15,8 @@ import 'package:yandex_maps_mapkit_lite/src/mapkit/location/location.dart'
     as mapkit_location_location;
 import 'package:yandex_maps_mapkit_lite/src/mapkit/location/location_listener.dart'
     as mapkit_location_location_listener;
+import 'package:yandex_maps_mapkit_lite/src/mapkit/location/purpose.dart'
+    as mapkit_location_purpose;
 
 part 'location_manager.containers.dart';
 part 'location_manager.impl.dart';
@@ -26,17 +28,6 @@ enum LocationFilteringMode {
 
   /// Only invalid (that is zero) locations should be filtered.
   Off,
-  ;
-}
-
-enum LocationPurpose {
-  /// This mode uses less resources and is the default.
-  General,
-
-  /// This mode is used to configure LocationManager for navigation when
-  /// frequent location updates are desired even though more resources are
-  /// used.
-  Navigation,
   ;
 }
 
@@ -69,7 +60,7 @@ abstract class LocationManager implements ffi.Finalizable {
   /// [locationListener] Location update listener.
   void subscribeForLocationUpdates(
     LocationFilteringMode filteringMode,
-    LocationPurpose purpose,
+    mapkit_location_purpose.Purpose purpose,
     mapkit_location_location_listener.LocationListener locationListener, {
     required core.double desiredAccuracy,
     required core.int minTime,

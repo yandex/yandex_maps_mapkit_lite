@@ -12,14 +12,6 @@ core.String get _personalizedPoiLayerId {
   return to_platform.toPlatformString(_LayerIds_get_personalizedPoiLayerId());
 }
 
-core.String get _carparksLayerId {
-  return to_platform.toPlatformString(_LayerIds_get_carparksLayerId());
-}
-
-core.String get _carparksNearbyLayerId {
-  return to_platform.toPlatformString(_LayerIds_get_carparksNearbyLayerId());
-}
-
 core.String get _transportLayerId {
   return to_platform.toPlatformString(_LayerIds_get_transportLayerId());
 }
@@ -48,20 +40,24 @@ core.String get _userLocationLayerId {
   return to_platform.toPlatformString(_LayerIds_get_userLocationLayerId());
 }
 
-core.String get _panoramaLayerId {
-  return to_platform.toPlatformString(_LayerIds_get_panoramaLayerId());
+core.String get _drivingNavigationBaseLayerId {
+  return to_platform
+      .toPlatformString(_LayerIds_get_drivingNavigationBaseLayerId());
 }
 
-core.String get _toponymPhotoLayerId {
-  return to_platform.toPlatformString(_LayerIds_get_toponymPhotoLayerId());
+core.String get _drivingNavigationRoutePinsLayerId {
+  return to_platform
+      .toPlatformString(_LayerIds_get_drivingNavigationRoutePinsLayerId());
 }
 
-core.String get _drivingNavigationLayerId {
-  return to_platform.toPlatformString(_LayerIds_get_drivingNavigationLayerId());
+core.String get _drivingNavigationBalloonsLayerId {
+  return to_platform
+      .toPlatformString(_LayerIds_get_drivingNavigationBalloonsLayerId());
 }
 
-core.String get _routePinsLayerId {
-  return to_platform.toPlatformString(_LayerIds_get_routePinsLayerId());
+core.String get _drivingNavigationUserPlacemarkLayerId {
+  return to_platform
+      .toPlatformString(_LayerIds_get_drivingNavigationUserPlacemarkLayerId());
 }
 
 core.String get _roadEventsLayerId {
@@ -82,17 +78,6 @@ final native_types.NativeString Function()
     _LayerIds_get_personalizedPoiLayerId = lib.library
         .lookup<ffi.NativeFunction<native_types.NativeString Function()>>(
             'yandex_flutter_mapkit_map_LayerIds_get_personalizedPoiLayerId')
-        .asFunction(isLeaf: true);
-final native_types.NativeString Function() _LayerIds_get_carparksLayerId = lib
-    .library
-    .lookup<ffi.NativeFunction<native_types.NativeString Function()>>(
-        'yandex_flutter_mapkit_map_LayerIds_get_carparksLayerId')
-    .asFunction(isLeaf: true);
-final native_types.NativeString Function() _LayerIds_get_carparksNearbyLayerId =
-    lib
-        .library
-        .lookup<ffi.NativeFunction<native_types.NativeString Function()>>(
-            'yandex_flutter_mapkit_map_LayerIds_get_carparksNearbyLayerId')
         .asFunction(isLeaf: true);
 final native_types.NativeString Function() _LayerIds_get_transportLayerId = lib
     .library
@@ -129,26 +114,26 @@ final native_types.NativeString Function() _LayerIds_get_userLocationLayerId =
         .lookup<ffi.NativeFunction<native_types.NativeString Function()>>(
             'yandex_flutter_mapkit_map_LayerIds_get_userLocationLayerId')
         .asFunction(isLeaf: true);
-final native_types.NativeString Function() _LayerIds_get_panoramaLayerId = lib
-    .library
-    .lookup<ffi.NativeFunction<native_types.NativeString Function()>>(
-        'yandex_flutter_mapkit_map_LayerIds_get_panoramaLayerId')
-    .asFunction(isLeaf: true);
-final native_types.NativeString Function() _LayerIds_get_toponymPhotoLayerId =
-    lib.library
+final native_types.NativeString Function()
+    _LayerIds_get_drivingNavigationBaseLayerId = lib.library
         .lookup<ffi.NativeFunction<native_types.NativeString Function()>>(
-            'yandex_flutter_mapkit_map_LayerIds_get_toponymPhotoLayerId')
+            'yandex_flutter_mapkit_map_LayerIds_get_drivingNavigationBaseLayerId')
         .asFunction(isLeaf: true);
 final native_types.NativeString Function()
-    _LayerIds_get_drivingNavigationLayerId = lib.library
+    _LayerIds_get_drivingNavigationRoutePinsLayerId = lib.library
         .lookup<ffi.NativeFunction<native_types.NativeString Function()>>(
-            'yandex_flutter_mapkit_map_LayerIds_get_drivingNavigationLayerId')
+            'yandex_flutter_mapkit_map_LayerIds_get_drivingNavigationRoutePinsLayerId')
         .asFunction(isLeaf: true);
-final native_types.NativeString Function() _LayerIds_get_routePinsLayerId = lib
-    .library
-    .lookup<ffi.NativeFunction<native_types.NativeString Function()>>(
-        'yandex_flutter_mapkit_map_LayerIds_get_routePinsLayerId')
-    .asFunction(isLeaf: true);
+final native_types.NativeString Function()
+    _LayerIds_get_drivingNavigationBalloonsLayerId = lib.library
+        .lookup<ffi.NativeFunction<native_types.NativeString Function()>>(
+            'yandex_flutter_mapkit_map_LayerIds_get_drivingNavigationBalloonsLayerId')
+        .asFunction(isLeaf: true);
+final native_types.NativeString Function()
+    _LayerIds_get_drivingNavigationUserPlacemarkLayerId = lib.library
+        .lookup<ffi.NativeFunction<native_types.NativeString Function()>>(
+            'yandex_flutter_mapkit_map_LayerIds_get_drivingNavigationUserPlacemarkLayerId')
+        .asFunction(isLeaf: true);
 final native_types.NativeString Function() _LayerIds_get_roadEventsLayerId = lib
     .library
     .lookup<ffi.NativeFunction<native_types.NativeString Function()>>(

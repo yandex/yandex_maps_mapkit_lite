@@ -4,6 +4,8 @@ import 'library.dart';
 import 'native_types.dart';
 import 'to_native.dart';
 
+import 'package:yandex_maps_mapkit_lite/src/runtime/logging/logger.dart';
+
 final void Function(NativeString) _nativeAssert = library
     .lookup<NativeFunction<Void Function(NativeString)>>(
         'yandex_maps_flutter_native_assert')
@@ -13,7 +15,8 @@ final Pointer<Bool> _lastCallSuccess =
     library.lookup<Bool>('yandex_maps_flutter_last_call_success');
 
 void nativeAssert(String message) {
-  _nativeAssert(toNativeString(message));
+  Logger.error(message);
+  _nativeAssert(toNativeString(''));
 }
 
 class AsyncErrorHandler {
@@ -22,16 +25,12 @@ class AsyncErrorHandler {
   AsyncErrorHandler(this._onError);
 
   void onError(Object error, StackTrace stack) {
-    if (_onError == null) {
-      nativeAssert(
-          'Unhandled exception $error in AsyncDispatcherHeap handler. Do not throw exception from callbacks passed to mapkit or pass onError callback:\n$stack');
-      return;
-    }
-
     if (_onError is Function(Object)) {
       _onError!(error);
     } else if (_onError is Function(Object, StackTrace)) {
       _onError!(error, stack);
+    } else {
+      throw error;
     }
   }
 }

@@ -195,6 +195,18 @@ class MapWindowImpl implements MapWindow, ffi.Finalizable {
             .getNativePtr(sizeChangedListener));
     exception.checkCallResult();
   }
+
+  void addSurface(runtime_view_surface.Surface surface) {
+    _MapWindow_addSurface(
+        ptr, runtime_view_surface.SurfaceImpl.getNativePtr(surface));
+    exception.checkCallResult();
+  }
+
+  void removeSurface(runtime_view_surface.Surface surface) {
+    _MapWindow_removeSurface(
+        ptr, runtime_view_surface.SurfaceImpl.getNativePtr(surface));
+    exception.checkCallResult();
+  }
 }
 
 final _MapWindow_free = lib.library
@@ -353,6 +365,22 @@ final void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)
                     ffi.Void Function(
                         ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>(
             'yandex_flutter_mapkit_map_MapWindow_removeSizeChangedListener')
+        .asFunction();
+final void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)
+    _MapWindow_addSurface = lib.library
+        .lookup<
+                ffi.NativeFunction<
+                    ffi.Void Function(
+                        ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>(
+            'yandex_flutter_mapkit_map_MapWindow_addSurface')
+        .asFunction();
+final void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)
+    _MapWindow_removeSurface = lib.library
+        .lookup<
+                ffi.NativeFunction<
+                    ffi.Void Function(
+                        ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>(
+            'yandex_flutter_mapkit_map_MapWindow_removeSurface')
         .asFunction();
 final void Function(ffi.Pointer<ffi.Void>, core.int) _MapWindow_set = lib
     .library

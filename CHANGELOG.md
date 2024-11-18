@@ -1,3 +1,7 @@
+## 4.9.0-beta
+
+* Upgrade MapKit to 4.9.0-beta
+
 ## 4.8.3-beta
 
 * Fix passing bytes in flutter

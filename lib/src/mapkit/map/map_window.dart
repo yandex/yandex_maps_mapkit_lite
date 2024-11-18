@@ -30,6 +30,8 @@ import 'package:yandex_maps_mapkit_lite/src/mapkit/map/visible_region.dart'
     as mapkit_map_visible_region;
 import 'package:yandex_maps_mapkit_lite/src/mapkit/screen_types.dart'
     as mapkit_screen_types;
+import 'package:yandex_maps_mapkit_lite/src/runtime/view/surface.dart'
+    as runtime_view_surface;
 
 part 'map_window.containers.dart';
 part 'map_window.impl.dart';
@@ -147,6 +149,14 @@ abstract class MapWindow implements ffi.Finalizable {
   void removeSizeChangedListener(
       mapkit_map_size_changed_listener.MapSizeChangedListener
           sizeChangedListener);
+
+  /// Adds additional surface to render frames on. A part of the frame with
+  /// center in focusPoint will be sent to surface. Dimesions of this part
+  /// are determined by dimensions of surface. This method is android only
+  void addSurface(runtime_view_surface.Surface surface);
+
+  /// Removes external surface. This method is android only
+  void removeSurface(runtime_view_surface.Surface surface);
 
   /// Usable only in [runWithBlockUi] or listener handlers.
   core.bool isValid();

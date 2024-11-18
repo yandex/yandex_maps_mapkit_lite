@@ -100,10 +100,12 @@ class ImageProviderHeap extends AsyncDispatcherHeap<ImageProvider> {
   @override
   void onHandlerException(ImageProvider? object, Pointer<Void> nativeData,
       Object e, StackTrace stackTrace) {
+    _onImageProviderComplete(nativeData, newNativeImageProvider(0, 0));
     if (object != null) {
       object._errorHandler.onError(e, stackTrace);
+    } else {
+      throw e;
     }
-    _onImageProviderComplete(nativeData, newNativeImageProvider(0, 0));
   }
 }
 

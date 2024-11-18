@@ -18,10 +18,10 @@ import 'package:yandex_maps_mapkit_lite/src/bindings/common/weak_interface_wrapp
     as weak_interface_wrapper;
 import 'package:yandex_maps_mapkit_lite/src/mapkit/map/callback.dart'
     as mapkit_map_callback;
-import 'package:yandex_maps_mapkit_lite/src/mapkit/map/data_provider_with_id.dart'
-    as mapkit_map_data_provider_with_id;
 import 'package:yandex_maps_mapkit_lite/src/mapkit/map/model_style.dart'
     as mapkit_map_model_style;
+import 'package:yandex_maps_mapkit_lite/src/runtime/data_provider_with_id.dart'
+    as runtime_data_provider_with_id;
 
 part 'model.containers.dart';
 part 'model.impl.dart';
@@ -39,7 +39,7 @@ abstract class Model implements ffi.Finalizable {
   ///
   /// [onFinished] Called when the model is loaded.
   void setData(
-      mapkit_map_data_provider_with_id.DataProviderWithId gltfDataProvider,
+      runtime_data_provider_with_id.DataProviderWithId gltfDataProvider,
       mapkit_map_callback.Callback onFinished);
 
   /// Usable only in [runWithBlockUi] or listener handlers.

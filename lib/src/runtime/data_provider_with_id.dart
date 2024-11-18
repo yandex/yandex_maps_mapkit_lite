@@ -3,6 +3,7 @@ import 'package:yandex_maps_mapkit_lite/src/bindings/common/library.dart'
     as lib;
 
 import 'dart:core' as core;
+import 'dart:typed_data' as typed_data;
 import 'package:yandex_maps_mapkit_lite/src/bindings/common/dispatcher.dart'
     as nativeBinding;
 import 'package:yandex_maps_mapkit_lite/src/bindings/common/exception.dart'
@@ -14,12 +15,12 @@ import 'package:yandex_maps_mapkit_lite/src/bindings/common/to_native.dart'
 
 part 'data_provider_with_id.impl.dart';
 
-/// Provides any string data.
+/// Provides any data.
 abstract class DataProviderWithId {
   /// Use the same id for the identical data, to prevent repeated loading
-  /// of the same data into RAM and VRAM. Called in any thread.
-  core.Future<core.String> providerId();
+  /// of the same data into RAM and VRAM.
+  core.String providerId();
 
-  /// Return string data. Called in a separate thread.
-  core.Future<core.String> load();
+  /// Returns data.
+  core.Future<typed_data.ByteBuffer> load();
 }

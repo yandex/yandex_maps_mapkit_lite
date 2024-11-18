@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:collection';
 
 import 'package:build/build.dart';
 import 'package:glob/glob.dart';
@@ -23,8 +24,8 @@ class WeakInterfacesMetaBuilder extends Builder {
   FutureOr<void> build(BuildStep buildStep) async {
     final files = buildStep.findAssets(Glob('**/*.dart'));
 
-    final imports = <String>{};
-    final methods = <AnnotatedClass>{};
+    final imports = SplayTreeSet<String>();
+    final methods = SplayTreeSet<String>();
 
     await for (final file in files) {
       if (!await buildStep.resolver.isLibrary(file)) {
@@ -32,30 +33,33 @@ class WeakInterfacesMetaBuilder extends Builder {
       }
       for (final annotatedClass in _annotatedClass(
           LibraryReader(await buildStep.resolver.libraryFor(file)))) {
-        imports.add(
-            "import 'package:${file.uri.path}' as ${file.changeExtension('').pathSegments.sublist(1).join('_')}");
-        methods.add(AnnotatedClass(annotatedClass.name,
-            '${file.changeExtension('').pathSegments.sublist(1).join('_')}.${annotatedClass.func}'));
+        final pathSegments = file.pathSegments;
+        final namespace = pathSegments[2];
+        final path = file.uri.path;
+        imports.add("import 'package:$path' as $namespace;");
+        methods.add(
+            "  '${annotatedClass.name}': $namespace.${annotatedClass.func}.fromNativePtrImpl,");
       }
     }
 
-    var result = '';
+    final result = StringBuffer();
 
-    for (final i in imports) {
-      result += '$i;\n';
+    for (final import in imports) {
+      result.writeln(import);
     }
 
-    result += '\nconst weakInterfacesMeta = {\n';
-    for (final annotatedClass in methods) {
-      result +=
-          "  '${annotatedClass.name}': ${annotatedClass.func}.fromNativePtrImpl,\n";
+    result.writeln('\nconst weakInterfacesMeta = {');
+
+    for (final method in methods) {
+      result.writeln(method);
     }
-    result += '};\n';
+
+    result.writeln('};');
 
     buildStep.writeAsString(
         AssetId(buildStep.inputId.package,
             'lib/src/bindings/weak_interfaces_meta.g.dart'),
-        result);
+        result.toString());
   }
 
   @override

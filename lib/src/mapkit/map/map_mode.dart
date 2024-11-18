@@ -25,5 +25,12 @@ enum MapMode {
 
   /// Administrative map
   Admin,
+
+  /// Legacy basic map design, can be used to preserve compatibility with
+  /// app design/legacy map customizaitons
+  LegacyMap,
+
+  /// Upcoming basic map design
+  FutureMap,
   ;
 }

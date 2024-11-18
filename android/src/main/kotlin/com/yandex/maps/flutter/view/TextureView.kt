@@ -5,11 +5,12 @@ import com.yandex.maps.flutter.LifecycleListener
 import com.yandex.runtime.view.PlatformGLTextureView
 import com.yandex.runtime.view.internal.PlatformGLRenderer
 
-class TextureView constructor(context: Context, id: Int, factory: ViewFactory) :
+class TextureView(context: Context, id: Int, factory: ViewFactory) :
     PlatformGLTextureView(context), FlutterView, LifecycleListener {
     private val id = id
     private val factory = factory
     private var isInitialize = false
+    private var contextCreated = false
 
     init {
         factory.getLifecycle().addListener(this)
@@ -21,7 +22,9 @@ class TextureView constructor(context: Context, id: Int, factory: ViewFactory) :
 
     override fun startView() {
         isInitialize = true
-        onContextCreated()
+        if (contextCreated) {
+            onContextCreated()
+        }
         start()
         (renderer as ViewRenderer).init()
     }
@@ -40,6 +43,7 @@ class TextureView constructor(context: Context, id: Int, factory: ViewFactory) :
         if (isInitialize) {
             super.onContextCreated()
         }
+        contextCreated = true
     }
 
     override fun onSizeChanged(width: Int, height: Int) {

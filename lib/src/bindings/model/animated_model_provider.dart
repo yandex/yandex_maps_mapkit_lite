@@ -48,10 +48,12 @@ class _AnimatedModelProviderHeap
   @override
   void onHandlerException(AnimatedModelProvider? object,
       Pointer<Void> nativeData, Object e, StackTrace stackTrace) {
+    _onCompleteModel(nativeData, _newAnimatedModel(nullptr, 0, 0));
     if (object != null) {
       object._errorHandler.onError(e, stackTrace);
+    } else {
+      throw e;
     }
-    _onCompleteModel(nativeData, _newAnimatedModel(nullptr, 0, 0));
   }
 }
 

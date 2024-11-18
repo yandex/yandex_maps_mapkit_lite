@@ -61,11 +61,11 @@ class ModelImpl implements Model, ffi.Finalizable {
   }
 
   void setData(
-      mapkit_map_data_provider_with_id.DataProviderWithId gltfDataProvider,
+      runtime_data_provider_with_id.DataProviderWithId gltfDataProvider,
       mapkit_map_callback.Callback onFinished) {
     _Model_setData(
         ptr,
-        mapkit_map_data_provider_with_id.DataProviderWithIdImpl.getNativePtr(
+        runtime_data_provider_with_id.DataProviderWithIdImpl.getNativePtr(
             gltfDataProvider),
         mapkit_map_callback.CallbackImpl.getNativePtr(onFinished));
     exception.checkCallResult();

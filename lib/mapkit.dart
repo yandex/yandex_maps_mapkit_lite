@@ -41,6 +41,7 @@ export 'package:yandex_maps_mapkit_lite/src/mapkit/location/location_listener_ex
 export 'package:yandex_maps_mapkit_lite/src/mapkit/location/location_manager_export.dart';
 export 'package:yandex_maps_mapkit_lite/src/mapkit/location/view_area_export.dart';
 export 'package:yandex_maps_mapkit_lite/src/mapkit/location/location_status_export.dart';
+export 'package:yandex_maps_mapkit_lite/src/mapkit/location/purpose_export.dart';
 export 'package:yandex_maps_mapkit_lite/src/mapkit/location/location_export.dart';
 export 'package:yandex_maps_mapkit_lite/src/mapkit/road_events/event_tag_export.dart';
 export 'package:yandex_maps_mapkit_lite/src/mapkit/road_events/road_events_manager_export.dart';
@@ -71,7 +72,6 @@ export 'package:yandex_maps_mapkit_lite/src/mapkit/map/geo_object_tags_export.da
 export 'package:yandex_maps_mapkit_lite/src/mapkit/map/tile_data_source_builder_export.dart';
 export 'package:yandex_maps_mapkit_lite/src/mapkit/map/model_export.dart';
 export 'package:yandex_maps_mapkit_lite/src/mapkit/map/map_export.dart';
-export 'package:yandex_maps_mapkit_lite/src/mapkit/map/data_provider_with_id_export.dart';
 export 'package:yandex_maps_mapkit_lite/src/mapkit/map/gesture_focus_point_mode_export.dart';
 export 'package:yandex_maps_mapkit_lite/src/mapkit/map/geo_object_selection_metadata_export.dart';
 export 'package:yandex_maps_mapkit_lite/src/mapkit/map/camera_update_reason_export.dart';
