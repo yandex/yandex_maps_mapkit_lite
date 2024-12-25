@@ -7,57 +7,52 @@ import 'package:meta/meta.dart';
 import 'package:yandex_maps_mapkit_lite/src/bindings/common/native_types.dart';
 
 @internal
-class RawImageProvider extends ImageProvider<RawImageKey> {
-  RawImageProvider(this.image, this.pixels)
-      : key = RawImageKey(image.width, image.height, pixels.hashCode);
+class RawImageProvider extends ImageProvider<RawImageProvider> {
+  RawImageProvider(this.id, this.image, this.pixels);
 
   @override
-  ImageStreamCompleter loadBuffer(
-      RawImageKey key, DecoderBufferCallback callback) {
-    return MultiFrameImageStreamCompleter(codec: _loadAsync(key), scale: 1.0);
+  ImageStreamCompleter loadImage(
+      RawImageProvider key, ImageDecoderCallback callback) {
+    return OneFrameImageStreamCompleter(extractInfo(key));
   }
 
   @override
-  Future<RawImageKey> obtainKey(ImageConfiguration _) {
-    return SynchronousFuture(key);
+  Future<RawImageProvider> obtainKey(ImageConfiguration _) {
+    return SynchronousFuture(this);
   }
 
-  Future<ui.Codec> _loadAsync(RawImageKey key) async {
-    final buffer = await ui.ImmutableBuffer.fromUint8List(pixels);
+  Future<ImageInfo> extractInfo(RawImageProvider key) async {
+    assert(identical(key, this));
+    final buffer = await pixels;
 
-    final descriptor = ui.ImageDescriptor.raw(buffer,
-        width: key.width,
-        height: key.height,
-        pixelFormat: ui.PixelFormat.rgba8888);
+    try {
+      final codec = await ui.ImageDescriptor.raw(
+        buffer,
+        width: image.width,
+        height: image.height,
+        pixelFormat: ui.PixelFormat.rgba8888,
+      ).instantiateCodec();
 
-    return descriptor.instantiateCodec();
+      final frameInfo = await codec.getNextFrame();
+
+      return ImageInfo(image: frameInfo.image);
+    } finally {
+      buffer.dispose();
+    }
   }
-
-  final NativeBitmap image;
-  final Uint8List pixels;
-  final RawImageKey key;
-}
-
-@internal
-class RawImageKey {
-  RawImageKey(this.width, this.height, this.dataHash);
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
       return true;
     }
-
-    return other is RawImageKey &&
-        other.width == width &&
-        other.height == height &&
-        other.dataHash == dataHash;
+    return other is RawImageProvider && other.pixels == pixels;
   }
 
   @override
-  int get hashCode => Object.hash(width, height, dataHash);
+  int get hashCode => id;
 
-  final int width;
-  final int height;
-  final int dataHash;
+  final NativeBitmap image;
+  final Future<ui.ImmutableBuffer> pixels;
+  final int id;
 }

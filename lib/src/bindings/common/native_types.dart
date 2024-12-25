@@ -119,11 +119,7 @@ final class NativeBitmap extends Struct {
   external int width;
   @Uint32()
   external int height;
-}
-
-@internal
-void freeNativeBitmap(NativeBitmap value) {
-  malloc.free(value.data);
+  external Pointer<Void> originalData;
 }
 
 @internal

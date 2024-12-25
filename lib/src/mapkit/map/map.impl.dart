@@ -187,6 +187,19 @@ class MapImpl implements Map, ffi.Finalizable {
   }
 
   @core.override
+  core.bool get indoorEnabled {
+    final result = _Map_get_indoorEnabled(ptr);
+    exception.checkCallResult();
+    return result;
+  }
+
+  @core.override
+  set indoorEnabled(core.bool val) {
+    _Map_set_indoorEnabled(ptr, val);
+    exception.checkCallResult();
+  }
+
+  @core.override
   mapkit_map_map_mode.MapMode get mode {
     final result = _Map_get_mode(ptr);
     exception.checkCallResult();
@@ -364,6 +377,26 @@ class MapImpl implements Map, ffi.Finalizable {
         ptr,
         mapkit_map_geo_object_selection_metadata.GeoObjectSelectionMetadataImpl
             .getNativePtr(selectionMetaData));
+    exception.checkCallResult();
+  }
+
+  void addIndoorStateListener(
+      mapkit_indoor_indoor_state_listener.IndoorStateListener
+          indoorStateListener) {
+    _Map_addIndoorStateListener(
+        ptr,
+        mapkit_indoor_indoor_state_listener.IndoorStateListenerImpl
+            .getNativePtr(indoorStateListener));
+    exception.checkCallResult();
+  }
+
+  void removeIndoorStateListener(
+      mapkit_indoor_indoor_state_listener.IndoorStateListener
+          indoorStateListener) {
+    _Map_removeIndoorStateListener(
+        ptr,
+        mapkit_indoor_indoor_state_listener.IndoorStateListenerImpl
+            .getNativePtr(indoorStateListener));
     exception.checkCallResult();
   }
 
@@ -581,6 +614,19 @@ final void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)
             'yandex_flutter_mapkit_map_Map_set_poiLimit')
         .asFunction();
 
+final core.bool Function(ffi.Pointer<ffi.Void>) _Map_get_indoorEnabled = lib
+    .library
+    .lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ffi.Void>)>>(
+        'yandex_flutter_mapkit_map_Map_get_indoorEnabled')
+    .asFunction();
+final void Function(ffi.Pointer<ffi.Void>, core.bool) _Map_set_indoorEnabled =
+    lib.library
+        .lookup<
+                ffi.NativeFunction<
+                    ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Bool)>>(
+            'yandex_flutter_mapkit_map_Map_set_indoorEnabled')
+        .asFunction();
+
 final core.int Function(ffi.Pointer<ffi.Void>) _Map_get_mode = lib.library
     .lookup<ffi.NativeFunction<ffi.Int64 Function(ffi.Pointer<ffi.Void>)>>(
         'yandex_flutter_mapkit_map_Map_get_mode')
@@ -759,6 +805,22 @@ final void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)
                     ffi.Void Function(
                         ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>(
             'yandex_flutter_mapkit_map_Map_selectGeoObject')
+        .asFunction();
+final void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)
+    _Map_addIndoorStateListener = lib.library
+        .lookup<
+                ffi.NativeFunction<
+                    ffi.Void Function(
+                        ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>(
+            'yandex_flutter_mapkit_map_Map_addIndoorStateListener')
+        .asFunction();
+final void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)
+    _Map_removeIndoorStateListener = lib.library
+        .lookup<
+                ffi.NativeFunction<
+                    ffi.Void Function(
+                        ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>(
+            'yandex_flutter_mapkit_map_Map_removeIndoorStateListener')
         .asFunction();
 final core.bool Function(ffi.Pointer<ffi.Void>, native_types.NativeString)
     _Map_setMapStyle = lib.library

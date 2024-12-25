@@ -30,6 +30,8 @@ import 'package:yandex_maps_mapkit_lite/src/mapkit/geometry/geo/projection.dart'
     as mapkit_geometry_geo_projection;
 import 'package:yandex_maps_mapkit_lite/src/mapkit/geometry/geometry.dart'
     as mapkit_geometry_geometry;
+import 'package:yandex_maps_mapkit_lite/src/mapkit/indoor/indoor_state_listener.dart'
+    as mapkit_indoor_indoor_state_listener;
 import 'package:yandex_maps_mapkit_lite/src/mapkit/layers/geo_object_tap_listener.dart'
     as mapkit_layers_geo_object_tap_listener;
 import 'package:yandex_maps_mapkit_lite/src/mapkit/layers/layer.dart'
@@ -121,6 +123,10 @@ abstract class Map implements ffi.Finalizable {
   ///
   core.int? get poiLimit;
   set poiLimit(core.int? val);
+
+  /// Enables/disables indoor plans on the map. Disabled by default.
+  core.bool get indoorEnabled;
+  set indoorEnabled(core.bool val);
 
   /// Selects one of predefined map style modes optimized for particular
   /// use case(transit, driving, etc). Resets json styles set with
@@ -244,6 +250,20 @@ abstract class Map implements ffi.Finalizable {
   void selectGeoObject(
       mapkit_map_geo_object_selection_metadata.GeoObjectSelectionMetadata
           selectionMetaData);
+
+  /// Subscribe to indoor state change events.
+  ///
+  /// The class does not retain the object in the 'indoorStateListener' parameter.
+  /// It is your responsibility to maintain a strong reference to
+  /// the target object while it is attached to a class.
+  void addIndoorStateListener(
+      mapkit_indoor_indoor_state_listener.IndoorStateListener
+          indoorStateListener);
+
+  /// Unsubscribe from indoor state change events.
+  void removeIndoorStateListener(
+      mapkit_indoor_indoor_state_listener.IndoorStateListener
+          indoorStateListener);
 
   /// Applies JSON style transformations to the map. Same as setMapStyle(0,
   /// style). Affects VectorMap and Hybrid map types. Set to empty string

@@ -1,20 +1,20 @@
 part of 'location_manager.dart';
 
 @bindings_annotations.ContainerData(
-    toNative: 'LocationFilteringModeImpl.toPointer',
+    toNative: 'LocationUseInBackgroundImpl.toPointer',
     toPlatform:
-        '(val) => LocationFilteringModeImpl.fromPointer(val, needFree: false)',
-    platformType: 'LocationFilteringMode')
-extension LocationFilteringModeImpl on LocationFilteringMode {
-  static core.int toInt(LocationFilteringMode e) {
+        '(val) => LocationUseInBackgroundImpl.fromPointer(val, needFree: false)',
+    platformType: 'LocationUseInBackground')
+extension LocationUseInBackgroundImpl on LocationUseInBackground {
+  static core.int toInt(LocationUseInBackground e) {
     return e.index;
   }
 
-  static LocationFilteringMode fromInt(core.int val) {
-    return LocationFilteringMode.values[val];
+  static LocationUseInBackground fromInt(core.int val) {
+    return LocationUseInBackground.values[val];
   }
 
-  static LocationFilteringMode? fromPointer(ffi.Pointer<ffi.Void> ptr,
+  static LocationUseInBackground? fromPointer(ffi.Pointer<ffi.Void> ptr,
       {core.bool needFree = true}) {
     if (ptr == ffi.nullptr) {
       return null;
@@ -27,13 +27,74 @@ extension LocationFilteringModeImpl on LocationFilteringMode {
     return result;
   }
 
-  static ffi.Pointer<ffi.Void> toPointer(LocationFilteringMode? val) {
+  static ffi.Pointer<ffi.Void> toPointer(LocationUseInBackground? val) {
     if (val == null) {
       return ffi.nullptr;
     }
 
     final result = malloc.call<ffi.Int64>();
     result.value = toInt(val);
+
+    return result.cast();
+  }
+}
+
+final class LocationSubscriptionSettingsNative extends ffi.Struct {
+  @ffi.Int64()
+  external core.int useInBackground;
+  @ffi.Int64()
+  external core.int purpose;
+}
+
+final LocationSubscriptionSettingsNative Function(core.int, core.int)
+    _LocationSubscriptionSettingsNativeInit = lib.library
+        .lookup<
+                ffi.NativeFunction<
+                    LocationSubscriptionSettingsNative Function(
+                        ffi.Int64, ffi.Int64)>>(
+            'yandex_flutter_mapkit_location_LocationSubscriptionSettings_init')
+        .asFunction(isLeaf: true);
+
+@bindings_annotations.ContainerData(
+    toNative: 'LocationSubscriptionSettingsImpl.toPointer',
+    toPlatform:
+        '(val) => LocationSubscriptionSettingsImpl.fromPointer(val, needFree: false)',
+    platformType: 'LocationSubscriptionSettings')
+extension LocationSubscriptionSettingsImpl on LocationSubscriptionSettings {
+  static LocationSubscriptionSettings fromNative(
+      LocationSubscriptionSettingsNative native) {
+    return LocationSubscriptionSettings(
+        LocationUseInBackgroundImpl.fromInt(native.useInBackground),
+        mapkit_location_purpose.PurposeImpl.fromInt(native.purpose));
+  }
+
+  static LocationSubscriptionSettingsNative toNative(
+      LocationSubscriptionSettings obj) {
+    return _LocationSubscriptionSettingsNativeInit(
+        LocationUseInBackgroundImpl.toInt(obj.useInBackground),
+        mapkit_location_purpose.PurposeImpl.toInt(obj.purpose));
+  }
+
+  static LocationSubscriptionSettings? fromPointer(ffi.Pointer<ffi.Void> ptr,
+      {core.bool needFree = true}) {
+    if (ptr == ffi.nullptr) {
+      return null;
+    }
+    final result = LocationSubscriptionSettingsImpl.fromNative(
+        ptr.cast<LocationSubscriptionSettingsNative>().ref);
+
+    if (needFree) {
+      malloc.free(ptr);
+    }
+    return result;
+  }
+
+  static ffi.Pointer<ffi.Void> toPointer(LocationSubscriptionSettings? val) {
+    if (val == null) {
+      return ffi.nullptr;
+    }
+    final result = malloc.call<LocationSubscriptionSettingsNative>();
+    result.ref = toNative(val);
 
     return result.cast();
   }
@@ -75,25 +136,13 @@ class LocationManagerImpl implements LocationManager, ffi.Finalizable {
   }
 
   void subscribeForLocationUpdates(
-    LocationFilteringMode filteringMode,
-    mapkit_location_purpose.Purpose purpose,
-    mapkit_location_location_listener.LocationListener locationListener, {
-    required core.double desiredAccuracy,
-    required core.int minTime,
-    required core.double minDistance,
-    required core.bool allowUseInBackground,
-  }) {
+      LocationSubscriptionSettings subscriptionSettings,
+      mapkit_location_location_listener.LocationListener locationListener) {
     _LocationManager_subscribeForLocationUpdates(
-      ptr,
-      desiredAccuracy,
-      minTime,
-      minDistance,
-      allowUseInBackground,
-      LocationFilteringModeImpl.toInt(filteringMode),
-      mapkit_location_purpose.PurposeImpl.toInt(purpose),
-      mapkit_location_location_listener.LocationListenerImpl.getNativePtr(
-          locationListener),
-    );
+        ptr,
+        LocationSubscriptionSettingsImpl.toNative(subscriptionSettings),
+        mapkit_location_location_listener.LocationListenerImpl.getNativePtr(
+            locationListener));
   }
 
   void requestSingleUpdate(
@@ -127,12 +176,7 @@ final _LocationManager_free = lib.library
 
 final void Function(
     ffi.Pointer<ffi.Void>,
-    core.double,
-    core.int,
-    core.double,
-    core.bool,
-    core.int,
-    core.int,
+    LocationSubscriptionSettingsNative,
     ffi
         .Pointer<ffi.Void>) _LocationManager_subscribeForLocationUpdates = lib
     .library
@@ -140,12 +184,7 @@ final void Function(
             ffi.NativeFunction<
                 ffi.Void Function(
                     ffi.Pointer<ffi.Void>,
-                    ffi.Double,
-                    ffi.Int64,
-                    ffi.Double,
-                    ffi.Bool,
-                    ffi.Int64,
-                    ffi.Int64,
+                    LocationSubscriptionSettingsNative,
                     ffi.Pointer<ffi.Void>)>>(
         'yandex_flutter_mapkit_location_LocationManager_subscribeForLocationUpdates')
     .asFunction();

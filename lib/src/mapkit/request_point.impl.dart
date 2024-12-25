@@ -44,13 +44,18 @@ extension RequestPointTypeImpl on RequestPointType {
     toPlatform: '(val) => RequestPointImpl.fromPointer(val, needFree: false)',
     platformType: 'RequestPoint')
 final class RequestPointImpl implements RequestPoint {
-  RequestPointImpl(mapkit_geometry_point.Point point, RequestPointType type,
-      core.String? pointContext, core.String? drivingArrivalPointId)
+  RequestPointImpl(
+      mapkit_geometry_point.Point point,
+      RequestPointType type,
+      core.String? pointContext,
+      core.String? drivingArrivalPointId,
+      core.String? indoorLevelId)
       : this.fromNativePtr(_RequestPoint_init(
             mapkit_geometry_point.PointImpl.toNative(point),
             RequestPointTypeImpl.toInt(type),
             to_native.toNativePtrString(pointContext),
-            to_native.toNativePtrString(drivingArrivalPointId)));
+            to_native.toNativePtrString(drivingArrivalPointId),
+            to_native.toNativePtrString(indoorLevelId)));
 
   @core.override
   late final point =
@@ -63,6 +68,9 @@ final class RequestPointImpl implements RequestPoint {
   @core.override
   late final drivingArrivalPointId = to_platform.toPlatformFromPointerString(
       _RequestPoint_get_drivingArrivalPointId(_ptr));
+  @core.override
+  late final indoorLevelId = to_platform
+      .toPlatformFromPointerString(_RequestPoint_get_indoorLevelId(_ptr));
 
   final ffi.Pointer<ffi.Void> _ptr;
   static final _finalizer = ffi.NativeFinalizer(_RequestPoint_free.cast());
@@ -99,14 +107,19 @@ final _RequestPoint_free = lib.library
     .lookup<ffi.NativeFunction<ffi.Void Function(ffi.Void)>>(
         'yandex_flutter_mapkit_RequestPoint_free');
 
-final ffi.Pointer<ffi.Void> Function(mapkit_geometry_point.PointNative,
-        core.int, ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)
-    _RequestPoint_init = lib.library
+final ffi.Pointer<ffi.Void> Function(
+        mapkit_geometry_point.PointNative,
+        core.int,
+        ffi.Pointer<ffi.Void>,
+        ffi.Pointer<ffi.Void>,
+        ffi.Pointer<ffi.Void>) _RequestPoint_init =
+    lib.library
         .lookup<
                 ffi.NativeFunction<
                     ffi.Pointer<ffi.Void> Function(
                         mapkit_geometry_point.PointNative,
                         ffi.Int64,
+                        ffi.Pointer<ffi.Void>,
                         ffi.Pointer<ffi.Void>,
                         ffi.Pointer<ffi.Void>)>>(
             'yandex_flutter_mapkit_RequestPoint_init')
@@ -138,4 +151,11 @@ final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)
                 ffi.NativeFunction<
                     ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
             'yandex_flutter_mapkit_RequestPoint_get_drivingArrivalPointId')
+        .asFunction(isLeaf: true);
+final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)
+    _RequestPoint_get_indoorLevelId = lib.library
+        .lookup<
+                ffi.NativeFunction<
+                    ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
+            'yandex_flutter_mapkit_RequestPoint_get_indoorLevelId')
         .asFunction(isLeaf: true);

@@ -72,6 +72,7 @@ export 'package:yandex_maps_mapkit_lite/src/mapkit/map/geo_object_tags_export.da
 export 'package:yandex_maps_mapkit_lite/src/mapkit/map/tile_data_source_builder_export.dart';
 export 'package:yandex_maps_mapkit_lite/src/mapkit/map/model_export.dart';
 export 'package:yandex_maps_mapkit_lite/src/mapkit/map/map_export.dart';
+export 'package:yandex_maps_mapkit_lite/src/mapkit/map/line_style_export.dart';
 export 'package:yandex_maps_mapkit_lite/src/mapkit/map/gesture_focus_point_mode_export.dart';
 export 'package:yandex_maps_mapkit_lite/src/mapkit/map/geo_object_selection_metadata_export.dart';
 export 'package:yandex_maps_mapkit_lite/src/mapkit/map/camera_update_reason_export.dart';
@@ -114,11 +115,16 @@ export 'package:yandex_maps_mapkit_lite/src/mapkit/geometry/geometry_export.dart
 export 'package:yandex_maps_mapkit_lite/src/mapkit/geometry/subpolyline_helper_export.dart';
 export 'package:yandex_maps_mapkit_lite/src/mapkit/geometry/direction_export.dart';
 export 'package:yandex_maps_mapkit_lite/src/mapkit/geometry/point_export.dart';
+export 'package:yandex_maps_mapkit_lite/src/mapkit/geometry/bounding_box_helper_export.dart';
+export 'package:yandex_maps_mapkit_lite/src/mapkit/geometry/polyline_builder_export.dart';
 export 'package:yandex_maps_mapkit_lite/src/mapkit/geometry/span_export.dart';
+export 'package:yandex_maps_mapkit_lite/src/mapkit/geometry/geo_export.dart';
 export 'package:yandex_maps_mapkit_lite/src/mapkit/geometry/geo/projections_export.dart';
 export 'package:yandex_maps_mapkit_lite/src/mapkit/geometry/geo/polyline_utils_export.dart';
 export 'package:yandex_maps_mapkit_lite/src/mapkit/geometry/geo/projection_export.dart';
 export 'package:yandex_maps_mapkit_lite/src/mapkit/geometry/geo/xy_point_export.dart';
 export 'package:yandex_maps_mapkit_lite/src/mapkit/geometry/geo/polyline_index_export.dart';
 export 'package:yandex_maps_mapkit_lite/src/mapkit/uri/uri_object_metadata_export.dart';
+export 'package:yandex_maps_mapkit_lite/src/mapkit/indoor/indoor_state_listener_export.dart';
+export 'package:yandex_maps_mapkit_lite/src/mapkit/indoor/indoor_plan_export.dart';
 export 'package:yandex_maps_mapkit_lite/src/mapkit/user_location/user_location_export.dart';

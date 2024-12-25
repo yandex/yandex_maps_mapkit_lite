@@ -7,6 +7,8 @@ import 'dart:ui' as ui;
 import 'package:ffi/ffi.dart';
 import 'package:yandex_maps_mapkit_lite/src/bindings/annotations/annotations.dart'
     as bindings_annotations;
+import 'package:yandex_maps_mapkit_lite/src/bindings/common/native_types.dart'
+    as native_types;
 import 'package:yandex_maps_mapkit_lite/src/bindings/common/string_map.dart'
     as string_map;
 import 'package:yandex_maps_mapkit_lite/src/bindings/common/to_native.dart'
@@ -26,15 +28,13 @@ final class TextStyle {
   final core.double size;
 
   /// Text color. default: black
-  ///
-  final ui.Color? color;
+  final ui.Color color;
 
   /// Outline width in units. default: 1
   final core.double outlineWidth;
 
   /// Outline color. default: white
-  ///
-  final ui.Color? outlineColor;
+  final ui.Color outlineColor;
 
   /// Text placement position. default: Center
   final TextStylePlacement placement;
@@ -55,9 +55,9 @@ final class TextStyle {
 
   const TextStyle({
     this.size = 8.0,
-    this.color,
+    this.color = const ui.Color(0xFF000000),
     this.outlineWidth = 1.0,
-    this.outlineColor,
+    this.outlineColor = const ui.Color(0xFFFFFFFF),
     this.placement = TextStylePlacement.Center,
     this.offset = 0.0,
     this.offsetFromIcon = true,

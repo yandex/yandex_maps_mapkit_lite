@@ -21,52 +21,58 @@ import 'package:yandex_maps_mapkit_lite/src/mapkit/location/purpose.dart'
 part 'location_manager.containers.dart';
 part 'location_manager.impl.dart';
 
-enum LocationFilteringMode {
-  /// Locations should be filtered (no unrealistic or spoofed locations, or
-  /// locations from the past).
-  On,
-
-  /// Only invalid (that is zero) locations should be filtered.
-  Off,
+/// If UseInBackground is Allow then the 'location' flag must be set in
+/// 'UIBackgroundModes' of the application.
+enum LocationUseInBackground {
+  Allow,
+  Disallow,
   ;
+}
+
+final class LocationSubscriptionSettings {
+  /// If UseInBackground is Allow then the 'location' flag must be set in
+  /// 'UIBackgroundModes' of the application.
+  final LocationUseInBackground useInBackground;
+
+  /// Defines for what purpose the locations from the subscription will be
+  /// used. Depending on the purpose, it tries to optimize requests for
+  /// locations.
+  final mapkit_location_purpose.Purpose purpose;
+
+  const LocationSubscriptionSettings(this.useInBackground, this.purpose);
+
+  @core.override
+  core.int get hashCode => core.Object.hashAll([useInBackground, purpose]);
+
+  @core.override
+  core.bool operator ==(covariant LocationSubscriptionSettings other) {
+    if (core.identical(this, other)) {
+      return true;
+    }
+    return useInBackground == other.useInBackground && purpose == other.purpose;
+  }
+
+  @core.override
+  core.String toString() {
+    return "LocationSubscriptionSettings(useInBackground: $useInBackground, purpose: $purpose)";
+  }
 }
 
 /// Handles location updates and changes.
 abstract class LocationManager implements ffi.Finalizable {
   /// Subscribe for location update events. If the listener was already
   /// subscribed to updates from the LocationManager, subscription settings
-  /// will be updated. Use desiredAccuracy = 0 to obtain best possible
-  /// accuracy, minTime = 0 to ignore minTime and use minDistance instead,
-  /// minDistance = 0 to use only minTime. If both minTime and minDistance
-  /// are set to zero, the subscription will use the same settings as other
-  /// LocationManager clients.
+  /// will be updated.
   ///
   /// The class does not retain the object in the 'locationListener' parameter.
   /// It is your responsibility to maintain a strong reference to
   /// the target object while it is attached to a class.
   ///
-  /// [desiredAccuracy] Desired location accuracy, in meters. This value is
-  /// used to configure location services provided by the host OS. If
-  /// locations with the desired accuracy are not available, updates may be
-  /// called with lower accuracy.
-  /// [minTime] Minimal time interval between events, in milliseconds.
-  /// [minDistance] Minimal distance between location updates, in meters.
-  /// [allowUseInBackground] Defines whether the subscription can continue
-  /// to fetch notifications when the application is inactive. If
-  /// allowUseInBackground is true, set the `location` flag in
-  /// `UIBackgroundModes` for your application.
-  /// [filteringMode] Defines whether locations should be filtered.
-  /// [purpose] Defines whether locations will be used for navigation.
+  /// [subscriptionSettings] Subscription settings.
   /// [locationListener] Location update listener.
   void subscribeForLocationUpdates(
-    LocationFilteringMode filteringMode,
-    mapkit_location_purpose.Purpose purpose,
-    mapkit_location_location_listener.LocationListener locationListener, {
-    required core.double desiredAccuracy,
-    required core.int minTime,
-    required core.double minDistance,
-    required core.bool allowUseInBackground,
-  });
+      LocationSubscriptionSettings subscriptionSettings,
+      mapkit_location_location_listener.LocationListener locationListener);
 
   /// Subscribe to a single location update. If the listener was already
   /// subscribed to location updates, the previous subscription will be

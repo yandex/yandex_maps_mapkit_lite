@@ -3,10 +3,10 @@ part of 'text_style.dart';
 final class TextStyleNative extends ffi.Struct {
   @ffi.Float()
   external core.double size;
-  external ffi.Pointer<ffi.Void> color;
+  external native_types.NativeColor color;
   @ffi.Float()
   external core.double outlineWidth;
-  external ffi.Pointer<ffi.Void> outlineColor;
+  external native_types.NativeColor outlineColor;
   @ffi.Int64()
   external core.int placement;
   @ffi.Float()
@@ -17,16 +17,23 @@ final class TextStyleNative extends ffi.Struct {
   external core.bool textOptional;
 }
 
-final TextStyleNative Function(core.double, ffi.Pointer<ffi.Void>, core.double,
-        ffi.Pointer<ffi.Void>, core.int, core.double, core.bool, core.bool)
-    _TextStyleNativeInit = lib.library
+final TextStyleNative Function(
+        core.double,
+        native_types.NativeColor,
+        core.double,
+        native_types.NativeColor,
+        core.int,
+        core.double,
+        core.bool,
+        core.bool) _TextStyleNativeInit =
+    lib.library
         .lookup<
             ffi.NativeFunction<
                 TextStyleNative Function(
                     ffi.Float,
-                    ffi.Pointer<ffi.Void>,
+                    native_types.NativeColor,
                     ffi.Float,
-                    ffi.Pointer<ffi.Void>,
+                    native_types.NativeColor,
                     ffi.Int64,
                     ffi.Float,
                     ffi.Bool,
@@ -41,10 +48,9 @@ extension TextStyleImpl on TextStyle {
   static TextStyle fromNative(TextStyleNative native) {
     return TextStyle(
         size: native.size,
-        color: to_platform.toPlatformFromPointerColor(native.color),
+        color: to_platform.toPlatformColor(native.color),
         outlineWidth: native.outlineWidth,
-        outlineColor:
-            to_platform.toPlatformFromPointerColor(native.outlineColor),
+        outlineColor: to_platform.toPlatformColor(native.outlineColor),
         placement: TextStylePlacementImpl.fromInt(native.placement),
         offset: native.offset,
         offsetFromIcon: native.offsetFromIcon,
@@ -54,9 +60,9 @@ extension TextStyleImpl on TextStyle {
   static TextStyleNative toNative(TextStyle obj) {
     return _TextStyleNativeInit(
         obj.size,
-        to_native.toNativePtrColor(obj.color),
+        to_native.toNativeColor(obj.color),
         obj.outlineWidth,
-        to_native.toNativePtrColor(obj.outlineColor),
+        to_native.toNativeColor(obj.outlineColor),
         TextStylePlacementImpl.toInt(obj.placement),
         obj.offset,
         obj.offsetFromIcon,

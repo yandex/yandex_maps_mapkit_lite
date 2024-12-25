@@ -1,5 +1,6 @@
 import 'dart:ffi';
 import 'dart:typed_data';
+import 'dart:ui' as ui;
 
 import 'package:yandex_maps_mapkit_lite/src/bindings/common/library.dart';
 import 'package:yandex_maps_mapkit_lite/src/bindings/common/native_types.dart';
@@ -23,15 +24,19 @@ class ImageWrapper implements Finalizable {
 
   ImageProvider _extractImageProvider() {
     final image = _getNativeBitmap(_ptr);
-    final pixels = Uint8List(image.dataSize);
-
-    pixels.setAll(0, image.data.asTypedList(image.dataSize));
-
-    freeNativeBitmap(image);
 
     if (image.isRaw) {
-      return RawImageProvider(image, pixels);
+      return RawImageProvider(
+        _ptr.address,
+        image,
+        ui.ImmutableBuffer.fromUint8List(
+          image.data.asTypedList(image.dataSize),
+        ),
+      );
     }
+
+    final pixels = Uint8List(image.dataSize);
+    pixels.setAll(0, image.data.asTypedList(image.dataSize));
 
     return MemoryImage(pixels);
   }

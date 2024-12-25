@@ -7,12 +7,14 @@ final class LocationNative extends ffi.Struct {
   external ffi.Pointer<ffi.Void> altitudeAccuracy;
   external ffi.Pointer<ffi.Void> heading;
   external ffi.Pointer<ffi.Void> speed;
+  external ffi.Pointer<ffi.Void> indoorLevelId;
   external native_types.NativeAbsTimestamp absoluteTimestamp;
   external native_types.NativeRelTimestamp relativeTimestamp;
 }
 
 final LocationNative Function(
   mapkit_geometry_point.PointNative,
+  ffi.Pointer<ffi.Void>,
   ffi.Pointer<ffi.Void>,
   ffi.Pointer<ffi.Void>,
   ffi.Pointer<ffi.Void>,
@@ -25,6 +27,7 @@ final LocationNative Function(
         ffi.NativeFunction<
             LocationNative Function(
               mapkit_geometry_point.PointNative,
+              ffi.Pointer<ffi.Void>,
               ffi.Pointer<ffi.Void>,
               ffi.Pointer<ffi.Void>,
               ffi.Pointer<ffi.Void>,
@@ -49,6 +52,8 @@ extension LocationImpl on Location {
           to_platform.toPlatformFromPointerDouble(native.altitudeAccuracy),
       heading: to_platform.toPlatformFromPointerDouble(native.heading),
       speed: to_platform.toPlatformFromPointerDouble(native.speed),
+      indoorLevelId:
+          to_platform.toPlatformFromPointerString(native.indoorLevelId),
       to_platform.toPlatformAbsTimestamp(native.absoluteTimestamp),
       to_platform.toPlatformRelTimestamp(native.relativeTimestamp),
     );
@@ -62,6 +67,7 @@ extension LocationImpl on Location {
       to_native.toNativePtrDouble(obj.altitudeAccuracy),
       to_native.toNativePtrDouble(obj.heading),
       to_native.toNativePtrDouble(obj.speed),
+      to_native.toNativePtrString(obj.indoorLevelId),
       to_native.toNativeAbsTimestamp(obj.absoluteTimestamp),
       to_native.toNativeRelTimestamp(obj.relativeTimestamp),
     );

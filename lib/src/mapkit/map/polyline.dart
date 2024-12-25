@@ -27,6 +27,8 @@ import 'package:yandex_maps_mapkit_lite/src/mapkit/geometry/geometry.dart'
     as mapkit_geometry_geometry;
 import 'package:yandex_maps_mapkit_lite/src/mapkit/map/arrow.dart'
     as mapkit_map_arrow;
+import 'package:yandex_maps_mapkit_lite/src/mapkit/map/line_style.dart'
+    as mapkit_map_line_style;
 import 'package:yandex_maps_mapkit_lite/src/mapkit/map/map_object.dart'
     as mapkit_map_map_object;
 
@@ -42,52 +44,76 @@ abstract class PolylineMapObject
   mapkit_geometry_geometry.Polyline get geometry;
   set geometry(mapkit_geometry_geometry.Polyline val);
 
+  /// The polyline's style.
+  mapkit_map_line_style.LineStyle get style;
+  set style(mapkit_map_line_style.LineStyle val);
+
   /// The stroke width in units. Default: 5. The size of a unit is equal to
   /// the size of a pixel at the current zoom level when the camera
   /// position's tilt is equal to 0 and the scale factor is equal to 1.
+  @core.Deprecated('Use LineStyle for actions with properties.')
   core.double get strokeWidth;
+  @core.Deprecated('Use LineStyle for actions with properties.')
   set strokeWidth(core.double val);
 
   /// Maximum length (in units) of the gradient from one color to another.
   /// Default: 0.
+  @core.Deprecated('Use LineStyle for actions with properties.')
   core.double get gradientLength;
+  @core.Deprecated('Use LineStyle for actions with properties.')
   set gradientLength(core.double val);
 
   /// The outline color. Default: hexademical RGBA code 0x00000000.
+  @core.Deprecated('Use LineStyle for actions with properties.')
   ui.Color get outlineColor;
+  @core.Deprecated('Use LineStyle for actions with properties.')
   set outlineColor(ui.Color val);
 
   /// Width of the outline in units. Default: 0.
+  @core.Deprecated('Use LineStyle for actions with properties.')
   core.double get outlineWidth;
+  @core.Deprecated('Use LineStyle for actions with properties.')
   set outlineWidth(core.double val);
 
   /// Enables the inner outline if true (a dark border along the edge of
   /// the outline). Default: false.
+  @core.Deprecated('Use LineStyle for actions with properties.')
   core.bool get innerOutlineEnabled;
+  @core.Deprecated('Use LineStyle for actions with properties.')
   set innerOutlineEnabled(core.bool val);
 
   /// Maximum radius of a turn. Measured in units. Default: 10.
+  @core.Deprecated('Use LineStyle for actions with properties.')
   core.double get turnRadius;
+  @core.Deprecated('Use LineStyle for actions with properties.')
   set turnRadius(core.double val);
 
   /// Defines step of arc approximation. Smaller values make polyline
   /// smoother. Measured in degrees. Default: 12.
+  @core.Deprecated('Use LineStyle for actions with properties.')
   core.double get arcApproximationStep;
+  @core.Deprecated('Use LineStyle for actions with properties.')
   set arcApproximationStep(core.double val);
 
   /// Length of a dash in units. Default: 0 (dashing is turned off). Arrows
   /// are ignored in dashed polylines.
+  @core.Deprecated('Use LineStyle for actions with properties.')
   core.double get dashLength;
+  @core.Deprecated('Use LineStyle for actions with properties.')
   set dashLength(core.double val);
 
   /// Length of the gap between two dashes in units. Default: 0 (dashing is
   /// turned off). Arrows are ignored in dashed polylines.
+  @core.Deprecated('Use LineStyle for actions with properties.')
   core.double get gapLength;
+  @core.Deprecated('Use LineStyle for actions with properties.')
   set gapLength(core.double val);
 
   /// Offset from the start of the polyline to the reference dash in units.
   /// Default: 0.
+  @core.Deprecated('Use LineStyle for actions with properties.')
   core.double get dashOffset;
+  @core.Deprecated('Use LineStyle for actions with properties.')
   set dashOffset(core.double val);
 
   /// Highlights a subpolyline using the specified color.

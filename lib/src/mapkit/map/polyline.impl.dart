@@ -62,6 +62,20 @@ class PolylineMapObjectImpl extends mapkit_map_map_object.MapObjectImpl
   }
 
   @core.override
+  mapkit_map_line_style.LineStyle get style {
+    final result = _PolylineMapObject_get_style(ptr);
+    exception.checkCallResult();
+    return mapkit_map_line_style.LineStyleImpl.fromNative(result);
+  }
+
+  @core.override
+  set style(mapkit_map_line_style.LineStyle val) {
+    _PolylineMapObject_set_style(
+        ptr, mapkit_map_line_style.LineStyleImpl.toNative(val));
+    exception.checkCallResult();
+  }
+
+  @core.override
   core.double get strokeWidth {
     final result = _PolylineMapObject_get_strokeWidth(ptr);
     exception.checkCallResult();
@@ -304,6 +318,24 @@ final void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)
                     ffi.Void Function(
                         ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>(
             'yandex_flutter_mapkit_map_PolylineMapObject_set_geometry')
+        .asFunction();
+
+final mapkit_map_line_style.LineStyleNative Function(ffi.Pointer<ffi.Void>)
+    _PolylineMapObject_get_style = lib.library
+        .lookup<
+                ffi.NativeFunction<
+                    mapkit_map_line_style.LineStyleNative Function(
+                        ffi.Pointer<ffi.Void>)>>(
+            'yandex_flutter_mapkit_map_PolylineMapObject_get_style')
+        .asFunction();
+final void Function(
+        ffi.Pointer<ffi.Void>, mapkit_map_line_style.LineStyleNative)
+    _PolylineMapObject_set_style = lib.library
+        .lookup<
+                ffi.NativeFunction<
+                    ffi.Void Function(ffi.Pointer<ffi.Void>,
+                        mapkit_map_line_style.LineStyleNative)>>(
+            'yandex_flutter_mapkit_map_PolylineMapObject_set_style')
         .asFunction();
 
 final core.double Function(ffi.Pointer<ffi.Void>)
