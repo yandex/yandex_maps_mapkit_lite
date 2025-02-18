@@ -25,6 +25,8 @@ abstract final class Image implements ffi.Finalizable {
           core.List<core.String> tags) =>
       ImageImpl(urlTemplate, sizes, tags);
 
+  Image._();
+
   /// urlTemplate for the image.
   core.String get urlTemplate;
 

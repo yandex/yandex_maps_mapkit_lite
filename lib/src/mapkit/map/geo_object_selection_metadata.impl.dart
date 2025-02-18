@@ -5,8 +5,7 @@ part of 'geo_object_selection_metadata.dart';
     toPlatform:
         '(val) => GeoObjectSelectionMetadataImpl.fromPointer(val, needFree: false)',
     platformType: 'GeoObjectSelectionMetadata')
-final class GeoObjectSelectionMetadataImpl
-    implements GeoObjectSelectionMetadata {
+final class GeoObjectSelectionMetadataImpl extends GeoObjectSelectionMetadata {
   GeoObjectSelectionMetadataImpl(core.String objectId,
       core.String dataSourceName, core.String layerId, core.int? groupId)
       : this.fromNativePtr(_GeoObjectSelectionMetadata_init(
@@ -36,7 +35,7 @@ final class GeoObjectSelectionMetadataImpl
   static final _finalizer =
       ffi.NativeFinalizer(_GeoObjectSelectionMetadata_free.cast());
 
-  GeoObjectSelectionMetadataImpl.fromNativePtr(this._ptr) {
+  GeoObjectSelectionMetadataImpl.fromNativePtr(this._ptr) : super._() {
     _finalizer.attach(this, _ptr);
   }
 

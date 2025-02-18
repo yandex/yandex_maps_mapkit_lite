@@ -46,6 +46,8 @@ abstract final class GnssClock implements ffi.Finalizable {
           driftNanosUncertaintyPerSecond,
           hardwareClockDiscontinuityCount);
 
+  GnssClock._();
+
   core.int get timeNanos;
   core.double? get timeUncertaintyNanos;
   core.int? get leapSecond;
@@ -134,6 +136,8 @@ abstract final class GnssMeasurement implements ffi.Finalizable {
           carrierPhase,
           carrierPhaseUncertainty);
 
+  GnssMeasurement._();
+
   core.int get constellationType;
   core.int get svid;
   core.double get accumulatedDeltaRangeMeters;
@@ -215,6 +219,8 @@ abstract final class GnssMeasurementsEvent implements ffi.Finalizable {
   factory GnssMeasurementsEvent(
           GnssClock clock, core.List<GnssMeasurement> measurements) =>
       GnssMeasurementsEventImpl(clock, measurements);
+
+  GnssMeasurementsEvent._();
 
   GnssClock get clock;
   core.List<GnssMeasurement> get measurements;

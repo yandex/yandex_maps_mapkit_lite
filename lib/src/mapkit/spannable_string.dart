@@ -26,6 +26,8 @@ abstract final class SpannableString implements ffi.Finalizable {
           core.String text, core.List<SpannableStringSpan> spans) =>
       SpannableStringImpl(text, spans);
 
+  SpannableString._();
+
   /// The text of the spannable string.
   core.String get text;
 

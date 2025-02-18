@@ -55,6 +55,8 @@ final class JamTypeColor {
 abstract final class JamStyle implements ffi.Finalizable {
   factory JamStyle(core.List<JamTypeColor> colors) => JamStyleImpl(colors);
 
+  JamStyle._();
+
   /// Collection of colors for traffic intensity.
   core.List<JamTypeColor> get colors;
 

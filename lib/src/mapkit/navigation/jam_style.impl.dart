@@ -61,7 +61,7 @@ extension JamTypeColorImpl on JamTypeColor {
     toNative: 'JamStyleImpl.getNativePtr',
     toPlatform: '(val) => JamStyleImpl.fromPointer(val, needFree: false)',
     platformType: 'JamStyle')
-final class JamStyleImpl implements JamStyle {
+final class JamStyleImpl extends JamStyle {
   JamStyleImpl(core.List<JamTypeColor> colors)
       : this.fromNativePtr(_JamStyle_init(
             JamTypeColorContainerExtension.toNativeVector(colors)));
@@ -73,7 +73,7 @@ final class JamStyleImpl implements JamStyle {
   final ffi.Pointer<ffi.Void> _ptr;
   static final _finalizer = ffi.NativeFinalizer(_JamStyle_free.cast());
 
-  JamStyleImpl.fromNativePtr(this._ptr) {
+  JamStyleImpl.fromNativePtr(this._ptr) : super._() {
     _finalizer.attach(this, _ptr);
   }
 

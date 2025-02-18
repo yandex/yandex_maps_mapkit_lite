@@ -4,7 +4,7 @@ part of 'geo_object_tags.dart';
     toNative: 'GeoObjectTagsImpl.getNativePtr',
     toPlatform: '(val) => GeoObjectTagsImpl.fromPointer(val, needFree: false)',
     platformType: 'GeoObjectTags')
-final class GeoObjectTagsImpl implements GeoObjectTags {
+final class GeoObjectTagsImpl extends GeoObjectTags {
   GeoObjectTagsImpl(core.List<core.String> tags)
       : this.fromNativePtr(
             _GeoObjectTags_init(to_native.toNativeVectorString(tags)));
@@ -18,7 +18,7 @@ final class GeoObjectTagsImpl implements GeoObjectTags {
   final ffi.Pointer<ffi.Void> _ptr;
   static final _finalizer = ffi.NativeFinalizer(_GeoObjectTags_free.cast());
 
-  GeoObjectTagsImpl.fromNativePtr(this._ptr) {
+  GeoObjectTagsImpl.fromNativePtr(this._ptr) : super._() {
     _finalizer.attach(this, _ptr);
   }
 

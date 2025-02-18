@@ -109,6 +109,8 @@ abstract final class Polyline implements ffi.Finalizable {
   factory Polyline(core.List<mapkit_geometry_point.Point> points) =>
       PolylineImpl(points);
 
+  Polyline._();
+
   /// The list of points to connect.
   core.List<mapkit_geometry_point.Point> get points;
 
@@ -199,6 +201,8 @@ abstract final class LinearRing implements ffi.Finalizable {
   factory LinearRing(core.List<mapkit_geometry_point.Point> points) =>
       LinearRingImpl(points);
 
+  LinearRing._();
+
   /// The list of points to connect.
   core.List<mapkit_geometry_point.Point> get points;
 
@@ -224,6 +228,8 @@ abstract final class LinearRing implements ffi.Finalizable {
 abstract final class Polygon implements ffi.Finalizable {
   factory Polygon(LinearRing outerRing, core.List<LinearRing> innerRings) =>
       PolygonImpl(outerRing, innerRings);
+
+  Polygon._();
 
   /// The ring specifying the area.
   LinearRing get outerRing;
@@ -252,6 +258,8 @@ abstract final class Polygon implements ffi.Finalizable {
 abstract final class MultiPolygon implements ffi.Finalizable {
   factory MultiPolygon(core.List<Polygon> polygons) =>
       MultiPolygonImpl(polygons);
+
+  MultiPolygon._();
 
   core.List<Polygon> get polygons;
 

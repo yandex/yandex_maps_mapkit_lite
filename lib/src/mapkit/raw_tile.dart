@@ -34,6 +34,8 @@ abstract final class RawTile implements ffi.Finalizable {
           typed_data.ByteBuffer rawData) =>
       RawTileImpl(version, features, etag, useCache, state, rawData);
 
+  RawTile._();
+
   mapkit_version.Version get version;
   core.Map<core.String, core.String> get features;
   core.String get etag;

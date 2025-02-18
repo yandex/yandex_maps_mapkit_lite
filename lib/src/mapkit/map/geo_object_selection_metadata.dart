@@ -32,6 +32,8 @@ abstract final class GeoObjectSelectionMetadata
       GeoObjectSelectionMetadataImpl(
           objectId, dataSourceName, layerId, groupId);
 
+  GeoObjectSelectionMetadata._();
+
   /// Object ID.
   core.String get objectId;
 

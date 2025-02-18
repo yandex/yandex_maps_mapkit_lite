@@ -1,6 +1,5 @@
 import 'dart:ffi';
 import 'dart:typed_data';
-import 'dart:ui' as ui;
 
 import 'package:yandex_maps_mapkit_lite/src/bindings/common/library.dart';
 import 'package:yandex_maps_mapkit_lite/src/bindings/common/native_types.dart';
@@ -14,7 +13,7 @@ class ImageWrapper implements Finalizable {
   Pointer<Void> _ptr;
   late ImageProvider imageProvider = _extractImageProvider();
 
-  static final _finalizer = Finalizer(_freeNativeData);
+  static final _finalizer = NativeFinalizer(_freeNativeData);
 
   ImageWrapper._(this._ptr) {
     _finalizer.attach(this, _ptr);
@@ -26,13 +25,7 @@ class ImageWrapper implements Finalizable {
     final image = _getNativeBitmap(_ptr);
 
     if (image.isRaw) {
-      return RawImageProvider(
-        _ptr.address,
-        image,
-        ui.ImmutableBuffer.fromUint8List(
-          image.data.asTypedList(image.dataSize),
-        ),
-      );
+      return RawImageProvider(this);
     }
 
     final pixels = Uint8List(image.dataSize);
@@ -50,6 +43,10 @@ extension ImageWrapperPrivate on ImageWrapper {
   provider.ImageProvider toImageProvider() {
     return provider.NativeImageProviderWrapper(_getImageProvider(_ptr));
   }
+
+  NativeBitmap get nativeImage => _getNativeBitmap(_ptr);
+
+  int get address => _ptr.address;
 }
 
 final NativeBitmap Function(Pointer<Void>) _getNativeBitmap = library
@@ -62,7 +59,6 @@ final Pointer<Void> Function(Pointer<Void>) _getImageProvider = library
         'yandex_maps_flutter_platform_bitmap_get_image_provider')
     .asFunction(isLeaf: true);
 
-final void Function(Pointer<Void>) _freeNativeData = library
-    .lookup<NativeFunction<Void Function(Pointer<Void>)>>(
-        'yandex_maps_flutter_platform_bitmap_free')
-    .asFunction(isLeaf: true);
+final _freeNativeData =
+    library.lookup<NativeFunction<Void Function(Pointer<Void>)>>(
+        'yandex_maps_flutter_platform_bitmap_free');

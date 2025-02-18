@@ -42,7 +42,7 @@ extension TrafficColorImpl on TrafficColor {
     toNative: 'TrafficLevelImpl.getNativePtr',
     toPlatform: '(val) => TrafficLevelImpl.fromPointer(val, needFree: false)',
     platformType: 'TrafficLevel')
-final class TrafficLevelImpl implements TrafficLevel {
+final class TrafficLevelImpl extends TrafficLevel {
   TrafficLevelImpl(TrafficColor color, core.int level)
       : this.fromNativePtr(
             _TrafficLevel_init(TrafficColorImpl.toInt(color), level));
@@ -55,7 +55,7 @@ final class TrafficLevelImpl implements TrafficLevel {
   final ffi.Pointer<ffi.Void> _ptr;
   static final _finalizer = ffi.NativeFinalizer(_TrafficLevel_free.cast());
 
-  TrafficLevelImpl.fromNativePtr(this._ptr) {
+  TrafficLevelImpl.fromNativePtr(this._ptr) : super._() {
     _finalizer.attach(this, _ptr);
   }
 

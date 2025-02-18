@@ -27,6 +27,8 @@ abstract final class Attribution implements ffi.Finalizable {
           mapkit_image.Image? avatarImage) =>
       AttributionImpl(author, link, avatarImage);
 
+  Attribution._();
+
   /// Additional information about the author.
   ///
   AttributionAuthor? get author;

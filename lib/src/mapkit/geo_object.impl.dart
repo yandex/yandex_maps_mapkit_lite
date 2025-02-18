@@ -4,7 +4,7 @@ part of 'geo_object.dart';
     toNative: 'GeoObjectImpl.getNativePtr',
     toPlatform: '(val) => GeoObjectImpl.fromPointer(val, needFree: false)',
     platformType: 'GeoObject')
-final class GeoObjectImpl implements GeoObject {
+final class GeoObjectImpl extends GeoObject {
   GeoObjectImpl(
       core.String? name,
       core.String? descriptionText,
@@ -51,7 +51,7 @@ final class GeoObjectImpl implements GeoObject {
   final ffi.Pointer<ffi.Void> _ptr;
   static final _finalizer = ffi.NativeFinalizer(_GeoObject_free.cast());
 
-  GeoObjectImpl.fromNativePtr(this._ptr) {
+  GeoObjectImpl.fromNativePtr(this._ptr) : super._() {
     _finalizer.attach(this, _ptr);
   }
 

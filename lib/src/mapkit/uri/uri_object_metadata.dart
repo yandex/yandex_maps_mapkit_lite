@@ -56,6 +56,8 @@ abstract final class UriObjectMetadata extends mapkit_base_metadata.BaseMetadata
     implements ffi.Finalizable {
   factory UriObjectMetadata(core.List<Uri> uris) => UriObjectMetadataImpl(uris);
 
+  UriObjectMetadata._();
+
   /// Gets a list of URIs.
   core.List<Uri> get uris;
 

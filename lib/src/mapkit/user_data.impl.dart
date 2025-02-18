@@ -4,7 +4,7 @@ part of 'user_data.dart';
     toNative: 'UserDataImpl.getNativePtr',
     toPlatform: '(val) => UserDataImpl.fromPointer(val, needFree: false)',
     platformType: 'UserData')
-final class UserDataImpl implements UserData {
+final class UserDataImpl extends UserData {
   UserDataImpl(core.Map<core.String, core.String> data)
       : this.fromNativePtr(_UserData_init(to_native.toNativeMapString(data)));
 
@@ -17,7 +17,7 @@ final class UserDataImpl implements UserData {
   final ffi.Pointer<ffi.Void> _ptr;
   static final _finalizer = ffi.NativeFinalizer(_UserData_free.cast());
 
-  UserDataImpl.fromNativePtr(this._ptr) {
+  UserDataImpl.fromNativePtr(this._ptr) : super._() {
     _finalizer.attach(this, _ptr);
   }
 

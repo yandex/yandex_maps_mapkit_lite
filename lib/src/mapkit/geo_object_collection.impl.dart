@@ -5,7 +5,7 @@ part of 'geo_object_collection.dart';
     toPlatform:
         '(val) => GeoObjectCollectionImpl.fromPointer(val, needFree: false)',
     platformType: 'GeoObjectCollection')
-final class GeoObjectCollectionImpl implements GeoObjectCollection {
+final class GeoObjectCollectionImpl extends GeoObjectCollection {
   GeoObjectCollectionImpl(
       mapkit_geometry_geometry.BoundingBox? boundingBox,
       type_dictionary.TypeDictionaryBase<mapkit_base_metadata.BaseMetadata>
@@ -32,7 +32,7 @@ final class GeoObjectCollectionImpl implements GeoObjectCollection {
   static final _finalizer =
       ffi.NativeFinalizer(_GeoObjectCollection_free.cast());
 
-  GeoObjectCollectionImpl.fromNativePtr(this._ptr) {
+  GeoObjectCollectionImpl.fromNativePtr(this._ptr) : super._() {
     _finalizer.attach(this, _ptr);
   }
 

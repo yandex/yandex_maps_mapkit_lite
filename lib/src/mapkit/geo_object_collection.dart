@@ -37,6 +37,8 @@ abstract final class GeoObjectCollection implements ffi.Finalizable {
           core.List<GeoObjectCollectionItem> children) =>
       GeoObjectCollectionImpl(boundingBox, metadataContainer, children);
 
+  GeoObjectCollection._();
+
   /// The bounds around the collection of objects.
   ///
   mapkit_geometry_geometry.BoundingBox? get boundingBox;

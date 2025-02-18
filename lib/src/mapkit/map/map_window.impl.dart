@@ -196,6 +196,11 @@ class MapWindowImpl implements MapWindow, ffi.Finalizable {
     exception.checkCallResult();
   }
 
+  void setMaxFps(core.double fps) {
+    _MapWindow_setMaxFps(ptr, fps);
+    exception.checkCallResult();
+  }
+
   void addSurface(runtime_view_surface.Surface surface) {
     _MapWindow_addSurface(
         ptr, runtime_view_surface.SurfaceImpl.getNativePtr(surface));
@@ -366,6 +371,13 @@ final void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)
                         ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>(
             'yandex_flutter_mapkit_map_MapWindow_removeSizeChangedListener')
         .asFunction();
+final void Function(ffi.Pointer<ffi.Void>, core.double) _MapWindow_setMaxFps =
+    lib.library
+        .lookup<
+                ffi.NativeFunction<
+                    ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Float)>>(
+            'yandex_flutter_mapkit_map_MapWindow_setMaxFps')
+        .asFunction();
 final void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)
     _MapWindow_addSurface = lib.library
         .lookup<
@@ -389,3 +401,78 @@ final void Function(ffi.Pointer<ffi.Void>, core.int) _MapWindow_set = lib
             ffi.Void Function(ffi.Pointer<ffi.Void>,
                 ffi.Int64)>>('yandex_flutter_mapkit_map_MapWindow_set_')
     .asFunction(isLeaf: true);
+
+@bindings_annotations.ContainerData(
+    toNative: 'OffscreenMapWindowImpl.getNativePtr',
+    toPlatform:
+        '(val) => OffscreenMapWindowImpl.fromOptionalPtr(val.cast<ffi.Pointer<ffi.Void>>().value)',
+    platformType: 'OffscreenMapWindow')
+class OffscreenMapWindowImpl implements OffscreenMapWindow, ffi.Finalizable {
+  @protected
+  final ffi.Pointer<ffi.Void> ptr;
+  static final _finalizer =
+      ffi.NativeFinalizer(_OffscreenMapWindow_free.cast());
+
+  /// @nodoc
+  OffscreenMapWindowImpl.fromExternalPtr(this.ptr);
+
+  /// @nodoc
+  @internal
+  OffscreenMapWindowImpl.fromNativePtr(this.ptr) {
+    _finalizer.attach(this, ptr);
+  }
+
+  @internal
+
+  /// @nodoc
+  static ffi.Pointer<ffi.Void> getNativePtr(OffscreenMapWindow? obj) {
+    if (obj == null) return ffi.nullptr;
+    return (obj as OffscreenMapWindowImpl).ptr;
+  }
+
+  @internal
+
+  /// @nodoc
+  static OffscreenMapWindow? fromOptionalPtr(ffi.Pointer<ffi.Void> ptr) {
+    if (ptr == ffi.nullptr) return null;
+    return OffscreenMapWindowImpl.fromNativePtr(ptr);
+  }
+
+  @core.override
+  MapWindow get mapWindow {
+    final result = _OffscreenMapWindow_get_mapWindow(ptr);
+    return MapWindowImpl.fromNativePtr(result);
+  }
+
+  image_wrapper.ImageWrapper captureScreenshot() {
+    final result = _OffscreenMapWindow_captureScreenshot(ptr);
+    return to_platform.toPlatformBitmap(result);
+  }
+}
+
+final _OffscreenMapWindow_free = lib.library
+    .lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+        'yandex_flutter_mapkit_map_OffscreenMapWindow_free');
+
+final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)
+    _OffscreenMapWindow_get_mapWindow = lib.library
+        .lookup<
+                ffi.NativeFunction<
+                    ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
+            'yandex_flutter_mapkit_map_OffscreenMapWindow_get_mapWindow')
+        .asFunction();
+
+final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)
+    _OffscreenMapWindow_captureScreenshot = lib.library
+        .lookup<
+                ffi.NativeFunction<
+                    ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
+            'yandex_flutter_mapkit_map_OffscreenMapWindow_captureScreenshot')
+        .asFunction();
+final void Function(ffi.Pointer<ffi.Void>, core.int) _OffscreenMapWindow_set =
+    lib.library
+        .lookup<
+                ffi.NativeFunction<
+                    ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Int64)>>(
+            'yandex_flutter_mapkit_map_OffscreenMapWindow_set_')
+        .asFunction(isLeaf: true);

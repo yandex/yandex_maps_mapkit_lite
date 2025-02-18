@@ -12,10 +12,14 @@ import 'package:yandex_maps_mapkit_lite/src/bindings/common/exception.dart'
     as exception;
 import 'package:yandex_maps_mapkit_lite/src/bindings/common/string_map.dart'
     as string_map;
+import 'package:yandex_maps_mapkit_lite/src/bindings/common/to_platform.dart'
+    as to_platform;
 import 'package:yandex_maps_mapkit_lite/src/bindings/common/vector.dart'
     as vector;
 import 'package:yandex_maps_mapkit_lite/src/bindings/common/weak_interface_wrapper.dart'
     as weak_interface_wrapper;
+import 'package:yandex_maps_mapkit_lite/src/bindings/image/image_wrapper.dart'
+    as image_wrapper;
 import 'package:yandex_maps_mapkit_lite/src/mapkit/geometry/point.dart'
     as mapkit_geometry_point;
 import 'package:yandex_maps_mapkit_lite/src/mapkit/map/gesture_focus_point_mode.dart'
@@ -150,9 +154,14 @@ abstract class MapWindow implements ffi.Finalizable {
       mapkit_map_size_changed_listener.MapSizeChangedListener
           sizeChangedListener);
 
+  /// Allows to reduce CPU/GPU/battery usage in specific scenarios, where
+  /// lower framerate is acceptable. Valid range: (0, 60\]. Default: 60.
+  void setMaxFps(core.double fps);
+
   /// Adds additional surface to render frames on. A part of the frame with
   /// center in focusPoint will be sent to surface. Dimesions of this part
-  /// are determined by dimensions of surface. This method is android only
+  /// are determined by dimensions of surface. If surface larger than map,
+  /// the map will be scaled to fit the surface This method is android only
   void addSurface(runtime_view_surface.Surface surface);
 
   /// Removes external surface. This method is android only
@@ -160,4 +169,12 @@ abstract class MapWindow implements ffi.Finalizable {
 
   /// Usable only in [runWithBlockUi] or listener handlers.
   core.bool isValid();
+}
+
+/// Wraps [MapWindow] without its own view to render. Allows to render
+/// map on additional surfaces in separate processes without having to
+/// create MapView control in the main process.
+abstract class OffscreenMapWindow implements ffi.Finalizable {
+  MapWindow get mapWindow;
+  image_wrapper.ImageWrapper captureScreenshot();
 }

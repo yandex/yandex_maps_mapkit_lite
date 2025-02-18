@@ -41,6 +41,8 @@ abstract final class GeoObject implements ffi.Finalizable {
       GeoObjectImpl(name, descriptionText, geometry, boundingBox,
           attributionMap, metadataContainer, aref);
 
+  GeoObject._();
+
   /// Object name.
   ///
   core.String? get name;

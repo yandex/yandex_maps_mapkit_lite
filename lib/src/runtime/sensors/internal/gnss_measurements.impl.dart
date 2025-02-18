@@ -4,7 +4,7 @@ part of 'gnss_measurements.dart';
     toNative: 'GnssClockImpl.getNativePtr',
     toPlatform: '(val) => GnssClockImpl.fromPointer(val, needFree: false)',
     platformType: 'GnssClock')
-final class GnssClockImpl implements GnssClock {
+final class GnssClockImpl extends GnssClock {
   GnssClockImpl(
       core.int timeNanos,
       core.double? timeUncertaintyNanos,
@@ -57,7 +57,7 @@ final class GnssClockImpl implements GnssClock {
   final ffi.Pointer<ffi.Void> _ptr;
   static final _finalizer = ffi.NativeFinalizer(_GnssClock_free.cast());
 
-  GnssClockImpl.fromNativePtr(this._ptr) {
+  GnssClockImpl.fromNativePtr(this._ptr) : super._() {
     _finalizer.attach(this, _ptr);
   }
 
@@ -188,7 +188,7 @@ final core.int Function(
     toPlatform:
         '(val) => GnssMeasurementImpl.fromPointer(val, needFree: false)',
     platformType: 'GnssMeasurement')
-final class GnssMeasurementImpl implements GnssMeasurement {
+final class GnssMeasurementImpl extends GnssMeasurement {
   GnssMeasurementImpl(
       core.int constellationType,
       core.int svid,
@@ -280,7 +280,7 @@ final class GnssMeasurementImpl implements GnssMeasurement {
   final ffi.Pointer<ffi.Void> _ptr;
   static final _finalizer = ffi.NativeFinalizer(_GnssMeasurement_free.cast());
 
-  GnssMeasurementImpl.fromNativePtr(this._ptr) {
+  GnssMeasurementImpl.fromNativePtr(this._ptr) : super._() {
     _finalizer.attach(this, _ptr);
   }
 
@@ -485,7 +485,7 @@ final ffi.Pointer<ffi.Void> Function(
     toPlatform:
         '(val) => GnssMeasurementsEventImpl.fromPointer(val, needFree: false)',
     platformType: 'GnssMeasurementsEvent')
-final class GnssMeasurementsEventImpl implements GnssMeasurementsEvent {
+final class GnssMeasurementsEventImpl extends GnssMeasurementsEvent {
   GnssMeasurementsEventImpl(
       GnssClock clock, core.List<GnssMeasurement> measurements)
       : this.fromNativePtr(_GnssMeasurementsEvent_init(
@@ -503,7 +503,7 @@ final class GnssMeasurementsEventImpl implements GnssMeasurementsEvent {
   static final _finalizer =
       ffi.NativeFinalizer(_GnssMeasurementsEvent_free.cast());
 
-  GnssMeasurementsEventImpl.fromNativePtr(this._ptr) {
+  GnssMeasurementsEventImpl.fromNativePtr(this._ptr) : super._() {
     _finalizer.attach(this, _ptr);
   }
 

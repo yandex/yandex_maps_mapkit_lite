@@ -4,7 +4,7 @@ part of 'raw_tile.dart';
     toNative: 'RawTileImpl.getNativePtr',
     toPlatform: '(val) => RawTileImpl.fromPointer(val, needFree: false)',
     platformType: 'RawTile')
-final class RawTileImpl implements RawTile {
+final class RawTileImpl extends RawTile {
   RawTileImpl(
       mapkit_version.Version version,
       core.Map<core.String, core.String> features,
@@ -38,7 +38,7 @@ final class RawTileImpl implements RawTile {
   final ffi.Pointer<ffi.Void> _ptr;
   static final _finalizer = ffi.NativeFinalizer(_RawTile_free.cast());
 
-  RawTileImpl.fromNativePtr(this._ptr) {
+  RawTileImpl.fromNativePtr(this._ptr) : super._() {
     _finalizer.attach(this, _ptr);
   }
 

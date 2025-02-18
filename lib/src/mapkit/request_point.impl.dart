@@ -43,7 +43,7 @@ extension RequestPointTypeImpl on RequestPointType {
     toNative: 'RequestPointImpl.getNativePtr',
     toPlatform: '(val) => RequestPointImpl.fromPointer(val, needFree: false)',
     platformType: 'RequestPoint')
-final class RequestPointImpl implements RequestPoint {
+final class RequestPointImpl extends RequestPoint {
   RequestPointImpl(
       mapkit_geometry_point.Point point,
       RequestPointType type,
@@ -75,7 +75,7 @@ final class RequestPointImpl implements RequestPoint {
   final ffi.Pointer<ffi.Void> _ptr;
   static final _finalizer = ffi.NativeFinalizer(_RequestPoint_free.cast());
 
-  RequestPointImpl.fromNativePtr(this._ptr) {
+  RequestPointImpl.fromNativePtr(this._ptr) : super._() {
     _finalizer.attach(this, _ptr);
   }
 

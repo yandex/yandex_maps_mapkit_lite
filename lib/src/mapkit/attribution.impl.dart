@@ -4,7 +4,7 @@ part of 'attribution.dart';
     toNative: 'AttributionImpl.getNativePtr',
     toPlatform: '(val) => AttributionImpl.fromPointer(val, needFree: false)',
     platformType: 'Attribution')
-final class AttributionImpl implements Attribution {
+final class AttributionImpl extends Attribution {
   AttributionImpl(AttributionAuthor? author, AttributionLink? link,
       mapkit_image.Image? avatarImage)
       : this.fromNativePtr(_Attribution_init(
@@ -25,7 +25,7 @@ final class AttributionImpl implements Attribution {
   final ffi.Pointer<ffi.Void> _ptr;
   static final _finalizer = ffi.NativeFinalizer(_Attribution_free.cast());
 
-  AttributionImpl.fromNativePtr(this._ptr) {
+  AttributionImpl.fromNativePtr(this._ptr) : super._() {
     _finalizer.attach(this, _ptr);
   }
 

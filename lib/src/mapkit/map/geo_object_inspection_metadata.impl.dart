@@ -6,7 +6,7 @@ part of 'geo_object_inspection_metadata.dart';
         '(val) => GeoObjectInspectionMetadataImpl.fromPointer(val, needFree: false)',
     platformType: 'GeoObjectInspectionMetadata')
 final class GeoObjectInspectionMetadataImpl
-    implements GeoObjectInspectionMetadata {
+    extends GeoObjectInspectionMetadata {
   GeoObjectInspectionMetadataImpl(
       core.String layerId, GeoObjectInspectionMetadataObjectType objectType)
       : this.fromNativePtr(_GeoObjectInspectionMetadata_init(
@@ -28,7 +28,7 @@ final class GeoObjectInspectionMetadataImpl
   static final _finalizer =
       ffi.NativeFinalizer(_GeoObjectInspectionMetadata_free.cast());
 
-  GeoObjectInspectionMetadataImpl.fromNativePtr(this._ptr) {
+  GeoObjectInspectionMetadataImpl.fromNativePtr(this._ptr) : super._() {
     _finalizer.attach(this, _ptr);
   }
 

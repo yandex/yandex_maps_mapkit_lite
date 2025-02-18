@@ -27,6 +27,8 @@ abstract final class EcPublicKey implements ffi.Finalizable {
           typed_data.ByteBuffer affineX, typed_data.ByteBuffer affineY) =>
       EcPublicKeyImpl(affineX, affineY);
 
+  EcPublicKey._();
+
   typed_data.ByteBuffer get affineX;
   typed_data.ByteBuffer get affineY;
 

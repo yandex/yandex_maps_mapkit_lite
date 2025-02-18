@@ -6,7 +6,7 @@ part of 'personalized_poi_metadata.dart';
         '(val) => PersonalizedPoiExtraMetadataEntryImpl.fromPointer(val, needFree: false)',
     platformType: 'PersonalizedPoiExtraMetadataEntry')
 final class PersonalizedPoiExtraMetadataEntryImpl
-    implements PersonalizedPoiExtraMetadataEntry {
+    extends PersonalizedPoiExtraMetadataEntry {
   PersonalizedPoiExtraMetadataEntryImpl(core.String? key, core.String? value)
       : this.fromNativePtr(_PersonalizedPoiExtraMetadataEntry_init(
             to_native.toNativePtrString(key),
@@ -27,7 +27,7 @@ final class PersonalizedPoiExtraMetadataEntryImpl
   static final _finalizer =
       ffi.NativeFinalizer(_PersonalizedPoiExtraMetadataEntry_free.cast());
 
-  PersonalizedPoiExtraMetadataEntryImpl.fromNativePtr(this._ptr) {
+  PersonalizedPoiExtraMetadataEntryImpl.fromNativePtr(this._ptr) : super._() {
     _finalizer.attach(this, _ptr);
   }
 
@@ -154,7 +154,7 @@ final ffi.Pointer<ffi.Void> Function(
         '(val) => PersonalizedPoiExtraMetadataImpl.fromPointer(val, needFree: false)',
     platformType: 'PersonalizedPoiExtraMetadata')
 final class PersonalizedPoiExtraMetadataImpl
-    implements PersonalizedPoiExtraMetadata {
+    extends PersonalizedPoiExtraMetadata {
   PersonalizedPoiExtraMetadataImpl(
       core.List<PersonalizedPoiExtraMetadataEntry> data)
       : this.fromNativePtr(_PersonalizedPoiExtraMetadata_init(
@@ -174,7 +174,7 @@ final class PersonalizedPoiExtraMetadataImpl
   static final _finalizer =
       ffi.NativeFinalizer(_PersonalizedPoiExtraMetadata_free.cast());
 
-  PersonalizedPoiExtraMetadataImpl.fromNativePtr(this._ptr) {
+  PersonalizedPoiExtraMetadataImpl.fromNativePtr(this._ptr) : super._() {
     _finalizer.attach(this, _ptr);
   }
 

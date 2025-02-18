@@ -29,6 +29,8 @@ abstract final class GeoObjectTags extends mapkit_base_metadata.BaseMetadata
     implements ffi.Finalizable {
   factory GeoObjectTags(core.List<core.String> tags) => GeoObjectTagsImpl(tags);
 
+  GeoObjectTags._();
+
   core.List<core.String> get tags;
 
   @core.override

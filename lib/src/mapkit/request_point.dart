@@ -50,6 +50,8 @@ abstract final class RequestPoint implements ffi.Finalizable {
       RequestPointImpl(
           point, type, pointContext, drivingArrivalPointId, indoorLevelId);
 
+  RequestPoint._();
+
   /// The request point.
   mapkit_geometry_point.Point get point;
 

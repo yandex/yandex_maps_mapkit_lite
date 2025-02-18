@@ -38,6 +38,8 @@ abstract final class TrafficLevel implements ffi.Finalizable {
   factory TrafficLevel(TrafficColor color, core.int level) =>
       TrafficLevelImpl(color, level);
 
+  TrafficLevel._();
+
   /// The color that represents traffic.
   TrafficColor get color;
 

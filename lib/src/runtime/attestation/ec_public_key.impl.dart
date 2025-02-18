@@ -4,7 +4,7 @@ part of 'ec_public_key.dart';
     toNative: 'EcPublicKeyImpl.getNativePtr',
     toPlatform: '(val) => EcPublicKeyImpl.fromPointer(val, needFree: false)',
     platformType: 'EcPublicKey')
-final class EcPublicKeyImpl implements EcPublicKey {
+final class EcPublicKeyImpl extends EcPublicKey {
   EcPublicKeyImpl(typed_data.ByteBuffer affineX, typed_data.ByteBuffer affineY)
       : this.fromNativePtr(_EcPublicKey_init(to_native.toNativeBytes(affineX),
             to_native.toNativeBytes(affineY)));
@@ -19,7 +19,7 @@ final class EcPublicKeyImpl implements EcPublicKey {
   final ffi.Pointer<ffi.Void> _ptr;
   static final _finalizer = ffi.NativeFinalizer(_EcPublicKey_free.cast());
 
-  EcPublicKeyImpl.fromNativePtr(this._ptr) {
+  EcPublicKeyImpl.fromNativePtr(this._ptr) : super._() {
     _finalizer.attach(this, _ptr);
   }
 

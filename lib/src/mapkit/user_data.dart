@@ -30,6 +30,8 @@ abstract final class UserData extends mapkit_base_metadata.BaseMetadata
   factory UserData(core.Map<core.String, core.String> data) =>
       UserDataImpl(data);
 
+  UserData._();
+
   /// A dictionary of data.
   core.Map<core.String, core.String> get data;
 

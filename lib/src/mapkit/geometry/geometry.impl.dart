@@ -171,7 +171,7 @@ extension SegmentImpl on Segment {
     toNative: 'PolylineImpl.getNativePtr',
     toPlatform: '(val) => PolylineImpl.fromPointer(val, needFree: false)',
     platformType: 'Polyline')
-final class PolylineImpl implements Polyline {
+final class PolylineImpl extends Polyline {
   PolylineImpl(core.List<mapkit_geometry_point.Point> points)
       : this.fromNativePtr(_Polyline_init(
             mapkit_geometry_point.PointContainerExtension.toNativeVector(
@@ -185,7 +185,7 @@ final class PolylineImpl implements Polyline {
   final ffi.Pointer<ffi.Void> _ptr;
   static final _finalizer = ffi.NativeFinalizer(_Polyline_free.cast());
 
-  PolylineImpl.fromNativePtr(this._ptr) {
+  PolylineImpl.fromNativePtr(this._ptr) : super._() {
     _finalizer.attach(this, _ptr);
   }
 
@@ -347,7 +347,7 @@ extension SubpolylineImpl on Subpolyline {
     toNative: 'LinearRingImpl.getNativePtr',
     toPlatform: '(val) => LinearRingImpl.fromPointer(val, needFree: false)',
     platformType: 'LinearRing')
-final class LinearRingImpl implements LinearRing {
+final class LinearRingImpl extends LinearRing {
   LinearRingImpl(core.List<mapkit_geometry_point.Point> points)
       : this.fromNativePtr(_LinearRing_init(
             mapkit_geometry_point.PointContainerExtension.toNativeVector(
@@ -361,7 +361,7 @@ final class LinearRingImpl implements LinearRing {
   final ffi.Pointer<ffi.Void> _ptr;
   static final _finalizer = ffi.NativeFinalizer(_LinearRing_free.cast());
 
-  LinearRingImpl.fromNativePtr(this._ptr) {
+  LinearRingImpl.fromNativePtr(this._ptr) : super._() {
     _finalizer.attach(this, _ptr);
   }
 
@@ -413,7 +413,7 @@ final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)
     toNative: 'PolygonImpl.getNativePtr',
     toPlatform: '(val) => PolygonImpl.fromPointer(val, needFree: false)',
     platformType: 'Polygon')
-final class PolygonImpl implements Polygon {
+final class PolygonImpl extends Polygon {
   PolygonImpl(LinearRing outerRing, core.List<LinearRing> innerRings)
       : this.fromNativePtr(_Polygon_init(LinearRingImpl.getNativePtr(outerRing),
             LinearRingContainerExtension.toNativeVector(innerRings)));
@@ -428,7 +428,7 @@ final class PolygonImpl implements Polygon {
   final ffi.Pointer<ffi.Void> _ptr;
   static final _finalizer = ffi.NativeFinalizer(_Polygon_free.cast());
 
-  PolygonImpl.fromNativePtr(this._ptr) {
+  PolygonImpl.fromNativePtr(this._ptr) : super._() {
     _finalizer.attach(this, _ptr);
   }
 
@@ -489,7 +489,7 @@ final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)
     toNative: 'MultiPolygonImpl.getNativePtr',
     toPlatform: '(val) => MultiPolygonImpl.fromPointer(val, needFree: false)',
     platformType: 'MultiPolygon')
-final class MultiPolygonImpl implements MultiPolygon {
+final class MultiPolygonImpl extends MultiPolygon {
   MultiPolygonImpl(core.List<Polygon> polygons)
       : this.fromNativePtr(_MultiPolygon_init(
             PolygonContainerExtension.toNativeVector(polygons)));
@@ -501,7 +501,7 @@ final class MultiPolygonImpl implements MultiPolygon {
   final ffi.Pointer<ffi.Void> _ptr;
   static final _finalizer = ffi.NativeFinalizer(_MultiPolygon_free.cast());
 
-  MultiPolygonImpl.fromNativePtr(this._ptr) {
+  MultiPolygonImpl.fromNativePtr(this._ptr) : super._() {
     _finalizer.attach(this, _ptr);
   }
 

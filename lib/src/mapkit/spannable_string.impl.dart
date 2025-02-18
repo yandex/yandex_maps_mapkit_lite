@@ -5,7 +5,7 @@ part of 'spannable_string.dart';
     toPlatform:
         '(val) => SpannableStringImpl.fromPointer(val, needFree: false)',
     platformType: 'SpannableString')
-final class SpannableStringImpl implements SpannableString {
+final class SpannableStringImpl extends SpannableString {
   SpannableStringImpl(core.String text, core.List<SpannableStringSpan> spans)
       : this.fromNativePtr(_SpannableString_init(to_native.toNativeString(text),
             SpannableStringSpanContainerExtension.toNativeVector(spans)));
@@ -20,7 +20,7 @@ final class SpannableStringImpl implements SpannableString {
   final ffi.Pointer<ffi.Void> _ptr;
   static final _finalizer = ffi.NativeFinalizer(_SpannableString_free.cast());
 
-  SpannableStringImpl.fromNativePtr(this._ptr) {
+  SpannableStringImpl.fromNativePtr(this._ptr) : super._() {
     _finalizer.attach(this, _ptr);
   }
 

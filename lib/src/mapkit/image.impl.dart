@@ -4,7 +4,7 @@ part of 'image.dart';
     toNative: 'ImageImpl.getNativePtr',
     toPlatform: '(val) => ImageImpl.fromPointer(val, needFree: false)',
     platformType: 'Image')
-final class ImageImpl implements Image {
+final class ImageImpl extends Image {
   ImageImpl(core.String urlTemplate, core.List<ImageImageSize> sizes,
       core.List<core.String> tags)
       : this.fromNativePtr(_Image_init(
@@ -24,7 +24,7 @@ final class ImageImpl implements Image {
   final ffi.Pointer<ffi.Void> _ptr;
   static final _finalizer = ffi.NativeFinalizer(_Image_free.cast());
 
-  ImageImpl.fromNativePtr(this._ptr) {
+  ImageImpl.fromNativePtr(this._ptr) : super._() {
     _finalizer.attach(this, _ptr);
   }
 

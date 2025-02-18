@@ -51,7 +51,7 @@ extension UriImpl on Uri {
     toPlatform:
         '(val) => UriObjectMetadataImpl.fromPointer(val, needFree: false)',
     platformType: 'UriObjectMetadata')
-final class UriObjectMetadataImpl implements UriObjectMetadata {
+final class UriObjectMetadataImpl extends UriObjectMetadata {
   UriObjectMetadataImpl(core.List<Uri> uris)
       : this.fromNativePtr(_UriObjectMetadata_init(
             UriContainerExtension.toNativeVector(uris)));
@@ -67,7 +67,7 @@ final class UriObjectMetadataImpl implements UriObjectMetadata {
   final ffi.Pointer<ffi.Void> _ptr;
   static final _finalizer = ffi.NativeFinalizer(_UriObjectMetadata_free.cast());
 
-  UriObjectMetadataImpl.fromNativePtr(this._ptr) {
+  UriObjectMetadataImpl.fromNativePtr(this._ptr) : super._() {
     _finalizer.attach(this, _ptr);
   }
 
