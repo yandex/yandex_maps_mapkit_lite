@@ -68,12 +68,13 @@ final ffi.Pointer<ffi.Void> Function(
             ffi.NativeFunction<
                 ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>,
                     mapkit_geometry_point.PointNative)>>,
-        ffi.Pointer<
-            ffi
-            .NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, mapkit_geometry_point.PointNative)>>)
+        ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, mapkit_geometry_point.PointNative)>>)
     _MapInputListener_new = lib.library
-        .lookup<ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, mapkit_geometry_point.PointNative)>>, ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, mapkit_geometry_point.PointNative)>>)>>(
-            'yandex_flutter_mapkit_map_MapInputListener_new')
+        .lookup<
+            ffi.NativeFunction<
+                ffi.Pointer<ffi.Void> Function(
+                    ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, mapkit_geometry_point.PointNative)>>,
+                    ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, mapkit_geometry_point.PointNative)>>)>>('yandex_flutter_mapkit_map_MapInputListener_new')
         .asFunction(isLeaf: true);
 
 final _MapInputListener_free = lib.library

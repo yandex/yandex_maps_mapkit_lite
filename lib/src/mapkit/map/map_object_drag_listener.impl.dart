@@ -69,9 +69,11 @@ final void Function(ffi.Pointer<ffi.Void>, core.int, core.int)
         .asFunction(isLeaf: true);
 
 final ffi.Pointer<ffi.Void> Function(
-        ffi.Pointer<
-            ffi.NativeFunction<
-                ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>,
+        ffi
+            .Pointer<
+                ffi.NativeFunction<
+                    ffi.Void Function(
+                        ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>,
         ffi.Pointer<
             ffi.NativeFunction<
                 ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>,

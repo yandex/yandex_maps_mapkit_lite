@@ -11,13 +11,10 @@ public class YandexMapsPlugin: NSObject, FlutterPlugin {
   }
 
   public static func register(with registrar: FlutterPluginRegistrar) {
-
       let channel = FlutterMethodChannel(name: "flutter_yandex_mapkit/view", binaryMessenger: registrar.messenger())
-      let channel2 = FlutterMethodChannel(name: "flutter_yandex_mapkit/runtime", binaryMessenger: registrar.messenger())
       let instance = YandexMapsPlugin(registrar: registrar)
 
       registrar.addMethodCallDelegate(instance, channel: channel)
-      registrar.addMethodCallDelegate(instance, channel: channel2)
   }
 
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
@@ -26,11 +23,6 @@ public class YandexMapsPlugin: NSObject, FlutterPlugin {
           let id = args["id"] as! Int64
 
           result(self._viewFactory.getViewPtr(id: id))
-      } else if (call.method == "init") {
-          let args = call.arguments as! Dictionary<String, Any>
-          let options = args["options"] as! Dictionary<String, String>
-          YRTRuntime.setPreinitializationOptions(options)
-          result(nil)
       } else if (call.method == "startView") {
           let args = call.arguments as! Dictionary<String, Any>
           let id = args["id"] as! Int64
@@ -38,5 +30,9 @@ public class YandexMapsPlugin: NSObject, FlutterPlugin {
           self._viewFactory.startView(id: id)
           result(nil)
       }
+  }
+
+  public func detachFromEngine(for registrar: FlutterPluginRegistrar) {
+    YRTRuntime.onDetachedFromEngine()
   }
 }

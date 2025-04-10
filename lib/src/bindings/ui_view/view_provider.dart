@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:ffi';
-import 'dart:ui' show Image, FlutterView;
+import 'dart:ui' show Image, FlutterView, PlatformDispatcher;
 
 import 'package:flutter/widgets.dart' hide Image, ImageProvider;
 import 'package:flutter/rendering.dart' hide ImageProvider;
@@ -9,23 +9,18 @@ import 'package:yandex_maps_mapkit_lite/src/bindings/image/image_provider.dart';
 import 'package:yandex_maps_mapkit_lite/src/bindings/common/to_native.dart';
 
 class ViewProvider {
-  ViewProvider(
-      {FlutterView? view,
-      required FutureOr<Widget> Function() builder,
-      required ViewConfiguration Function(MediaQueryData mediaQuery)
-          configurationFactory,
-      this.textDirection = TextDirection.ltr,
-      this.id,
-      this.cacheable = false,
-      this.onError})
-      : _view = view ?? WidgetsBinding.instance.window,
-        _builder = builder,
-        _configurationFactory = configurationFactory;
+  ViewProvider({
+    FlutterView? view,
+    required FutureOr<Widget> Function() builder,
+    this.textDirection = TextDirection.ltr,
+    this.id,
+    this.cacheable = false,
+    this.onError,
+  })  : _view = view ?? PlatformDispatcher.instance.views.first,
+        _builder = builder;
 
   final FlutterView _view;
   final FutureOr<Widget> Function() _builder;
-  final ViewConfiguration Function(MediaQueryData mediaQuery)
-      _configurationFactory;
   final TextDirection textDirection;
   final String? id;
   final bool cacheable;
@@ -38,7 +33,7 @@ class ViewProvider {
     final widget = await _builder();
     final mediaQuery = MediaQueryData.fromView(_view);
     final renderView = _OffscreenRenderView(
-        _view, _configurationFactory(mediaQuery), repaintBoundary);
+        _view, ViewConfiguration.fromView(_view), repaintBoundary);
 
     renderView.markNeedsLayout();
     final pipelineOwner = PipelineOwner()..rootNode = renderView;

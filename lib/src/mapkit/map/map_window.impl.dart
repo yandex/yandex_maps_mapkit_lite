@@ -226,8 +226,7 @@ final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>) _MapWindow_get_map =
     lib
         .library
         .lookup<
-                ffi
-                .NativeFunction<
+                ffi.NativeFunction<
                     ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
             'yandex_flutter_mapkit_map_MapWindow_get_map')
         .asFunction();

@@ -32,9 +32,22 @@ class ImageProvider {
 
     final imageStream = provider.resolve(configuration);
 
-    final listener = ImageStreamListener(
-        (image, synchronousCall) => completer.complete(image.image),
-        onError: completer.completeError);
+    late ImageStreamListener listener;
+
+    listener = ImageStreamListener(
+      (image, synchronousCall) {
+        if (!completer.isCompleted) {
+          completer.complete(image.image);
+        }
+        imageStream.removeListener(listener);
+      },
+      onError: (e, stack) {
+        if (!completer.isCompleted) {
+          completer.completeError(e, stack);
+        }
+        imageStream.removeListener(listener);
+      },
+    );
 
     imageStream.addListener(listener);
 

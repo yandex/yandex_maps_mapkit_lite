@@ -104,6 +104,11 @@ class MapKitImpl implements MapKit, ffi.Finalizable {
     exception.checkCallResult();
   }
 
+  void onTerminate() {
+    _MapKit_onTerminate(ptr);
+    exception.checkCallResult();
+  }
+
   mapkit_location_location_manager.LocationManager createLocationManager() {
     final result = _MapKit_createLocationManager(ptr);
     exception.checkCallResult();
@@ -241,6 +246,10 @@ final void Function(ffi.Pointer<ffi.Void>) _MapKit_onStart = lib.library
 final void Function(ffi.Pointer<ffi.Void>) _MapKit_onStop = lib.library
     .lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
         'yandex_flutter_mapkit_MapKit_onStop')
+    .asFunction();
+final void Function(ffi.Pointer<ffi.Void>) _MapKit_onTerminate = lib.library
+    .lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+        'yandex_flutter_mapkit_MapKit_onTerminate')
     .asFunction();
 final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)
     _MapKit_createLocationManager = lib.library

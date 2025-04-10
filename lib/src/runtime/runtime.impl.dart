@@ -11,6 +11,10 @@ void _setPreinitializationOptions(
       to_native.toNativeMapString(runtimeOptions));
 }
 
+void _onDetachedFromEngine() {
+  _Runtime_onDetachedFromEngine();
+}
+
 final native_types.NativeString Function() _Runtime_version = lib.library
     .lookup<ffi.NativeFunction<native_types.NativeString Function()>>(
         'yandex_flutter_runtime_Runtime_version')
@@ -20,3 +24,7 @@ final void Function(ffi.Pointer<ffi.Void>)
         .lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
             'yandex_flutter_runtime_Runtime_setPreinitializationOptions')
         .asFunction();
+final void Function() _Runtime_onDetachedFromEngine = lib.library
+    .lookup<ffi.NativeFunction<ffi.Void Function()>>(
+        'yandex_flutter_runtime_Runtime_onDetachedFromEngine')
+    .asFunction();

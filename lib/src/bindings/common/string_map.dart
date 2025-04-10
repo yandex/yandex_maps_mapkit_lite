@@ -72,7 +72,7 @@ class _IteratorMap implements Iterator<String>, Finalizable {
   bool moveNext() {
     if (_it == nullptr) {
       _it = _map_iterator_begin(_map);
-      return true;
+      return !_map_iterator_is_end(_it);
     }
     _map_iterator_next(_it);
     return !_map_iterator_is_end(_it);

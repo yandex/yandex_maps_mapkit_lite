@@ -17,8 +17,7 @@ enum RoadEventsEventTag {
   Feedback,
   Chat,
 
-  /// Only use this tag in conjuction with RoadEventsLayer. Road events
-  /// layer embedded into TrafficLayer can't display local chats.
+  /// Same as Chat but limited by distance that you can see it from
   LocalChat,
 
   /// Temporary issues
@@ -26,7 +25,6 @@ enum RoadEventsEventTag {
   Closed,
   Reconstruction,
   Accident,
-  TrafficAlert,
 
   /// Potentially dangerous zones
   Danger,
@@ -35,13 +33,18 @@ enum RoadEventsEventTag {
   PedestrianDanger,
   CrossRoadDanger,
 
-  /// Traffic code control tags
+  /// Generalizing tag that has any traffic code control event. In old
+  /// clients all new events fallback to this tag
   Police,
+
+  /// Traffic code control tags
   LaneControl,
   RoadMarkingControl,
   CrossRoadControl,
   NoStoppingControl,
   MobileControl,
   SpeedControl,
+  TrafficControl,
+  PolicePatrol,
   ;
 }

@@ -52,8 +52,8 @@ final ffi.Pointer<ffi.Void> Function(
                 ffi.NativeFunction<
                     ffi.Pointer<ffi.Void> Function(
                         ffi.Pointer<
-                            ffi
-                            .NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>)>>(
+                            ffi.NativeFunction<
+                                ffi.Void Function(ffi.Pointer<ffi.Void>)>>)>>(
             'yandex_flutter_mapkit_map_Callback_new')
         .asFunction(isLeaf: true);
 

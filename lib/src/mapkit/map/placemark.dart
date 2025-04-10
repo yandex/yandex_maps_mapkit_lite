@@ -7,8 +7,6 @@ import 'dart:math' as math;
 import 'package:meta/meta.dart';
 import 'package:yandex_maps_mapkit_lite/src/bindings/annotations/annotations.dart'
     as bindings_annotations;
-import 'package:yandex_maps_mapkit_lite/src/bindings/common/async.dart'
-    show runWithBlockUi;
 import 'package:yandex_maps_mapkit_lite/src/bindings/common/exception.dart'
     as exception;
 import 'package:yandex_maps_mapkit_lite/src/bindings/common/native_types.dart'
@@ -161,6 +159,5 @@ abstract class PlacemarkMapObject
   /// Changes the text style.
   void setTextStyle(mapkit_map_text_style.TextStyle style);
 
-  /// Usable only in [runWithBlockUi] or listener handlers.
   core.bool isValid();
 }

@@ -1,9 +1,8 @@
 import 'dart:ffi';
 
 import 'package:yandex_maps_mapkit_lite/mapkit_factory.dart';
-import 'package:yandex_maps_mapkit_lite/src/runtime/i18n/i18n_manager.dart';
+import 'package:yandex_maps_mapkit_lite/runtime.dart';
 
-import 'common/mapkit_method_channel.dart';
 import 'common/library.dart';
 
 final void Function(Pointer<Void>) _init = library
@@ -19,16 +18,19 @@ void initDartApi() {
   _init(NativeApi.initializeApiDLData);
 }
 
-Future<void> initMapkit(
+void initMapkit(
     {required String apiKey,
     String? locale,
     String? userId,
-    Map<String, String> options = const {}}) async {
-  if (_isInit()) return;
+    Map<String, String> options = const {}}) {
+  if (_isInit()) {
+    // For update global isolate.
+    initDartApi();
+    return;
+  }
 
   initDartApi();
-  await const MapkitMethodChannel('runtime')
-      .invokeMethod('init', {'options': options});
+  Runtime.setPreinitializationOptions(options);
 
   I18nManagerFactory.setLocale(locale);
   mapkit.setApiKey(apiKey);

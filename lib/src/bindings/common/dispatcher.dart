@@ -1,6 +1,5 @@
 import 'package:meta/meta.dart';
 import 'package:ffi/ffi.dart';
-import 'package:yandex_maps_mapkit_lite/src/bindings/common/exception.dart';
 import 'package:yandex_maps_mapkit_lite/src/bindings/common/platform_user_data.dart';
 
 import 'dart:ffi';
@@ -97,17 +96,15 @@ abstract class AsyncDispatcherHeap<T> {
         malloc.free(dataPtr);
         break;
       case _GetPlatformObjectData:
+        final obj = _heap[callbackData.nativeObject];
+        if (obj == null) {
+          // platform object was deleted - ignore
+          break;
+        }
         try {
-          final obj = _heap[callbackData.nativeObject];
-          if (obj == null) {
-            onHandlerException(null, callbackData.nativeData,
-                NativeNullException(), StackTrace.current);
-            return;
-          }
           requestData(obj, callbackData.nativeData);
         } catch (e, stack) {
-          onHandlerException(_heap[callbackData.nativeObject]!,
-              callbackData.nativeObject, e, stack);
+          onHandlerException(obj, callbackData.nativeObject, e, stack);
         }
         break;
       default:
@@ -117,8 +114,7 @@ abstract class AsyncDispatcherHeap<T> {
 }
 
 void _interfaceDestructedHandler(dynamic data) {
-  final int nativePtr = data;
-  platformUserData.remove(nativePtr);
+  removeDeletedUserData(Pointer.fromAddress(data));
 }
 
 int createInterfaceDestructedPort() =>

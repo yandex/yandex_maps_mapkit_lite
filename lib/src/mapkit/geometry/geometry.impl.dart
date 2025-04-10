@@ -537,8 +537,7 @@ final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>) _MultiPolygon_init =
     lib
         .library
         .lookup<
-                ffi
-                .NativeFunction<
+                ffi.NativeFunction<
                     ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
             'yandex_flutter_mapkit_geometry_MultiPolygon_init')
         .asFunction(isLeaf: true);

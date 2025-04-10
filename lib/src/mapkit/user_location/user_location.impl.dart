@@ -432,12 +432,11 @@ final ffi.Pointer<ffi.Void> Function(
         ffi.Pointer<
             ffi.NativeFunction<
                 ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>,
-        ffi
-            .Pointer<
-                ffi.NativeFunction<
-                    ffi.Void Function(
-                        ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>,
-        ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>)
+        ffi.Pointer<
+            ffi.NativeFunction<
+                ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>,
+        ffi.Pointer<
+            ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>)
     _UserLocationObjectListener_new = lib.library
         .lookup<ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>, ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>, ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>)>>(
             'yandex_flutter_mapkit_user_location_UserLocationObjectListener_new')
