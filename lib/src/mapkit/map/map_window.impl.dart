@@ -201,6 +201,28 @@ class MapWindowImpl implements MapWindow, ffi.Finalizable {
     exception.checkCallResult();
   }
 
+  void startPerformanceMetricsCapture() {
+    _MapWindow_startPerformanceMetricsCapture(ptr);
+    exception.checkCallResult();
+  }
+
+  core.String stopPerformanceMetricsCapture() {
+    final result = _MapWindow_stopPerformanceMetricsCapture(ptr);
+    exception.checkCallResult();
+    return to_platform.toPlatformString(result);
+  }
+
+  void startMemoryMetricsCapture() {
+    _MapWindow_startMemoryMetricsCapture(ptr);
+    exception.checkCallResult();
+  }
+
+  core.String stopMemoryMetricsCapture() {
+    final result = _MapWindow_stopMemoryMetricsCapture(ptr);
+    exception.checkCallResult();
+    return to_platform.toPlatformString(result);
+  }
+
   void addSurface(runtime_view_surface.Surface surface) {
     _MapWindow_addSurface(
         ptr, runtime_view_surface.SurfaceImpl.getNativePtr(surface));
@@ -376,6 +398,32 @@ final void Function(ffi.Pointer<ffi.Void>, core.double) _MapWindow_setMaxFps =
                 ffi.NativeFunction<
                     ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Float)>>(
             'yandex_flutter_mapkit_map_MapWindow_setMaxFps')
+        .asFunction();
+final void Function(
+    ffi
+        .Pointer<ffi.Void>) _MapWindow_startPerformanceMetricsCapture = lib
+    .library
+    .lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+        'yandex_flutter_mapkit_map_MapWindow_startPerformanceMetricsCapture')
+    .asFunction();
+final native_types.NativeString Function(ffi.Pointer<ffi.Void>)
+    _MapWindow_stopPerformanceMetricsCapture = lib.library
+        .lookup<
+                ffi.NativeFunction<
+                    native_types.NativeString Function(ffi.Pointer<ffi.Void>)>>(
+            'yandex_flutter_mapkit_map_MapWindow_stopPerformanceMetricsCapture')
+        .asFunction();
+final void Function(ffi.Pointer<ffi.Void>)
+    _MapWindow_startMemoryMetricsCapture = lib.library
+        .lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+            'yandex_flutter_mapkit_map_MapWindow_startMemoryMetricsCapture')
+        .asFunction();
+final native_types.NativeString Function(ffi.Pointer<ffi.Void>)
+    _MapWindow_stopMemoryMetricsCapture = lib.library
+        .lookup<
+                ffi.NativeFunction<
+                    native_types.NativeString Function(ffi.Pointer<ffi.Void>)>>(
+            'yandex_flutter_mapkit_map_MapWindow_stopMemoryMetricsCapture')
         .asFunction();
 final void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)
     _MapWindow_addSurface = lib.library

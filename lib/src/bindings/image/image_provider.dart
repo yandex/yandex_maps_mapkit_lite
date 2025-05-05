@@ -120,6 +120,11 @@ class ImageProviderHeap extends AsyncDispatcherHeap<ImageProvider> {
       throw e;
     }
   }
+
+  @override
+  ImageProvider? objectFromData(Pointer<Void> nativeData) {
+    return _imageHandle(nativeData) as ImageProvider?;
+  }
 }
 
 final void Function(Pointer<Void>, NativeImageProvider)
@@ -129,3 +134,8 @@ final void Function(Pointer<Void>, NativeImageProvider)
                     Void Function(Pointer<Void>, NativeImageProvider)>>(
             'yandex_maps_flutter_image_on_image_provider_complete')
         .asFunction(isLeaf: true);
+
+final Object? Function(Pointer<Void>) _imageHandle = library
+    .lookup<NativeFunction<Handle Function(Pointer<Void>)>>(
+        'yandex_maps_flutter_image_handle')
+    .asFunction();

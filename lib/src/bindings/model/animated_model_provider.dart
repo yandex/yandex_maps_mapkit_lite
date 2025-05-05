@@ -55,6 +55,11 @@ class _AnimatedModelProviderHeap
       throw e;
     }
   }
+
+  @override
+  AnimatedModelProvider? objectFromData(Pointer<Void> nativeData) {
+    return _animatedModelHandle(nativeData) as AnimatedModelProvider?;
+  }
 }
 
 final class _NativeAnimatedModelFrame extends Struct {
@@ -103,3 +108,8 @@ final void Function(Pointer<Void>, _NativeAnimatedModel) _onCompleteModel =
                     Void Function(Pointer<Void>, _NativeAnimatedModel)>>(
             'yandex_maps_flutter_animated_model_provider_on_complete_model')
         .asFunction(isLeaf: true);
+
+final Object? Function(Pointer<Void>) _animatedModelHandle = library
+    .lookup<NativeFunction<Handle Function(Pointer<Void>)>>(
+        'yandex_maps_flutter_animated_model_handle')
+    .asFunction();

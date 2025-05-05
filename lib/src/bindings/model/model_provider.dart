@@ -53,6 +53,11 @@ class _ModelProviderHeap extends AsyncDispatcherHeap<ModelProvider> {
       throw e;
     }
   }
+
+  @override
+  ModelProvider? objectFromData(Pointer<Void> nativeData) {
+    return _modelHandle(nativeData) as ModelProvider?;
+  }
 }
 
 final void Function(Pointer<Void>, NativeBytes) _onModelComplete = library
@@ -60,9 +65,14 @@ final void Function(Pointer<Void>, NativeBytes) _onModelComplete = library
         'yandex_maps_flutter_model_provider_on_complete_model')
     .asFunction(isLeaf: true);
 
+final Object? Function(Pointer<Void>) _modelHandle = library
+    .lookup<NativeFunction<Handle Function(Pointer<Void>)>>(
+        'yandex_maps_flutter_model_handle')
+    .asFunction();
+
 Pointer<Void> _getTexture(Pointer<Void> nativeObject) {
   return toNativeImageProvider(
-      ModelProvider._heap.findObject(nativeObject).texture);
+      (_modelHandle(nativeObject) as ModelProvider).texture);
 }
 
 final Pointer<Void> _getTextureNative =

@@ -296,6 +296,15 @@ abstract class Map implements ffi.Finalizable {
   /// generation.
   void wipe();
 
+  /// @nodoc
+  /// Starts capturing tile load metrics.
+  void startTileLoadMetricsCapture();
+
+  /// @nodoc
+  /// Stops capturing tile load metrics and returns captured metrics as a
+  /// string.
+  core.String stopTileLoadMetricsCapture();
+
   /// Adds tile layer.
   mapkit_layers_layer.Layer addTileLayer(
     mapkit_layers_layer_options.LayerOptions layerOptions,

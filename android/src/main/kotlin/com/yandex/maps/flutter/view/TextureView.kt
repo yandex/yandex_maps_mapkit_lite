@@ -17,6 +17,7 @@ class TextureView(context: Context, id: Int, factory: ViewFactory) :
     }
 
     override fun dispose() {
+        factory.getLifecycle().removeListener(this)
         factory.removeView(id)
     }
 

@@ -75,9 +75,8 @@ Pointer<Void> toNativeImageProvider(ImageProvider provider) {
 
   final heap = GetImageProviderData.heap;
   final sendPort = heap.sendPort;
-  final nativeObject = newImageProvider(
-      provider.cacheable, sendPort, toNativeString(provider.id));
-  heap.insertObject(nativeObject, provider);
+  final nativeObject = newImageProvider(provider.cacheable, sendPort,
+      toNativeString(provider.id), deleteHandlePort, provider);
 
   return nativeObject;
 }
@@ -109,10 +108,8 @@ Pointer<Void> toNativeAnimatedImageProvider(AnimatedImageProvider provider) {
   } else if (data is RawData) {
     final heap = GetAnimatedImageData.heap;
     final sendPort = heap.sendPort;
-    final nativeObject =
-        newAnimatedImageProviderFromApng(sendPort, toNativeString(provider.id));
-
-    heap.insertObject(nativeObject, data);
+    final nativeObject = newAnimatedImageProviderFromApng(
+        sendPort, deleteHandlePort, data, toNativeString(provider.id));
 
     return nativeObject;
   }
@@ -143,10 +140,13 @@ Pointer<Void> toNativeViewProvider(ViewProvider provider) {
 Pointer<Void> toNativeModelProvider(ModelProvider provider) {
   final heap = ModelProviderNative.heap;
   final sendPort = heap.sendPort;
-  final nativeObject = newModelProvider(sendPort, createExecutePort(),
-      toNativeString(provider.modelId), ModelProviderNative.getTextureNative);
-
-  heap.insertObject(nativeObject, provider);
+  final nativeObject = newModelProvider(
+      sendPort,
+      createExecutePort(),
+      toNativeString(provider.modelId),
+      ModelProviderNative.getTextureNative,
+      deleteHandlePort,
+      provider);
 
   return nativeObject;
 }
@@ -155,10 +155,8 @@ Pointer<Void> toNativeModelProvider(ModelProvider provider) {
 Pointer<Void> toNativeAnimatedModelProvider(AnimatedModelProvider provider) {
   final heap = AnimatedModelProviderNative.heap;
   final sendPort = heap.sendPort;
-  final nativeObject =
-      newAnimatedModelProvider(toNativeString(provider.modelId), sendPort);
-
-  heap.insertObject(nativeObject, provider);
+  final nativeObject = newAnimatedModelProvider(
+      toNativeString(provider.modelId), sendPort, deleteHandlePort, provider);
 
   return nativeObject;
 }

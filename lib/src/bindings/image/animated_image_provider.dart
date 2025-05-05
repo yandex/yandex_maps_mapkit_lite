@@ -92,6 +92,11 @@ class AnimatedImageProviderHeap extends AsyncDispatcherHeap<RawData> {
       throw e;
     }
   }
+
+  @override
+  RawData? objectFromData(Pointer<Void> nativeData) {
+    return _animatedImageHandle(nativeData) as RawData?;
+  }
 }
 
 final void Function(Pointer<Void>, NativeBytes)
@@ -99,3 +104,8 @@ final void Function(Pointer<Void>, NativeBytes)
         .lookup<NativeFunction<Void Function(Pointer<Void>, NativeBytes)>>(
             'yandex_maps_flutter_on_animated_image_provider_complete')
         .asFunction(isLeaf: true);
+
+final Object? Function(Pointer<Void>) _animatedImageHandle = library
+    .lookup<NativeFunction<Handle Function(Pointer<Void>)>>(
+        'yandex_maps_flutter_animated_image_handle')
+    .asFunction();

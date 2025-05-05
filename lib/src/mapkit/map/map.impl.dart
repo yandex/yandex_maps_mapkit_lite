@@ -437,6 +437,17 @@ class MapImpl implements Map, ffi.Finalizable {
     exception.checkCallResult();
   }
 
+  void startTileLoadMetricsCapture() {
+    _Map_startTileLoadMetricsCapture(ptr);
+    exception.checkCallResult();
+  }
+
+  core.String stopTileLoadMetricsCapture() {
+    final result = _Map_stopTileLoadMetricsCapture(ptr);
+    exception.checkCallResult();
+    return to_platform.toPlatformString(result);
+  }
+
   mapkit_layers_layer.Layer addTileLayer(
     mapkit_layers_layer_options.LayerOptions layerOptions,
     mapkit_map_tile_data_source_builder.CreateTileDataSource createDataSource, {
@@ -861,6 +872,18 @@ final void Function(ffi.Pointer<ffi.Void>) _Map_wipe = lib.library
     .lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
         'yandex_flutter_mapkit_map_Map_wipe')
     .asFunction();
+final void Function(ffi.Pointer<ffi.Void>) _Map_startTileLoadMetricsCapture =
+    lib.library
+        .lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+            'yandex_flutter_mapkit_map_Map_startTileLoadMetricsCapture')
+        .asFunction();
+final native_types.NativeString Function(ffi.Pointer<ffi.Void>)
+    _Map_stopTileLoadMetricsCapture = lib.library
+        .lookup<
+                ffi.NativeFunction<
+                    native_types.NativeString Function(ffi.Pointer<ffi.Void>)>>(
+            'yandex_flutter_mapkit_map_Map_stopTileLoadMetricsCapture')
+        .asFunction();
 final ffi.Pointer<ffi.Void> Function(
         ffi.Pointer<ffi.Void>,
         native_types.NativeString,
