@@ -36,11 +36,11 @@ NativeImageProvider Function(int, int) newNativeImageProvider = library
     .asFunction(isLeaf: true);
 
 @internal
-Pointer<Void> Function(bool, int, NativeString, int, Object) newImageProvider =
+Pointer<Void> Function(bool, int, NativeString, Object) newImageProvider =
     library
         .lookup<
             NativeFunction<
-                Pointer<Void> Function(Bool, Int64, NativeString, Int64,
+                Pointer<Void> Function(Bool, Int64, NativeString,
                     Handle)>>('yandex_maps_flutter_new_image_provider')
         .asFunction();
 
@@ -55,12 +55,11 @@ Pointer<Void> Function(Pointer<NativeFrame>, int, int, NativeString)
         .asFunction(isLeaf: true);
 
 @internal
-Pointer<Void> Function(int, int, Object, NativeString)
+Pointer<Void> Function(int, Object, NativeString)
     newAnimatedImageProviderFromApng = library
         .lookup<
                 NativeFunction<
-                    Pointer<Void> Function(
-                        Int64, Int64, Handle, NativeString)>>(
+                    Pointer<Void> Function(Int64, Handle, NativeString)>>(
             'yandex_maps_flutter_new_animated_image_provider_from_apng')
         .asFunction();
 
@@ -74,7 +73,7 @@ Pointer<Void> Function(int, Pointer<Void>, Pointer<Void>) newViewProvider =
         .asFunction(isLeaf: true);
 
 @internal
-Pointer<Void> Function(int, int, NativeString, Pointer<Void>, int, Object)
+Pointer<Void> Function(int, int, NativeString, Pointer<Void>, Object)
     newModelProvider = library
         .lookup<
             NativeFunction<
@@ -83,16 +82,15 @@ Pointer<Void> Function(int, int, NativeString, Pointer<Void>, int, Object)
                     Int64,
                     NativeString,
                     Pointer<Void>,
-                    Int64,
                     Handle)>>('yandex_maps_flutter_new_model_provider')
         .asFunction();
 
 @internal
-Pointer<Void> Function(NativeString, int, int, Object)
-    newAnimatedModelProvider = library
+Pointer<Void> Function(NativeString, int, Object) newAnimatedModelProvider =
+    library
         .lookup<
             NativeFunction<
-                Pointer<Void> Function(NativeString, Int64, Int64,
+                Pointer<Void> Function(NativeString, Int64,
                     Handle)>>('yandex_maps_flutter_new_animated_model_provider')
         .asFunction();
 

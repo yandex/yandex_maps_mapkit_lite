@@ -75,8 +75,8 @@ Pointer<Void> toNativeImageProvider(ImageProvider provider) {
 
   final heap = GetImageProviderData.heap;
   final sendPort = heap.sendPort;
-  final nativeObject = newImageProvider(provider.cacheable, sendPort,
-      toNativeString(provider.id), deleteHandlePort, provider);
+  final nativeObject = newImageProvider(
+      provider.cacheable, sendPort, toNativeString(provider.id), provider);
 
   return nativeObject;
 }
@@ -109,7 +109,7 @@ Pointer<Void> toNativeAnimatedImageProvider(AnimatedImageProvider provider) {
     final heap = GetAnimatedImageData.heap;
     final sendPort = heap.sendPort;
     final nativeObject = newAnimatedImageProviderFromApng(
-        sendPort, deleteHandlePort, data, toNativeString(provider.id));
+        sendPort, data, toNativeString(provider.id));
 
     return nativeObject;
   }
@@ -145,7 +145,6 @@ Pointer<Void> toNativeModelProvider(ModelProvider provider) {
       createExecutePort(),
       toNativeString(provider.modelId),
       ModelProviderNative.getTextureNative,
-      deleteHandlePort,
       provider);
 
   return nativeObject;
@@ -156,7 +155,7 @@ Pointer<Void> toNativeAnimatedModelProvider(AnimatedModelProvider provider) {
   final heap = AnimatedModelProviderNative.heap;
   final sendPort = heap.sendPort;
   final nativeObject = newAnimatedModelProvider(
-      toNativeString(provider.modelId), sendPort, deleteHandlePort, provider);
+      toNativeString(provider.modelId), sendPort, provider);
 
   return nativeObject;
 }
