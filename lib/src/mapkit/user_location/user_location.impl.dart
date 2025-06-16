@@ -633,15 +633,15 @@ class UserLocationLayerImpl implements UserLocationLayer, ffi.Finalizable {
   }
 
   @core.override
-  core.bool get headingEnabled {
-    final result = _UserLocationLayer_get_headingEnabled(ptr);
+  core.bool get headingModeActive {
+    final result = _UserLocationLayer_get_headingModeActive(ptr);
     exception.checkCallResult();
     return result;
   }
 
   @core.override
-  set headingEnabled(core.bool val) {
-    _UserLocationLayer_set_headingEnabled(ptr, val);
+  set headingModeActive(core.bool val) {
+    _UserLocationLayer_set_headingModeActive(ptr, val);
     exception.checkCallResult();
   }
 
@@ -732,18 +732,19 @@ final core.bool Function(ffi.Pointer<ffi.Void>) _UserLocationLayer_check = lib
 
 final core.bool Function(
     ffi
-        .Pointer<ffi.Void>) _UserLocationLayer_get_headingEnabled = lib.library
+        .Pointer<ffi.Void>) _UserLocationLayer_get_headingModeActive = lib
+    .library
     .lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ffi.Void>)>>(
-        'yandex_flutter_mapkit_user_location_UserLocationLayer_get_headingEnabled')
+        'yandex_flutter_mapkit_user_location_UserLocationLayer_get_headingModeActive')
     .asFunction();
 final void Function(
     ffi.Pointer<ffi.Void>,
     core
-        .bool) _UserLocationLayer_set_headingEnabled = lib.library
+        .bool) _UserLocationLayer_set_headingModeActive = lib.library
     .lookup<
             ffi.NativeFunction<
                 ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Bool)>>(
-        'yandex_flutter_mapkit_user_location_UserLocationLayer_set_headingEnabled')
+        'yandex_flutter_mapkit_user_location_UserLocationLayer_set_headingModeActive')
     .asFunction();
 
 final core.bool Function(

@@ -119,8 +119,8 @@ abstract class UserLocationTapListener {
 abstract class UserLocationLayer implements ffi.Finalizable {
   /// Enables/disables heading mode. If heading mode is enabled, the map is
   /// rotated. If heading mode is disabled, the location icon is rotated.
-  core.bool get headingEnabled;
-  set headingEnabled(core.bool val);
+  core.bool get headingModeActive;
+  set headingModeActive(core.bool val);
 
   /// Returns true if anchor mode is set, and false otherwise.
   core.bool get anchorEnabled;

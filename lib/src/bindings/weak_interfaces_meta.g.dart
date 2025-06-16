@@ -52,6 +52,7 @@ import 'package:yandex_maps_mapkit_lite/src/mapkit/storage/storage_manager.dart'
     as mapkit;
 import 'package:yandex_maps_mapkit_lite/src/mapkit/traffic/traffic_layer.dart'
     as mapkit;
+import 'package:yandex_maps_mapkit_lite/src/mapkit/ui/overlay.dart' as mapkit;
 import 'package:yandex_maps_mapkit_lite/src/mapkit/user_location/user_location.dart'
     as mapkit;
 import 'package:yandex_maps_mapkit_lite/src/runtime/error.dart' as runtime;
@@ -103,6 +104,8 @@ const weakInterfacesMeta = {
   'mapkit.map.PolygonMapObject': mapkit.PolygonMapObjectImpl.fromNativePtrImpl,
   'mapkit.map.PolylineMapObject':
       mapkit.PolylineMapObjectImpl.fromNativePtrImpl,
+  'mapkit.map.RootMapObjectCollection':
+      mapkit.RootMapObjectCollectionImpl.fromNativePtrImpl,
   'mapkit.map.TileDataSourceBuilder':
       mapkit.TileDataSourceBuilderImpl.fromNativePtrImpl,
   'mapkit.offline_cache.CachePathUnavailable':
@@ -111,6 +114,7 @@ const weakInterfacesMeta = {
       mapkit.OfflineCacheManagerImpl.fromNativePtrImpl,
   'mapkit.storage.StorageManager': mapkit.StorageManagerImpl.fromNativePtrImpl,
   'mapkit.traffic.TrafficLayer': mapkit.TrafficLayerImpl.fromNativePtrImpl,
+  'mapkit.ui.Overlay': mapkit.OverlayImpl.fromNativePtrImpl,
   'mapkit.user_location.UserLocationAnchorChanged':
       mapkit.UserLocationAnchorChangedImpl.fromNativePtrImpl,
   'mapkit.user_location.UserLocationIconChanged':

@@ -1,5 +1,4 @@
 import 'package:meta/meta.dart';
-import 'package:yandex_maps_mapkit_lite/src/bindings/common/platform_user_data.dart';
 
 import 'dart:ffi';
 import 'dart:isolate';
@@ -88,13 +87,3 @@ void _deleteHandleHandler(dynamic data) {
 final _deleteHandlePort = ReceivePort()..listen(_deleteHandleHandler);
 
 int get deleteHandlePort => _deleteHandlePort.sendPort.nativePort;
-
-void _interfaceDestructedHandler(dynamic data) {
-  removeDeletedUserData(Pointer.fromAddress(data));
-}
-
-int createInterfaceDestructedPort() =>
-    _interfaceDestructedPort.sendPort.nativePort;
-
-final _interfaceDestructedPort = ReceivePort()
-  ..listen(_interfaceDestructedHandler);

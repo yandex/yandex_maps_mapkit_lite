@@ -134,12 +134,10 @@ class MapObjectImpl implements MapObject, ffi.Finalizable {
   }
 
   @core.override
-  core.Object? get userData => _MapObject_get_userData(
-      ptr, nativeBinding.createInterfaceDestructedPort());
+  core.Object? get userData => _MapObject_get_userData(ptr);
 
   @core.override
-  set userData(core.Object? val) => _MapObject_set_userData(
-      ptr, nativeBinding.createInterfaceDestructedPort(), val);
+  set userData(core.Object? val) => _MapObject_set_userData(ptr, val);
 }
 
 final _MapObject_free = lib.library
@@ -241,18 +239,15 @@ final void Function(ffi.Pointer<ffi.Void>, core.int) _MapObject_set = lib
             ffi.Void Function(ffi.Pointer<ffi.Void>,
                 ffi.Int64)>>('yandex_flutter_mapkit_map_MapObject_set_')
     .asFunction(isLeaf: true);
-final core.Object? Function(ffi.Pointer<ffi.Void>, core.int)
-    _MapObject_get_userData = lib.library
-        .lookup<
-                ffi.NativeFunction<
-                    ffi.Handle Function(ffi.Pointer<ffi.Void>, ffi.Int64)>>(
-            'yandex_flutter_mapkit_map_MapObject_get_userData')
-        .asFunction();
-final void Function(ffi.Pointer<ffi.Void>, core.int, core.Object?)
+final core.Object? Function(ffi.Pointer<ffi.Void>) _MapObject_get_userData = lib
+    .library
+    .lookup<ffi.NativeFunction<ffi.Handle Function(ffi.Pointer<ffi.Void>)>>(
+        'yandex_flutter_mapkit_map_MapObject_get_userData')
+    .asFunction();
+final void Function(ffi.Pointer<ffi.Void>, core.Object?)
     _MapObject_set_userData = lib.library
         .lookup<
                 ffi.NativeFunction<
-                    ffi.Void Function(
-                        ffi.Pointer<ffi.Void>, ffi.Int64, ffi.Handle)>>(
+                    ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Handle)>>(
             'yandex_flutter_mapkit_map_MapObject_set_userData')
         .asFunction();

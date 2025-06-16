@@ -28,7 +28,13 @@ class Runtime {
   }
 
   /// only for flutter
-  static void onDetachedFromEngine() {
-    _onDetachedFromEngine();
+  static core.int onDartVMCreated() {
+    return _onDartVMCreated();
+  }
+
+  static void onDetachedFromEngine(core.int engineId) {
+    _onDetachedFromEngine(
+      engineId,
+    );
   }
 }

@@ -112,7 +112,7 @@ abstract class Map implements ffi.Finalizable {
 
   /// Return List of map objects associated with the map. The layerId for
   /// this collection can be retrieved via LayerIds.mapObjectsLayerId
-  mapkit_map_map_object_collection.MapObjectCollection get mapObjects;
+  mapkit_map_map_object_collection.RootMapObjectCollection get mapObjects;
 
   /// Yandex logo object.
   mapkit_logo_logo.Logo get logo;
@@ -288,6 +288,12 @@ abstract class Map implements ffi.Finalizable {
   /// "flatten out" animation; all new tiles do not start 3D animation.
   /// false - All tiles start showing the "rise up" animation.
   void set2DMode(core.bool enable);
+
+  /// Creates a new independent map object collection linked to the
+  /// specified layer ID. Sublayers will be added after corresponding
+  /// sublayers of the topmost layer.
+  mapkit_map_map_object_collection.RootMapObjectCollection addMapObjectLayer(
+      core.String layerId);
 
   /// Provides map projection
   mapkit_geometry_geo_projection.Projection projection();

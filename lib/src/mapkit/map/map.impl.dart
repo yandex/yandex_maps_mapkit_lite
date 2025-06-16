@@ -159,10 +159,10 @@ class MapImpl implements Map, ffi.Finalizable {
   }
 
   @core.override
-  mapkit_map_map_object_collection.MapObjectCollection get mapObjects {
+  mapkit_map_map_object_collection.RootMapObjectCollection get mapObjects {
     final result = _Map_get_mapObjects(ptr);
     exception.checkCallResult();
-    return mapkit_map_map_object_collection.MapObjectCollectionImpl
+    return mapkit_map_map_object_collection.RootMapObjectCollectionImpl
         .fromNativePtr(result);
   }
 
@@ -424,6 +424,15 @@ class MapImpl implements Map, ffi.Finalizable {
   void set2DMode(core.bool enable) {
     _Map_set2DMode(ptr, enable);
     exception.checkCallResult();
+  }
+
+  mapkit_map_map_object_collection.RootMapObjectCollection addMapObjectLayer(
+      core.String layerId) {
+    final result =
+        _Map_addMapObjectLayer(ptr, to_native.toNativeString(layerId));
+    exception.checkCallResult();
+    return mapkit_map_map_object_collection.RootMapObjectCollectionImpl
+        .fromNativePtr(result);
   }
 
   mapkit_geometry_geo_projection.Projection projection() {
@@ -861,6 +870,15 @@ final void Function(ffi.Pointer<ffi.Void>, core.bool) _Map_set2DMode = lib
             ffi.Void Function(ffi.Pointer<ffi.Void>,
                 ffi.Bool)>>('yandex_flutter_mapkit_map_Map_set2DMode')
     .asFunction();
+final ffi.Pointer<ffi.Void> Function(
+        ffi.Pointer<ffi.Void>, native_types.NativeString)
+    _Map_addMapObjectLayer = lib.library
+        .lookup<
+                ffi.NativeFunction<
+                    ffi.Pointer<ffi.Void> Function(
+                        ffi.Pointer<ffi.Void>, native_types.NativeString)>>(
+            'yandex_flutter_mapkit_map_Map_addMapObjectLayer')
+        .asFunction();
 final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>) _Map_projection =
     lib.library
         .lookup<

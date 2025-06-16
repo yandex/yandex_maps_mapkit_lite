@@ -4,6 +4,7 @@ import YandexMapsMobile
 
 public class YandexMapsPlugin: NSObject, FlutterPlugin {
   private var _viewFactory: NativeViewFactory
+  private var _engineId: Int?
 
   init(registrar: FlutterPluginRegistrar) {
         _viewFactory = NativeViewFactory(messenger: registrar.messenger())
@@ -12,9 +13,11 @@ public class YandexMapsPlugin: NSObject, FlutterPlugin {
 
   public static func register(with registrar: FlutterPluginRegistrar) {
       let channel = FlutterMethodChannel(name: "flutter_yandex_mapkit/view", binaryMessenger: registrar.messenger())
+      let channel2 = FlutterMethodChannel(name: "flutter_yandex_mapkit/runtime", binaryMessenger: registrar.messenger())
       let instance = YandexMapsPlugin(registrar: registrar)
 
       registrar.addMethodCallDelegate(instance, channel: channel)
+      registrar.addMethodCallDelegate(instance, channel: channel2)
   }
 
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
@@ -29,10 +32,22 @@ public class YandexMapsPlugin: NSObject, FlutterPlugin {
 
           self._viewFactory.startView(id: id)
           result(nil)
+      } else if (call.method == "onDartVMCreated") {
+          let id = YRTRuntime.onDartVMCreated()
+          if (_engineId != nil) {
+              result(FlutterError(
+                  code: "PluginInitError",
+                  message: "Double initialization YandexMapsPlugin with id: \(_engineId), new id: \(id)",
+                  details: nil
+              ))
+              return
+          }
+          _engineId = id
+          result(id)
       }
   }
 
   public func detachFromEngine(for registrar: FlutterPluginRegistrar) {
-    YRTRuntime.onDetachedFromEngine()
+      YRTRuntime.onDetachedFromEngine(withEngineId: _engineId!)
   }
 }

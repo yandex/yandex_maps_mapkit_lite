@@ -3,6 +3,7 @@ package com.yandex.maps.flutter
 import android.util.Log
 import androidx.annotation.NonNull
 import com.yandex.maps.flutter.method_handler.BaseMethodHandler
+import com.yandex.maps.flutter.method_handler.RuntimeMethodHandler
 import com.yandex.maps.flutter.method_handler.ViewMethodHandler
 import com.yandex.maps.flutter.view.ViewFactory
 
@@ -16,9 +17,19 @@ import com.yandex.runtime.Runtime
 class YandexMapsPlugin : FlutterPlugin, ActivityAware {
     private val handlers = mutableListOf<BaseMethodHandler>()
     private val lifecycle = ActivityLifecycleWrapper()
+    private var engineId: Int? = null
+
+    fun initEngineId(id: Int) {
+        if (engineId != null) {
+            throw Exception("Double initialization YandexMapsPlugin with id: $engineId, new id: $id")
+        }
+        Log.d("YandexMapsPlugin", "Init engineId for YandexMapsPlugin: $id")
+        engineId = id
+    }
 
 
     override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
+        Log.d("YandexMapsPlugin", "Attach new plugin to engine")
         Runtime.init(flutterPluginBinding.applicationContext, "maps-mobile")
 
         val viewFactory = ViewFactory(lifecycle)
@@ -28,10 +39,12 @@ class YandexMapsPlugin : FlutterPlugin, ActivityAware {
         )
 
         handlers.add(ViewMethodHandler(flutterPluginBinding, viewFactory))
+        handlers.add(RuntimeMethodHandler(flutterPluginBinding, this))
     }
 
     override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
-        Runtime.onDetachedFromEngine()
+        Log.d("YandexMapsPlugin", "Detach plugin from engine with id: $engineId")
+        Runtime.onDetachedFromEngine(engineId!!)
         for (handler in handlers) {
             handler.dispose()
         }

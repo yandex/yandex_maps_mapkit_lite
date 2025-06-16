@@ -431,3 +431,105 @@ final void Function(ffi.Pointer<ffi.Void>, core.int) _MapObjectCollection_set =
                     ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Int64)>>(
             'yandex_flutter_mapkit_map_MapObjectCollection_set_')
         .asFunction(isLeaf: true);
+
+@bindings_annotations.WeakInterface('mapkit.map.RootMapObjectCollection')
+@bindings_annotations.ContainerData(
+    toNative: 'RootMapObjectCollectionImpl.getNativePtr',
+    toPlatform:
+        '(val) => RootMapObjectCollectionImpl.fromOptionalPtr(val.cast<ffi.Pointer<ffi.Void>>().value)',
+    platformType: 'RootMapObjectCollection')
+class RootMapObjectCollectionImpl extends MapObjectCollectionImpl
+    implements RootMapObjectCollection, ffi.Finalizable {
+  static final _finalizer =
+      ffi.NativeFinalizer(_RootMapObjectCollection_free.cast());
+
+  /// @nodoc
+  RootMapObjectCollectionImpl.fromExternalPtr(ffi.Pointer<ffi.Void> ptr)
+      : super.fromExternalPtr(ptr);
+
+  /// @nodoc
+  @internal
+  RootMapObjectCollectionImpl.fromNativePtrImpl(ffi.Pointer<ffi.Void> ptr)
+      : super.fromExternalPtr(ptr) {
+    _finalizer.attach(this, ptr);
+  }
+
+  /// @nodoc
+  @internal
+  factory RootMapObjectCollectionImpl.fromNativePtr(
+          ffi.Pointer<ffi.Void> ptr) =>
+      weak_interface_wrapper.createFromNative(ptr);
+
+  @internal
+
+  /// @nodoc
+  static ffi.Pointer<ffi.Void> getNativePtr(RootMapObjectCollection? obj) {
+    if (obj == null) return ffi.nullptr;
+    return (obj as RootMapObjectCollectionImpl).ptr;
+  }
+
+  @core.override
+  core.bool isValid() {
+    return _RootMapObjectCollection_check(ptr);
+  }
+
+  @internal
+
+  /// @nodoc
+  static RootMapObjectCollection? fromOptionalPtr(ffi.Pointer<ffi.Void> ptr) {
+    if (ptr == ffi.nullptr) return null;
+    return RootMapObjectCollectionImpl.fromNativePtr(ptr);
+  }
+
+  @core.override
+  mapkit_conflict_resolution_mode.ConflictResolutionMode
+      get conflictResolutionMode {
+    final result = _RootMapObjectCollection_get_conflictResolutionMode(ptr);
+    exception.checkCallResult();
+    return mapkit_conflict_resolution_mode.ConflictResolutionModeImpl.fromInt(
+        result);
+  }
+
+  @core.override
+  set conflictResolutionMode(
+      mapkit_conflict_resolution_mode.ConflictResolutionMode val) {
+    _RootMapObjectCollection_set_conflictResolutionMode(ptr,
+        mapkit_conflict_resolution_mode.ConflictResolutionModeImpl.toInt(val));
+    exception.checkCallResult();
+  }
+}
+
+final _RootMapObjectCollection_free = lib.library
+    .lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
+        'yandex_flutter_mapkit_map_RootMapObjectCollection_free');
+final core.bool Function(ffi.Pointer<ffi.Void>) _RootMapObjectCollection_check =
+    lib
+        .library
+        .lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ffi.Void>)>>(
+            'yandex_flutter_mapkit_map_RootMapObjectCollection_check')
+        .asFunction(isLeaf: true);
+
+final core.int Function(
+    ffi.Pointer<
+        ffi.Void>) _RootMapObjectCollection_get_conflictResolutionMode = lib
+    .library
+    .lookup<ffi.NativeFunction<ffi.Int64 Function(ffi.Pointer<ffi.Void>)>>(
+        'yandex_flutter_mapkit_map_RootMapObjectCollection_get_conflictResolutionMode')
+    .asFunction();
+final void Function(
+    ffi.Pointer<ffi.Void>,
+    core
+        .int) _RootMapObjectCollection_set_conflictResolutionMode = lib.library
+    .lookup<
+            ffi.NativeFunction<
+                ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Int64)>>(
+        'yandex_flutter_mapkit_map_RootMapObjectCollection_set_conflictResolutionMode')
+    .asFunction();
+
+final void Function(ffi.Pointer<ffi.Void>, core.int)
+    _RootMapObjectCollection_set = lib.library
+        .lookup<
+                ffi.NativeFunction<
+                    ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Int64)>>(
+            'yandex_flutter_mapkit_map_RootMapObjectCollection_set_')
+        .asFunction(isLeaf: true);

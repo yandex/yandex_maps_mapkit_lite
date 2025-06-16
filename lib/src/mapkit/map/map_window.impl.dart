@@ -234,6 +234,12 @@ class MapWindowImpl implements MapWindow, ffi.Finalizable {
         ptr, runtime_view_surface.SurfaceImpl.getNativePtr(surface));
     exception.checkCallResult();
   }
+
+  mapkit_ui_overlay.Overlay addRasterScreenOverlay() {
+    final result = _MapWindow_addRasterScreenOverlay(ptr);
+    exception.checkCallResult();
+    return mapkit_ui_overlay.OverlayImpl.fromNativePtr(result);
+  }
 }
 
 final _MapWindow_free = lib.library
@@ -440,6 +446,13 @@ final void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)
                     ffi.Void Function(
                         ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>(
             'yandex_flutter_mapkit_map_MapWindow_removeSurface')
+        .asFunction();
+final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)
+    _MapWindow_addRasterScreenOverlay = lib.library
+        .lookup<
+                ffi.NativeFunction<
+                    ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
+            'yandex_flutter_mapkit_map_MapWindow_addRasterScreenOverlay')
         .asFunction();
 final void Function(ffi.Pointer<ffi.Void>, core.int) _MapWindow_set = lib
     .library
