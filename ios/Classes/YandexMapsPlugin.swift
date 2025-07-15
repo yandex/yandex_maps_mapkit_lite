@@ -33,6 +33,15 @@ public class YandexMapsPlugin: NSObject, FlutterPlugin {
           self._viewFactory.startView(id: id)
           result(nil)
       } else if (call.method == "onDartVMCreated") {
+          let args = call.arguments as! Dictionary<String, Any>
+          let inReleaseMode = args["inReleaseMode"] as! Bool
+
+          if (!inReleaseMode && _engineId != nil) {
+              YRTRuntime.onDetachedFromEngine(withEngineId: _engineId!)
+              result(_engineId!)
+              return
+          }
+
           let id = YRTRuntime.onDartVMCreated()
           if (_engineId != nil) {
               result(FlutterError(

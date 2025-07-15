@@ -1,3 +1,7 @@
+## 4.18.0-beta
+
+* Upgrade MapKit to 4.18.0-beta
+
 ## 4.17.0-beta
 
 * Upgrade MapKit to 4.17.0-beta
