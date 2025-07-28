@@ -22,12 +22,17 @@ import 'package:yandex_maps_mapkit_lite/src/mapkit/map/callback.dart'
     as mapkit_map_callback;
 import 'package:yandex_maps_mapkit_lite/src/mapkit/map/icon_style.dart'
     as mapkit_map_icon_style;
+import 'package:yandex_maps_mapkit_lite/src/mapkit/map/placemark_presentation.dart'
+    as mapkit_map_placemark_presentation;
 
 part 'placemark_animation.containers.dart';
 part 'placemark_animation.impl.dart';
 
 /// Provides an interface to load and control animation of placemark.
-abstract class PlacemarkAnimation implements ffi.Finalizable {
+abstract class PlacemarkAnimation
+    implements
+        mapkit_map_placemark_presentation.PlacemarkPresentation,
+        ffi.Finalizable {
   /// If true, animation will be played in the reverse direction. Default
   /// value is false.
   core.bool get reversed;

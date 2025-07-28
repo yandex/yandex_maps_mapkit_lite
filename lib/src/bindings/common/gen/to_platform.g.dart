@@ -22,11 +22,27 @@ StringMap<int> toMapInt(Pointer<Void> ptr) {
 
 @internal
 Vector<int> toVectorInt(Pointer<Void> ptr) {
+  return Vector(ptr, (val) => toPlatformFromPointerInt(val, needFree: false)!);
+}
+
+@internal
+Vector<int?> toVectorOptionalInt(Pointer<Void> ptr) {
   return Vector(ptr, (val) => toPlatformFromPointerInt(val, needFree: false));
 }
 
 @internal
 Vector<Vector<int>> toVectorVectorInt(Pointer<Void> ptr) {
+  return Vector(
+    ptr,
+    (val) {
+      assert(val != nullptr);
+      return toVectorInt(val.cast<Pointer<Void>>().value);
+    },
+  );
+}
+
+@internal
+Vector<Vector<int>?> toVectorVectorOptionalInt(Pointer<Void> ptr) {
   return Vector(
       ptr,
       (val) =>
@@ -35,6 +51,17 @@ Vector<Vector<int>> toVectorVectorInt(Pointer<Void> ptr) {
 
 @internal
 Vector<StringMap<int>> toVectorDictionaryInt(Pointer<Void> ptr) {
+  return Vector(
+    ptr,
+    (val) {
+      assert(val != nullptr);
+      return toMapInt(val.cast<Pointer<Void>>().value);
+    },
+  );
+}
+
+@internal
+Vector<StringMap<int>?> toVectorDictionaryOptionalInt(Pointer<Void> ptr) {
   return Vector(
       ptr,
       (val) =>
@@ -77,11 +104,28 @@ StringMap<int> toMapInt32(Pointer<Void> ptr) {
 
 @internal
 Vector<int> toVectorInt32(Pointer<Void> ptr) {
+  return Vector(
+      ptr, (val) => toPlatformFromPointerInt32(val, needFree: false)!);
+}
+
+@internal
+Vector<int?> toVectorOptionalInt32(Pointer<Void> ptr) {
   return Vector(ptr, (val) => toPlatformFromPointerInt32(val, needFree: false));
 }
 
 @internal
 Vector<Vector<int>> toVectorVectorInt32(Pointer<Void> ptr) {
+  return Vector(
+    ptr,
+    (val) {
+      assert(val != nullptr);
+      return toVectorInt32(val.cast<Pointer<Void>>().value);
+    },
+  );
+}
+
+@internal
+Vector<Vector<int>?> toVectorVectorOptionalInt32(Pointer<Void> ptr) {
   return Vector(
       ptr,
       (val) => val == nullptr
@@ -91,6 +135,17 @@ Vector<Vector<int>> toVectorVectorInt32(Pointer<Void> ptr) {
 
 @internal
 Vector<StringMap<int>> toVectorDictionaryInt32(Pointer<Void> ptr) {
+  return Vector(
+    ptr,
+    (val) {
+      assert(val != nullptr);
+      return toMapInt32(val.cast<Pointer<Void>>().value);
+    },
+  );
+}
+
+@internal
+Vector<StringMap<int>?> toVectorDictionaryOptionalInt32(Pointer<Void> ptr) {
   return Vector(
       ptr,
       (val) =>
@@ -134,11 +189,28 @@ StringMap<int> toMapInt64(Pointer<Void> ptr) {
 
 @internal
 Vector<int> toVectorInt64(Pointer<Void> ptr) {
+  return Vector(
+      ptr, (val) => toPlatformFromPointerInt64(val, needFree: false)!);
+}
+
+@internal
+Vector<int?> toVectorOptionalInt64(Pointer<Void> ptr) {
   return Vector(ptr, (val) => toPlatformFromPointerInt64(val, needFree: false));
 }
 
 @internal
 Vector<Vector<int>> toVectorVectorInt64(Pointer<Void> ptr) {
+  return Vector(
+    ptr,
+    (val) {
+      assert(val != nullptr);
+      return toVectorInt64(val.cast<Pointer<Void>>().value);
+    },
+  );
+}
+
+@internal
+Vector<Vector<int>?> toVectorVectorOptionalInt64(Pointer<Void> ptr) {
   return Vector(
       ptr,
       (val) => val == nullptr
@@ -148,6 +220,17 @@ Vector<Vector<int>> toVectorVectorInt64(Pointer<Void> ptr) {
 
 @internal
 Vector<StringMap<int>> toVectorDictionaryInt64(Pointer<Void> ptr) {
+  return Vector(
+    ptr,
+    (val) {
+      assert(val != nullptr);
+      return toMapInt64(val.cast<Pointer<Void>>().value);
+    },
+  );
+}
+
+@internal
+Vector<StringMap<int>?> toVectorDictionaryOptionalInt64(Pointer<Void> ptr) {
   return Vector(
       ptr,
       (val) =>
@@ -192,11 +275,28 @@ StringMap<int> toMapUint32(Pointer<Void> ptr) {
 @internal
 Vector<int> toVectorUint32(Pointer<Void> ptr) {
   return Vector(
+      ptr, (val) => toPlatformFromPointerUint32(val, needFree: false)!);
+}
+
+@internal
+Vector<int?> toVectorOptionalUint32(Pointer<Void> ptr) {
+  return Vector(
       ptr, (val) => toPlatformFromPointerUint32(val, needFree: false));
 }
 
 @internal
 Vector<Vector<int>> toVectorVectorUint32(Pointer<Void> ptr) {
+  return Vector(
+    ptr,
+    (val) {
+      assert(val != nullptr);
+      return toVectorUint32(val.cast<Pointer<Void>>().value);
+    },
+  );
+}
+
+@internal
+Vector<Vector<int>?> toVectorVectorOptionalUint32(Pointer<Void> ptr) {
   return Vector(
       ptr,
       (val) => val == nullptr
@@ -206,6 +306,17 @@ Vector<Vector<int>> toVectorVectorUint32(Pointer<Void> ptr) {
 
 @internal
 Vector<StringMap<int>> toVectorDictionaryUint32(Pointer<Void> ptr) {
+  return Vector(
+    ptr,
+    (val) {
+      assert(val != nullptr);
+      return toMapUint32(val.cast<Pointer<Void>>().value);
+    },
+  );
+}
+
+@internal
+Vector<StringMap<int>?> toVectorDictionaryOptionalUint32(Pointer<Void> ptr) {
   return Vector(
       ptr,
       (val) =>
@@ -249,11 +360,28 @@ StringMap<double> toMapFloat(Pointer<Void> ptr) {
 
 @internal
 Vector<double> toVectorFloat(Pointer<Void> ptr) {
+  return Vector(
+      ptr, (val) => toPlatformFromPointerFloat(val, needFree: false)!);
+}
+
+@internal
+Vector<double?> toVectorOptionalFloat(Pointer<Void> ptr) {
   return Vector(ptr, (val) => toPlatformFromPointerFloat(val, needFree: false));
 }
 
 @internal
 Vector<Vector<double>> toVectorVectorFloat(Pointer<Void> ptr) {
+  return Vector(
+    ptr,
+    (val) {
+      assert(val != nullptr);
+      return toVectorFloat(val.cast<Pointer<Void>>().value);
+    },
+  );
+}
+
+@internal
+Vector<Vector<double>?> toVectorVectorOptionalFloat(Pointer<Void> ptr) {
   return Vector(
       ptr,
       (val) => val == nullptr
@@ -263,6 +391,17 @@ Vector<Vector<double>> toVectorVectorFloat(Pointer<Void> ptr) {
 
 @internal
 Vector<StringMap<double>> toVectorDictionaryFloat(Pointer<Void> ptr) {
+  return Vector(
+    ptr,
+    (val) {
+      assert(val != nullptr);
+      return toMapFloat(val.cast<Pointer<Void>>().value);
+    },
+  );
+}
+
+@internal
+Vector<StringMap<double>?> toVectorDictionaryOptionalFloat(Pointer<Void> ptr) {
   return Vector(
       ptr,
       (val) =>
@@ -307,11 +446,28 @@ StringMap<double> toMapDouble(Pointer<Void> ptr) {
 @internal
 Vector<double> toVectorDouble(Pointer<Void> ptr) {
   return Vector(
+      ptr, (val) => toPlatformFromPointerDouble(val, needFree: false)!);
+}
+
+@internal
+Vector<double?> toVectorOptionalDouble(Pointer<Void> ptr) {
+  return Vector(
       ptr, (val) => toPlatformFromPointerDouble(val, needFree: false));
 }
 
 @internal
 Vector<Vector<double>> toVectorVectorDouble(Pointer<Void> ptr) {
+  return Vector(
+    ptr,
+    (val) {
+      assert(val != nullptr);
+      return toVectorDouble(val.cast<Pointer<Void>>().value);
+    },
+  );
+}
+
+@internal
+Vector<Vector<double>?> toVectorVectorOptionalDouble(Pointer<Void> ptr) {
   return Vector(
       ptr,
       (val) => val == nullptr
@@ -321,6 +477,17 @@ Vector<Vector<double>> toVectorVectorDouble(Pointer<Void> ptr) {
 
 @internal
 Vector<StringMap<double>> toVectorDictionaryDouble(Pointer<Void> ptr) {
+  return Vector(
+    ptr,
+    (val) {
+      assert(val != nullptr);
+      return toMapDouble(val.cast<Pointer<Void>>().value);
+    },
+  );
+}
+
+@internal
+Vector<StringMap<double>?> toVectorDictionaryOptionalDouble(Pointer<Void> ptr) {
   return Vector(
       ptr,
       (val) =>
@@ -364,11 +531,27 @@ StringMap<bool> toMapBool(Pointer<Void> ptr) {
 
 @internal
 Vector<bool> toVectorBool(Pointer<Void> ptr) {
+  return Vector(ptr, (val) => toPlatformFromPointerBool(val, needFree: false)!);
+}
+
+@internal
+Vector<bool?> toVectorOptionalBool(Pointer<Void> ptr) {
   return Vector(ptr, (val) => toPlatformFromPointerBool(val, needFree: false));
 }
 
 @internal
 Vector<Vector<bool>> toVectorVectorBool(Pointer<Void> ptr) {
+  return Vector(
+    ptr,
+    (val) {
+      assert(val != nullptr);
+      return toVectorBool(val.cast<Pointer<Void>>().value);
+    },
+  );
+}
+
+@internal
+Vector<Vector<bool>?> toVectorVectorOptionalBool(Pointer<Void> ptr) {
   return Vector(
       ptr,
       (val) => val == nullptr
@@ -378,6 +561,17 @@ Vector<Vector<bool>> toVectorVectorBool(Pointer<Void> ptr) {
 
 @internal
 Vector<StringMap<bool>> toVectorDictionaryBool(Pointer<Void> ptr) {
+  return Vector(
+    ptr,
+    (val) {
+      assert(val != nullptr);
+      return toMapBool(val.cast<Pointer<Void>>().value);
+    },
+  );
+}
+
+@internal
+Vector<StringMap<bool>?> toVectorDictionaryOptionalBool(Pointer<Void> ptr) {
   return Vector(
       ptr,
       (val) =>
@@ -422,11 +616,28 @@ StringMap<String> toMapString(Pointer<Void> ptr) {
 @internal
 Vector<String> toVectorString(Pointer<Void> ptr) {
   return Vector(
+      ptr, (val) => toPlatformFromPointerString(val, needFree: false)!);
+}
+
+@internal
+Vector<String?> toVectorOptionalString(Pointer<Void> ptr) {
+  return Vector(
       ptr, (val) => toPlatformFromPointerString(val, needFree: false));
 }
 
 @internal
 Vector<Vector<String>> toVectorVectorString(Pointer<Void> ptr) {
+  return Vector(
+    ptr,
+    (val) {
+      assert(val != nullptr);
+      return toVectorString(val.cast<Pointer<Void>>().value);
+    },
+  );
+}
+
+@internal
+Vector<Vector<String>?> toVectorVectorOptionalString(Pointer<Void> ptr) {
   return Vector(
       ptr,
       (val) => val == nullptr
@@ -436,6 +647,17 @@ Vector<Vector<String>> toVectorVectorString(Pointer<Void> ptr) {
 
 @internal
 Vector<StringMap<String>> toVectorDictionaryString(Pointer<Void> ptr) {
+  return Vector(
+    ptr,
+    (val) {
+      assert(val != nullptr);
+      return toMapString(val.cast<Pointer<Void>>().value);
+    },
+  );
+}
+
+@internal
+Vector<StringMap<String>?> toVectorDictionaryOptionalString(Pointer<Void> ptr) {
   return Vector(
       ptr,
       (val) =>
@@ -480,11 +702,28 @@ StringMap<ByteBuffer> toMapBytes(Pointer<Void> ptr) {
 
 @internal
 Vector<ByteBuffer> toVectorBytes(Pointer<Void> ptr) {
+  return Vector(
+      ptr, (val) => toPlatformFromPointerBytes(val, needFree: false)!);
+}
+
+@internal
+Vector<ByteBuffer?> toVectorOptionalBytes(Pointer<Void> ptr) {
   return Vector(ptr, (val) => toPlatformFromPointerBytes(val, needFree: false));
 }
 
 @internal
 Vector<Vector<ByteBuffer>> toVectorVectorBytes(Pointer<Void> ptr) {
+  return Vector(
+    ptr,
+    (val) {
+      assert(val != nullptr);
+      return toVectorBytes(val.cast<Pointer<Void>>().value);
+    },
+  );
+}
+
+@internal
+Vector<Vector<ByteBuffer>?> toVectorVectorOptionalBytes(Pointer<Void> ptr) {
   return Vector(
       ptr,
       (val) => val == nullptr
@@ -494,6 +733,18 @@ Vector<Vector<ByteBuffer>> toVectorVectorBytes(Pointer<Void> ptr) {
 
 @internal
 Vector<StringMap<ByteBuffer>> toVectorDictionaryBytes(Pointer<Void> ptr) {
+  return Vector(
+    ptr,
+    (val) {
+      assert(val != nullptr);
+      return toMapBytes(val.cast<Pointer<Void>>().value);
+    },
+  );
+}
+
+@internal
+Vector<StringMap<ByteBuffer>?> toVectorDictionaryOptionalBytes(
+    Pointer<Void> ptr) {
   return Vector(
       ptr,
       (val) =>
@@ -538,11 +789,28 @@ StringMap<Point<double>> toMapPoint(Pointer<Void> ptr) {
 
 @internal
 Vector<Point<double>> toVectorPoint(Pointer<Void> ptr) {
+  return Vector(
+      ptr, (val) => toPlatformFromPointerPoint(val, needFree: false)!);
+}
+
+@internal
+Vector<Point<double>?> toVectorOptionalPoint(Pointer<Void> ptr) {
   return Vector(ptr, (val) => toPlatformFromPointerPoint(val, needFree: false));
 }
 
 @internal
 Vector<Vector<Point<double>>> toVectorVectorPoint(Pointer<Void> ptr) {
+  return Vector(
+    ptr,
+    (val) {
+      assert(val != nullptr);
+      return toVectorPoint(val.cast<Pointer<Void>>().value);
+    },
+  );
+}
+
+@internal
+Vector<Vector<Point<double>>?> toVectorVectorOptionalPoint(Pointer<Void> ptr) {
   return Vector(
       ptr,
       (val) => val == nullptr
@@ -552,6 +820,18 @@ Vector<Vector<Point<double>>> toVectorVectorPoint(Pointer<Void> ptr) {
 
 @internal
 Vector<StringMap<Point<double>>> toVectorDictionaryPoint(Pointer<Void> ptr) {
+  return Vector(
+    ptr,
+    (val) {
+      assert(val != nullptr);
+      return toMapPoint(val.cast<Pointer<Void>>().value);
+    },
+  );
+}
+
+@internal
+Vector<StringMap<Point<double>>?> toVectorDictionaryOptionalPoint(
+    Pointer<Void> ptr) {
   return Vector(
       ptr,
       (val) =>
@@ -595,11 +875,28 @@ StringMap<Color> toMapColor(Pointer<Void> ptr) {
 
 @internal
 Vector<Color> toVectorColor(Pointer<Void> ptr) {
+  return Vector(
+      ptr, (val) => toPlatformFromPointerColor(val, needFree: false)!);
+}
+
+@internal
+Vector<Color?> toVectorOptionalColor(Pointer<Void> ptr) {
   return Vector(ptr, (val) => toPlatformFromPointerColor(val, needFree: false));
 }
 
 @internal
 Vector<Vector<Color>> toVectorVectorColor(Pointer<Void> ptr) {
+  return Vector(
+    ptr,
+    (val) {
+      assert(val != nullptr);
+      return toVectorColor(val.cast<Pointer<Void>>().value);
+    },
+  );
+}
+
+@internal
+Vector<Vector<Color>?> toVectorVectorOptionalColor(Pointer<Void> ptr) {
   return Vector(
       ptr,
       (val) => val == nullptr
@@ -609,6 +906,17 @@ Vector<Vector<Color>> toVectorVectorColor(Pointer<Void> ptr) {
 
 @internal
 Vector<StringMap<Color>> toVectorDictionaryColor(Pointer<Void> ptr) {
+  return Vector(
+    ptr,
+    (val) {
+      assert(val != nullptr);
+      return toMapColor(val.cast<Pointer<Void>>().value);
+    },
+  );
+}
+
+@internal
+Vector<StringMap<Color>?> toVectorDictionaryOptionalColor(Pointer<Void> ptr) {
   return Vector(
       ptr,
       (val) =>
@@ -654,11 +962,29 @@ StringMap<Duration> toMapTimeInterval(Pointer<Void> ptr) {
 @internal
 Vector<Duration> toVectorTimeInterval(Pointer<Void> ptr) {
   return Vector(
+      ptr, (val) => toPlatformFromPointerTimeInterval(val, needFree: false)!);
+}
+
+@internal
+Vector<Duration?> toVectorOptionalTimeInterval(Pointer<Void> ptr) {
+  return Vector(
       ptr, (val) => toPlatformFromPointerTimeInterval(val, needFree: false));
 }
 
 @internal
 Vector<Vector<Duration>> toVectorVectorTimeInterval(Pointer<Void> ptr) {
+  return Vector(
+    ptr,
+    (val) {
+      assert(val != nullptr);
+      return toVectorTimeInterval(val.cast<Pointer<Void>>().value);
+    },
+  );
+}
+
+@internal
+Vector<Vector<Duration>?> toVectorVectorOptionalTimeInterval(
+    Pointer<Void> ptr) {
   return Vector(
       ptr,
       (val) => val == nullptr
@@ -668,6 +994,18 @@ Vector<Vector<Duration>> toVectorVectorTimeInterval(Pointer<Void> ptr) {
 
 @internal
 Vector<StringMap<Duration>> toVectorDictionaryTimeInterval(Pointer<Void> ptr) {
+  return Vector(
+    ptr,
+    (val) {
+      assert(val != nullptr);
+      return toMapTimeInterval(val.cast<Pointer<Void>>().value);
+    },
+  );
+}
+
+@internal
+Vector<StringMap<Duration>?> toVectorDictionaryOptionalTimeInterval(
+    Pointer<Void> ptr) {
   return Vector(
       ptr,
       (val) => val == nullptr
@@ -715,11 +1053,29 @@ StringMap<DateTime> toMapAbsTimestamp(Pointer<Void> ptr) {
 @internal
 Vector<DateTime> toVectorAbsTimestamp(Pointer<Void> ptr) {
   return Vector(
+      ptr, (val) => toPlatformFromPointerAbsTimestamp(val, needFree: false)!);
+}
+
+@internal
+Vector<DateTime?> toVectorOptionalAbsTimestamp(Pointer<Void> ptr) {
+  return Vector(
       ptr, (val) => toPlatformFromPointerAbsTimestamp(val, needFree: false));
 }
 
 @internal
 Vector<Vector<DateTime>> toVectorVectorAbsTimestamp(Pointer<Void> ptr) {
+  return Vector(
+    ptr,
+    (val) {
+      assert(val != nullptr);
+      return toVectorAbsTimestamp(val.cast<Pointer<Void>>().value);
+    },
+  );
+}
+
+@internal
+Vector<Vector<DateTime>?> toVectorVectorOptionalAbsTimestamp(
+    Pointer<Void> ptr) {
   return Vector(
       ptr,
       (val) => val == nullptr
@@ -729,6 +1085,18 @@ Vector<Vector<DateTime>> toVectorVectorAbsTimestamp(Pointer<Void> ptr) {
 
 @internal
 Vector<StringMap<DateTime>> toVectorDictionaryAbsTimestamp(Pointer<Void> ptr) {
+  return Vector(
+    ptr,
+    (val) {
+      assert(val != nullptr);
+      return toMapAbsTimestamp(val.cast<Pointer<Void>>().value);
+    },
+  );
+}
+
+@internal
+Vector<StringMap<DateTime>?> toVectorDictionaryOptionalAbsTimestamp(
+    Pointer<Void> ptr) {
   return Vector(
       ptr,
       (val) => val == nullptr
@@ -776,11 +1144,29 @@ StringMap<DateTime> toMapRelTimestamp(Pointer<Void> ptr) {
 @internal
 Vector<DateTime> toVectorRelTimestamp(Pointer<Void> ptr) {
   return Vector(
+      ptr, (val) => toPlatformFromPointerRelTimestamp(val, needFree: false)!);
+}
+
+@internal
+Vector<DateTime?> toVectorOptionalRelTimestamp(Pointer<Void> ptr) {
+  return Vector(
       ptr, (val) => toPlatformFromPointerRelTimestamp(val, needFree: false));
 }
 
 @internal
 Vector<Vector<DateTime>> toVectorVectorRelTimestamp(Pointer<Void> ptr) {
+  return Vector(
+    ptr,
+    (val) {
+      assert(val != nullptr);
+      return toVectorRelTimestamp(val.cast<Pointer<Void>>().value);
+    },
+  );
+}
+
+@internal
+Vector<Vector<DateTime>?> toVectorVectorOptionalRelTimestamp(
+    Pointer<Void> ptr) {
   return Vector(
       ptr,
       (val) => val == nullptr
@@ -790,6 +1176,18 @@ Vector<Vector<DateTime>> toVectorVectorRelTimestamp(Pointer<Void> ptr) {
 
 @internal
 Vector<StringMap<DateTime>> toVectorDictionaryRelTimestamp(Pointer<Void> ptr) {
+  return Vector(
+    ptr,
+    (val) {
+      assert(val != nullptr);
+      return toMapRelTimestamp(val.cast<Pointer<Void>>().value);
+    },
+  );
+}
+
+@internal
+Vector<StringMap<DateTime>?> toVectorDictionaryOptionalRelTimestamp(
+    Pointer<Void> ptr) {
   return Vector(
       ptr,
       (val) => val == nullptr

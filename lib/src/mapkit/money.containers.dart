@@ -87,11 +87,28 @@ extension TaxiMoneyContainerExtension on TaxiMoney {
 
   static vector.Vector<TaxiMoney> toPlatformVector(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
+        ptr, (val) => TaxiMoneyImpl.fromPointer(val, needFree: false)!);
+  }
+
+  static vector.Vector<TaxiMoney?> toPlatformVectorOptional(
+      ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
         ptr, (val) => TaxiMoneyImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<TaxiMoney>> toPlatformVectorVector(
       ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<vector.Vector<TaxiMoney>?>
+      toPlatformVectorVectorOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -101,6 +118,17 @@ extension TaxiMoneyContainerExtension on TaxiMoney {
 
   static vector.Vector<string_map.StringMap<TaxiMoney>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<string_map.StringMap<TaxiMoney>?>
+      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr

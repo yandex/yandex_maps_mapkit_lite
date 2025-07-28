@@ -93,11 +93,30 @@ extension LocationManagerContainerExtension on LocationManager {
     return vector.Vector(
         ptr,
         (val) => LocationManagerImpl.fromOptionalPtr(
+            val.cast<ffi.Pointer<ffi.Void>>().value)!);
+  }
+
+  static vector.Vector<LocationManager?> toPlatformVectorOptional(
+      ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+        ptr,
+        (val) => LocationManagerImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
   static vector.Vector<vector.Vector<LocationManager>> toPlatformVectorVector(
       ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<vector.Vector<LocationManager>?>
+      toPlatformVectorVectorOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -107,6 +126,17 @@ extension LocationManagerContainerExtension on LocationManager {
 
   static vector.Vector<string_map.StringMap<LocationManager>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<string_map.StringMap<LocationManager>?>
+      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -197,12 +227,31 @@ extension LocationUseInBackgroundContainerExtension on LocationUseInBackground {
 
   static vector.Vector<LocationUseInBackground> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+        ptr,
+        (val) =>
+            LocationUseInBackgroundImpl.fromPointer(val, needFree: false)!);
+  }
+
+  static vector.Vector<LocationUseInBackground?> toPlatformVectorOptional(
+      ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(ptr,
         (val) => LocationUseInBackgroundImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<LocationUseInBackground>>
       toPlatformVectorVector(ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<vector.Vector<LocationUseInBackground>?>
+      toPlatformVectorVectorOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -212,6 +261,17 @@ extension LocationUseInBackgroundContainerExtension on LocationUseInBackground {
 
   static vector.Vector<string_map.StringMap<LocationUseInBackground>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<string_map.StringMap<LocationUseInBackground>?>
+      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -311,12 +371,31 @@ extension LocationSubscriptionSettingsContainerExtension
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
+        (val) => LocationSubscriptionSettingsImpl.fromPointer(val,
+            needFree: false)!);
+  }
+
+  static vector.Vector<LocationSubscriptionSettings?> toPlatformVectorOptional(
+      ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+        ptr,
         (val) =>
             LocationSubscriptionSettingsImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<LocationSubscriptionSettings>>
       toPlatformVectorVector(ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<vector.Vector<LocationSubscriptionSettings>?>
+      toPlatformVectorVectorOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -326,6 +405,17 @@ extension LocationSubscriptionSettingsContainerExtension
 
   static vector.Vector<string_map.StringMap<LocationSubscriptionSettings>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<string_map.StringMap<LocationSubscriptionSettings>?>
+      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr

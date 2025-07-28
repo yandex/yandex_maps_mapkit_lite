@@ -98,11 +98,30 @@ extension GeoObjectInspectionMetadataContainerExtension
     return vector.Vector(
         ptr,
         (val) =>
+            GeoObjectInspectionMetadataImpl.fromPointer(val, needFree: false)!);
+  }
+
+  static vector.Vector<GeoObjectInspectionMetadata?> toPlatformVectorOptional(
+      ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+        ptr,
+        (val) =>
             GeoObjectInspectionMetadataImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<GeoObjectInspectionMetadata>>
       toPlatformVectorVector(ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<vector.Vector<GeoObjectInspectionMetadata>?>
+      toPlatformVectorVectorOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -112,6 +131,17 @@ extension GeoObjectInspectionMetadataContainerExtension
 
   static vector.Vector<string_map.StringMap<GeoObjectInspectionMetadata>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<string_map.StringMap<GeoObjectInspectionMetadata>?>
+      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -215,11 +245,30 @@ extension GeoObjectInspectionMetadataObjectTypeContainerExtension
     return vector.Vector(
         ptr,
         (val) => GeoObjectInspectionMetadataObjectTypeImpl.fromPointer(val,
+            needFree: false)!);
+  }
+
+  static vector.Vector<GeoObjectInspectionMetadataObjectType?>
+      toPlatformVectorOptional(ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+        ptr,
+        (val) => GeoObjectInspectionMetadataObjectTypeImpl.fromPointer(val,
             needFree: false));
   }
 
   static vector.Vector<vector.Vector<GeoObjectInspectionMetadataObjectType>>
       toPlatformVectorVector(ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<vector.Vector<GeoObjectInspectionMetadataObjectType>?>
+      toPlatformVectorVectorOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -230,6 +279,18 @@ extension GeoObjectInspectionMetadataObjectTypeContainerExtension
   static vector
       .Vector<string_map.StringMap<GeoObjectInspectionMetadataObjectType>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector
+      .Vector<string_map.StringMap<GeoObjectInspectionMetadataObjectType>?>
+      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr

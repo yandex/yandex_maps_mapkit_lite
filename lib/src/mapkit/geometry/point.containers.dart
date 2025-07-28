@@ -85,10 +85,27 @@ extension PointContainerExtension on Point {
 
   static vector.Vector<Point> toPlatformVector(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
+        ptr, (val) => PointImpl.fromPointer(val, needFree: false)!);
+  }
+
+  static vector.Vector<Point?> toPlatformVectorOptional(
+      ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
         ptr, (val) => PointImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<Point>> toPlatformVectorVector(
+      ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<vector.Vector<Point>?> toPlatformVectorVectorOptional(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
@@ -99,6 +116,17 @@ extension PointContainerExtension on Point {
 
   static vector.Vector<string_map.StringMap<Point>> toPlatformVectorDictionary(
       ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<string_map.StringMap<Point>?>
+      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr

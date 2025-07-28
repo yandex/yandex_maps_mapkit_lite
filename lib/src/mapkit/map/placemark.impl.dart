@@ -88,6 +88,13 @@ class PlacemarkMapObjectImpl extends mapkit_map_map_object.MapObjectImpl
     exception.checkCallResult();
   }
 
+  @core.override
+  mapkit_map_placemark_text.PlacemarkText get text {
+    final result = _PlacemarkMapObject_get_text(ptr);
+    exception.checkCallResult();
+    return mapkit_map_placemark_text.PlacemarkTextImpl.fromNativePtr(result);
+  }
+
   void setIcon(image_provider.ImageProvider image) {
     _PlacemarkMapObject_setIcon(ptr, to_native.toNativeImageProvider(image));
     exception.checkCallResult();
@@ -129,6 +136,12 @@ class PlacemarkMapObjectImpl extends mapkit_map_map_object.MapObjectImpl
     exception.checkCallResult();
   }
 
+  mapkit_map_icon.Icon useIcon() {
+    final result = _PlacemarkMapObject_useIcon(ptr);
+    exception.checkCallResult();
+    return mapkit_map_icon.IconImpl.fromNativePtr(result);
+  }
+
   mapkit_map_composite_icon.CompositeIcon useCompositeIcon() {
     final result = _PlacemarkMapObject_useCompositeIcon(ptr);
     exception.checkCallResult();
@@ -146,6 +159,12 @@ class PlacemarkMapObjectImpl extends mapkit_map_map_object.MapObjectImpl
     exception.checkCallResult();
     return mapkit_map_placemark_animation.PlacemarkAnimationImpl.fromNativePtr(
         result);
+  }
+
+  mapkit_map_placemark_view.PlacemarkView useView() {
+    final result = _PlacemarkMapObject_useView(ptr);
+    exception.checkCallResult();
+    return mapkit_map_placemark_view.PlacemarkViewImpl.fromNativePtr(result);
   }
 
   void setView(view_provider.ViewProvider view) {
@@ -265,6 +284,14 @@ final void Function(ffi.Pointer<ffi.Void>, core.double)
             'yandex_flutter_mapkit_map_PlacemarkMapObject_set_opacity')
         .asFunction();
 
+final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)
+    _PlacemarkMapObject_get_text = lib.library
+        .lookup<
+                ffi.NativeFunction<
+                    ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
+            'yandex_flutter_mapkit_map_PlacemarkMapObject_get_text')
+        .asFunction();
+
 final void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)
     _PlacemarkMapObject_setIcon = lib.library
         .lookup<
@@ -318,6 +345,13 @@ final void Function(
             'yandex_flutter_mapkit_map_PlacemarkMapObject_setIconStyle')
         .asFunction();
 final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)
+    _PlacemarkMapObject_useIcon = lib.library
+        .lookup<
+                ffi.NativeFunction<
+                    ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
+            'yandex_flutter_mapkit_map_PlacemarkMapObject_useIcon')
+        .asFunction();
+final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)
     _PlacemarkMapObject_useCompositeIcon = lib.library
         .lookup<
                 ffi.NativeFunction<
@@ -337,6 +371,13 @@ final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)
                 ffi.NativeFunction<
                     ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
             'yandex_flutter_mapkit_map_PlacemarkMapObject_useAnimation')
+        .asFunction();
+final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)
+    _PlacemarkMapObject_useView = lib.library
+        .lookup<
+                ffi.NativeFunction<
+                    ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
+            'yandex_flutter_mapkit_map_PlacemarkMapObject_useView')
         .asFunction();
 final void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)
     _PlacemarkMapObject_setView = lib.library

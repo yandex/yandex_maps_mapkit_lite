@@ -87,10 +87,27 @@ extension PolylineContainerExtension on Polyline {
 
   static vector.Vector<Polyline> toPlatformVector(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
+        ptr, (val) => PolylineImpl.fromPointer(val, needFree: false)!);
+  }
+
+  static vector.Vector<Polyline?> toPlatformVectorOptional(
+      ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
         ptr, (val) => PolylineImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<Polyline>> toPlatformVectorVector(
+      ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<vector.Vector<Polyline>?> toPlatformVectorVectorOptional(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
@@ -101,6 +118,17 @@ extension PolylineContainerExtension on Polyline {
 
   static vector.Vector<string_map.StringMap<Polyline>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<string_map.StringMap<Polyline>?>
+      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -189,11 +217,28 @@ extension LinearRingContainerExtension on LinearRing {
 
   static vector.Vector<LinearRing> toPlatformVector(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
+        ptr, (val) => LinearRingImpl.fromPointer(val, needFree: false)!);
+  }
+
+  static vector.Vector<LinearRing?> toPlatformVectorOptional(
+      ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
         ptr, (val) => LinearRingImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<LinearRing>> toPlatformVectorVector(
       ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<vector.Vector<LinearRing>?>
+      toPlatformVectorVectorOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -203,6 +248,17 @@ extension LinearRingContainerExtension on LinearRing {
 
   static vector.Vector<string_map.StringMap<LinearRing>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<string_map.StringMap<LinearRing>?>
+      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -291,10 +347,27 @@ extension PolygonContainerExtension on Polygon {
 
   static vector.Vector<Polygon> toPlatformVector(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
+        ptr, (val) => PolygonImpl.fromPointer(val, needFree: false)!);
+  }
+
+  static vector.Vector<Polygon?> toPlatformVectorOptional(
+      ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
         ptr, (val) => PolygonImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<Polygon>> toPlatformVectorVector(
+      ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<vector.Vector<Polygon>?> toPlatformVectorVectorOptional(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
@@ -305,6 +378,17 @@ extension PolygonContainerExtension on Polygon {
 
   static vector.Vector<string_map.StringMap<Polygon>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<string_map.StringMap<Polygon>?>
+      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -394,11 +478,28 @@ extension MultiPolygonContainerExtension on MultiPolygon {
   static vector.Vector<MultiPolygon> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
+        ptr, (val) => MultiPolygonImpl.fromPointer(val, needFree: false)!);
+  }
+
+  static vector.Vector<MultiPolygon?> toPlatformVectorOptional(
+      ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
         ptr, (val) => MultiPolygonImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<MultiPolygon>> toPlatformVectorVector(
       ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<vector.Vector<MultiPolygon>?>
+      toPlatformVectorVectorOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -408,6 +509,17 @@ extension MultiPolygonContainerExtension on MultiPolygon {
 
   static vector.Vector<string_map.StringMap<MultiPolygon>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<string_map.StringMap<MultiPolygon>?>
+      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -497,11 +609,28 @@ extension BoundingBoxContainerExtension on BoundingBox {
   static vector.Vector<BoundingBox> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
+        ptr, (val) => BoundingBoxImpl.fromPointer(val, needFree: false)!);
+  }
+
+  static vector.Vector<BoundingBox?> toPlatformVectorOptional(
+      ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
         ptr, (val) => BoundingBoxImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<BoundingBox>> toPlatformVectorVector(
       ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<vector.Vector<BoundingBox>?>
+      toPlatformVectorVectorOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -511,6 +640,17 @@ extension BoundingBoxContainerExtension on BoundingBox {
 
   static vector.Vector<string_map.StringMap<BoundingBox>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<string_map.StringMap<BoundingBox>?>
+      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -598,10 +738,27 @@ extension CircleContainerExtension on Circle {
 
   static vector.Vector<Circle> toPlatformVector(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
+        ptr, (val) => CircleImpl.fromPointer(val, needFree: false)!);
+  }
+
+  static vector.Vector<Circle?> toPlatformVectorOptional(
+      ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
         ptr, (val) => CircleImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<Circle>> toPlatformVectorVector(
+      ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<vector.Vector<Circle>?> toPlatformVectorVectorOptional(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
@@ -612,6 +769,17 @@ extension CircleContainerExtension on Circle {
 
   static vector.Vector<string_map.StringMap<Circle>> toPlatformVectorDictionary(
       ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<string_map.StringMap<Circle>?>
+      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -700,10 +868,27 @@ extension SegmentContainerExtension on Segment {
 
   static vector.Vector<Segment> toPlatformVector(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
+        ptr, (val) => SegmentImpl.fromPointer(val, needFree: false)!);
+  }
+
+  static vector.Vector<Segment?> toPlatformVectorOptional(
+      ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
         ptr, (val) => SegmentImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<Segment>> toPlatformVectorVector(
+      ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<vector.Vector<Segment>?> toPlatformVectorVectorOptional(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
@@ -714,6 +899,17 @@ extension SegmentContainerExtension on Segment {
 
   static vector.Vector<string_map.StringMap<Segment>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<string_map.StringMap<Segment>?>
+      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -804,11 +1000,28 @@ extension PolylinePositionContainerExtension on PolylinePosition {
   static vector.Vector<PolylinePosition> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
+        ptr, (val) => PolylinePositionImpl.fromPointer(val, needFree: false)!);
+  }
+
+  static vector.Vector<PolylinePosition?> toPlatformVectorOptional(
+      ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
         ptr, (val) => PolylinePositionImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<PolylinePosition>> toPlatformVectorVector(
       ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<vector.Vector<PolylinePosition>?>
+      toPlatformVectorVectorOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -818,6 +1031,17 @@ extension PolylinePositionContainerExtension on PolylinePosition {
 
   static vector.Vector<string_map.StringMap<PolylinePosition>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<string_map.StringMap<PolylinePosition>?>
+      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -907,11 +1131,28 @@ extension SubpolylineContainerExtension on Subpolyline {
   static vector.Vector<Subpolyline> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
+        ptr, (val) => SubpolylineImpl.fromPointer(val, needFree: false)!);
+  }
+
+  static vector.Vector<Subpolyline?> toPlatformVectorOptional(
+      ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
         ptr, (val) => SubpolylineImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<Subpolyline>> toPlatformVectorVector(
       ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<vector.Vector<Subpolyline>?>
+      toPlatformVectorVectorOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -921,6 +1162,17 @@ extension SubpolylineContainerExtension on Subpolyline {
 
   static vector.Vector<string_map.StringMap<Subpolyline>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<string_map.StringMap<Subpolyline>?>
+      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -1009,10 +1261,27 @@ extension GeometryContainerExtension on Geometry {
 
   static vector.Vector<Geometry> toPlatformVector(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
+        ptr, (val) => GeometryImpl.fromPointer(val, needFree: false)!);
+  }
+
+  static vector.Vector<Geometry?> toPlatformVectorOptional(
+      ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
         ptr, (val) => GeometryImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<Geometry>> toPlatformVectorVector(
+      ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<vector.Vector<Geometry>?> toPlatformVectorVectorOptional(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
@@ -1023,6 +1292,17 @@ extension GeometryContainerExtension on Geometry {
 
   static vector.Vector<string_map.StringMap<Geometry>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<string_map.StringMap<Geometry>?>
+      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr

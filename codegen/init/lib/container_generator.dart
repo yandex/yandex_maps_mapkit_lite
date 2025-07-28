@@ -84,14 +84,38 @@ class ContainerGenerator extends GeneratorForAnnotation<ContainerData> {
   }
 
   static $vector<$platformType> toPlatformVector($nativeType ptr) {
+    return $vector(ptr, $toPlatform!);
+  }
+
+  static $vector<$platformType?> toPlatformVectorOptional($nativeType ptr) {
     return $vector(ptr, $toPlatform);
   }
 
   static $vector<$vector<$platformType>> toPlatformVectorVector($nativeType ptr) {
+    return $vector(
+      ptr,
+      (val) {
+        assert(val != $nullValue);
+        return toPlatformVector(val.cast<$nativeType>().value);
+      },
+    );
+  }
+
+  static $vector<$vector<$platformType>?> toPlatformVectorVectorOptional($nativeType ptr) {
     return $vector(ptr, (val) => val == $nullValue ? null : toPlatformVector(val.cast<$nativeType>().value));
   }
 
   static $vector<$stringMap<$platformType>> toPlatformVectorDictionary($nativeType ptr) {
+    return $vector(
+      ptr, 
+      (val) {
+        assert(val != $nullValue);
+        return toPlatformMap(val.cast<$nativeType>().value);
+      },
+    );
+  }
+
+  static $vector<$stringMap<$platformType>?> toPlatformVectorDictionaryOptional($nativeType ptr) {
     return $vector(ptr, (val) => val == $nullValue ? null : toPlatformMap(val.cast<$nativeType>().value));
   }
 }''';

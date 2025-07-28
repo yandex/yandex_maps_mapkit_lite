@@ -18,10 +18,10 @@ final bool Function() _isInit = library
     .lookup<NativeFunction<Bool Function()>>('yandex_maps_flutter_is_init')
     .asFunction(isLeaf: true);
 
-final void Function(int, Object) _attachEngineToCurrentIsolate = library
-    .lookup<NativeFunction<Void Function(Int, Handle)>>(
+final void Function(int) _attachEngineToCurrentIsolate = library
+    .lookup<NativeFunction<Void Function(Int)>>(
         'yandex_maps_flutter_attach_engine_to_current_isolate')
-    .asFunction();
+    .asFunction(isLeaf: true);
 
 bool _initDartApiCalled = false;
 
@@ -31,7 +31,7 @@ Future<void> initDartApi() async {
   _init(NativeApi.initializeApiDLData);
   final engineId = await const MapkitMethodChannel('runtime')
       .invokeMethod<int>('onDartVMCreated', {'inReleaseMode': kReleaseMode});
-  _attachEngineToCurrentIsolate(engineId!, Object());
+  _attachEngineToCurrentIsolate(engineId!);
 }
 
 Future<void> initMapkit(

@@ -88,12 +88,29 @@ extension RoadEventsEventTagContainerExtension on RoadEventsEventTag {
 
   static vector.Vector<RoadEventsEventTag> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(ptr,
+        (val) => RoadEventsEventTagImpl.fromPointer(val, needFree: false)!);
+  }
+
+  static vector.Vector<RoadEventsEventTag?> toPlatformVectorOptional(
+      ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr, (val) => RoadEventsEventTagImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<RoadEventsEventTag>>
       toPlatformVectorVector(ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<vector.Vector<RoadEventsEventTag>?>
+      toPlatformVectorVectorOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -103,6 +120,17 @@ extension RoadEventsEventTagContainerExtension on RoadEventsEventTag {
 
   static vector.Vector<string_map.StringMap<RoadEventsEventTag>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<string_map.StringMap<RoadEventsEventTag>?>
+      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr

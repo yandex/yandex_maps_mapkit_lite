@@ -57,6 +57,8 @@ public class YandexMapsPlugin: NSObject, FlutterPlugin {
   }
 
   public func detachFromEngine(for registrar: FlutterPluginRegistrar) {
-      YRTRuntime.onDetachedFromEngine(withEngineId: _engineId!)
+      if (_engineId != nil) {
+          YRTRuntime.onDetachedFromEngine(withEngineId: _engineId!)
+      }
   }
 }

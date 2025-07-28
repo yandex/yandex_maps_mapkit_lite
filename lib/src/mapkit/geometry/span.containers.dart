@@ -85,10 +85,27 @@ extension SpanContainerExtension on Span {
 
   static vector.Vector<Span> toPlatformVector(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
+        ptr, (val) => SpanImpl.fromPointer(val, needFree: false)!);
+  }
+
+  static vector.Vector<Span?> toPlatformVectorOptional(
+      ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
         ptr, (val) => SpanImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<Span>> toPlatformVectorVector(
+      ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<vector.Vector<Span>?> toPlatformVectorVectorOptional(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
@@ -99,6 +116,17 @@ extension SpanContainerExtension on Span {
 
   static vector.Vector<string_map.StringMap<Span>> toPlatformVectorDictionary(
       ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<string_map.StringMap<Span>?>
+      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr

@@ -88,11 +88,30 @@ extension ModelContainerExtension on Model {
   static vector.Vector<Model> toPlatformVector(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
+        (val) => ModelImpl.fromOptionalPtr(
+            val.cast<ffi.Pointer<ffi.Void>>().value)!);
+  }
+
+  static vector.Vector<Model?> toPlatformVectorOptional(
+      ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+        ptr,
         (val) =>
             ModelImpl.fromOptionalPtr(val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
   static vector.Vector<vector.Vector<Model>> toPlatformVectorVector(
+      ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<vector.Vector<Model>?> toPlatformVectorVectorOptional(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
@@ -103,6 +122,17 @@ extension ModelContainerExtension on Model {
 
   static vector.Vector<string_map.StringMap<Model>> toPlatformVectorDictionary(
       ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<string_map.StringMap<Model>?>
+      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr

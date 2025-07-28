@@ -6,17 +6,18 @@ part of 'composite_icon.dart';
     toPlatform:
         '(val) => CompositeIconImpl.fromOptionalPtr(val.cast<ffi.Pointer<ffi.Void>>().value)',
     platformType: 'CompositeIcon')
-class CompositeIconImpl implements CompositeIcon, ffi.Finalizable {
-  @protected
-  final ffi.Pointer<ffi.Void> ptr;
+class CompositeIconImpl extends mapkit_map_placemark_presentation
+    .PlacemarkPresentationImpl implements CompositeIcon, ffi.Finalizable {
   static final _finalizer = ffi.NativeFinalizer(_CompositeIcon_free.cast());
 
   /// @nodoc
-  CompositeIconImpl.fromExternalPtr(this.ptr);
+  CompositeIconImpl.fromExternalPtr(ffi.Pointer<ffi.Void> ptr)
+      : super.fromExternalPtr(ptr);
 
   /// @nodoc
   @internal
-  CompositeIconImpl.fromNativePtrImpl(this.ptr) {
+  CompositeIconImpl.fromNativePtrImpl(ffi.Pointer<ffi.Void> ptr)
+      : super.fromExternalPtr(ptr) {
     _finalizer.attach(this, ptr);
   }
 
@@ -88,6 +89,12 @@ class CompositeIconImpl implements CompositeIcon, ffi.Finalizable {
     exception.checkCallResult();
   }
 
+  mapkit_map_icon.Icon icon(core.String name) {
+    final result = _CompositeIcon_icon(ptr, to_native.toNativeString(name));
+    exception.checkCallResult();
+    return mapkit_map_icon.IconImpl.fromNativePtr(result);
+  }
+
   void removeIcon(core.String name) {
     _CompositeIcon_removeIcon(ptr, to_native.toNativeString(name));
     exception.checkCallResult();
@@ -147,6 +154,15 @@ final void Function(ffi.Pointer<ffi.Void>, native_types.NativeString,
                         native_types.NativeString,
                         mapkit_map_icon_style.IconStyleNative)>>(
             'yandex_flutter_mapkit_map_CompositeIcon_setIconStyle')
+        .asFunction();
+final ffi.Pointer<ffi.Void> Function(
+        ffi.Pointer<ffi.Void>, native_types.NativeString) _CompositeIcon_icon =
+    lib.library
+        .lookup<
+                ffi.NativeFunction<
+                    ffi.Pointer<ffi.Void> Function(
+                        ffi.Pointer<ffi.Void>, native_types.NativeString)>>(
+            'yandex_flutter_mapkit_map_CompositeIcon_icon')
         .asFunction();
 final void Function(ffi.Pointer<ffi.Void>, native_types.NativeString)
     _CompositeIcon_removeIcon = lib.library
