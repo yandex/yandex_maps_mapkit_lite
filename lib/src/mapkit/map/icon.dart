@@ -18,6 +18,8 @@ import 'package:yandex_maps_mapkit_lite/src/bindings/common/weak_interface_wrapp
     as weak_interface_wrapper;
 import 'package:yandex_maps_mapkit_lite/src/bindings/image/image_provider.dart'
     as image_provider;
+import 'package:yandex_maps_mapkit_lite/src/bindings/ui_view/view_provider.dart'
+    as view_provider;
 import 'package:yandex_maps_mapkit_lite/src/mapkit/map/callback.dart'
     as mapkit_map_callback;
 import 'package:yandex_maps_mapkit_lite/src/mapkit/map/icon_style.dart'
@@ -39,8 +41,11 @@ abstract class Icon
   mapkit_map_icon_style.IconStyle get style;
   set style(mapkit_map_icon_style.IconStyle val);
 
+  /// Sets the image with the default style for the icon.
+  void setImage(image_provider.ImageProvider image);
+
   /// Sets the image with the given style for the icon.
-  void setImage(image_provider.ImageProvider image,
+  void setImageWithStyle(image_provider.ImageProvider image,
       mapkit_map_icon_style.IconStyle style);
 
   /// Sets the image with the given style for the icon. The callback will
@@ -49,6 +54,22 @@ abstract class Icon
   /// [onFinished] Called when the icon is loaded.
   void setImageWithCallback(
       image_provider.ImageProvider image,
+      mapkit_map_icon_style.IconStyle style,
+      mapkit_map_callback.Callback onFinished);
+
+  /// Sets the view with the given style for the icon.
+  void setView(view_provider.ViewProvider view);
+
+  /// Sets the view with the default style for the icon.
+  void setViewWithStyle(
+      view_provider.ViewProvider view, mapkit_map_icon_style.IconStyle style);
+
+  /// Sets the view with the given style for the icon. The callback will be
+  /// called immediately after the icon finished loading.
+  ///
+  /// [onFinished] Called when the icon is loaded.
+  void setViewWithCallback(
+      view_provider.ViewProvider view,
       mapkit_map_icon_style.IconStyle style,
       mapkit_map_callback.Callback onFinished);
 

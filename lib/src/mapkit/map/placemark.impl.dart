@@ -161,12 +161,6 @@ class PlacemarkMapObjectImpl extends mapkit_map_map_object.MapObjectImpl
         result);
   }
 
-  mapkit_map_placemark_view.PlacemarkView useView() {
-    final result = _PlacemarkMapObject_useView(ptr);
-    exception.checkCallResult();
-    return mapkit_map_placemark_view.PlacemarkViewImpl.fromNativePtr(result);
-  }
-
   void setView(view_provider.ViewProvider view) {
     _PlacemarkMapObject_setView(ptr, to_native.toNativeViewProvider(view));
     exception.checkCallResult();
@@ -371,13 +365,6 @@ final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)
                 ffi.NativeFunction<
                     ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
             'yandex_flutter_mapkit_map_PlacemarkMapObject_useAnimation')
-        .asFunction();
-final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)
-    _PlacemarkMapObject_useView = lib.library
-        .lookup<
-                ffi.NativeFunction<
-                    ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
-            'yandex_flutter_mapkit_map_PlacemarkMapObject_useView')
         .asFunction();
 final void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)
     _PlacemarkMapObject_setView = lib.library

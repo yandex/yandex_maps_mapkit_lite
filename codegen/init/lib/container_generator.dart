@@ -1,4 +1,4 @@
-import 'package:analyzer/dart/element/element.dart';
+import 'package:analyzer/dart/element/element2.dart';
 import 'package:source_gen/source_gen.dart';
 import 'package:build/build.dart';
 import 'package:yandex_maps_mapkit_lite/src/bindings/annotations/annotations.dart';
@@ -6,12 +6,12 @@ import 'package:yandex_maps_mapkit_lite/src/bindings/annotations/annotations.dar
 class ContainerGenerator extends GeneratorForAnnotation<ContainerData> {
   @override
   Future<String> generateForAnnotatedElement(
-      Element element, ConstantReader annotation, BuildStep buildStep) async {
+      Element2 element, ConstantReader annotation, BuildStep buildStep) async {
     final toNative = annotation.read('toNative').stringValue;
     final toPlatform = annotation.read('toPlatform').stringValue;
     final platformTypeReader = annotation.read('platformType');
     final platformType = platformTypeReader.isNull
-        ? element.name
+        ? element.name3
         : platformTypeReader.stringValue;
 
     const nativeType = 'ffi.Pointer<ffi.Void>';
