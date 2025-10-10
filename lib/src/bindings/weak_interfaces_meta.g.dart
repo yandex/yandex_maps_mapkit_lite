@@ -87,8 +87,6 @@ const weakInterfacesMeta = {
       mapkit.BaseDataSourceBuilderImpl.fromNativePtrImpl,
   'mapkit.map.BaseMapObjectCollection':
       mapkit.BaseMapObjectCollectionImpl.fromNativePtrImpl,
-  'mapkit.map.BaseTileDataSourceBuilder':
-      mapkit.BaseTileDataSourceBuilderImpl.fromNativePtrImpl,
   'mapkit.map.CameraBounds': mapkit.CameraBoundsImpl.fromNativePtrImpl,
   'mapkit.map.CircleMapObject': mapkit.CircleMapObjectImpl.fromNativePtrImpl,
   'mapkit.map.Cluster': mapkit.ClusterImpl.fromNativePtrImpl,
