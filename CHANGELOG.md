@@ -1,3 +1,7 @@
+## 4.24.0-beta
+
+* Upgrade MapKit to 4.24.0-beta
+
 ## 4.23.0-beta
 
 * Upgrade MapKit to 4.23.0-beta
