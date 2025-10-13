@@ -98,30 +98,11 @@ extension GeoObjectSelectionMetadataContainerExtension
     return vector.Vector(
         ptr,
         (val) =>
-            GeoObjectSelectionMetadataImpl.fromPointer(val, needFree: false)!);
-  }
-
-  static vector.Vector<GeoObjectSelectionMetadata?> toPlatformVectorOptional(
-      ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-        ptr,
-        (val) =>
             GeoObjectSelectionMetadataImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<GeoObjectSelectionMetadata>>
       toPlatformVectorVector(ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-      ptr,
-      (val) {
-        assert(val != ffi.nullptr);
-        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
-      },
-    );
-  }
-
-  static vector.Vector<vector.Vector<GeoObjectSelectionMetadata>?>
-      toPlatformVectorVectorOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -131,17 +112,6 @@ extension GeoObjectSelectionMetadataContainerExtension
 
   static vector.Vector<string_map.StringMap<GeoObjectSelectionMetadata>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-      ptr,
-      (val) {
-        assert(val != ffi.nullptr);
-        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
-      },
-    );
-  }
-
-  static vector.Vector<string_map.StringMap<GeoObjectSelectionMetadata>?>
-      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr

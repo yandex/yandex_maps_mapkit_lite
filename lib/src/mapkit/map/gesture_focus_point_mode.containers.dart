@@ -90,28 +90,11 @@ extension GestureFocusPointModeContainerExtension on GestureFocusPointMode {
   static vector.Vector<GestureFocusPointMode> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(ptr,
-        (val) => GestureFocusPointModeImpl.fromPointer(val, needFree: false)!);
-  }
-
-  static vector.Vector<GestureFocusPointMode?> toPlatformVectorOptional(
-      ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(ptr,
         (val) => GestureFocusPointModeImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<GestureFocusPointMode>>
       toPlatformVectorVector(ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-      ptr,
-      (val) {
-        assert(val != ffi.nullptr);
-        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
-      },
-    );
-  }
-
-  static vector.Vector<vector.Vector<GestureFocusPointMode>?>
-      toPlatformVectorVectorOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -121,17 +104,6 @@ extension GestureFocusPointModeContainerExtension on GestureFocusPointMode {
 
   static vector.Vector<string_map.StringMap<GestureFocusPointMode>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-      ptr,
-      (val) {
-        assert(val != ffi.nullptr);
-        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
-      },
-    );
-  }
-
-  static vector.Vector<string_map.StringMap<GestureFocusPointMode>?>
-      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr

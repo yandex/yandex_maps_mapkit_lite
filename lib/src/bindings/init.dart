@@ -1,6 +1,5 @@
 import 'dart:ffi';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:yandex_maps_mapkit_lite/mapkit_factory.dart';
@@ -21,16 +20,17 @@ final bool Function() _isInit = library
 final void Function(int) _attachEngineToCurrentIsolate = library
     .lookup<NativeFunction<Void Function(Int)>>(
         'yandex_maps_flutter_attach_engine_to_current_isolate')
-    .asFunction(isLeaf: true);
+    .asFunction();
 
 bool _initDartApiCalled = false;
 
 Future<void> initDartApi() async {
   if (_initDartApiCalled) return;
   _initDartApiCalled = true;
+
   _init(NativeApi.initializeApiDLData);
   final engineId = await const MapkitMethodChannel('runtime')
-      .invokeMethod<int>('onDartVMCreated', {'inReleaseMode': kReleaseMode});
+      .invokeMethod<int>('onDartVMCreated');
   _attachEngineToCurrentIsolate(engineId!);
 }
 

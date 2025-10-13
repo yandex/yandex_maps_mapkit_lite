@@ -90,28 +90,11 @@ extension ConflictResolutionModeContainerExtension on ConflictResolutionMode {
   static vector.Vector<ConflictResolutionMode> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(ptr,
-        (val) => ConflictResolutionModeImpl.fromPointer(val, needFree: false)!);
-  }
-
-  static vector.Vector<ConflictResolutionMode?> toPlatformVectorOptional(
-      ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(ptr,
         (val) => ConflictResolutionModeImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<ConflictResolutionMode>>
       toPlatformVectorVector(ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-      ptr,
-      (val) {
-        assert(val != ffi.nullptr);
-        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
-      },
-    );
-  }
-
-  static vector.Vector<vector.Vector<ConflictResolutionMode>?>
-      toPlatformVectorVectorOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -121,17 +104,6 @@ extension ConflictResolutionModeContainerExtension on ConflictResolutionMode {
 
   static vector.Vector<string_map.StringMap<ConflictResolutionMode>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-      ptr,
-      (val) {
-        assert(val != ffi.nullptr);
-        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
-      },
-    );
-  }
-
-  static vector.Vector<string_map.StringMap<ConflictResolutionMode>?>
-      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr

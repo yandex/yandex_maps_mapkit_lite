@@ -134,17 +134,10 @@ class MapObjectImpl implements MapObject, ffi.Finalizable {
   }
 
   @core.override
-  core.Object? get userData {
-    final obj = _MapObject_get_userData(ptr);
-    if (obj is platform_data_holder.PlatformDataHolder) {
-      return obj.object;
-    }
-    return null;
-  }
+  core.Object? get userData => _MapObject_get_userData(ptr);
 
   @core.override
-  set userData(core.Object? val) => _MapObject_set_userData(
-      ptr, val != null ? platform_data_holder.PlatformDataHolder(val) : val);
+  set userData(core.Object? val) => _MapObject_set_userData(ptr, val);
 }
 
 final _MapObject_free = lib.library

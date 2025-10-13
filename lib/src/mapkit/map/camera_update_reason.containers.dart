@@ -88,29 +88,12 @@ extension CameraUpdateReasonContainerExtension on CameraUpdateReason {
 
   static vector.Vector<CameraUpdateReason> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(ptr,
-        (val) => CameraUpdateReasonImpl.fromPointer(val, needFree: false)!);
-  }
-
-  static vector.Vector<CameraUpdateReason?> toPlatformVectorOptional(
-      ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr, (val) => CameraUpdateReasonImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<CameraUpdateReason>>
       toPlatformVectorVector(ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-      ptr,
-      (val) {
-        assert(val != ffi.nullptr);
-        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
-      },
-    );
-  }
-
-  static vector.Vector<vector.Vector<CameraUpdateReason>?>
-      toPlatformVectorVectorOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -120,17 +103,6 @@ extension CameraUpdateReasonContainerExtension on CameraUpdateReason {
 
   static vector.Vector<string_map.StringMap<CameraUpdateReason>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-      ptr,
-      (val) {
-        assert(val != ffi.nullptr);
-        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
-      },
-    );
-  }
-
-  static vector.Vector<string_map.StringMap<CameraUpdateReason>?>
-      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr

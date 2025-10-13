@@ -6,18 +6,17 @@ part of 'model.dart';
     toPlatform:
         '(val) => ModelImpl.fromOptionalPtr(val.cast<ffi.Pointer<ffi.Void>>().value)',
     platformType: 'Model')
-class ModelImpl extends mapkit_map_placemark_presentation
-    .PlacemarkPresentationImpl implements Model, ffi.Finalizable {
+class ModelImpl implements Model, ffi.Finalizable {
+  @protected
+  final ffi.Pointer<ffi.Void> ptr;
   static final _finalizer = ffi.NativeFinalizer(_Model_free.cast());
 
   /// @nodoc
-  ModelImpl.fromExternalPtr(ffi.Pointer<ffi.Void> ptr)
-      : super.fromExternalPtr(ptr);
+  ModelImpl.fromExternalPtr(this.ptr);
 
   /// @nodoc
   @internal
-  ModelImpl.fromNativePtrImpl(ffi.Pointer<ffi.Void> ptr)
-      : super.fromExternalPtr(ptr) {
+  ModelImpl.fromNativePtrImpl(this.ptr) {
     _finalizer.attach(this, ptr);
   }
 

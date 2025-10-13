@@ -14,11 +14,7 @@ class LayerIds {
   LayerIds._();
 
   static core.String get mapLayerId => _mapLayerId;
-
-  /// Deprecated. There is no separate jams layer anymore.
   static core.String get jamsLayerId => _jamsLayerId;
-
-  /// Deprecated. There is no separate ppoi layer anymore.
   static core.String get personalizedPoiLayerId => _personalizedPoiLayerId;
   static core.String get transportLayerId => _transportLayerId;
   static core.String get searchPinsLayerId => _searchPinsLayerId;

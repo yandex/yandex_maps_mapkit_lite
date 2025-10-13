@@ -88,28 +88,11 @@ extension GeoObjectTagsContainerExtension on GeoObjectTags {
   static vector.Vector<GeoObjectTags> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => GeoObjectTagsImpl.fromPointer(val, needFree: false)!);
-  }
-
-  static vector.Vector<GeoObjectTags?> toPlatformVectorOptional(
-      ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
         ptr, (val) => GeoObjectTagsImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<GeoObjectTags>> toPlatformVectorVector(
       ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-      ptr,
-      (val) {
-        assert(val != ffi.nullptr);
-        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
-      },
-    );
-  }
-
-  static vector.Vector<vector.Vector<GeoObjectTags>?>
-      toPlatformVectorVectorOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -119,17 +102,6 @@ extension GeoObjectTagsContainerExtension on GeoObjectTags {
 
   static vector.Vector<string_map.StringMap<GeoObjectTags>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-      ptr,
-      (val) {
-        assert(val != ffi.nullptr);
-        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
-      },
-    );
-  }
-
-  static vector.Vector<string_map.StringMap<GeoObjectTags>?>
-      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr

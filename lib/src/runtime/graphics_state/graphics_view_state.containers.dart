@@ -89,28 +89,11 @@ extension GraphicsViewTypeContainerExtension on GraphicsViewType {
   static vector.Vector<GraphicsViewType> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => GraphicsViewTypeImpl.fromPointer(val, needFree: false)!);
-  }
-
-  static vector.Vector<GraphicsViewType?> toPlatformVectorOptional(
-      ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
         ptr, (val) => GraphicsViewTypeImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<GraphicsViewType>> toPlatformVectorVector(
       ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-      ptr,
-      (val) {
-        assert(val != ffi.nullptr);
-        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
-      },
-    );
-  }
-
-  static vector.Vector<vector.Vector<GraphicsViewType>?>
-      toPlatformVectorVectorOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -120,17 +103,6 @@ extension GraphicsViewTypeContainerExtension on GraphicsViewType {
 
   static vector.Vector<string_map.StringMap<GraphicsViewType>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-      ptr,
-      (val) {
-        assert(val != ffi.nullptr);
-        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
-      },
-    );
-  }
-
-  static vector.Vector<string_map.StringMap<GraphicsViewType>?>
-      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr

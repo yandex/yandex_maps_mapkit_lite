@@ -88,29 +88,12 @@ extension ConnectivityStatusContainerExtension on ConnectivityStatus {
 
   static vector.Vector<ConnectivityStatus> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(ptr,
-        (val) => ConnectivityStatusImpl.fromPointer(val, needFree: false)!);
-  }
-
-  static vector.Vector<ConnectivityStatus?> toPlatformVectorOptional(
-      ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr, (val) => ConnectivityStatusImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<ConnectivityStatus>>
       toPlatformVectorVector(ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-      ptr,
-      (val) {
-        assert(val != ffi.nullptr);
-        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
-      },
-    );
-  }
-
-  static vector.Vector<vector.Vector<ConnectivityStatus>?>
-      toPlatformVectorVectorOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -120,17 +103,6 @@ extension ConnectivityStatusContainerExtension on ConnectivityStatus {
 
   static vector.Vector<string_map.StringMap<ConnectivityStatus>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-      ptr,
-      (val) {
-        assert(val != ffi.nullptr);
-        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
-      },
-    );
-  }
-
-  static vector.Vector<string_map.StringMap<ConnectivityStatus>?>
-      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr

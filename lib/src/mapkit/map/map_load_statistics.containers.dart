@@ -89,28 +89,11 @@ extension MapLoadStatisticsContainerExtension on MapLoadStatistics {
   static vector.Vector<MapLoadStatistics> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => MapLoadStatisticsImpl.fromPointer(val, needFree: false)!);
-  }
-
-  static vector.Vector<MapLoadStatistics?> toPlatformVectorOptional(
-      ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
         ptr, (val) => MapLoadStatisticsImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<MapLoadStatistics>> toPlatformVectorVector(
       ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-      ptr,
-      (val) {
-        assert(val != ffi.nullptr);
-        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
-      },
-    );
-  }
-
-  static vector.Vector<vector.Vector<MapLoadStatistics>?>
-      toPlatformVectorVectorOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -120,17 +103,6 @@ extension MapLoadStatisticsContainerExtension on MapLoadStatistics {
 
   static vector.Vector<string_map.StringMap<MapLoadStatistics>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-      ptr,
-      (val) {
-        assert(val != ffi.nullptr);
-        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
-      },
-    );
-  }
-
-  static vector.Vector<string_map.StringMap<MapLoadStatistics>?>
-      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr

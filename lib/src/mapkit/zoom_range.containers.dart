@@ -88,28 +88,11 @@ extension ZoomRangeIdlContainerExtension on ZoomRangeIdl {
   static vector.Vector<ZoomRangeIdl> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => ZoomRangeIdlImpl.fromPointer(val, needFree: false)!);
-  }
-
-  static vector.Vector<ZoomRangeIdl?> toPlatformVectorOptional(
-      ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
         ptr, (val) => ZoomRangeIdlImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<ZoomRangeIdl>> toPlatformVectorVector(
       ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-      ptr,
-      (val) {
-        assert(val != ffi.nullptr);
-        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
-      },
-    );
-  }
-
-  static vector.Vector<vector.Vector<ZoomRangeIdl>?>
-      toPlatformVectorVectorOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -119,17 +102,6 @@ extension ZoomRangeIdlContainerExtension on ZoomRangeIdl {
 
   static vector.Vector<string_map.StringMap<ZoomRangeIdl>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-      ptr,
-      (val) {
-        assert(val != ffi.nullptr);
-        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
-      },
-    );
-  }
-
-  static vector.Vector<string_map.StringMap<ZoomRangeIdl>?>
-      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr

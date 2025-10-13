@@ -87,28 +87,11 @@ extension TextStyleContainerExtension on TextStyle {
 
   static vector.Vector<TextStyle> toPlatformVector(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => TextStyleImpl.fromPointer(val, needFree: false)!);
-  }
-
-  static vector.Vector<TextStyle?> toPlatformVectorOptional(
-      ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
         ptr, (val) => TextStyleImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<TextStyle>> toPlatformVectorVector(
       ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-      ptr,
-      (val) {
-        assert(val != ffi.nullptr);
-        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
-      },
-    );
-  }
-
-  static vector.Vector<vector.Vector<TextStyle>?>
-      toPlatformVectorVectorOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -118,17 +101,6 @@ extension TextStyleContainerExtension on TextStyle {
 
   static vector.Vector<string_map.StringMap<TextStyle>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-      ptr,
-      (val) {
-        assert(val != ffi.nullptr);
-        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
-      },
-    );
-  }
-
-  static vector.Vector<string_map.StringMap<TextStyle>?>
-      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -218,29 +190,12 @@ extension TextStylePlacementContainerExtension on TextStylePlacement {
 
   static vector.Vector<TextStylePlacement> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(ptr,
-        (val) => TextStylePlacementImpl.fromPointer(val, needFree: false)!);
-  }
-
-  static vector.Vector<TextStylePlacement?> toPlatformVectorOptional(
-      ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr, (val) => TextStylePlacementImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<TextStylePlacement>>
       toPlatformVectorVector(ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-      ptr,
-      (val) {
-        assert(val != ffi.nullptr);
-        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
-      },
-    );
-  }
-
-  static vector.Vector<vector.Vector<TextStylePlacement>?>
-      toPlatformVectorVectorOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -250,17 +205,6 @@ extension TextStylePlacementContainerExtension on TextStylePlacement {
 
   static vector.Vector<string_map.StringMap<TextStylePlacement>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-      ptr,
-      (val) {
-        assert(val != ffi.nullptr);
-        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
-      },
-    );
-  }
-
-  static vector.Vector<string_map.StringMap<TextStylePlacement>?>
-      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr

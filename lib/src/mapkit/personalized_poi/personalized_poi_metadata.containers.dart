@@ -101,30 +101,11 @@ extension PersonalizedPoiExtraMetadataEntryContainerExtension
     return vector.Vector(
         ptr,
         (val) => PersonalizedPoiExtraMetadataEntryImpl.fromPointer(val,
-            needFree: false)!);
-  }
-
-  static vector.Vector<PersonalizedPoiExtraMetadataEntry?>
-      toPlatformVectorOptional(ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-        ptr,
-        (val) => PersonalizedPoiExtraMetadataEntryImpl.fromPointer(val,
             needFree: false));
   }
 
   static vector.Vector<vector.Vector<PersonalizedPoiExtraMetadataEntry>>
       toPlatformVectorVector(ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-      ptr,
-      (val) {
-        assert(val != ffi.nullptr);
-        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
-      },
-    );
-  }
-
-  static vector.Vector<vector.Vector<PersonalizedPoiExtraMetadataEntry>?>
-      toPlatformVectorVectorOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -134,17 +115,6 @@ extension PersonalizedPoiExtraMetadataEntryContainerExtension
 
   static vector.Vector<string_map.StringMap<PersonalizedPoiExtraMetadataEntry>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-      ptr,
-      (val) {
-        assert(val != ffi.nullptr);
-        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
-      },
-    );
-  }
-
-  static vector.Vector<string_map.StringMap<PersonalizedPoiExtraMetadataEntry>?>
-      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -244,31 +214,12 @@ extension PersonalizedPoiExtraMetadataContainerExtension
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
-        (val) => PersonalizedPoiExtraMetadataImpl.fromPointer(val,
-            needFree: false)!);
-  }
-
-  static vector.Vector<PersonalizedPoiExtraMetadata?> toPlatformVectorOptional(
-      ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-        ptr,
         (val) =>
             PersonalizedPoiExtraMetadataImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<PersonalizedPoiExtraMetadata>>
       toPlatformVectorVector(ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-      ptr,
-      (val) {
-        assert(val != ffi.nullptr);
-        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
-      },
-    );
-  }
-
-  static vector.Vector<vector.Vector<PersonalizedPoiExtraMetadata>?>
-      toPlatformVectorVectorOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -278,17 +229,6 @@ extension PersonalizedPoiExtraMetadataContainerExtension
 
   static vector.Vector<string_map.StringMap<PersonalizedPoiExtraMetadata>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-      ptr,
-      (val) {
-        assert(val != ffi.nullptr);
-        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
-      },
-    );
-  }
-
-  static vector.Vector<string_map.StringMap<PersonalizedPoiExtraMetadata>?>
-      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr

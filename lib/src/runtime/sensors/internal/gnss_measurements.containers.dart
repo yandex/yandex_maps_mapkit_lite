@@ -87,28 +87,11 @@ extension GnssClockContainerExtension on GnssClock {
 
   static vector.Vector<GnssClock> toPlatformVector(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => GnssClockImpl.fromPointer(val, needFree: false)!);
-  }
-
-  static vector.Vector<GnssClock?> toPlatformVectorOptional(
-      ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
         ptr, (val) => GnssClockImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<GnssClock>> toPlatformVectorVector(
       ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-      ptr,
-      (val) {
-        assert(val != ffi.nullptr);
-        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
-      },
-    );
-  }
-
-  static vector.Vector<vector.Vector<GnssClock>?>
-      toPlatformVectorVectorOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -118,17 +101,6 @@ extension GnssClockContainerExtension on GnssClock {
 
   static vector.Vector<string_map.StringMap<GnssClock>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-      ptr,
-      (val) {
-        assert(val != ffi.nullptr);
-        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
-      },
-    );
-  }
-
-  static vector.Vector<string_map.StringMap<GnssClock>?>
-      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -219,28 +191,11 @@ extension GnssMeasurementContainerExtension on GnssMeasurement {
   static vector.Vector<GnssMeasurement> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
-        ptr, (val) => GnssMeasurementImpl.fromPointer(val, needFree: false)!);
-  }
-
-  static vector.Vector<GnssMeasurement?> toPlatformVectorOptional(
-      ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
         ptr, (val) => GnssMeasurementImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<GnssMeasurement>> toPlatformVectorVector(
       ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-      ptr,
-      (val) {
-        assert(val != ffi.nullptr);
-        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
-      },
-    );
-  }
-
-  static vector.Vector<vector.Vector<GnssMeasurement>?>
-      toPlatformVectorVectorOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -250,17 +205,6 @@ extension GnssMeasurementContainerExtension on GnssMeasurement {
 
   static vector.Vector<string_map.StringMap<GnssMeasurement>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-      ptr,
-      (val) {
-        assert(val != ffi.nullptr);
-        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
-      },
-    );
-  }
-
-  static vector.Vector<string_map.StringMap<GnssMeasurement>?>
-      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -352,28 +296,11 @@ extension GnssMeasurementsEventContainerExtension on GnssMeasurementsEvent {
   static vector.Vector<GnssMeasurementsEvent> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(ptr,
-        (val) => GnssMeasurementsEventImpl.fromPointer(val, needFree: false)!);
-  }
-
-  static vector.Vector<GnssMeasurementsEvent?> toPlatformVectorOptional(
-      ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(ptr,
         (val) => GnssMeasurementsEventImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<GnssMeasurementsEvent>>
       toPlatformVectorVector(ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-      ptr,
-      (val) {
-        assert(val != ffi.nullptr);
-        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
-      },
-    );
-  }
-
-  static vector.Vector<vector.Vector<GnssMeasurementsEvent>?>
-      toPlatformVectorVectorOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -383,17 +310,6 @@ extension GnssMeasurementsEventContainerExtension on GnssMeasurementsEvent {
 
   static vector.Vector<string_map.StringMap<GnssMeasurementsEvent>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-      ptr,
-      (val) {
-        assert(val != ffi.nullptr);
-        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
-      },
-    );
-  }
-
-  static vector.Vector<string_map.StringMap<GnssMeasurementsEvent>?>
-      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -497,30 +413,11 @@ extension GnssMeasurementsEventsNativeListenerContainerExtension
     return vector.Vector(
         ptr,
         (val) => GnssMeasurementsEventsNativeListenerImpl.fromOptionalPtr(
-            val.cast<ffi.Pointer<ffi.Void>>().value)!);
-  }
-
-  static vector.Vector<GnssMeasurementsEventsNativeListener?>
-      toPlatformVectorOptional(ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-        ptr,
-        (val) => GnssMeasurementsEventsNativeListenerImpl.fromOptionalPtr(
             val.cast<ffi.Pointer<ffi.Void>>().value));
   }
 
   static vector.Vector<vector.Vector<GnssMeasurementsEventsNativeListener>>
       toPlatformVectorVector(ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-      ptr,
-      (val) {
-        assert(val != ffi.nullptr);
-        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
-      },
-    );
-  }
-
-  static vector.Vector<vector.Vector<GnssMeasurementsEventsNativeListener>?>
-      toPlatformVectorVectorOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -531,18 +428,6 @@ extension GnssMeasurementsEventsNativeListenerContainerExtension
   static vector
       .Vector<string_map.StringMap<GnssMeasurementsEventsNativeListener>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-      ptr,
-      (val) {
-        assert(val != ffi.nullptr);
-        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
-      },
-    );
-  }
-
-  static vector
-      .Vector<string_map.StringMap<GnssMeasurementsEventsNativeListener>?>
-      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr

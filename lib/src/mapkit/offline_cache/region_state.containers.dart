@@ -89,31 +89,12 @@ extension OfflineCacheRegionStateContainerExtension on OfflineCacheRegionState {
 
   static vector.Vector<OfflineCacheRegionState> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-        ptr,
-        (val) =>
-            OfflineCacheRegionStateImpl.fromPointer(val, needFree: false)!);
-  }
-
-  static vector.Vector<OfflineCacheRegionState?> toPlatformVectorOptional(
-      ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(ptr,
         (val) => OfflineCacheRegionStateImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<OfflineCacheRegionState>>
       toPlatformVectorVector(ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-      ptr,
-      (val) {
-        assert(val != ffi.nullptr);
-        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
-      },
-    );
-  }
-
-  static vector.Vector<vector.Vector<OfflineCacheRegionState>?>
-      toPlatformVectorVectorOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -123,17 +104,6 @@ extension OfflineCacheRegionStateContainerExtension on OfflineCacheRegionState {
 
   static vector.Vector<string_map.StringMap<OfflineCacheRegionState>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
-    return vector.Vector(
-      ptr,
-      (val) {
-        assert(val != ffi.nullptr);
-        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
-      },
-    );
-  }
-
-  static vector.Vector<string_map.StringMap<OfflineCacheRegionState>?>
-      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
