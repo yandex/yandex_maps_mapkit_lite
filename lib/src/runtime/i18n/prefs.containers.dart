@@ -90,11 +90,28 @@ extension SystemOfMeasurementContainerExtension on SystemOfMeasurement {
   static vector.Vector<SystemOfMeasurement> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(ptr,
+        (val) => SystemOfMeasurementImpl.fromPointer(val, needFree: false)!);
+  }
+
+  static vector.Vector<SystemOfMeasurement?> toPlatformVectorOptional(
+      ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(ptr,
         (val) => SystemOfMeasurementImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<SystemOfMeasurement>>
       toPlatformVectorVector(ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<vector.Vector<SystemOfMeasurement>?>
+      toPlatformVectorVectorOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -104,6 +121,17 @@ extension SystemOfMeasurementContainerExtension on SystemOfMeasurement {
 
   static vector.Vector<string_map.StringMap<SystemOfMeasurement>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<string_map.StringMap<SystemOfMeasurement>?>
+      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -192,11 +220,28 @@ extension TimeFormatContainerExtension on TimeFormat {
 
   static vector.Vector<TimeFormat> toPlatformVector(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
+        ptr, (val) => TimeFormatImpl.fromPointer(val, needFree: false)!);
+  }
+
+  static vector.Vector<TimeFormat?> toPlatformVectorOptional(
+      ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
         ptr, (val) => TimeFormatImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<TimeFormat>> toPlatformVectorVector(
       ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<vector.Vector<TimeFormat>?>
+      toPlatformVectorVectorOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -206,6 +251,17 @@ extension TimeFormatContainerExtension on TimeFormat {
 
   static vector.Vector<string_map.StringMap<TimeFormat>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<string_map.StringMap<TimeFormat>?>
+      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -294,11 +350,28 @@ extension I18nPrefsContainerExtension on I18nPrefs {
 
   static vector.Vector<I18nPrefs> toPlatformVector(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
+        ptr, (val) => I18nPrefsImpl.fromPointer(val, needFree: false)!);
+  }
+
+  static vector.Vector<I18nPrefs?> toPlatformVectorOptional(
+      ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
         ptr, (val) => I18nPrefsImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<I18nPrefs>> toPlatformVectorVector(
       ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<vector.Vector<I18nPrefs>?>
+      toPlatformVectorVectorOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -308,6 +381,17 @@ extension I18nPrefsContainerExtension on I18nPrefs {
 
   static vector.Vector<string_map.StringMap<I18nPrefs>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<string_map.StringMap<I18nPrefs>?>
+      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr

@@ -32,7 +32,7 @@ import 'package:yandex_maps_mapkit_lite/src/mapkit/zoom_range.dart'
 part 'tile_data_source_builder.containers.dart';
 part 'tile_data_source_builder.impl.dart';
 
-abstract class BaseTileDataSourceBuilder
+abstract class TileDataSourceBuilder
     implements
         mapkit_map_base_data_source_builder.BaseDataSourceBuilder,
         ffi.Finalizable {
@@ -53,11 +53,6 @@ abstract class BaseTileDataSourceBuilder
 
   void setTileFormat(mapkit_layers_tile_format.TileFormat format);
 
-  core.bool isValid();
-}
-
-abstract class TileDataSourceBuilder
-    implements BaseTileDataSourceBuilder, ffi.Finalizable {
   core.bool isValid();
 }
 

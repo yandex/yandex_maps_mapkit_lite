@@ -3,6 +3,7 @@ import 'package:yandex_maps_mapkit_lite/src/bindings/common/library.dart'
     as lib;
 
 import 'dart:core' as core;
+import 'package:ffi/ffi.dart';
 import 'package:meta/meta.dart';
 import 'package:yandex_maps_mapkit_lite/src/bindings/annotations/annotations.dart'
     as bindings_annotations;
@@ -17,6 +18,20 @@ import 'package:yandex_maps_mapkit_lite/src/mapkit/location/location_manager.dar
 
 part 'dummy_location_manager.containers.dart';
 part 'dummy_location_manager.impl.dart';
+
+/// The overall current quality of locations.
+///
+/// This is used to switch MapKit between different operating modes. If
+/// the locations are of high-quality and frequent (1 Hz), then specify
+/// 'High'; otherwise, specify 'Low'.
+///
+/// It is strongly recommended not to change it often, e.g., every
+/// location.
+enum DummyLocationQuality {
+  High,
+  Low,
+  ;
+}
 
 /// Provides the ability to set any location and notify all consumers of
 /// this location.
@@ -35,5 +50,6 @@ abstract class DummyLocationManager
   /// Sets a location and notifies all consumers of this location.
   ///
   /// [location] Any desirable location that we would like to provide.
-  void setLocation(mapkit_location_location.Location location);
+  void setLocation(
+      mapkit_location_location.Location location, DummyLocationQuality quality);
 }

@@ -31,15 +31,6 @@ import 'package:yandex_maps_mapkit_lite/src/mapkit/location/location_manager.dar
 part 'location_simulator.containers.dart';
 part 'location_simulator.impl.dart';
 
-enum SimulationAccuracy {
-  /// Generate locations strictly the geometry
-  Fine,
-
-  /// Generate locations with normal distribution
-  Coarse,
-  ;
-}
-
 /// Listens for updates for location simulation.
 abstract class LocationSimulatorListener {
   /// Simulation is finished.
@@ -132,63 +123,53 @@ abstract final class LocationError implements ffi.Finalizable {
   }
 }
 
-abstract final class LocationSettings implements ffi.Finalizable {
-  factory LocationSettings(
-          core.bool provideAccuracy,
-          Range? accuracy,
-          TimeInterval locationTimeInterval,
-          core.bool provideSpeed,
-          core.double speed,
-          core.bool provideHeading,
-          Range? headingError,
-          LocationError locationError,
-          core.bool provideWheelSpeed,
-          TimeInterval wheelSpeedTimeInterval) =>
-      LocationSettingsImpl(
-          provideAccuracy,
-          accuracy,
-          locationTimeInterval,
-          provideSpeed,
-          speed,
-          provideHeading,
-          headingError,
-          locationError,
-          provideWheelSpeed,
-          wheelSpeedTimeInterval);
-
-  LocationSettings._();
-
+final class LocationSettings {
   /// Flag whether to provide accuracy value.
-  core.bool get provideAccuracy;
+  final core.bool provideAccuracy;
 
   /// Location accuracy range in meters.
   ///
-  Range? get accuracy;
+  final Range? accuracy;
 
   /// Location time interval in milliseconds.
-  TimeInterval get locationTimeInterval;
+  ///
+  final TimeInterval? locationTimeInterval;
 
   /// Flag whether to provide speed value.
-  core.bool get provideSpeed;
+  final core.bool provideSpeed;
 
   /// The speed in meters per second.
-  core.double get speed;
+  final core.double speed;
 
   /// Flag whether to provide error of heading.
-  core.bool get provideHeading;
+  final core.bool provideHeading;
 
   /// The current heading error range in degrees relative to true heading,
   /// clockwise.
   ///
-  Range? get headingError;
-  LocationError get locationError;
+  final Range? headingError;
+  final LocationError? locationError;
 
   /// Flag whether to provide wheel speed value.
-  core.bool get provideWheelSpeed;
+  final core.bool provideWheelSpeed;
 
   /// Time interval of getting the wheel speed in milliseconds. After
   /// publication the wheel speed corresponds to the speed value.
-  TimeInterval get wheelSpeedTimeInterval;
+  ///
+  final TimeInterval? wheelSpeedTimeInterval;
+
+  const LocationSettings({
+    this.provideAccuracy = false,
+    this.accuracy,
+    this.locationTimeInterval,
+    this.provideSpeed = false,
+    this.speed = 0.0,
+    this.provideHeading = false,
+    this.headingError,
+    this.locationError,
+    this.provideWheelSpeed = false,
+    this.wheelSpeedTimeInterval,
+  });
 
   @core.override
   core.int get hashCode => core.Object.hashAll([
@@ -255,18 +236,23 @@ abstract final class SimulationSettings implements ffi.Finalizable {
   }
 }
 
+class LocationSettingsFactory {
+  LocationSettingsFactory._();
+
+  static LocationSettings fineSettings() {
+    return _fineSettings();
+  }
+
+  static LocationSettings coarseSettings() {
+    return _coarseSettings();
+  }
+}
+
 /// Simulates the device location.
 abstract class LocationSimulator
     implements
         mapkit_location_location_manager.LocationManager,
         ffi.Finalizable {
-  /// The polyline describing the location.
-  ///
-  @core.Deprecated('Now field in SimulationSettings settings.')
-  mapkit_geometry_geometry.Polyline? get geometry;
-  @core.Deprecated('Now field in SimulationSettings settings.')
-  set geometry(mapkit_geometry_geometry.Polyline? val);
-
   /// Movement speed.
   @core.Deprecated('Now field in settings.')
   core.double get speed;
@@ -296,15 +282,12 @@ abstract class LocationSimulator
 
   /// Start simulation.
   ///
-  /// [simulationAccuracy] Generate locations with given accuracy.
-  void startSimulation(SimulationAccuracy simulationAccuracy);
+  /// [settings] Generate locations with given simulation settings.
+  void startSimulation(core.List<SimulationSettings> settings);
 
   /// Stop simulation.
   void stopSimulation();
 
   /// The position of the polyline.
   mapkit_geometry_geometry.PolylinePosition polylinePosition();
-
-  /// Fill location::Location::speed.
-  void setLocationSpeedProviding(core.bool provide);
 }

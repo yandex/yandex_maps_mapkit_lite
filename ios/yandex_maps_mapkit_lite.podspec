@@ -11,9 +11,9 @@ Pod::Spec.new do |s|
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
 
-  s.frameworks = 'CoreFoundation', 'Foundation', 'CoreLocation', 'UIKit', 'OpenGLES', 'SystemConfiguration', 'CoreGraphics', 'QuartzCore', 'Security', 'CoreTelephony', 'CoreMotion', 'DeviceCheck'
+  s.frameworks = 'CoreFoundation', 'Foundation', 'CoreLocation', 'UIKit', 'OpenGLES', 'SystemConfiguration', 'CoreGraphics', 'QuartzCore', 'Security', 'CoreTelephony', 'CoreMotion', 'DeviceCheck', 'NetworkExtension'
 
-  mapkit_version = '4.17.2-beta-lite-flutter'
+  mapkit_version = '4.25.0-beta-lite-flutter'
 
   s.libraries = 'resolv', 'c++'
   s.static_framework = true

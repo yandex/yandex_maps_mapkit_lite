@@ -90,11 +90,28 @@ extension GeoObjectCollectionContainerExtension on GeoObjectCollection {
   static vector.Vector<GeoObjectCollection> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(ptr,
+        (val) => GeoObjectCollectionImpl.fromPointer(val, needFree: false)!);
+  }
+
+  static vector.Vector<GeoObjectCollection?> toPlatformVectorOptional(
+      ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(ptr,
         (val) => GeoObjectCollectionImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<GeoObjectCollection>>
       toPlatformVectorVector(ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<vector.Vector<GeoObjectCollection>?>
+      toPlatformVectorVectorOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -104,6 +121,17 @@ extension GeoObjectCollectionContainerExtension on GeoObjectCollection {
 
   static vector.Vector<string_map.StringMap<GeoObjectCollection>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<string_map.StringMap<GeoObjectCollection>?>
+      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -194,12 +222,31 @@ extension GeoObjectCollectionItemContainerExtension on GeoObjectCollectionItem {
 
   static vector.Vector<GeoObjectCollectionItem> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+        ptr,
+        (val) =>
+            GeoObjectCollectionItemImpl.fromPointer(val, needFree: false)!);
+  }
+
+  static vector.Vector<GeoObjectCollectionItem?> toPlatformVectorOptional(
+      ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(ptr,
         (val) => GeoObjectCollectionItemImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<GeoObjectCollectionItem>>
       toPlatformVectorVector(ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<vector.Vector<GeoObjectCollectionItem>?>
+      toPlatformVectorVectorOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -209,6 +256,17 @@ extension GeoObjectCollectionItemContainerExtension on GeoObjectCollectionItem {
 
   static vector.Vector<string_map.StringMap<GeoObjectCollectionItem>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<string_map.StringMap<GeoObjectCollectionItem>?>
+      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr

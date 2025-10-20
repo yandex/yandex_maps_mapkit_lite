@@ -89,12 +89,31 @@ extension LogoHorizontalAlignmentContainerExtension on LogoHorizontalAlignment {
 
   static vector.Vector<LogoHorizontalAlignment> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+        ptr,
+        (val) =>
+            LogoHorizontalAlignmentImpl.fromPointer(val, needFree: false)!);
+  }
+
+  static vector.Vector<LogoHorizontalAlignment?> toPlatformVectorOptional(
+      ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(ptr,
         (val) => LogoHorizontalAlignmentImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<LogoHorizontalAlignment>>
       toPlatformVectorVector(ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<vector.Vector<LogoHorizontalAlignment>?>
+      toPlatformVectorVectorOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -104,6 +123,17 @@ extension LogoHorizontalAlignmentContainerExtension on LogoHorizontalAlignment {
 
   static vector.Vector<string_map.StringMap<LogoHorizontalAlignment>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<string_map.StringMap<LogoHorizontalAlignment>?>
+      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -195,11 +225,28 @@ extension LogoVerticalAlignmentContainerExtension on LogoVerticalAlignment {
   static vector.Vector<LogoVerticalAlignment> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(ptr,
+        (val) => LogoVerticalAlignmentImpl.fromPointer(val, needFree: false)!);
+  }
+
+  static vector.Vector<LogoVerticalAlignment?> toPlatformVectorOptional(
+      ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(ptr,
         (val) => LogoVerticalAlignmentImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<LogoVerticalAlignment>>
       toPlatformVectorVector(ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<vector.Vector<LogoVerticalAlignment>?>
+      toPlatformVectorVectorOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -209,6 +256,17 @@ extension LogoVerticalAlignmentContainerExtension on LogoVerticalAlignment {
 
   static vector.Vector<string_map.StringMap<LogoVerticalAlignment>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<string_map.StringMap<LogoVerticalAlignment>?>
+      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -298,11 +356,28 @@ extension LogoAlignmentContainerExtension on LogoAlignment {
   static vector.Vector<LogoAlignment> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
+        ptr, (val) => LogoAlignmentImpl.fromPointer(val, needFree: false)!);
+  }
+
+  static vector.Vector<LogoAlignment?> toPlatformVectorOptional(
+      ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
         ptr, (val) => LogoAlignmentImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<LogoAlignment>> toPlatformVectorVector(
       ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<vector.Vector<LogoAlignment>?>
+      toPlatformVectorVectorOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -312,6 +387,17 @@ extension LogoAlignmentContainerExtension on LogoAlignment {
 
   static vector.Vector<string_map.StringMap<LogoAlignment>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<string_map.StringMap<LogoAlignment>?>
+      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr

@@ -87,11 +87,28 @@ extension ModelStyleContainerExtension on ModelStyle {
 
   static vector.Vector<ModelStyle> toPlatformVector(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
+        ptr, (val) => ModelStyleImpl.fromPointer(val, needFree: false)!);
+  }
+
+  static vector.Vector<ModelStyle?> toPlatformVectorOptional(
+      ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
         ptr, (val) => ModelStyleImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<ModelStyle>> toPlatformVectorVector(
       ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<vector.Vector<ModelStyle>?>
+      toPlatformVectorVectorOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -101,6 +118,17 @@ extension ModelStyleContainerExtension on ModelStyle {
 
   static vector.Vector<string_map.StringMap<ModelStyle>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<string_map.StringMap<ModelStyle>?>
+      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -190,12 +218,29 @@ extension ModelStyleUnitTypeContainerExtension on ModelStyleUnitType {
 
   static vector.Vector<ModelStyleUnitType> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(ptr,
+        (val) => ModelStyleUnitTypeImpl.fromPointer(val, needFree: false)!);
+  }
+
+  static vector.Vector<ModelStyleUnitType?> toPlatformVectorOptional(
+      ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr, (val) => ModelStyleUnitTypeImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<ModelStyleUnitType>>
       toPlatformVectorVector(ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<vector.Vector<ModelStyleUnitType>?>
+      toPlatformVectorVectorOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -205,6 +250,17 @@ extension ModelStyleUnitTypeContainerExtension on ModelStyleUnitType {
 
   static vector.Vector<string_map.StringMap<ModelStyleUnitType>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<string_map.StringMap<ModelStyleUnitType>?>
+      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -296,11 +352,28 @@ extension ModelStyleRenderModeContainerExtension on ModelStyleRenderMode {
   static vector.Vector<ModelStyleRenderMode> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(ptr,
+        (val) => ModelStyleRenderModeImpl.fromPointer(val, needFree: false)!);
+  }
+
+  static vector.Vector<ModelStyleRenderMode?> toPlatformVectorOptional(
+      ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(ptr,
         (val) => ModelStyleRenderModeImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<ModelStyleRenderMode>>
       toPlatformVectorVector(ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<vector.Vector<ModelStyleRenderMode>?>
+      toPlatformVectorVectorOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -310,6 +383,17 @@ extension ModelStyleRenderModeContainerExtension on ModelStyleRenderMode {
 
   static vector.Vector<string_map.StringMap<ModelStyleRenderMode>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<string_map.StringMap<ModelStyleRenderMode>?>
+      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr

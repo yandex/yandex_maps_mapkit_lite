@@ -1,44 +1,5 @@
 part of 'location_simulator.dart';
 
-@bindings_annotations.ContainerData(
-    toNative: 'SimulationAccuracyImpl.toPointer',
-    toPlatform:
-        '(val) => SimulationAccuracyImpl.fromPointer(val, needFree: false)',
-    platformType: 'SimulationAccuracy')
-extension SimulationAccuracyImpl on SimulationAccuracy {
-  static core.int toInt(SimulationAccuracy e) {
-    return e.index;
-  }
-
-  static SimulationAccuracy fromInt(core.int val) {
-    return SimulationAccuracy.values[val];
-  }
-
-  static SimulationAccuracy? fromPointer(ffi.Pointer<ffi.Void> ptr,
-      {core.bool needFree = true}) {
-    if (ptr == ffi.nullptr) {
-      return null;
-    }
-    final result = fromInt(ptr.cast<ffi.Int64>().value);
-
-    if (needFree) {
-      malloc.free(ptr);
-    }
-    return result;
-  }
-
-  static ffi.Pointer<ffi.Void> toPointer(SimulationAccuracy? val) {
-    if (val == null) {
-      return ffi.nullptr;
-    }
-
-    final result = malloc.call<ffi.Int64>();
-    result.value = toInt(val);
-
-    return result.cast();
-  }
-}
-
 final class _LocationSimulatorListenerWrapper implements ffi.Finalizable {
   _LocationSimulatorListenerWrapper(this.ptr) {
     _finalizer.attach(this, ptr);
@@ -354,97 +315,25 @@ final ffi.Pointer<ffi.Void> Function(
         'yandex_flutter_mapkit_location_LocationError_get_longitudinalErrorRange')
     .asFunction(isLeaf: true);
 
-@bindings_annotations.ContainerData(
-    toNative: 'LocationSettingsImpl.getNativePtr',
-    toPlatform:
-        '(val) => LocationSettingsImpl.fromPointer(val, needFree: false)',
-    platformType: 'LocationSettings')
-final class LocationSettingsImpl extends LocationSettings {
-  LocationSettingsImpl(
-      core.bool provideAccuracy,
-      Range? accuracy,
-      TimeInterval locationTimeInterval,
-      core.bool provideSpeed,
-      core.double speed,
-      core.bool provideHeading,
-      Range? headingError,
-      LocationError locationError,
-      core.bool provideWheelSpeed,
-      TimeInterval wheelSpeedTimeInterval)
-      : this.fromNativePtr(_LocationSettings_init(
-            provideAccuracy,
-            RangeImpl.getNativePtr(accuracy),
-            TimeIntervalImpl.getNativePtr(locationTimeInterval),
-            provideSpeed,
-            speed,
-            provideHeading,
-            RangeImpl.getNativePtr(headingError),
-            LocationErrorImpl.getNativePtr(locationError),
-            provideWheelSpeed,
-            TimeIntervalImpl.getNativePtr(wheelSpeedTimeInterval)));
-
-  @core.override
-  late final provideAccuracy = _LocationSettings_get_provideAccuracy(_ptr);
-  @core.override
-  late final accuracy =
-      RangeImpl.fromOptionalPtr(_LocationSettings_get_accuracy(_ptr));
-  @core.override
-  late final locationTimeInterval = TimeIntervalImpl.fromNativePtr(
-      _LocationSettings_get_locationTimeInterval(_ptr));
-  @core.override
-  late final provideSpeed = _LocationSettings_get_provideSpeed(_ptr);
-  @core.override
-  late final speed = _LocationSettings_get_speed(_ptr);
-  @core.override
-  late final provideHeading = _LocationSettings_get_provideHeading(_ptr);
-  @core.override
-  late final headingError =
-      RangeImpl.fromOptionalPtr(_LocationSettings_get_headingError(_ptr));
-  @core.override
-  late final locationError = LocationErrorImpl.fromNativePtr(
-      _LocationSettings_get_locationError(_ptr));
-  @core.override
-  late final provideWheelSpeed = _LocationSettings_get_provideWheelSpeed(_ptr);
-  @core.override
-  late final wheelSpeedTimeInterval = TimeIntervalImpl.fromNativePtr(
-      _LocationSettings_get_wheelSpeedTimeInterval(_ptr));
-
-  final ffi.Pointer<ffi.Void> _ptr;
-  static final _finalizer = ffi.NativeFinalizer(_LocationSettings_free.cast());
-
-  LocationSettingsImpl.fromNativePtr(this._ptr) : super._() {
-    _finalizer.attach(this, _ptr);
-  }
-
-  static ffi.Pointer<ffi.Void> getNativePtr(LocationSettings? obj) {
-    return (obj as LocationSettingsImpl?)?._ptr ?? ffi.nullptr;
-  }
-
-  static LocationSettings? fromOptionalPtr(ffi.Pointer<ffi.Void> ptr) {
-    return ptr == ffi.nullptr ? null : LocationSettingsImpl.fromNativePtr(ptr);
-  }
-
-  static LocationSettings? fromPointer(ffi.Pointer<ffi.Void> ptr,
-      {core.bool needFree = true}) {
-    if (ptr == ffi.nullptr) {
-      return null;
-    }
-    final result = LocationSettingsImpl.fromNativePtr(
-        ptr.cast<ffi.Pointer<ffi.Void>>().value);
-
-    if (needFree) {
-      malloc.free(ptr);
-    }
-
-    return result;
-  }
+final class LocationSettingsNative extends ffi.Struct {
+  @ffi.Bool()
+  external core.bool provideAccuracy;
+  external ffi.Pointer<ffi.Void> accuracy;
+  external ffi.Pointer<ffi.Void> locationTimeInterval;
+  @ffi.Bool()
+  external core.bool provideSpeed;
+  @ffi.Double()
+  external core.double speed;
+  @ffi.Bool()
+  external core.bool provideHeading;
+  external ffi.Pointer<ffi.Void> headingError;
+  external ffi.Pointer<ffi.Void> locationError;
+  @ffi.Bool()
+  external core.bool provideWheelSpeed;
+  external ffi.Pointer<ffi.Void> wheelSpeedTimeInterval;
 }
 
-final _LocationSettings_free = lib.library
-    .lookup<ffi.NativeFunction<ffi.Void Function(ffi.Void)>>(
-        'yandex_flutter_mapkit_location_LocationSettings_free');
-
-final ffi.Pointer<ffi.Void> Function(
+final LocationSettingsNative Function(
         core.bool,
         ffi.Pointer<ffi.Void>,
         ffi.Pointer<ffi.Void>,
@@ -454,11 +343,11 @@ final ffi.Pointer<ffi.Void> Function(
         ffi.Pointer<ffi.Void>,
         ffi.Pointer<ffi.Void>,
         core.bool,
-        ffi.Pointer<ffi.Void>) _LocationSettings_init =
+        ffi.Pointer<ffi.Void>) _LocationSettingsNativeInit =
     lib.library
         .lookup<
                 ffi.NativeFunction<
-                    ffi.Pointer<ffi.Void> Function(
+                    LocationSettingsNative Function(
                         ffi.Bool,
                         ffi.Pointer<ffi.Void>,
                         ffi.Pointer<ffi.Void>,
@@ -472,74 +361,66 @@ final ffi.Pointer<ffi.Void> Function(
             'yandex_flutter_mapkit_location_LocationSettings_init')
         .asFunction(isLeaf: true);
 
-final core.bool Function(
-    ffi
-        .Pointer<ffi.Void>) _LocationSettings_get_provideAccuracy = lib.library
-    .lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ffi.Void>)>>(
-        'yandex_flutter_mapkit_location_LocationSettings_get_provideAccuracy')
-    .asFunction(isLeaf: true);
-final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)
-    _LocationSettings_get_accuracy = lib.library
-        .lookup<
-                ffi.NativeFunction<
-                    ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
-            'yandex_flutter_mapkit_location_LocationSettings_get_accuracy')
-        .asFunction(isLeaf: true);
-final ffi.Pointer<ffi.Void> Function(
-    ffi
-        .Pointer<ffi.Void>) _LocationSettings_get_locationTimeInterval = lib
-    .library
-    .lookup<
-            ffi.NativeFunction<
-                ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
-        'yandex_flutter_mapkit_location_LocationSettings_get_locationTimeInterval')
-    .asFunction(isLeaf: true);
-final core.bool Function(ffi.Pointer<ffi.Void>)
-    _LocationSettings_get_provideSpeed = lib.library
-        .lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ffi.Void>)>>(
-            'yandex_flutter_mapkit_location_LocationSettings_get_provideSpeed')
-        .asFunction(isLeaf: true);
-final core.double Function(ffi.Pointer<ffi.Void>) _LocationSettings_get_speed =
-    lib.library
-        .lookup<ffi.NativeFunction<ffi.Double Function(ffi.Pointer<ffi.Void>)>>(
-            'yandex_flutter_mapkit_location_LocationSettings_get_speed')
-        .asFunction(isLeaf: true);
-final core.bool Function(
-    ffi
-        .Pointer<ffi.Void>) _LocationSettings_get_provideHeading = lib.library
-    .lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ffi.Void>)>>(
-        'yandex_flutter_mapkit_location_LocationSettings_get_provideHeading')
-    .asFunction(isLeaf: true);
-final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)
-    _LocationSettings_get_headingError = lib.library
-        .lookup<
-                ffi.NativeFunction<
-                    ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
-            'yandex_flutter_mapkit_location_LocationSettings_get_headingError')
-        .asFunction(isLeaf: true);
-final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)
-    _LocationSettings_get_locationError = lib.library
-        .lookup<
-                ffi.NativeFunction<
-                    ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
-            'yandex_flutter_mapkit_location_LocationSettings_get_locationError')
-        .asFunction(isLeaf: true);
-final core.bool Function(
-    ffi
-        .Pointer<ffi.Void>) _LocationSettings_get_provideWheelSpeed = lib
-    .library
-    .lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ffi.Void>)>>(
-        'yandex_flutter_mapkit_location_LocationSettings_get_provideWheelSpeed')
-    .asFunction(isLeaf: true);
-final ffi.Pointer<ffi.Void> Function(
-    ffi
-        .Pointer<ffi.Void>) _LocationSettings_get_wheelSpeedTimeInterval = lib
-    .library
-    .lookup<
-            ffi.NativeFunction<
-                ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
-        'yandex_flutter_mapkit_location_LocationSettings_get_wheelSpeedTimeInterval')
-    .asFunction(isLeaf: true);
+@bindings_annotations.ContainerData(
+    toNative: 'LocationSettingsImpl.toPointer',
+    toPlatform:
+        '(val) => LocationSettingsImpl.fromPointer(val, needFree: false)',
+    platformType: 'LocationSettings')
+extension LocationSettingsImpl on LocationSettings {
+  static LocationSettings fromNative(LocationSettingsNative native) {
+    return LocationSettings(
+        provideAccuracy: native.provideAccuracy,
+        accuracy: RangeImpl.fromOptionalPtr(native.accuracy),
+        locationTimeInterval:
+            TimeIntervalImpl.fromOptionalPtr(native.locationTimeInterval),
+        provideSpeed: native.provideSpeed,
+        speed: native.speed,
+        provideHeading: native.provideHeading,
+        headingError: RangeImpl.fromOptionalPtr(native.headingError),
+        locationError: LocationErrorImpl.fromOptionalPtr(native.locationError),
+        provideWheelSpeed: native.provideWheelSpeed,
+        wheelSpeedTimeInterval:
+            TimeIntervalImpl.fromOptionalPtr(native.wheelSpeedTimeInterval));
+  }
+
+  static LocationSettingsNative toNative(LocationSettings obj) {
+    return _LocationSettingsNativeInit(
+        obj.provideAccuracy,
+        RangeImpl.getNativePtr(obj.accuracy),
+        TimeIntervalImpl.getNativePtr(obj.locationTimeInterval),
+        obj.provideSpeed,
+        obj.speed,
+        obj.provideHeading,
+        RangeImpl.getNativePtr(obj.headingError),
+        LocationErrorImpl.getNativePtr(obj.locationError),
+        obj.provideWheelSpeed,
+        TimeIntervalImpl.getNativePtr(obj.wheelSpeedTimeInterval));
+  }
+
+  static LocationSettings? fromPointer(ffi.Pointer<ffi.Void> ptr,
+      {core.bool needFree = true}) {
+    if (ptr == ffi.nullptr) {
+      return null;
+    }
+    final result =
+        LocationSettingsImpl.fromNative(ptr.cast<LocationSettingsNative>().ref);
+
+    if (needFree) {
+      malloc.free(ptr);
+    }
+    return result;
+  }
+
+  static ffi.Pointer<ffi.Void> toPointer(LocationSettings? val) {
+    if (val == null) {
+      return ffi.nullptr;
+    }
+    final result = malloc.call<LocationSettingsNative>();
+    result.ref = toNative(val);
+
+    return result.cast();
+  }
+}
 
 @bindings_annotations.ContainerData(
     toNative: 'SimulationSettingsImpl.getNativePtr',
@@ -551,13 +432,13 @@ final class SimulationSettingsImpl extends SimulationSettings {
       LocationSettings locationSettings)
       : this.fromNativePtr(_SimulationSettings_init(
             mapkit_geometry_geometry.PolylineImpl.getNativePtr(geometry),
-            LocationSettingsImpl.getNativePtr(locationSettings)));
+            LocationSettingsImpl.toNative(locationSettings)));
 
   @core.override
   late final geometry = mapkit_geometry_geometry.PolylineImpl.fromNativePtr(
       _SimulationSettings_get_geometry(_ptr));
   @core.override
-  late final locationSettings = LocationSettingsImpl.fromNativePtr(
+  late final locationSettings = LocationSettingsImpl.fromNative(
       _SimulationSettings_get_locationSettings(_ptr));
 
   final ffi.Pointer<ffi.Void> _ptr;
@@ -599,12 +480,12 @@ final _SimulationSettings_free = lib.library
         'yandex_flutter_mapkit_location_SimulationSettings_free');
 
 final ffi.Pointer<ffi.Void> Function(
-        ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>) _SimulationSettings_init =
-    lib.library
+        ffi.Pointer<ffi.Void>, LocationSettingsNative)
+    _SimulationSettings_init = lib.library
         .lookup<
                 ffi.NativeFunction<
                     ffi.Pointer<ffi.Void> Function(
-                        ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>(
+                        ffi.Pointer<ffi.Void>, LocationSettingsNative)>>(
             'yandex_flutter_mapkit_location_SimulationSettings_init')
         .asFunction(isLeaf: true);
 
@@ -615,15 +496,36 @@ final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)
                     ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
             'yandex_flutter_mapkit_location_SimulationSettings_get_geometry')
         .asFunction(isLeaf: true);
-final ffi.Pointer<ffi.Void> Function(
+final LocationSettingsNative Function(
     ffi
         .Pointer<ffi.Void>) _SimulationSettings_get_locationSettings = lib
     .library
     .lookup<
             ffi.NativeFunction<
-                ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
+                LocationSettingsNative Function(ffi.Pointer<ffi.Void>)>>(
         'yandex_flutter_mapkit_location_SimulationSettings_get_locationSettings')
     .asFunction(isLeaf: true);
+
+LocationSettings _fineSettings() {
+  final result = _LocationSettingsFactory_fineSettings();
+  return LocationSettingsImpl.fromNative(result);
+}
+
+LocationSettings _coarseSettings() {
+  final result = _LocationSettingsFactory_coarseSettings();
+  return LocationSettingsImpl.fromNative(result);
+}
+
+final LocationSettingsNative Function() _LocationSettingsFactory_fineSettings =
+    lib.library
+        .lookup<ffi.NativeFunction<LocationSettingsNative Function()>>(
+            'yandex_flutter_mapkit_location_LocationSettingsFactory_fineSettings')
+        .asFunction();
+final LocationSettingsNative Function()
+    _LocationSettingsFactory_coarseSettings = lib.library
+        .lookup<ffi.NativeFunction<LocationSettingsNative Function()>>(
+            'yandex_flutter_mapkit_location_LocationSettingsFactory_coarseSettings')
+        .asFunction();
 
 @bindings_annotations.ContainerData(
     toNative: 'LocationSimulatorImpl.getNativePtr',
@@ -659,18 +561,6 @@ class LocationSimulatorImpl extends mapkit_location_location_manager
   static LocationSimulator? fromOptionalPtr(ffi.Pointer<ffi.Void> ptr) {
     if (ptr == ffi.nullptr) return null;
     return LocationSimulatorImpl.fromNativePtr(ptr);
-  }
-
-  @core.override
-  mapkit_geometry_geometry.Polyline? get geometry {
-    final result = _LocationSimulator_get_geometry(ptr);
-    return mapkit_geometry_geometry.PolylineImpl.fromOptionalPtr(result);
-  }
-
-  @core.override
-  set geometry(mapkit_geometry_geometry.Polyline? val) {
-    _LocationSimulator_set_geometry(
-        ptr, mapkit_geometry_geometry.PolylineImpl.getNativePtr(val));
   }
 
   @core.override
@@ -714,9 +604,9 @@ class LocationSimulatorImpl extends mapkit_location_location_manager
         ptr, LocationSimulatorListenerImpl.getNativePtr(simulatorListener));
   }
 
-  void startSimulation(SimulationAccuracy simulationAccuracy) {
+  void startSimulation(core.List<SimulationSettings> settings) {
     _LocationSimulator_startSimulation(
-        ptr, SimulationAccuracyImpl.toInt(simulationAccuracy));
+        ptr, SimulationSettingsContainerExtension.toNativeVector(settings));
   }
 
   void stopSimulation() {
@@ -727,31 +617,11 @@ class LocationSimulatorImpl extends mapkit_location_location_manager
     final result = _LocationSimulator_polylinePosition(ptr);
     return mapkit_geometry_geometry.PolylinePositionImpl.fromNative(result);
   }
-
-  void setLocationSpeedProviding(core.bool provide) {
-    _LocationSimulator_setLocationSpeedProviding(ptr, provide);
-  }
 }
 
 final _LocationSimulator_free = lib.library
     .lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>(
         'yandex_flutter_mapkit_location_LocationSimulator_free');
-
-final ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)
-    _LocationSimulator_get_geometry = lib.library
-        .lookup<
-                ffi.NativeFunction<
-                    ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>)>>(
-            'yandex_flutter_mapkit_location_LocationSimulator_get_geometry')
-        .asFunction();
-final void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)
-    _LocationSimulator_set_geometry = lib.library
-        .lookup<
-                ffi.NativeFunction<
-                    ffi.Void Function(
-                        ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>(
-            'yandex_flutter_mapkit_location_LocationSimulator_set_geometry')
-        .asFunction();
 
 final core.double Function(ffi.Pointer<ffi.Void>) _LocationSimulator_get_speed =
     lib
@@ -811,11 +681,12 @@ final void Function(
                     ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>(
         'yandex_flutter_mapkit_location_LocationSimulator_unsubscribeFromSimulatorEvents')
     .asFunction();
-final void Function(ffi.Pointer<ffi.Void>, core.int)
+final void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)
     _LocationSimulator_startSimulation = lib.library
         .lookup<
                 ffi.NativeFunction<
-                    ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Int64)>>(
+                    ffi.Void Function(
+                        ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>(
             'yandex_flutter_mapkit_location_LocationSimulator_startSimulation')
         .asFunction();
 final void Function(ffi.Pointer<ffi.Void>) _LocationSimulator_stopSimulation =
@@ -832,15 +703,6 @@ final mapkit_geometry_geometry.PolylinePositionNative Function(
                         ffi.Pointer<ffi.Void>)>>(
             'yandex_flutter_mapkit_location_LocationSimulator_polylinePosition')
         .asFunction();
-final void Function(
-    ffi.Pointer<ffi.Void>,
-    core
-        .bool) _LocationSimulator_setLocationSpeedProviding = lib.library
-    .lookup<
-            ffi.NativeFunction<
-                ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Bool)>>(
-        'yandex_flutter_mapkit_location_LocationSimulator_setLocationSpeedProviding')
-    .asFunction();
 final void Function(ffi.Pointer<ffi.Void>, core.int) _LocationSimulator_set =
     lib.library
         .lookup<

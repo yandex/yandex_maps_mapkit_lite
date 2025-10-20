@@ -32,24 +32,21 @@ final void Function(Pointer<Void>) _vector_free =
 
 class Vector<T> extends ListBase<T> implements Finalizable {
   @internal
-  Vector(this._ptr, this._f) {
+  Vector(this._ptr, this._f) : length = _vector_get_size(_ptr) {
     _finalizer.attach(this, _ptr, detach: this);
   }
-
-  @override
-  int get length => _vector_get_size(_ptr);
 
   @override
   set length(int _) => throw UnsupportedError("Vector read-only");
 
   @override
   T operator [](int index) {
+    if (index >= length) {
+      throw RangeError("Vector out of range");
+    }
     final value = _vector_get_value(_ptr, index);
     final result = _f(value);
-    if (result != null) {
-      return result;
-    }
-    throw RangeError("Vector out of range");
+    return result;
   }
 
   @override
@@ -59,7 +56,10 @@ class Vector<T> extends ListBase<T> implements Finalizable {
 
   static final _finalizer = NativeFinalizer(_vector_free_native);
   final Pointer<Void> _ptr;
-  final T? Function(Pointer<Void>) _f;
+  final T Function(Pointer<Void>) _f;
+
+  @override
+  final length;
 }
 
 @internal

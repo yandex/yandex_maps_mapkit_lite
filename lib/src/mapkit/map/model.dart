@@ -18,6 +18,8 @@ import 'package:yandex_maps_mapkit_lite/src/mapkit/map/callback.dart'
     as mapkit_map_callback;
 import 'package:yandex_maps_mapkit_lite/src/mapkit/map/model_style.dart'
     as mapkit_map_model_style;
+import 'package:yandex_maps_mapkit_lite/src/mapkit/map/placemark_presentation.dart'
+    as mapkit_map_placemark_presentation;
 import 'package:yandex_maps_mapkit_lite/src/runtime/data_provider_with_id.dart'
     as runtime_data_provider_with_id;
 
@@ -25,8 +27,13 @@ part 'model.containers.dart';
 part 'model.impl.dart';
 
 /// describes model presentation of PlacemarkMapObject
-abstract class Model implements ffi.Finalizable {
-  /// describes style of the model
+abstract class Model
+    implements
+        mapkit_map_placemark_presentation.PlacemarkPresentation,
+        ffi.Finalizable {
+  /// The style properties (sclae, unitType, etc.) of the model placemark.
+  /// Note: The current style cannot be modified directly - you must reset
+  /// it to apply changes.
   mapkit_map_model_style.ModelStyle get modelStyle;
   set modelStyle(mapkit_map_model_style.ModelStyle val);
 

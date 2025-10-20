@@ -89,11 +89,28 @@ extension GraphicsAPITypeContainerExtension on GraphicsAPIType {
   static vector.Vector<GraphicsAPIType> toPlatformVector(
       ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
+        ptr, (val) => GraphicsAPITypeImpl.fromPointer(val, needFree: false)!);
+  }
+
+  static vector.Vector<GraphicsAPIType?> toPlatformVectorOptional(
+      ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
         ptr, (val) => GraphicsAPITypeImpl.fromPointer(val, needFree: false));
   }
 
   static vector.Vector<vector.Vector<GraphicsAPIType>> toPlatformVectorVector(
       ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformVector(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<vector.Vector<GraphicsAPIType>?>
+      toPlatformVectorVectorOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr
@@ -103,6 +120,17 @@ extension GraphicsAPITypeContainerExtension on GraphicsAPIType {
 
   static vector.Vector<string_map.StringMap<GraphicsAPIType>>
       toPlatformVectorDictionary(ffi.Pointer<ffi.Void> ptr) {
+    return vector.Vector(
+      ptr,
+      (val) {
+        assert(val != ffi.nullptr);
+        return toPlatformMap(val.cast<ffi.Pointer<ffi.Void>>().value);
+      },
+    );
+  }
+
+  static vector.Vector<string_map.StringMap<GraphicsAPIType>?>
+      toPlatformVectorDictionaryOptional(ffi.Pointer<ffi.Void> ptr) {
     return vector.Vector(
         ptr,
         (val) => val == ffi.nullptr

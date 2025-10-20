@@ -1,10 +1,12 @@
 import 'dart:ffi';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:yandex_maps_mapkit_lite/mapkit_factory.dart';
 import 'package:yandex_maps_mapkit_lite/runtime.dart';
 
+import 'common/dispatcher.dart';
 import 'common/mapkit_method_channel.dart';
 import 'common/library.dart';
 
@@ -17,21 +19,20 @@ final bool Function() _isInit = library
     .lookup<NativeFunction<Bool Function()>>('yandex_maps_flutter_is_init')
     .asFunction(isLeaf: true);
 
-final void Function(int) _attachEngineToCurrentIsolate = library
-    .lookup<NativeFunction<Void Function(Int)>>(
+final void Function(int, int) _attachEngineToCurrentIsolate = library
+    .lookup<NativeFunction<Void Function(Int, Int64)>>(
         'yandex_maps_flutter_attach_engine_to_current_isolate')
-    .asFunction();
+    .asFunction(isLeaf: true);
 
 bool _initDartApiCalled = false;
 
 Future<void> initDartApi() async {
   if (_initDartApiCalled) return;
   _initDartApiCalled = true;
-
   _init(NativeApi.initializeApiDLData);
   final engineId = await const MapkitMethodChannel('runtime')
-      .invokeMethod<int>('onDartVMCreated');
-  _attachEngineToCurrentIsolate(engineId!);
+      .invokeMethod<int>('onDartVMCreated', {'inReleaseMode': kReleaseMode});
+  _attachEngineToCurrentIsolate(engineId!, checkIsolateAlivePort);
 }
 
 Future<void> initMapkit(

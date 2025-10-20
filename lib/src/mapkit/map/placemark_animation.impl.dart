@@ -6,18 +6,19 @@ part of 'placemark_animation.dart';
     toPlatform:
         '(val) => PlacemarkAnimationImpl.fromOptionalPtr(val.cast<ffi.Pointer<ffi.Void>>().value)',
     platformType: 'PlacemarkAnimation')
-class PlacemarkAnimationImpl implements PlacemarkAnimation, ffi.Finalizable {
-  @protected
-  final ffi.Pointer<ffi.Void> ptr;
+class PlacemarkAnimationImpl extends mapkit_map_placemark_presentation
+    .PlacemarkPresentationImpl implements PlacemarkAnimation, ffi.Finalizable {
   static final _finalizer =
       ffi.NativeFinalizer(_PlacemarkAnimation_free.cast());
 
   /// @nodoc
-  PlacemarkAnimationImpl.fromExternalPtr(this.ptr);
+  PlacemarkAnimationImpl.fromExternalPtr(ffi.Pointer<ffi.Void> ptr)
+      : super.fromExternalPtr(ptr);
 
   /// @nodoc
   @internal
-  PlacemarkAnimationImpl.fromNativePtrImpl(this.ptr) {
+  PlacemarkAnimationImpl.fromNativePtrImpl(ffi.Pointer<ffi.Void> ptr)
+      : super.fromExternalPtr(ptr) {
     _finalizer.attach(this, ptr);
   }
 

@@ -87,3 +87,7 @@ void _deleteHandleHandler(dynamic data) {
 final _deleteHandlePort = ReceivePort()..listen(_deleteHandleHandler);
 
 int get deleteHandlePort => _deleteHandlePort.sendPort.nativePort;
+
+final _checkIsolateAlivePort = ReceivePort()..listen((data) {});
+
+int get checkIsolateAlivePort => _checkIsolateAlivePort.sendPort.nativePort;
