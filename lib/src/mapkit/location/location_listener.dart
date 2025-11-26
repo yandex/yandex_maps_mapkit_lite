@@ -18,7 +18,7 @@ part 'location_listener.impl.dart';
 
 /// The listener that handles the updates to the device location.
 abstract class LocationListener {
-  /// Handle location update information,.
+  /// Handle location update information.
   void onLocationUpdated(mapkit_location_location.Location location);
 
   /// Handle change in location provider status.
