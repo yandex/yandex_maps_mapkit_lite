@@ -35,5 +35,10 @@ enum Purpose {
   /// navigation. Frequent location updates are desired even though more
   /// resources are used.
   ScooterNavigation,
+
+  /// This mode is used to configure LocationManager for show current user
+  /// location. This mode uses less resources and as the default value, but
+  /// this value turns on location reporting.
+  StaticDisplayLocation,
   ;
 }
