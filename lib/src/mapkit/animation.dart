@@ -23,9 +23,9 @@ final class Animation {
   /// Animation duration, in seconds.
   final core.double duration;
 
-  const Animation(
-    this.type, {
-    required this.duration,
+  const Animation({
+    this.type = AnimationType.Linear,
+    this.duration = 0.0,
   });
 
   @core.override

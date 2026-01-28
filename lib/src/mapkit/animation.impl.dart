@@ -19,7 +19,8 @@ final AnimationNative Function(core.int, core.double) _AnimationNativeInit = lib
     platformType: 'Animation')
 extension AnimationImpl on Animation {
   static Animation fromNative(AnimationNative native) {
-    return Animation(AnimationTypeImpl.fromInt(native.type),
+    return Animation(
+        type: AnimationTypeImpl.fromInt(native.type),
         duration: native.duration);
   }
 

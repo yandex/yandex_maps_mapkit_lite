@@ -62,8 +62,9 @@ class ModelImpl extends mapkit_map_placemark_presentation
   }
 
   void setData(
-      runtime_data_provider_with_id.DataProviderWithId gltfDataProvider,
-      mapkit_map_callback.Callback onFinished) {
+    runtime_data_provider_with_id.DataProviderWithId gltfDataProvider, {
+    mapkit_map_callback.Callback? onFinished,
+  }) {
     _Model_setData(
         ptr,
         runtime_data_provider_with_id.DataProviderWithIdImpl.getNativePtr(

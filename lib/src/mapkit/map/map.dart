@@ -140,26 +140,24 @@ abstract class Map implements ffi.Finalizable {
   core.bool get awesomeModelsEnabled;
   set awesomeModelsEnabled(core.bool val);
 
-  /// Calculates the camera position that projects the specified geometry
-  /// into the current focusRect, or the full view if the focusRect is not
-  /// set.
+  /// Calculates a camera position that projects the specified geometry
+  /// into the given {\@code focusRect}, using the provided {\@code
+  /// azimuth} and {\@code tilt} camera parameters.
+  ///
+  /// <p>If {\@code focusRect} is not provided, the current focus rect is
+  /// used (or the full view if no focus rect is set).</p>
+  ///
+  /// <p>If {\@code azimuth} is not provided, the current {\@code
+  /// cameraPosition.azimuth} is used.</p>
+  ///
+  /// <p>If {\@code tilt} is not provided, the current {\@code
+  /// cameraPosition.tilt} is used.</p>
+  /// Return The computed camera position.
   mapkit_map_camera_position.CameraPosition cameraPositionForGeometry(
-      mapkit_geometry_geometry.Geometry geometry);
-
-  /// Calculates the camera position that projects the specified geometry
-  /// into the custom focusRect.
-  mapkit_map_camera_position.CameraPosition cameraPositionWithFocus(
-      mapkit_geometry_geometry.Geometry geometry,
-      mapkit_screen_types.ScreenRect focusRect);
-
-  /// Return Camera position that projects the specified geometry into the
-  /// custom focusRect, with custom azimuth and tilt camera parameters. If
-  /// focus rect is not provided, current focus rect is used.
-  mapkit_map_camera_position.CameraPosition cameraPositionWithAzimut(
     mapkit_geometry_geometry.Geometry geometry, {
-    required core.double azimuth,
-    required core.double tilt,
     mapkit_screen_types.ScreenRect? focusRect,
+    core.double? azimuth,
+    core.double? tilt,
   });
 
   /// Return The map region that is visible from the given camera position.
@@ -170,24 +168,23 @@ abstract class Map implements ffi.Finalizable {
   mapkit_map_visible_region.VisibleRegion visibleRegionForPosition(
       mapkit_map_camera_position.CameraPosition cameraPosition);
 
-  /// Changes camera position. Can cancel a previous unfinished movement.
+  /// Changes the camera position. Can cancel a previous unfinished
+  /// movement.
   ///
-  /// [animation] Required. Defines animation parameters. \@see
-  /// mapkit.Animation for more details.
-  /// [cameraCallback] A function that takes the bool argument marking the
-  /// camera action complete. Invoked when: <ul><li>A camera action is
-  /// cancelled (for example, as a result of a subsequent request for
-  /// camera movement), passing false as an argument.</li> <li>A camera
-  /// action finished successfully, passing true as an argument.</li></ul>
-  void moveWithAnimation(
-    mapkit_map_camera_position.CameraPosition cameraPosition,
-    mapkit_animation.Animation animation, {
+  /// [animation] Defines animation parameters. If {\@code null}, the
+  /// camera position changes instantly. \@see mapkit.Animation for more
+  /// details.
+  /// [cameraCallback] A function that receives a boolean indicating
+  /// whether the camera action completed successfully. Invoked when: <ul>
+  /// <li>The camera action is cancelled (for example, due to a new camera
+  /// movement request), in which case {\@code false} is passed.</li>
+  /// <li>The camera action finishes successfully, in which case {\@code
+  /// true} is passed.</li> </ul>
+  void move(
+    mapkit_map_camera_position.CameraPosition cameraPosition, {
+    mapkit_animation.Animation? animation,
     MapCameraCallback? cameraCallback,
   });
-
-  /// Immediately changes the camera position. Can cancel a previous
-  /// unfinished movement.
-  void move(mapkit_map_camera_position.CameraPosition cameraPosition);
 
   /// Adds input listeners.
   ///

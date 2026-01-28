@@ -239,36 +239,17 @@ class MapImpl implements Map, ffi.Finalizable {
   }
 
   mapkit_map_camera_position.CameraPosition cameraPositionForGeometry(
-      mapkit_geometry_geometry.Geometry geometry) {
-    final result = _Map_cameraPositionForGeometry(
-        ptr, mapkit_geometry_geometry.GeometryImpl.toNative(geometry));
-    exception.checkCallResult();
-    return mapkit_map_camera_position.CameraPositionImpl.fromNative(result);
-  }
-
-  mapkit_map_camera_position.CameraPosition cameraPositionWithFocus(
-      mapkit_geometry_geometry.Geometry geometry,
-      mapkit_screen_types.ScreenRect focusRect) {
-    final result = _Map_cameraPositionWithFocus(
-        ptr,
-        mapkit_geometry_geometry.GeometryImpl.toNative(geometry),
-        mapkit_screen_types.ScreenRectImpl.toNative(focusRect));
-    exception.checkCallResult();
-    return mapkit_map_camera_position.CameraPositionImpl.fromNative(result);
-  }
-
-  mapkit_map_camera_position.CameraPosition cameraPositionWithAzimut(
     mapkit_geometry_geometry.Geometry geometry, {
-    required core.double azimuth,
-    required core.double tilt,
     mapkit_screen_types.ScreenRect? focusRect,
+    core.double? azimuth,
+    core.double? tilt,
   }) {
-    final result = _Map_cameraPositionWithAzimut(
+    final result = _Map_cameraPositionForGeometry(
         ptr,
         mapkit_geometry_geometry.GeometryImpl.toNative(geometry),
-        azimuth,
-        tilt,
-        mapkit_screen_types.ScreenRectImpl.toPointer(focusRect));
+        mapkit_screen_types.ScreenRectImpl.toPointer(focusRect),
+        to_native.toNativePtrFloat(azimuth),
+        to_native.toNativePtrFloat(tilt));
     exception.checkCallResult();
     return mapkit_map_camera_position.CameraPositionImpl.fromNative(result);
   }
@@ -281,22 +262,16 @@ class MapImpl implements Map, ffi.Finalizable {
     return mapkit_map_visible_region.VisibleRegionImpl.fromNative(result);
   }
 
-  void moveWithAnimation(
-    mapkit_map_camera_position.CameraPosition cameraPosition,
-    mapkit_animation.Animation animation, {
+  void move(
+    mapkit_map_camera_position.CameraPosition cameraPosition, {
+    mapkit_animation.Animation? animation,
     MapCameraCallback? cameraCallback,
   }) {
-    _Map_moveWithAnimation(
+    _Map_move(
         ptr,
         mapkit_map_camera_position.CameraPositionImpl.toNative(cameraPosition),
-        mapkit_animation.AnimationImpl.toNative(animation),
+        mapkit_animation.AnimationImpl.toPointer(animation),
         MapCameraCallbackImpl.getNativePtr(cameraCallback));
-    exception.checkCallResult();
-  }
-
-  void move(mapkit_map_camera_position.CameraPosition cameraPosition) {
-    _Map_move(ptr,
-        mapkit_map_camera_position.CameraPositionImpl.toNative(cameraPosition));
     exception.checkCallResult();
   }
 
@@ -685,44 +660,21 @@ final void Function(ffi.Pointer<ffi.Void>, core.bool)
         .asFunction();
 
 final mapkit_map_camera_position.CameraPositionNative Function(
-        ffi.Pointer<ffi.Void>, mapkit_geometry_geometry.GeometryNative)
-    _Map_cameraPositionForGeometry = lib.library
-        .lookup<
-                ffi.NativeFunction<
-                    mapkit_map_camera_position.CameraPositionNative Function(
-                        ffi.Pointer<ffi.Void>,
-                        mapkit_geometry_geometry.GeometryNative)>>(
-            'yandex_flutter_mapkit_map_Map_cameraPositionForGeometry')
-        .asFunction();
-final mapkit_map_camera_position.CameraPositionNative Function(
         ffi.Pointer<ffi.Void>,
         mapkit_geometry_geometry.GeometryNative,
-        mapkit_screen_types.ScreenRectNative) _Map_cameraPositionWithFocus =
+        ffi.Pointer<ffi.Void>,
+        ffi.Pointer<ffi.Void>,
+        ffi.Pointer<ffi.Void>) _Map_cameraPositionForGeometry =
     lib.library
         .lookup<
                 ffi.NativeFunction<
                     mapkit_map_camera_position.CameraPositionNative Function(
                         ffi.Pointer<ffi.Void>,
                         mapkit_geometry_geometry.GeometryNative,
-                        mapkit_screen_types.ScreenRectNative)>>(
-            'yandex_flutter_mapkit_map_Map_cameraPositionWithFocus')
-        .asFunction();
-final mapkit_map_camera_position.CameraPositionNative Function(
-        ffi.Pointer<ffi.Void>,
-        mapkit_geometry_geometry.GeometryNative,
-        core.double,
-        core.double,
-        ffi.Pointer<ffi.Void>) _Map_cameraPositionWithAzimut =
-    lib.library
-        .lookup<
-                ffi.NativeFunction<
-                    mapkit_map_camera_position.CameraPositionNative Function(
                         ffi.Pointer<ffi.Void>,
-                        mapkit_geometry_geometry.GeometryNative,
-                        ffi.Float,
-                        ffi.Float,
+                        ffi.Pointer<ffi.Void>,
                         ffi.Pointer<ffi.Void>)>>(
-            'yandex_flutter_mapkit_map_Map_cameraPositionWithAzimut')
+            'yandex_flutter_mapkit_map_Map_cameraPositionForGeometry')
         .asFunction();
 final mapkit_map_visible_region.VisibleRegionNative Function(
         ffi.Pointer<ffi.Void>, mapkit_map_camera_position.CameraPositionNative)
@@ -735,29 +687,19 @@ final mapkit_map_visible_region.VisibleRegionNative Function(
             'yandex_flutter_mapkit_map_Map_visibleRegionForPosition')
         .asFunction();
 final void Function(
-        ffi.Pointer<ffi.Void>,
-        mapkit_map_camera_position.CameraPositionNative,
-        mapkit_animation.AnimationNative,
-        ffi.Pointer<ffi.Void>) _Map_moveWithAnimation =
-    lib.library
-        .lookup<
-                ffi.NativeFunction<
-                    ffi.Void Function(
-                        ffi.Pointer<ffi.Void>,
-                        mapkit_map_camera_position.CameraPositionNative,
-                        mapkit_animation.AnimationNative,
-                        ffi.Pointer<ffi.Void>)>>(
-            'yandex_flutter_mapkit_map_Map_moveWithAnimation')
-        .asFunction();
-final void Function(
-        ffi.Pointer<ffi.Void>, mapkit_map_camera_position.CameraPositionNative)
-    _Map_move = lib.library
-        .lookup<
-                ffi.NativeFunction<
-                    ffi.Void Function(ffi.Pointer<ffi.Void>,
-                        mapkit_map_camera_position.CameraPositionNative)>>(
-            'yandex_flutter_mapkit_map_Map_move')
-        .asFunction();
+    ffi.Pointer<ffi.Void>,
+    mapkit_map_camera_position.CameraPositionNative,
+    ffi.Pointer<ffi.Void>,
+    ffi
+        .Pointer<ffi.Void>) _Map_move = lib.library
+    .lookup<
+        ffi.NativeFunction<
+            ffi.Void Function(
+                ffi.Pointer<ffi.Void>,
+                mapkit_map_camera_position.CameraPositionNative,
+                ffi.Pointer<ffi.Void>,
+                ffi.Pointer<ffi.Void>)>>('yandex_flutter_mapkit_map_Map_move')
+    .asFunction();
 final void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)
     _Map_addInputListener = lib.library
         .lookup<

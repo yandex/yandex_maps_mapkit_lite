@@ -32,5 +32,11 @@ enum MapMode {
 
   /// Upcoming basic map design
   FutureMap,
+
+  /// @nodoc
+  /// Used in Map Design activity in TestApp to view custom map layers in
+  /// hybrid scenario MAPSMOBCORE-26535 FIXME: make internal
+  /// MAPSMOBCORE-18854 \@see MapType.Hybrid
+  Hybrid,
   ;
 }

@@ -31,21 +31,22 @@ abstract class Model
     implements
         mapkit_map_placemark_presentation.PlacemarkPresentation,
         ffi.Finalizable {
-  /// The style properties (sclae, unitType, etc.) of the model placemark.
+  /// The style properties (scale, unitType, etc.) of the model placemark.
   /// Note: The current style cannot be modified directly - you must reset
   /// it to apply changes.
   mapkit_map_model_style.ModelStyle get modelStyle;
   set modelStyle(mapkit_map_model_style.ModelStyle val);
 
-  /// Sets gltf data provider.
+  /// Sets glTF data provider.
   ///
   /// The class maintains a strong reference to the object in
   /// the 'gltfDataProvider' parameter until it (the class) is invalidated.
   ///
   /// [onFinished] Called when the model is loaded.
   void setData(
-      runtime_data_provider_with_id.DataProviderWithId gltfDataProvider,
-      mapkit_map_callback.Callback onFinished);
+    runtime_data_provider_with_id.DataProviderWithId gltfDataProvider, {
+    mapkit_map_callback.Callback? onFinished,
+  });
 
   core.bool isValid();
 }
