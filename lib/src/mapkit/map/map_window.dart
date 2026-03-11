@@ -157,8 +157,10 @@ abstract class MapWindow implements ffi.Finalizable {
           sizeChangedListener);
 
   /// Allows to reduce CPU/GPU/battery usage in specific scenarios, where
-  /// lower framerate is acceptable. Valid range: (0, 60\]. Default: 60.
-  void setMaxFps(core.double fps);
+  /// lower framerate is acceptable. Valid range: \[0, <max display refresh
+  /// rate>\]. Default max fps depends on max display refresh rate. If
+  /// `fps` == 0, max fps value is set to max display refresh rate.
+  void setMaxFps(core.int fps);
 
   /// @nodoc
   /// Starts capturing performance metrics.

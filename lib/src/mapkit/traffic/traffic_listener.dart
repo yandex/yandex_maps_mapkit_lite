@@ -34,17 +34,18 @@ enum TrafficColor {
 }
 
 /// The level of traffic.
-abstract final class TrafficLevel implements ffi.Finalizable {
-  factory TrafficLevel(TrafficColor color, core.int level) =>
-      TrafficLevelImpl(color, level);
 
-  TrafficLevel._();
-
+final class TrafficLevel {
   /// The color that represents traffic.
-  TrafficColor get color;
+  final TrafficColor color;
 
   /// Traffic level.
-  core.int get level;
+  final core.int level;
+
+  const TrafficLevel(
+    this.color, {
+    required this.level,
+  });
 
   @core.override
   core.int get hashCode => core.Object.hashAll([color, level]);

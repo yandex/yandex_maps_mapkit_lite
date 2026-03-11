@@ -196,7 +196,7 @@ class MapWindowImpl implements MapWindow, ffi.Finalizable {
     exception.checkCallResult();
   }
 
-  void setMaxFps(core.double fps) {
+  void setMaxFps(core.int fps) {
     _MapWindow_setMaxFps(ptr, fps);
     exception.checkCallResult();
   }
@@ -398,13 +398,13 @@ final void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)
                         ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)>>(
             'yandex_flutter_mapkit_map_MapWindow_removeSizeChangedListener')
         .asFunction();
-final void Function(ffi.Pointer<ffi.Void>, core.double) _MapWindow_setMaxFps =
-    lib.library
-        .lookup<
-                ffi.NativeFunction<
-                    ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Float)>>(
-            'yandex_flutter_mapkit_map_MapWindow_setMaxFps')
-        .asFunction();
+final void Function(ffi.Pointer<ffi.Void>, core.int) _MapWindow_setMaxFps = lib
+    .library
+    .lookup<
+        ffi.NativeFunction<
+            ffi.Void Function(ffi.Pointer<ffi.Void>,
+                ffi.Uint32)>>('yandex_flutter_mapkit_map_MapWindow_setMaxFps')
+    .asFunction();
 final void Function(
     ffi
         .Pointer<ffi.Void>) _MapWindow_startPerformanceMetricsCapture = lib

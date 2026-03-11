@@ -38,33 +38,34 @@ extension TrafficColorImpl on TrafficColor {
   }
 }
 
+final class TrafficLevelNative extends ffi.Struct {
+  @ffi.Int64()
+  external core.int color;
+  @ffi.Int()
+  external core.int level;
+}
+
+final TrafficLevelNative Function(core.int, core.int) _TrafficLevelNativeInit =
+    lib.library
+        .lookup<
+                ffi.NativeFunction<
+                    TrafficLevelNative Function(ffi.Int64, ffi.Int)>>(
+            'yandex_flutter_mapkit_traffic_TrafficLevel_init')
+        .asFunction(isLeaf: true);
+
 @bindings_annotations.ContainerData(
-    toNative: 'TrafficLevelImpl.getNativePtr',
+    toNative: 'TrafficLevelImpl.toPointer',
     toPlatform: '(val) => TrafficLevelImpl.fromPointer(val, needFree: false)',
     platformType: 'TrafficLevel')
-final class TrafficLevelImpl extends TrafficLevel {
-  TrafficLevelImpl(TrafficColor color, core.int level)
-      : this.fromNativePtr(
-            _TrafficLevel_init(TrafficColorImpl.toInt(color), level));
-
-  @core.override
-  late final color = TrafficColorImpl.fromInt(_TrafficLevel_get_color(_ptr));
-  @core.override
-  late final level = _TrafficLevel_get_level(_ptr);
-
-  final ffi.Pointer<ffi.Void> _ptr;
-  static final _finalizer = ffi.NativeFinalizer(_TrafficLevel_free.cast());
-
-  TrafficLevelImpl.fromNativePtr(this._ptr) : super._() {
-    _finalizer.attach(this, _ptr);
+extension TrafficLevelImpl on TrafficLevel {
+  static TrafficLevel fromNative(TrafficLevelNative native) {
+    return TrafficLevel(TrafficColorImpl.fromInt(native.color),
+        level: native.level);
   }
 
-  static ffi.Pointer<ffi.Void> getNativePtr(TrafficLevel? obj) {
-    return (obj as TrafficLevelImpl?)?._ptr ?? ffi.nullptr;
-  }
-
-  static TrafficLevel? fromOptionalPtr(ffi.Pointer<ffi.Void> ptr) {
-    return ptr == ffi.nullptr ? null : TrafficLevelImpl.fromNativePtr(ptr);
+  static TrafficLevelNative toNative(TrafficLevel obj) {
+    return _TrafficLevelNativeInit(
+        TrafficColorImpl.toInt(obj.color), obj.level);
   }
 
   static TrafficLevel? fromPointer(ffi.Pointer<ffi.Void> ptr,
@@ -73,38 +74,24 @@ final class TrafficLevelImpl extends TrafficLevel {
       return null;
     }
     final result =
-        TrafficLevelImpl.fromNativePtr(ptr.cast<ffi.Pointer<ffi.Void>>().value);
+        TrafficLevelImpl.fromNative(ptr.cast<TrafficLevelNative>().ref);
 
     if (needFree) {
       malloc.free(ptr);
     }
-
     return result;
   }
+
+  static ffi.Pointer<ffi.Void> toPointer(TrafficLevel? val) {
+    if (val == null) {
+      return ffi.nullptr;
+    }
+    final result = malloc.call<TrafficLevelNative>();
+    result.ref = toNative(val);
+
+    return result.cast();
+  }
 }
-
-final _TrafficLevel_free = lib.library
-    .lookup<ffi.NativeFunction<ffi.Void Function(ffi.Void)>>(
-        'yandex_flutter_mapkit_traffic_TrafficLevel_free');
-
-final ffi.Pointer<ffi.Void> Function(core.int, core.int) _TrafficLevel_init =
-    lib.library
-        .lookup<
-                ffi.NativeFunction<
-                    ffi.Pointer<ffi.Void> Function(ffi.Int64, ffi.Int)>>(
-            'yandex_flutter_mapkit_traffic_TrafficLevel_init')
-        .asFunction(isLeaf: true);
-
-final core.int Function(ffi.Pointer<ffi.Void>) _TrafficLevel_get_color = lib
-    .library
-    .lookup<ffi.NativeFunction<ffi.Int64 Function(ffi.Pointer<ffi.Void>)>>(
-        'yandex_flutter_mapkit_traffic_TrafficLevel_get_color')
-    .asFunction(isLeaf: true);
-final core.int Function(ffi.Pointer<ffi.Void>) _TrafficLevel_get_level = lib
-    .library
-    .lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.Void>)>>(
-        'yandex_flutter_mapkit_traffic_TrafficLevel_get_level')
-    .asFunction(isLeaf: true);
 
 final class _TrafficListenerWrapper implements ffi.Finalizable {
   _TrafficListenerWrapper(this.ptr) {
@@ -192,7 +179,7 @@ void _TrafficListener_onTrafficChanged(
     throw core.Exception();
   }
   try {
-    listener.onTrafficChanged(TrafficLevelImpl.fromOptionalPtr(trafficLevel));
+    listener.onTrafficChanged(TrafficLevelImpl.fromPointer(trafficLevel));
   } catch (e, stack) {
     exception.nativeAssert(
         'Unhandled exception $e from native call listener\n$stack');
