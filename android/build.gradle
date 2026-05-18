@@ -18,9 +18,6 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        flatDir {
-            dirs 'libs'
-        }
     }
 }
 
@@ -49,7 +46,7 @@ android {
     }
 
     dependencies {
-        api 'com.yandex.android:maps.mobile@aar'
+        api 'com.yandex.android:maps.mobile:4.36.0-lite-flutter'
     }
 
     defaultConfig {

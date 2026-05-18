@@ -13,15 +13,14 @@ Pod::Spec.new do |s|
 
   s.frameworks = 'CoreFoundation', 'Foundation', 'CoreLocation', 'UIKit', 'OpenGLES', 'SystemConfiguration', 'CoreGraphics', 'QuartzCore', 'Security', 'CoreTelephony', 'CoreMotion', 'DeviceCheck', 'NetworkExtension'
 
-  mapkit_version = '0.0.0'
+  mapkit_version = '4.36.0-lite-flutter'
 
   s.libraries = 'resolv', 'c++'
   s.static_framework = true
   # Flutter dynamicaly lookup all symbols from executable, so we need for
   # all exported symbols will be available from executable.
   s.xcconfig = { 'OTHER_LDFLAGS' => '-ObjC -all_load' }
-  s.vendored_frameworks = 'Frameworks/YandexMapsMobile.xcframework'
-  s.resources = 'Frameworks/YandexMapsMobile.bundle'
+  s.dependency 'YandexMapsMobile', mapkit_version
 
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES' }
   s.swift_version = '5.0'
