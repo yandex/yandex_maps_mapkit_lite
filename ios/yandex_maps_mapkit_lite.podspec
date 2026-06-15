@@ -8,12 +8,12 @@ Pod::Spec.new do |s|
   s.license          = { :file => '../LICENSE' }
   s.source           = { :path => '.' }
   s.platform = :ios, "7.0"
-  s.source_files = 'Classes/**/*'
+  s.source_files = 'yandex_maps_mapkit_lite/Sources/yandex_maps_mapkit_lite/**/*.swift'
   s.dependency 'Flutter'
 
   s.frameworks = 'CoreFoundation', 'Foundation', 'CoreLocation', 'UIKit', 'OpenGLES', 'SystemConfiguration', 'CoreGraphics', 'QuartzCore', 'Security', 'CoreTelephony', 'CoreMotion', 'DeviceCheck', 'NetworkExtension'
 
-  mapkit_version = '4.36.0-lite-flutter'
+  mapkit_version = '4.38.1-lite-flutter'
 
   s.libraries = 'resolv', 'c++'
   s.static_framework = true

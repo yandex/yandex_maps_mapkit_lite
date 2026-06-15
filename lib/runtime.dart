@@ -18,3 +18,4 @@ export 'package:yandex_maps_mapkit_lite/src/runtime/attestation/ec_public_key_ex
 export 'package:yandex_maps_mapkit_lite/src/runtime/i18n/i18n_manager_export.dart';
 export 'package:yandex_maps_mapkit_lite/src/runtime/i18n/prefs_export.dart';
 export 'package:yandex_maps_mapkit_lite/src/runtime/logging/logger_export.dart';
+export 'package:yandex_maps_mapkit_lite/src/runtime/logging/subscription_logger_export.dart';

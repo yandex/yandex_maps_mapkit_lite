@@ -38,20 +38,15 @@ abstract class CompositeIcon
         mapkit_map_placemark_presentation.PlacemarkPresentation,
         ffi.Finalizable {
   /// Creates or resets a named layer with an icon and its style.
-  void setIcon(
-    image_provider.ImageProvider image,
-    mapkit_map_icon_style.IconStyle style, {
-    required core.String name,
-  });
-
-  /// Creates or resets a named layer that contains an icon and its style.
   ///
-  /// [onFinished] Called when an icon is loaded.
-  void setIconWithCallback(
-    image_provider.ImageProvider image,
-    mapkit_map_icon_style.IconStyle style,
-    mapkit_map_callback.Callback onFinished, {
+  /// [name] Unique identifier of the icon layer. Used to create or update.
+  /// [style] The icon style. If not specified, the default style is used.
+  /// [onFinished] Optional callback invoked when the icon is loaded.
+  void setIcon(
+    image_provider.ImageProvider image, {
     required core.String name,
+    mapkit_map_icon_style.IconStyle? style,
+    mapkit_map_callback.Callback? onFinished,
   });
 
   /// Changes the icon style for a specific layer.

@@ -126,6 +126,11 @@ abstract class Map implements ffi.Finalizable {
   core.bool get indoorEnabled;
   set indoorEnabled(core.bool val);
 
+  /// If set to true, hides the indoor plans and shows the buildings
+  /// without resetting the current indoor plan. False by default.
+  core.bool get buildingsAboveIndoorEnabled;
+  set buildingsAboveIndoorEnabled(core.bool val);
+
   /// Selects one of predefined map style modes optimized for particular
   /// use case(transit, driving, etc). Resets json styles set with
   /// setMapStyle. MapMode.Map by deafult.

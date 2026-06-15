@@ -65,6 +65,8 @@ import 'package:yandex_maps_mapkit_lite/src/runtime/i18n/i18n_manager.dart'
     as runtime;
 import 'package:yandex_maps_mapkit_lite/src/runtime/local_error.dart'
     as runtime;
+import 'package:yandex_maps_mapkit_lite/src/runtime/logging/subscription_logger.dart'
+    as runtime;
 import 'package:yandex_maps_mapkit_lite/src/runtime/network/errors.dart'
     as runtime;
 
@@ -137,6 +139,7 @@ const weakInterfacesMeta = {
   'runtime.Error': runtime.ErrorImpl.fromNativePtrImpl,
   'runtime.LocalError': runtime.LocalErrorImpl.fromNativePtrImpl,
   'runtime.i18n.I18nManager': runtime.I18nManagerImpl.fromNativePtrImpl,
+  'runtime.logging.Logging': runtime.LoggingImpl.fromNativePtrImpl,
   'runtime.network.BadRequestError':
       runtime.BadRequestErrorImpl.fromNativePtrImpl,
   'runtime.network.ForbiddenError':

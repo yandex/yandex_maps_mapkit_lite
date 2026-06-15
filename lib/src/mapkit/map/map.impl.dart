@@ -200,6 +200,19 @@ class MapImpl implements Map, ffi.Finalizable {
   }
 
   @core.override
+  core.bool get buildingsAboveIndoorEnabled {
+    final result = _Map_get_buildingsAboveIndoorEnabled(ptr);
+    exception.checkCallResult();
+    return result;
+  }
+
+  @core.override
+  set buildingsAboveIndoorEnabled(core.bool val) {
+    _Map_set_buildingsAboveIndoorEnabled(ptr, val);
+    exception.checkCallResult();
+  }
+
+  @core.override
   mapkit_map_map_mode.MapMode get mode {
     final result = _Map_get_mode(ptr);
     exception.checkCallResult();
@@ -620,6 +633,19 @@ final void Function(ffi.Pointer<ffi.Void>, core.bool) _Map_set_indoorEnabled =
                 ffi.NativeFunction<
                     ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Bool)>>(
             'yandex_flutter_mapkit_map_Map_set_indoorEnabled')
+        .asFunction();
+
+final core.bool Function(ffi.Pointer<ffi.Void>)
+    _Map_get_buildingsAboveIndoorEnabled = lib.library
+        .lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ffi.Void>)>>(
+            'yandex_flutter_mapkit_map_Map_get_buildingsAboveIndoorEnabled')
+        .asFunction();
+final void Function(ffi.Pointer<ffi.Void>, core.bool)
+    _Map_set_buildingsAboveIndoorEnabled = lib.library
+        .lookup<
+                ffi.NativeFunction<
+                    ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Bool)>>(
+            'yandex_flutter_mapkit_map_Map_set_buildingsAboveIndoorEnabled')
         .asFunction();
 
 final core.int Function(ffi.Pointer<ffi.Void>) _Map_get_mode = lib.library

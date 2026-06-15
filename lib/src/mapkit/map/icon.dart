@@ -41,37 +41,25 @@ abstract class Icon
   mapkit_map_icon_style.IconStyle get style;
   set style(mapkit_map_icon_style.IconStyle val);
 
-  /// Sets the image with the default style for the icon.
-  void setImage(image_provider.ImageProvider image);
-
-  /// Sets the image with the given style for the icon.
-  void setImageWithStyle(image_provider.ImageProvider image,
-      mapkit_map_icon_style.IconStyle style);
-
-  /// Sets the image with the given style for the icon. The callback will
-  /// be called immediately after the icon finished loading.
+  /// Sets the image for the icon.
   ///
-  /// [onFinished] Called when the icon is loaded.
-  void setImageWithCallback(
-      image_provider.ImageProvider image,
-      mapkit_map_icon_style.IconStyle style,
-      mapkit_map_callback.Callback onFinished);
+  /// [style] The icon style. If not specified, the default style is used.
+  /// [onFinished] Optional callback invoked when the icon is loaded.
+  void setImage(
+    image_provider.ImageProvider image, {
+    mapkit_map_icon_style.IconStyle? style,
+    mapkit_map_callback.Callback? onFinished,
+  });
 
-  /// Sets the view with the given style for the icon.
-  void setView(view_provider.ViewProvider view);
-
-  /// Sets the view with the default style for the icon.
-  void setViewWithStyle(
-      view_provider.ViewProvider view, mapkit_map_icon_style.IconStyle style);
-
-  /// Sets the view with the given style for the icon. The callback will be
-  /// called immediately after the icon finished loading.
+  /// Sets the view for the icon.
   ///
-  /// [onFinished] Called when the icon is loaded.
-  void setViewWithCallback(
-      view_provider.ViewProvider view,
-      mapkit_map_icon_style.IconStyle style,
-      mapkit_map_callback.Callback onFinished);
+  /// [style] The icon style. If not specified, the default style is used.
+  /// [onFinished] Optional callback invoked when the icon is loaded.
+  void setView(
+    view_provider.ViewProvider view, {
+    mapkit_map_icon_style.IconStyle? style,
+    mapkit_map_callback.Callback? onFinished,
+  });
 
   core.bool isValid();
 }

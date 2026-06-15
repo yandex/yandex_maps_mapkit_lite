@@ -7,6 +7,8 @@ final class IconStyleNative extends ffi.Struct {
   external ffi.Pointer<ffi.Void> flat;
   external ffi.Pointer<ffi.Void> visible;
   external ffi.Pointer<ffi.Void> scale;
+  @ffi.Float()
+  external core.double opacity;
   external ffi.Pointer<ffi.Void> tappableArea;
 }
 
@@ -17,6 +19,7 @@ final IconStyleNative Function(
         ffi.Pointer<ffi.Void>,
         ffi.Pointer<ffi.Void>,
         ffi.Pointer<ffi.Void>,
+        core.double,
         ffi.Pointer<ffi.Void>) _IconStyleNativeInit =
     lib.library
         .lookup<
@@ -28,6 +31,7 @@ final IconStyleNative Function(
                         ffi.Pointer<ffi.Void>,
                         ffi.Pointer<ffi.Void>,
                         ffi.Pointer<ffi.Void>,
+                        ffi.Float,
                         ffi.Pointer<ffi.Void>)>>(
             'yandex_flutter_mapkit_map_IconStyle_init')
         .asFunction(isLeaf: true);
@@ -46,6 +50,7 @@ extension IconStyleImpl on IconStyle {
         flat: to_platform.toPlatformFromPointerBool(native.flat),
         visible: to_platform.toPlatformFromPointerBool(native.visible),
         scale: to_platform.toPlatformFromPointerFloat(native.scale),
+        opacity: native.opacity,
         tappableArea:
             mapkit_map_rect.RectImpl.fromPointer(native.tappableArea));
   }
@@ -58,6 +63,7 @@ extension IconStyleImpl on IconStyle {
         to_native.toNativePtrBool(obj.flat),
         to_native.toNativePtrBool(obj.visible),
         to_native.toNativePtrFloat(obj.scale),
+        obj.opacity,
         mapkit_map_rect.RectImpl.toPointer(obj.tappableArea));
   }
 

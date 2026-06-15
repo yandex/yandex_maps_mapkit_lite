@@ -53,6 +53,9 @@ final class IconStyle {
   ///
   final core.double? scale;
 
+  /// Opacity of the icon
+  final core.double opacity;
+
   /// Tappable area on the icon. Coordinates are measured the same way as
   /// anchor coordinates. If rect is empty or invalid, the icon will not
   /// process taps. By default, icons process all taps.
@@ -66,12 +69,21 @@ final class IconStyle {
     this.flat,
     this.visible,
     this.scale,
+    this.opacity = 1.0,
     this.tappableArea,
   });
 
   @core.override
-  core.int get hashCode => core.Object.hashAll(
-      [anchor, rotationType, zIndex, flat, visible, scale, tappableArea]);
+  core.int get hashCode => core.Object.hashAll([
+        anchor,
+        rotationType,
+        zIndex,
+        flat,
+        visible,
+        scale,
+        opacity,
+        tappableArea
+      ]);
 
   @core.override
   core.bool operator ==(covariant IconStyle other) {
@@ -84,11 +96,12 @@ final class IconStyle {
         flat == other.flat &&
         visible == other.visible &&
         scale == other.scale &&
+        opacity == other.opacity &&
         tappableArea == other.tappableArea;
   }
 
   @core.override
   core.String toString() {
-    return "IconStyle(anchor: $anchor, rotationType: $rotationType, zIndex: $zIndex, flat: $flat, visible: $visible, scale: $scale, tappableArea: $tappableArea)";
+    return "IconStyle(anchor: $anchor, rotationType: $rotationType, zIndex: $zIndex, flat: $flat, visible: $visible, scale: $scale, opacity: $opacity, tappableArea: $tappableArea)";
   }
 }
