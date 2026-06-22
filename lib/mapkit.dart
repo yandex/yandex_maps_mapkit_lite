@@ -7,6 +7,7 @@ export 'package:yandex_maps_mapkit_lite/src/mapkit/mapkit_export.dart';
 export 'package:yandex_maps_mapkit_lite/src/mapkit/money_export.dart';
 export 'package:yandex_maps_mapkit_lite/src/mapkit/attribution_export.dart';
 export 'package:yandex_maps_mapkit_lite/src/mapkit/localized_value_export.dart';
+export 'package:yandex_maps_mapkit_lite/src/mapkit/size_export.dart';
 export 'package:yandex_maps_mapkit_lite/src/mapkit/geo_object_collection_export.dart';
 export 'package:yandex_maps_mapkit_lite/src/mapkit/geo_object_export.dart';
 export 'package:yandex_maps_mapkit_lite/src/mapkit/image_export.dart';
