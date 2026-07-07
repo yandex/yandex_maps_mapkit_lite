@@ -84,6 +84,14 @@ abstract class Map implements ffi.Finalizable {
   core.bool get nightModeEnabled;
   set nightModeEnabled(core.bool val);
 
+  /// If enabled, the map background will be fully transparent. Note: the
+  /// underlying platform view must be created with transparency support
+  /// enabled for this flag to take effect (e.g. on Android, set the
+  /// 'transparent' XML attribute on MapView; ; on iOS, create the MapView
+  /// with transparencySupport: true).
+  core.bool get transparentBackgroundEnabled;
+  set transparentBackgroundEnabled(core.bool val);
+
   /// Enable/disable zoom gestures, for example: - pinch - double tap (zoom
   /// in) - tap with two fingers (zoom out)
   core.bool get zoomGesturesEnabled;

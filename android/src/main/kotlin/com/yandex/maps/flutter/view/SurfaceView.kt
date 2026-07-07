@@ -9,8 +9,10 @@ class SurfaceView(context: Context, id: Int, factory: ViewFactory) :
     PlatformGLSurfaceView(context), FlutterView, LifecycleListener {
     private val id = id
     private val factory = factory
-    private var isInitialize = false
+    private var isInitialized = false
     private var contextCreated = false
+
+    private var pendingSize: Pair<Int, Int>? = null
 
     init {
         factory.getLifecycle().addListener(this)
@@ -22,7 +24,11 @@ class SurfaceView(context: Context, id: Int, factory: ViewFactory) :
     }
 
     override fun startView() {
-        isInitialize = true
+        isInitialized = true
+        if (pendingSize != null) {
+            onSizeChanged(pendingSize!!.first, pendingSize!!.second, 0, 0)
+            pendingSize = null
+        }
         if (contextCreated) {
             onContextCreated()
         }
@@ -35,33 +41,35 @@ class SurfaceView(context: Context, id: Int, factory: ViewFactory) :
     }
 
     override fun start() {
-        if (isInitialize && factory.getLifecycle().isForeground()) {
+        if (isInitialized && factory.getLifecycle().isForeground()) {
             super.start()
         }
     }
 
     override fun onContextCreated() {
-        if (isInitialize) {
+        if (isInitialized) {
             super.onContextCreated()
         }
         contextCreated = true
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
-        if (isInitialize) {
+        if (isInitialized) {
             super.onSizeChanged(w, h, oldw, oldh)
+        } else {
+            pendingSize = Pair(w, h)
         }
     }
 
     override fun onForeground() {
-        if (isInitialize) {
+        if (isInitialized) {
             start()
             resume()
         }
     }
 
     override fun onBackground() {
-        if (isInitialize) {
+        if (isInitialized) {
             pause()
             stop()
         }

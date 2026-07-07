@@ -81,6 +81,19 @@ class MapImpl implements Map, ffi.Finalizable {
   }
 
   @core.override
+  core.bool get transparentBackgroundEnabled {
+    final result = _Map_get_transparentBackgroundEnabled(ptr);
+    exception.checkCallResult();
+    return result;
+  }
+
+  @core.override
+  set transparentBackgroundEnabled(core.bool val) {
+    _Map_set_transparentBackgroundEnabled(ptr, val);
+    exception.checkCallResult();
+  }
+
+  @core.override
   core.bool get zoomGesturesEnabled {
     final result = _Map_get_zoomGesturesEnabled(ptr);
     exception.checkCallResult();
@@ -509,6 +522,19 @@ final void Function(ffi.Pointer<ffi.Void>, core.bool)
                 ffi.NativeFunction<
                     ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Bool)>>(
             'yandex_flutter_mapkit_map_Map_set_nightModeEnabled')
+        .asFunction();
+
+final core.bool Function(ffi.Pointer<ffi.Void>)
+    _Map_get_transparentBackgroundEnabled = lib.library
+        .lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ffi.Void>)>>(
+            'yandex_flutter_mapkit_map_Map_get_transparentBackgroundEnabled')
+        .asFunction();
+final void Function(ffi.Pointer<ffi.Void>, core.bool)
+    _Map_set_transparentBackgroundEnabled = lib.library
+        .lookup<
+                ffi.NativeFunction<
+                    ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Bool)>>(
+            'yandex_flutter_mapkit_map_Map_set_transparentBackgroundEnabled')
         .asFunction();
 
 final core.bool Function(ffi.Pointer<ffi.Void>) _Map_get_zoomGesturesEnabled =
