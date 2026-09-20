@@ -195,7 +195,7 @@ abstract class Map implements ffi.Finalizable {
   /// true} is passed.</li> </ul>
   void move(
     mapkit_map_camera_position.CameraPosition cameraPosition, {
-    mapkit_animation.Animation? animation,
+    mapkit_animation.Animation animation = const mapkit_animation.Animation(),
     MapCameraCallback? cameraCallback,
   });
 

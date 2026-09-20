@@ -290,13 +290,13 @@ class MapImpl implements Map, ffi.Finalizable {
 
   void move(
     mapkit_map_camera_position.CameraPosition cameraPosition, {
-    mapkit_animation.Animation? animation,
+    mapkit_animation.Animation animation = const mapkit_animation.Animation(),
     MapCameraCallback? cameraCallback,
   }) {
     _Map_move(
         ptr,
         mapkit_map_camera_position.CameraPositionImpl.toNative(cameraPosition),
-        mapkit_animation.AnimationImpl.toPointer(animation),
+        mapkit_animation.AnimationImpl.toNative(animation),
         MapCameraCallbackImpl.getNativePtr(cameraCallback));
     exception.checkCallResult();
   }
@@ -741,7 +741,7 @@ final mapkit_map_visible_region.VisibleRegionNative Function(
 final void Function(
     ffi.Pointer<ffi.Void>,
     mapkit_map_camera_position.CameraPositionNative,
-    ffi.Pointer<ffi.Void>,
+    mapkit_animation.AnimationNative,
     ffi
         .Pointer<ffi.Void>) _Map_move = lib.library
     .lookup<
@@ -749,7 +749,7 @@ final void Function(
             ffi.Void Function(
                 ffi.Pointer<ffi.Void>,
                 mapkit_map_camera_position.CameraPositionNative,
-                ffi.Pointer<ffi.Void>,
+                mapkit_animation.AnimationNative,
                 ffi.Pointer<ffi.Void>)>>('yandex_flutter_mapkit_map_Map_move')
     .asFunction();
 final void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)

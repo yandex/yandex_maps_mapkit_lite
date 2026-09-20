@@ -15,13 +15,13 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(id: "yandexmapsmobile.YandexMapsMobile", exact: ""),
+        .package(path: "YandexMapsMobile"),
     ],
     targets: [
         .target(
             name: "yandex_maps_mapkit_lite",
             dependencies: [
-                .product(name: "YandexMapsMobile", package: "yandexmapsmobile.YandexMapsMobile"),
+                .product(name: "YandexMapsMobile", package: "YandexMapsMobile"),
             ],
             linkerSettings: [
                 .linkedFramework("CoreFoundation"),

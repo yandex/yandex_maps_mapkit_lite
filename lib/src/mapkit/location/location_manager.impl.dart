@@ -223,11 +223,32 @@ final void Function(ffi.Pointer<ffi.Void>, core.int) _LocationManager_set = lib
         'yandex_flutter_mapkit_location_LocationManager_set_')
     .asFunction(isLeaf: true);
 
+core.bool _isPredictionSpoofingCleanerEnabled() {
+  final result = _LocationManagerUtils_isPredictionSpoofingCleanerEnabled();
+  return result;
+}
+
+void _setPredictionSpoofingCleanerEnabled(core.bool enabled) {
+  _LocationManagerUtils_setPredictionSpoofingCleanerEnabled(enabled);
+}
+
 mapkit_location_location.Location? get _lastKnownLocation {
   return mapkit_location_location.LocationImpl.fromPointer(
       _LocationManagerUtils_get_lastKnownLocation());
 }
 
+final core.bool Function()
+    _LocationManagerUtils_isPredictionSpoofingCleanerEnabled = lib.library
+        .lookup<ffi.NativeFunction<ffi.Bool Function()>>(
+            'yandex_flutter_mapkit_location_LocationManagerUtils_isPredictionSpoofingCleanerEnabled')
+        .asFunction();
+final void Function(
+    core
+        .bool) _LocationManagerUtils_setPredictionSpoofingCleanerEnabled = lib
+    .library
+    .lookup<ffi.NativeFunction<ffi.Void Function(ffi.Bool)>>(
+        'yandex_flutter_mapkit_location_LocationManagerUtils_setPredictionSpoofingCleanerEnabled')
+    .asFunction();
 final ffi.Pointer<ffi.Void> Function()
     _LocationManagerUtils_get_lastKnownLocation = lib.library
         .lookup<ffi.NativeFunction<ffi.Pointer<ffi.Void> Function()>>(

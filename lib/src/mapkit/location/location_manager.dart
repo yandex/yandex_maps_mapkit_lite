@@ -113,6 +113,25 @@ abstract class LocationManager implements ffi.Finalizable {
 class LocationManagerUtils {
   LocationManagerUtils._();
 
+  /// Returns the current value of the process-wide setting for
+  /// prediction-based GNSS spoofing filtering. The setting is true by
+  /// default.
+  static core.bool isPredictionSpoofingCleanerEnabled() {
+    return _isPredictionSpoofingCleanerEnabled();
+  }
+
+  /// Enables or disables prediction-based GNSS spoofing filtering. The
+  /// filtering is enabled by default. This process-wide setting takes
+  /// effect immediately for active location subscriptions.
+  ///
+  /// [enabled] True to enable filtering; false to disable it. True by
+  /// default.
+  static void setPredictionSpoofingCleanerEnabled(core.bool enabled) {
+    _setPredictionSpoofingCleanerEnabled(
+      enabled,
+    );
+  }
+
   /// Last known location, if one was ever received.
   ///
   static mapkit_location_location.Location? get lastKnownLocation =>

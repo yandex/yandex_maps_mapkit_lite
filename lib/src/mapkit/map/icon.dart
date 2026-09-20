@@ -47,7 +47,8 @@ abstract class Icon
   /// [onFinished] Optional callback invoked when the icon is loaded.
   void setImage(
     image_provider.ImageProvider image, {
-    mapkit_map_icon_style.IconStyle? style,
+    mapkit_map_icon_style.IconStyle style =
+        const mapkit_map_icon_style.IconStyle(),
     mapkit_map_callback.Callback? onFinished,
   });
 
@@ -57,7 +58,8 @@ abstract class Icon
   /// [onFinished] Optional callback invoked when the icon is loaded.
   void setView(
     view_provider.ViewProvider view, {
-    mapkit_map_icon_style.IconStyle? style,
+    mapkit_map_icon_style.IconStyle style =
+        const mapkit_map_icon_style.IconStyle(),
     mapkit_map_callback.Callback? onFinished,
   });
 

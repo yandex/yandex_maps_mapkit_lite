@@ -45,7 +45,8 @@ abstract class CompositeIcon
   void setIcon(
     image_provider.ImageProvider image, {
     required core.String name,
-    mapkit_map_icon_style.IconStyle? style,
+    mapkit_map_icon_style.IconStyle style =
+        const mapkit_map_icon_style.IconStyle(),
     mapkit_map_callback.Callback? onFinished,
   });
 

@@ -62,26 +62,28 @@ class IconImpl extends mapkit_map_placemark_presentation
 
   void setImage(
     image_provider.ImageProvider image, {
-    mapkit_map_icon_style.IconStyle? style,
+    mapkit_map_icon_style.IconStyle style =
+        const mapkit_map_icon_style.IconStyle(),
     mapkit_map_callback.Callback? onFinished,
   }) {
     _Icon_setImage(
         ptr,
         to_native.toNativeImageProvider(image),
-        mapkit_map_icon_style.IconStyleImpl.toPointer(style),
+        mapkit_map_icon_style.IconStyleImpl.toNative(style),
         mapkit_map_callback.CallbackImpl.getNativePtr(onFinished));
     exception.checkCallResult();
   }
 
   void setView(
     view_provider.ViewProvider view, {
-    mapkit_map_icon_style.IconStyle? style,
+    mapkit_map_icon_style.IconStyle style =
+        const mapkit_map_icon_style.IconStyle(),
     mapkit_map_callback.Callback? onFinished,
   }) {
     _Icon_setView(
         ptr,
         to_native.toNativeViewProvider(view),
-        mapkit_map_icon_style.IconStyleImpl.toPointer(style),
+        mapkit_map_icon_style.IconStyleImpl.toNative(style),
         mapkit_map_callback.CallbackImpl.getNativePtr(onFinished));
     exception.checkCallResult();
   }
@@ -114,26 +116,26 @@ final void Function(
         .asFunction();
 
 final void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>,
-        ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>) _Icon_setImage =
-    lib.library
+        mapkit_map_icon_style.IconStyleNative, ffi.Pointer<ffi.Void>)
+    _Icon_setImage = lib.library
         .lookup<
                 ffi.NativeFunction<
                     ffi.Void Function(
                         ffi.Pointer<ffi.Void>,
                         ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
+                        mapkit_map_icon_style.IconStyleNative,
                         ffi.Pointer<ffi.Void>)>>(
             'yandex_flutter_mapkit_map_Icon_setImage')
         .asFunction();
 final void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>,
-        ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>) _Icon_setView =
-    lib.library
+        mapkit_map_icon_style.IconStyleNative, ffi.Pointer<ffi.Void>)
+    _Icon_setView = lib.library
         .lookup<
                 ffi.NativeFunction<
                     ffi.Void Function(
                         ffi.Pointer<ffi.Void>,
                         ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
+                        mapkit_map_icon_style.IconStyleNative,
                         ffi.Pointer<ffi.Void>)>>(
             'yandex_flutter_mapkit_map_Icon_setView')
         .asFunction();

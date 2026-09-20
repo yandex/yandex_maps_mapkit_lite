@@ -50,14 +50,15 @@ class CompositeIconImpl extends mapkit_map_placemark_presentation
   void setIcon(
     image_provider.ImageProvider image, {
     required core.String name,
-    mapkit_map_icon_style.IconStyle? style,
+    mapkit_map_icon_style.IconStyle style =
+        const mapkit_map_icon_style.IconStyle(),
     mapkit_map_callback.Callback? onFinished,
   }) {
     _CompositeIcon_setIcon(
         ptr,
         to_native.toNativeString(name),
         to_native.toNativeImageProvider(image),
-        mapkit_map_icon_style.IconStyleImpl.toPointer(style),
+        mapkit_map_icon_style.IconStyleImpl.toNative(style),
         mapkit_map_callback.CallbackImpl.getNativePtr(onFinished));
     exception.checkCallResult();
   }
@@ -100,16 +101,20 @@ final core.bool Function(ffi.Pointer<ffi.Void>) _CompositeIcon_check = lib
         'yandex_flutter_mapkit_map_CompositeIcon_check')
     .asFunction(isLeaf: true);
 
-final void Function(ffi.Pointer<ffi.Void>, native_types.NativeString,
-        ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>)
-    _CompositeIcon_setIcon = lib.library
+final void Function(
+        ffi.Pointer<ffi.Void>,
+        native_types.NativeString,
+        ffi.Pointer<ffi.Void>,
+        mapkit_map_icon_style.IconStyleNative,
+        ffi.Pointer<ffi.Void>) _CompositeIcon_setIcon =
+    lib.library
         .lookup<
                 ffi.NativeFunction<
                     ffi.Void Function(
                         ffi.Pointer<ffi.Void>,
                         native_types.NativeString,
                         ffi.Pointer<ffi.Void>,
-                        ffi.Pointer<ffi.Void>,
+                        mapkit_map_icon_style.IconStyleNative,
                         ffi.Pointer<ffi.Void>)>>(
             'yandex_flutter_mapkit_map_CompositeIcon_setIcon')
         .asFunction();
